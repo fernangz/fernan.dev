@@ -1,0 +1,14 @@
+{
+  "currency": [
+    { "symbol": "$", "name": "Dollar" },
+    { "symbol": "€", "name": "Euro" },
+    { "symbol": "£", "name": "Pound" },
+    { "symbol": "¥", "name": "Yen" },
+    { "symbol": "¢", "name": "Cent" },
+    { "symbol": "₿", "name": "Bitcoin" },
+    { "symbol": "₹", "name": "Rupee" },
+    { "symbol": "₽", "name": "Ruble" },
+    { "symbol": "₩", "name": "Won" },
+    { "symbol": "₺", "name": "Lira" }
+  ]
+}

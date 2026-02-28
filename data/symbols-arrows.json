@@ -1,0 +1,18 @@
+{
+  "arrows": [
+    { "symbol": "←", "name": "Left Arrow" },
+    { "symbol": "→", "name": "Right Arrow" },
+    { "symbol": "↑", "name": "Up Arrow" },
+    { "symbol": "↓", "name": "Down Arrow" },
+    { "symbol": "↔", "name": "Left Right Arrow" },
+    { "symbol": "↕", "name": "Up Down Arrow" },
+    { "symbol": "⇒", "name": "Double Right Arrow" },
+    { "symbol": "⇐", "name": "Double Left Arrow" },
+    { "symbol": "⇑", "name": "Double Up Arrow" },
+    { "symbol": "⇓", "name": "Double Down Arrow" },
+    { "symbol": "↗", "name": "North East Arrow" },
+    { "symbol": "↘", "name": "South East Arrow" },
+    { "symbol": "↙", "name": "South West Arrow" },
+    { "symbol": "↖", "name": "North West Arrow" }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "technical": [
+    { "symbol": "∀", "name": "For All" },
+    { "symbol": "∃", "name": "Exists" },
+    { "symbol": "∅", "name": "Empty Set" },
+    { "symbol": "∈", "name": "Element of" },
+    { "symbol": "∉", "name": "Not Element of" },
+    { "symbol": "Ω", "name": "Omega" },
+    { "symbol": "Δ", "name": "Delta" },
+    { "symbol": "Σ", "name": "Sigma" },
+    { "symbol": "µ", "name": "Micro" },
+    { "symbol": "∆", "name": "Increment" },
+    { "symbol": "∇", "name": "Nabla" },
+    { "symbol": "√", "name": "Root" }
+  ]
+}

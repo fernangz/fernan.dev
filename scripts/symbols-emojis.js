@@ -5,110 +5,23 @@
 const SymbolsEmojis = {
 	currentCategory: 'all',
 	searchQuery: '',
+	symbolsData: {},
+	emojisData: null,
 
-	symbols: {
-		currency: [
-			{ symbol: '$', name: 'Dollar' },
-			{ symbol: '€', name: 'Euro' },
-			{ symbol: '£', name: 'Pound' },
-			{ symbol: '¥', name: 'Yen' },
-			{ symbol: '¢', name: 'Cent' },
-			{ symbol: '₿', name: 'Bitcoin' },
-			{ symbol: '₹', name: 'Rupee' },
-			{ symbol: '₽', name: 'Ruble' },
-			{ symbol: '₩', name: 'Won' },
-			{ symbol: '₺', name: 'Lira' },
-		],
-		math: [
-			{ symbol: '±', name: 'Plus Minus' },
-			{ symbol: '×', name: 'Multiply' },
-			{ symbol: '÷', name: 'Divide' },
-			{ symbol: '√', name: 'Square Root' },
-			{ symbol: '∞', name: 'Infinity' },
-			{ symbol: '≠', name: 'Not Equal' },
-			{ symbol: '≈', name: 'Approximately' },
-			{ symbol: '≤', name: 'Less or Equal' },
-			{ symbol: '≥', name: 'Greater or Equal' },
-			{ symbol: 'π', name: 'Pi' },
-			{ symbol: '∑', name: 'Sum' },
-			{ symbol: '∏', name: 'Product' },
-			{ symbol: '∂', name: 'Partial' },
-			{ symbol: '∫', name: 'Integral' },
-		],
-		arrows: [
-			{ symbol: '←', name: 'Left Arrow' },
-			{ symbol: '→', name: 'Right Arrow' },
-			{ symbol: '↑', name: 'Up Arrow' },
-			{ symbol: '↓', name: 'Down Arrow' },
-			{ symbol: '↔', name: 'Left Right Arrow' },
-			{ symbol: '↕', name: 'Up Down Arrow' },
-			{ symbol: '⇒', name: 'Double Right Arrow' },
-			{ symbol: '⇐', name: 'Double Left Arrow' },
-			{ symbol: '⇑', name: 'Double Up Arrow' },
-			{ symbol: '⇓', name: 'Double Down Arrow' },
-			{ symbol: '↗', name: 'North East Arrow' },
-			{ symbol: '↘', name: 'South East Arrow' },
-			{ symbol: '↙', name: 'South West Arrow' },
-			{ symbol: '↖', name: 'North West Arrow' },
-		],
-		punctuation: [
-			{ symbol: '©', name: 'Copyright' },
-			{ symbol: '®', name: 'Registered' },
-			{ symbol: '™', name: 'Trademark' },
-			{ symbol: '§', name: 'Section' },
-			{ symbol: '¶', name: 'Paragraph' },
-			{ symbol: '†', name: 'Dagger' },
-			{ symbol: '‡', name: 'Double Dagger' },
-			{ symbol: '•', name: 'Bullet' },
-			{ symbol: '…', name: 'Ellipsis' },
-			{ symbol: '—', name: 'Em Dash' },
-			{ symbol: '–', name: 'En Dash' },
-			{ symbol: '°', name: 'Degree' },
-		],
-		technical: [
-			{ symbol: '∀', name: 'For All' },
-			{ symbol: '∃', name: 'Exists' },
-			{ symbol: '∅', name: 'Empty Set' },
-			{ symbol: '∈', name: 'Element of' },
-			{ symbol: '∉', name: 'Not Element of' },
-			{ symbol: 'Ω', name: 'Omega' },
-			{ symbol: 'Δ', name: 'Delta' },
-			{ symbol: 'Σ', name: 'Sigma' },
-			{ symbol: 'µ', name: 'Micro' },
-			{ symbol: '∆', name: 'Increment' },
-			{ symbol: '∇', name: 'Nabla' },
-			{ symbol: '√', name: 'Root' },
-		],
-		emoji: [
-			{ symbol: '😀', name: 'Grinning Face' },
-			{ symbol: '😂', name: 'Joy' },
-			{ symbol: '🥰', name: 'Smiling Hearts' },
-			{ symbol: '😍', name: 'Heart Eyes' },
-			{ symbol: '🤔', name: 'Thinking' },
-			{ symbol: '👍', name: 'Thumbs Up' },
-			{ symbol: '👎', name: 'Thumbs Down' },
-			{ symbol: '❤️', name: 'Heart' },
-			{ symbol: '🔥', name: 'Fire' },
-			{ symbol: '✨', name: 'Sparkles' },
-			{ symbol: '🎉', name: 'Party' },
-			{ symbol: '✅', name: 'Check Mark' },
-			{ symbol: '❌', name: 'Cross Mark' },
-			{ symbol: '⭐', name: 'Star' },
-			{ symbol: '🌟', name: 'Glowing Star' },
-			{ symbol: '💡', name: 'Light Bulb' },
-			{ symbol: '📌', name: 'Pin' },
-			{ symbol: '🔗', name: 'Link' },
-			{ symbol: '⚠️', name: 'Warning' },
-			{ symbol: '💻', name: 'Laptop' },
-		]
-	},
-
-	init() {
+	async init() {
 		const container = document.getElementById('symbols-container');
 		const searchInput = document.getElementById('symbol-search');
 		const categoryBtns = document.querySelectorAll('.category-btn');
 		
 		if (!container) return;
+
+		// Load symbol data from JSON files
+		await this.loadSymbolData();
+		
+		// Load emoji data from emoji.json
+		if (window.DataLoader) {
+			this.emojisData = await DataLoader.load('emoji.json');
+		}
 
 		this.renderSymbols(container);
 
@@ -134,16 +47,58 @@ const SymbolsEmojis = {
 		});
 	},
 
+	async loadSymbolData() {
+		const categories = ['currency', 'math', 'arrows', 'punctuation', 'technical'];
+		
+		for (const category of categories) {
+			try {
+				const response = await fetch(`/data/symbols-${category}.json`);
+				if (response.ok) {
+					this.symbolsData[category] = await response.json();
+				}
+			} catch (error) {
+				console.error(`Error loading ${category} symbols:`, error);
+				this.symbolsData[category] = [];
+			}
+		}
+	},
+
 	getFilteredSymbols() {
 		let symbols = [];
 
 		// Get symbols for current category
 		if (this.currentCategory === 'all') {
-			Object.values(this.symbols).forEach(category => {
-				symbols = symbols.concat(category);
+			// Combine all symbol categories
+			Object.values(this.symbolsData).forEach(categorySymbols => {
+				if (categorySymbols.currency) {
+					symbols = symbols.concat(categorySymbols.currency);
+				} else {
+					symbols = symbols.concat(categorySymbols);
+				}
 			});
+			
+			// Add emojis
+			if (this.emojisData) {
+				const emojiSymbols = Object.keys(this.emojisData).slice(0, 20).map(symbol => ({
+					symbol,
+					name: this.emojisData[symbol].name
+				}));
+				symbols = symbols.concat(emojiSymbols);
+			}
+		} else if (this.currentCategory === 'emoji') {
+			// Get emojis from emoji.json
+			if (this.emojisData) {
+				symbols = Object.keys(this.emojisData).slice(0, 50).map(symbol => ({
+					symbol,
+					name: this.emojisData[symbol].name
+				}));
+			}
 		} else {
-			symbols = this.symbols[this.currentCategory] || [];
+			// Get specific category
+			const categoryData = this.symbolsData[this.currentCategory];
+			if (categoryData) {
+				symbols = categoryData.currency || categoryData;
+			}
 		}
 
 		// Apply search filter

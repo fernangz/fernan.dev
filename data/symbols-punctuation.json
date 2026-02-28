@@ -1,0 +1,16 @@
+{
+  "punctuation": [
+    { "symbol": "©", "name": "Copyright" },
+    { "symbol": "®", "name": "Registered" },
+    { "symbol": "™", "name": "Trademark" },
+    { "symbol": "§", "name": "Section" },
+    { "symbol": "¶", "name": "Paragraph" },
+    { "symbol": "†", "name": "Dagger" },
+    { "symbol": "‡", "name": "Double Dagger" },
+    { "symbol": "•", "name": "Bullet" },
+    { "symbol": "…", "name": "Ellipsis" },
+    { "symbol": "—", "name": "Em Dash" },
+    { "symbol": "–", "name": "En Dash" },
+    { "symbol": "°", "name": "Degree" }
+  ]
+}

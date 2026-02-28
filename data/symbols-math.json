@@ -1,0 +1,18 @@
+{
+  "math": [
+    { "symbol": "±", "name": "Plus Minus" },
+    { "symbol": "×", "name": "Multiply" },
+    { "symbol": "÷", "name": "Divide" },
+    { "symbol": "√", "name": "Square Root" },
+    { "symbol": "∞", "name": "Infinity" },
+    { "symbol": "≠", "name": "Not Equal" },
+    { "symbol": "≈", "name": "Approximately" },
+    { "symbol": "≤", "name": "Less or Equal" },
+    { "symbol": "≥", "name": "Greater or Equal" },
+    { "symbol": "π", "name": "Pi" },
+    { "symbol": "∑", "name": "Sum" },
+    { "symbol": "∏", "name": "Product" },
+    { "symbol": "∂", "name": "Partial" },
+    { "symbol": "∫", "name": "Integral" }
+  ]
+}
