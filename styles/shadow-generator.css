@@ -1,0 +1,160 @@
+/* ============================================
+   Shadow Generator Tool Styles
+   ============================================ */
+
+.shadow-generator {
+	background-color: var(--dark);
+	border-radius: var(--radius-lg);
+	padding: var(--space-6);
+	margin-top: var(--space-6);
+	border: var(--border-sm) solid var(--gray);
+}
+
+.preview-area {
+	background-color: var(--black);
+	border-radius: var(--radius-md);
+	padding: var(--space-8);
+	margin-bottom: var(--space-6);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 12rem;
+}
+
+.preview-box {
+	width: 8rem;
+	height: 8rem;
+	background-color: var(--light);
+	border-radius: var(--radius-md);
+	transition: box-shadow var(--transition-fast);
+}
+
+.controls {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+	gap: var(--space-4);
+	margin-bottom: var(--space-6);
+}
+
+.control-group {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-2);
+}
+
+.control-group label {
+	color: var(--light);
+	font-size: var(--font-sm);
+}
+
+.control-group input[type="range"] {
+	width: 100%;
+	height: 0.5rem;
+	border-radius: var(--radius-sm);
+	background: var(--gray);
+	outline: none;
+	-webkit-appearance: none;
+}
+
+.control-group input[type="range"]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	width: 1.25rem;
+	height: 1.25rem;
+	border-radius: var(--radius-full);
+	background: var(--light);
+	cursor: pointer;
+}
+
+.control-group input[type="color"] {
+	width: 100%;
+	height: 2.5rem;
+	border: var(--border-sm) solid var(--gray);
+	border-radius: var(--radius-md);
+	cursor: pointer;
+}
+
+.control-value {
+	color: var(--gray);
+	font-size: var(--font-xs);
+	font-family: 'code', monospace;
+}
+
+.checkbox-group label {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	color: var(--light);
+	font-size: var(--font-md);
+	cursor: pointer;
+}
+
+.checkbox-group input[type="checkbox"] {
+	width: 1.25rem;
+	height: 1.25rem;
+	cursor: pointer;
+}
+
+.code-output {
+	background-color: var(--black);
+	border-radius: var(--radius-md);
+	padding: var(--space-4);
+	border: var(--border-sm) solid var(--gray);
+}
+
+.code-output label {
+	display: block;
+	color: var(--gray);
+	font-size: var(--font-sm);
+	margin-bottom: var(--space-2);
+}
+
+.code-box {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--space-4);
+	flex-wrap: wrap;
+}
+
+.code-box code {
+	color: var(--light);
+	font-family: 'code', monospace;
+	font-size: var(--font-md);
+	flex: 1;
+	min-width: 0;
+}
+
+.copy-btn {
+	padding: var(--space-2) var(--space-4);
+	background-color: var(--dark);
+	color: var(--light);
+	border: var(--border-sm) solid var(--gray);
+	border-radius: var(--radius-md);
+	cursor: pointer;
+	font-size: var(--font-sm);
+	transition: all var(--transition-fast);
+}
+
+.copy-btn:hover {
+	background-color: var(--gray);
+}
+
+/* Responsive */
+@media screen and (max-width: 40rem) {
+	.shadow-generator {
+		padding: var(--space-4);
+	}
+	
+	.controls {
+		grid-template-columns: 1fr;
+	}
+	
+	.code-box {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	
+	.copy-btn {
+		width: 100%;
+	}
+}

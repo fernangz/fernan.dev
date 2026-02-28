@@ -1,0 +1,95 @@
+/* ============================================
+   Unit Converter Tool Styles
+   ============================================ */
+
+.converter-tool {
+	background-color: var(--dark);
+	border-radius: var(--radius-lg);
+	padding: var(--space-6);
+	margin-top: var(--space-6);
+	border: var(--border-sm) solid var(--gray);
+}
+
+.settings {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+	gap: var(--space-4);
+	margin-bottom: var(--space-6);
+	padding-bottom: var(--space-6);
+	border-bottom: var(--border-sm) solid var(--gray);
+}
+
+.setting-group {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-2);
+}
+
+.setting-group label,
+.input-group label {
+	color: var(--light);
+	font-size: var(--font-sm);
+}
+
+.setting-group input,
+.input-group input,
+.input-group select {
+	padding: var(--space-2) var(--space-3);
+	background-color: var(--black);
+	border: var(--border-sm) solid var(--gray);
+	border-radius: var(--radius-md);
+	color: var(--light);
+	font-size: var(--font-md);
+	font-family: inherit;
+}
+
+.converter-inputs {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+	gap: var(--space-4);
+	margin-bottom: var(--space-6);
+}
+
+.results {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+	gap: var(--space-3);
+}
+
+.result-item {
+	background-color: var(--black);
+	padding: var(--space-3);
+	border-radius: var(--radius-md);
+	border: var(--border-sm) solid var(--gray);
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-1);
+}
+
+.result-label {
+	color: var(--gray);
+	font-size: var(--font-xs);
+}
+
+.result-value {
+	color: var(--light);
+	font-size: var(--font-md);
+	font-family: 'code', monospace;
+	font-weight: 600;
+}
+
+/* Responsive */
+@media screen and (max-width: 40rem) {
+	.converter-tool {
+		padding: var(--space-4);
+	}
+	
+	.settings,
+	.converter-inputs {
+		grid-template-columns: 1fr;
+	}
+	
+	.results {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}

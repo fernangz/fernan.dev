@@ -209,6 +209,32 @@ textarea {
 	display: none;
 }
 
+/* Tools Page Sections */
+.tools-section {
+	margin: var(--space-10) 0;
+}
+
+.tools-section:first-of-type {
+	margin-top: var(--space-8);
+}
+
+.tools-section h2 {
+	color: var(--light);
+	font-size: var(--font-lg);
+	line-height: var(--lh-lg);
+	margin-top: 0;
+	margin-bottom: var(--space-2);
+	display: flex;
+	align-items: center;
+	gap: var(--space-3);
+}
+
+.tools-section h2 .emoji {
+	font-family: 'emoji', sans-serif;
+	font-size: 1.5em;
+	line-height: 1;
+}
+
 /* Tools List (for tools and articles index pages) */
 .tools-list,
 .articles-list {
