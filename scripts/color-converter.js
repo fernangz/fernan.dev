@@ -3,55 +3,146 @@
    ============================================ */
 
 const ColorConverter = {
+	currentColor: '#3498db',
+
 	init() {
 		const colorInput = document.getElementById('color-input');
 		const hexInput = document.getElementById('hex-input');
 		const rgbInput = document.getElementById('rgb-input');
 		const hslInput = document.getElementById('hsl-input');
-		const generatePaletteBtn = document.getElementById('generate-palette');
+		const hsvInput = document.getElementById('hsv-input');
+		const colorPreview = document.getElementById('color-preview');
 		const paletteContainer = document.getElementById('palette-container');
 
 		if (!colorInput) return;
 
+		// Set initial color preview
+		if (colorPreview) {
+			colorPreview.style.backgroundColor = this.currentColor;
+		}
+
+		// Color picker change
 		colorInput.addEventListener('input', (e) => {
-			const hex = e.target.value;
-			this.updateColorInputs(hex);
+			this.currentColor = e.target.value;
+			this.updateColorInputs(this.currentColor);
+			if (colorPreview) {
+				colorPreview.style.backgroundColor = this.currentColor;
+			}
 		});
 
+		// HEX input change
 		if (hexInput) {
 			hexInput.addEventListener('input', (e) => {
 				let hex = e.target.value;
 				if (!hex.startsWith('#')) hex = '#' + hex;
 				if (/^#[0-9A-F]{6}$/i.test(hex)) {
+					this.currentColor = hex;
 					this.updateColorInputs(hex);
+					if (colorPreview) {
+						colorPreview.style.backgroundColor = hex;
+					}
+					if (colorInput) {
+						colorInput.value = hex;
+					}
 				}
 			});
 		}
 
+		// RGB input change
 		if (rgbInput) {
 			rgbInput.addEventListener('input', (e) => {
 				const rgb = e.target.value;
 				const hex = this.rgbToHex(rgb);
 				if (hex) {
+					this.currentColor = hex;
 					this.updateColorInputs(hex);
+					if (colorPreview) {
+						colorPreview.style.backgroundColor = hex;
+					}
+					if (colorInput) {
+						colorInput.value = hex;
+					}
 				}
 			});
 		}
 
+		// HSL input change
 		if (hslInput) {
 			hslInput.addEventListener('input', (e) => {
 				const hsl = e.target.value;
 				const hex = this.hslToHex(hsl);
 				if (hex) {
+					this.currentColor = hex;
 					this.updateColorInputs(hex);
+					if (colorPreview) {
+						colorPreview.style.backgroundColor = hex;
+					}
+					if (colorInput) {
+						colorInput.value = hex;
+					}
 				}
 			});
 		}
 
-		if (generatePaletteBtn && paletteContainer) {
-			generatePaletteBtn.addEventListener('click', () => {
-				const baseColor = colorInput.value;
-				this.generatePalette(baseColor, paletteContainer);
+		// HSV input change
+		if (hsvInput) {
+			hsvInput.addEventListener('input', (e) => {
+				const hsv = e.target.value;
+				const hex = this.hsvToHex(hsv);
+				if (hex) {
+					this.currentColor = hex;
+					this.updateColorInputs(hex);
+					if (colorPreview) {
+						colorPreview.style.backgroundColor = hex;
+					}
+					if (colorInput) {
+						colorInput.value = hex;
+					}
+				}
+			});
+		}
+
+		// Copy buttons
+		document.querySelectorAll('.copy-btn').forEach(btn => {
+			btn.addEventListener('click', () => {
+				const targetId = btn.dataset.target;
+				const input = document.getElementById(targetId);
+				if (input) {
+					navigator.clipboard.writeText(input.value);
+					if (ui && ui.notify) {
+						ui.notify(`<i>📋</i> ${input.value} copied!`);
+					}
+				}
+			});
+		});
+
+		// Palette generation buttons
+		const analogousBtn = document.getElementById('generate-analogous');
+		const complementaryBtn = document.getElementById('generate-complementary');
+		const triadicBtn = document.getElementById('generate-triadic');
+		const splitBtn = document.getElementById('generate-split');
+
+		if (analogousBtn) {
+			analogousBtn.addEventListener('click', () => {
+				this.generatePalette('analogous', paletteContainer);
+			});
+		}
+
+		if (complementaryBtn) {
+			complementaryBtn.addEventListener('click', () => {
+				this.generatePalette('complementary', paletteContainer);
+			});
+		}
+
+		if (triadicBtn) {
+			triadicBtn.addEventListener('click', () => {
+				this.generatePalette('triadic', paletteContainer);
+			});
+		}
+
+		if (splitBtn) {
+			splitBtn.addEventListener('click', () => {
+				this.generatePalette('split', paletteContainer);
 			});
 		}
 	},
@@ -61,11 +152,13 @@ const ColorConverter = {
 		const hexInput = document.getElementById('hex-input');
 		const rgbInput = document.getElementById('rgb-input');
 		const hslInput = document.getElementById('hsl-input');
+		const hsvInput = document.getElementById('hsv-input');
 
 		if (colorInput) colorInput.value = hex;
 		if (hexInput) hexInput.value = hex;
 		if (rgbInput) rgbInput.value = this.hexToRgb(hex);
 		if (hslInput) hslInput.value = this.hexToHsl(hex);
+		if (hsvInput) hsvInput.value = this.hexToHsv(hex);
 	},
 
 	hexToRgb(hex) {
@@ -149,31 +242,122 @@ const ColorConverter = {
 		return '';
 	},
 
-	generatePalette(baseColor, container) {
-		const hex = baseColor.startsWith('#') ? baseColor : '#' + baseColor;
+	hexToHsv(hex) {
+		const rgbResult = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+		if (rgbResult) {
+			let r = parseInt(rgbResult[1], 16) / 255;
+			let g = parseInt(rgbResult[2], 16) / 255;
+			let b = parseInt(rgbResult[3], 16) / 255;
+
+			const max = Math.max(r, g, b);
+			const min = Math.min(r, g, b);
+			const d = max - min;
+			
+			let h = 0;
+			if (max !== min) {
+				switch (max) {
+					case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+					case g: h = ((b - r) / d + 2) / 6; break;
+					case b: h = ((r - g) / d + 4) / 6; break;
+				}
+			}
+
+			const s = max === 0 ? 0 : d / max;
+			const v = max;
+
+			return `hsv(${Math.round(h * 360)}, ${Math.round(s * 100)}%, ${Math.round(v * 100)}%)`;
+		}
+		return '';
+	},
+
+	hsvToHex(hsv) {
+		const match = hsv.match(/(\d+),\s*(\d+)%,\s*(\d+)%/);
+		if (match) {
+			let h = parseInt(match[1]) / 360;
+			let s = parseInt(match[2]) / 100;
+			let v = parseInt(match[3]) / 100;
+
+			let r, g, b;
+			const i = Math.floor(h * 6);
+			const f = h * 6 - i;
+			const p = v * (1 - s);
+			const q = v * (1 - f * s);
+			const t = v * (1 - (1 - f) * s);
+
+			switch (i % 6) {
+				case 0: r = v; g = t; b = p; break;
+				case 1: r = q; g = v; b = p; break;
+				case 2: r = p; g = v; b = t; break;
+				case 3: r = p; g = q; b = v; break;
+				case 4: r = t; g = p; b = v; break;
+				case 5: r = v; g = p; b = q; break;
+			}
+
+			return '#' + [r, g, b].map(x => Math.round(x * 255).toString(16).padStart(2, '0')).join('');
+		}
+		return '';
+	},
+
+	generatePalette(type, container) {
+		const hex = this.currentColor.startsWith('#') ? this.currentColor : '#' + this.currentColor;
 		const hsl = this.hexToHsl(hex);
 		const hMatch = hsl.match(/(\d+)/);
 		if (!hMatch) return;
 		
 		const baseHue = parseInt(hMatch[1]);
-		const hueOffsets = [0, 30, 60, 120, 180, 210, 240, 300];
+		let colors = [];
+
+		switch (type) {
+			case 'analogous':
+				colors = [
+					{ offset: -30, name: 'Analogous -30°' },
+					{ offset: -15, name: 'Analogous -15°' },
+					{ offset: 0, name: 'Base Color' },
+					{ offset: 15, name: 'Analogous +15°' },
+					{ offset: 30, name: 'Analogous +30°' }
+				];
+				break;
+			case 'complementary':
+				colors = [
+					{ offset: 0, name: 'Base Color' },
+					{ offset: 180, name: 'Complementary' }
+				];
+				break;
+			case 'triadic':
+				colors = [
+					{ offset: 0, name: 'Base Color' },
+					{ offset: 120, name: 'Triadic +120°' },
+					{ offset: 240, name: 'Triadic +240°' }
+				];
+				break;
+			case 'split':
+				colors = [
+					{ offset: 0, name: 'Base Color' },
+					{ offset: 150, name: 'Split +150°' },
+					{ offset: 210, name: 'Split +210°' }
+				];
+				break;
+		}
 		
 		container.innerHTML = '';
 		
-		hueOffsets.forEach((offset) => {
-			const newHue = (baseHue + offset) % 360;
+		colors.forEach(({ offset, name }) => {
+			const newHue = ((baseHue + offset) % 360 + 360) % 360;
 			const newHsl = `hsl(${newHue}, 70%, 50%)`;
 			const newHex = this.hslToHex(newHsl);
 			
 			const colorBox = document.createElement('div');
 			colorBox.className = 'color-box';
 			colorBox.style.backgroundColor = newHex;
-			colorBox.innerHTML = `<span>${newHex}</span>`;
+			colorBox.innerHTML = `
+				<span class="color-name">${name}</span>
+				<span>${newHex}</span>
+			`;
 			colorBox.addEventListener('click', () => {
+				navigator.clipboard.writeText(newHex);
 				if (ui && ui.notify) {
 					ui.notify(`<i>📋</i> ${newHex} copied!`);
 				}
-				navigator.clipboard.writeText(newHex);
 			});
 			
 			container.appendChild(colorBox);

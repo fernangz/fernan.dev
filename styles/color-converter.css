@@ -2,6 +2,80 @@
    Color Converter Tool Styles
    ============================================ */
 
+.color-picker-wrapper {
+	display: flex;
+	gap: 1rem;
+	margin: 1rem 0;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+#color-input {
+	width: 80px;
+	height: 60px;
+	cursor: pointer;
+	border: none;
+	background: none;
+	padding: 0;
+}
+
+.color-preview-large {
+	width: 200px;
+	height: 60px;
+	border-radius: 8px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+	border: 1px solid var(--dark);
+}
+
+.color-formats-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 1rem;
+	margin-top: 1rem;
+}
+
+.format-input {
+	display: flex;
+	flex-direction: column;
+}
+
+.format-input label {
+	color: var(--light);
+	font-size: var(--small);
+	margin-bottom: 0.5rem;
+}
+
+.input-with-copy {
+	display: flex;
+	gap: 0.5rem;
+}
+
+.input-with-copy input {
+	flex: 1;
+}
+
+.copy-btn {
+	padding: 0.5rem 0.75rem;
+	background-color: var(--dark);
+	color: var(--light);
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: var(--small);
+	transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+	background-color: var(--gray);
+}
+
+.palette-types {
+	display: flex;
+	gap: 0.5rem;
+	flex-wrap: wrap;
+	margin: 1rem 0;
+}
+
 .color-preview {
 	display: flex;
 	gap: 1rem;
@@ -15,11 +89,13 @@
 	border-radius: 10px;
 	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 	display: flex;
-	align-items: flex-end;
+	flex-direction: column;
+	align-items: center;
 	justify-content: center;
 	padding: 0.5rem;
 	cursor: pointer;
 	transition: all 0.3s ease;
+	position: relative;
 }
 
 .color-box:hover {
@@ -30,7 +106,17 @@
 	background-color: rgba(0, 0, 0, 0.7);
 	padding: 0.25rem 0.5rem;
 	border-radius: 3px;
-	font-size: 0.75rem;
+	font-size: 0.7rem;
 	font-family: 'code', monospace;
 	color: var(--light);
+	margin-top: 0.25rem;
+}
+
+.color-box .color-name {
+	font-size: 0.65rem;
+	color: var(--light);
+	background-color: rgba(0, 0, 0, 0.5);
+	padding: 0.15rem 0.35rem;
+	border-radius: 2px;
+	margin-bottom: 0.25rem;
 }

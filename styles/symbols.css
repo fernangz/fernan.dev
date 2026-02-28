@@ -2,6 +2,32 @@
    Symbols & Emojis / HTML Entities Tool Styles
    ============================================ */
 
+.symbol-categories {
+	display: flex;
+	gap: 0.5rem;
+	flex-wrap: wrap;
+	margin: 1rem 0;
+}
+
+.category-btn {
+	padding: 0.5rem 1rem;
+	background-color: var(--dark);
+	color: var(--light);
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: var(--small);
+	transition: all 0.2s ease;
+}
+
+.category-btn:hover {
+	background-color: var(--gray);
+}
+
+.category-btn.active {
+	background-color: var(--gray);
+}
+
 .symbols-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));

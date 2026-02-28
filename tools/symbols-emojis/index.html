@@ -35,7 +35,22 @@
 					<a href="/tools/" class="back-link">← Back to Tools</a>
 					<h1>Symbols & Emojis</h1>
 					<p>Browse and copy special symbols and emojis for your projects. Click on any symbol to copy it.</p>
-					<h2>Common Symbols & Emojis</h2>
+					
+					<h2>Search</h2>
+					<input type="text" id="symbol-search" placeholder="Search symbols by name..." style="margin-top: 1rem; width: 100%; max-width: 400px;">
+					
+					<h2>Categories</h2>
+					<div class="symbol-categories">
+						<button class="category-btn active" data-category="all">All</button>
+						<button class="category-btn" data-category="currency">Currency</button>
+						<button class="category-btn" data-category="math">Math</button>
+						<button class="category-btn" data-category="arrows">Arrows</button>
+						<button class="category-btn" data-category="punctuation">Punctuation</button>
+						<button class="category-btn" data-category="technical">Technical</button>
+						<button class="category-btn" data-category="emoji">Emoji</button>
+					</div>
+					
+					<h2>Symbols</h2>
 					<p>Click on any symbol to copy it to your clipboard.</p>
 					<div id="symbols-container" class="symbols-grid"></div>
 				</article>

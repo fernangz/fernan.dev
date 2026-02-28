@@ -34,28 +34,64 @@
 				<article>
 					<a href="/tools/" class="back-link">← Back to Tools</a>
 					<h1>Color Converter & Generator</h1>
-					<p>Convert between HEX, RGB, and HSL color formats. Generate color palettes.</p>
+					<p>Convert between HEX, RGB, HSL, and HSB color formats. Generate color palettes and copy values with one click.</p>
+					
 					<h2>Color Picker</h2>
-					<input type="color" id="color-input" value="#3498db" style="width: 100%; height: 60px; cursor: pointer; border: none; background: none;">
+					<div class="color-picker-wrapper">
+						<input type="color" id="color-input" value="#3498db">
+						<div id="color-preview" class="color-preview-large"></div>
+					</div>
+					
 					<h2>Color Formats</h2>
-					<div style="display: grid; gap: 1rem; margin-top: 1rem;">
-						<div>
-							<label for="hex-input" style="display:block;margin-bottom:0.5rem;color:var(--light);">HEX</label>
-							<input type="text" id="hex-input" value="#3498db" placeholder="#000000">
+					<p>Click on any value to copy it to your clipboard.</p>
+					<div class="color-formats-grid">
+						<div class="format-input">
+							<label for="hex-input">HEX</label>
+							<div class="input-with-copy">
+								<input type="text" id="hex-input" value="#3498db" placeholder="#000000">
+								<button class="copy-btn" data-target="hex-input" aria-label="Copy HEX">📋</button>
+							</div>
 						</div>
-						<div>
-							<label for="rgb-input" style="display:block;margin-bottom:0.5rem;color:var(--light);">RGB</label>
-							<input type="text" id="rgb-input" value="rgb(52, 152, 219)" placeholder="rgb(0, 0, 0)">
+						<div class="format-input">
+							<label for="rgb-input">RGB</label>
+							<div class="input-with-copy">
+								<input type="text" id="rgb-input" value="rgb(52, 152, 219)" placeholder="rgb(0, 0, 0)">
+								<button class="copy-btn" data-target="rgb-input" aria-label="Copy RGB">📋</button>
+							</div>
 						</div>
-						<div>
-							<label for="hsl-input" style="display:block;margin-bottom:0.5rem;color:var(--light);">HSL</label>
-							<input type="text" id="hsl-input" value="hsl(204, 70%, 53%)" placeholder="hsl(0, 0%, 0%)">
+						<div class="format-input">
+							<label for="hsl-input">HSL</label>
+							<div class="input-with-copy">
+								<input type="text" id="hsl-input" value="hsl(204, 70%, 53%)" placeholder="hsl(0, 0%, 0%)">
+								<button class="copy-btn" data-target="hsl-input" aria-label="Copy HSL">📋</button>
+							</div>
+						</div>
+						<div class="format-input">
+							<label for="hsv-input">HSB/HSV</label>
+							<div class="input-with-copy">
+								<input type="text" id="hsv-input" value="hsv(204, 76%, 86%)" placeholder="hsv(0, 0%, 0%)">
+								<button class="copy-btn" data-target="hsv-input" aria-label="Copy HSV">📋</button>
+							</div>
 						</div>
 					</div>
+					
 					<h2>Generate Palette</h2>
 					<p>Click the button below to generate a color palette based on the selected color.</p>
-					<button id="generate-palette" class="btn mt-2">Generate Palette</button>
+					<div class="palette-types">
+						<button id="generate-analogous" class="btn">Analogous</button>
+						<button id="generate-complementary" class="btn btn-secondary">Complementary</button>
+						<button id="generate-triadic" class="btn btn-secondary">Triadic</button>
+						<button id="generate-split" class="btn btn-secondary">Split Complementary</button>
+					</div>
 					<div id="palette-container" class="color-preview"></div>
+					
+					<h2>About Color Formats</h2>
+					<ul>
+						<li><strong>HEX:</strong> Hexadecimal notation (#RRGGBB) used in HTML/CSS</li>
+						<li><strong>RGB:</strong> Red, Green, Blue values (0-255) for screen display</li>
+						<li><strong>HSL:</strong> Hue, Saturation, Lightness - more intuitive for humans</li>
+						<li><strong>HSB/HSV:</strong> Hue, Saturation, Brightness/Value - used in color pickers</li>
+					</ul>
 				</article>
 			</section>
 		</main>
