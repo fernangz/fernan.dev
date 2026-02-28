@@ -35,37 +35,50 @@
 					<h1>The DOM</h1>
 					<p>Understanding the Document Object Model is fundamental for FrontEnd development</p>
 					<h2>Introduction</h2>
-					<p>The Document Object Model (DOM) is a programming interface for web documents. It represents the structure of a document as a tree of objects, where each node in the tree corresponds to a part of the document. Understanding the DOM is essential for any FrontEnd developer, as it's the bridge between your HTML and JavaScript.</p>
+					<p>The Document Object Model (DOM) is a W3C standard programming interface for web documents. It represents the structure of a document as a tree of objects, where each node in the tree corresponds to a part of the document. Understanding the DOM is essential for any FrontEnd developer, as it's the bridge between your HTML and JavaScript.</p>
 					<h2>What is the DOM?</h2>
-					<p>When a web page loads, the browser creates a tree-like structure called the DOM. This tree represents every element, attribute, and piece of text in your HTML document. Each of these becomes a node (or object) in the tree, which can be accessed and manipulated using JavaScript.</p>
-					<p>The DOM is not part of the JavaScript language itself, but rather a web API provided by browsers to interact with web pages programmatically.</p>
+					<p>When a web page loads, the browser parses the HTML and creates a tree-like structure called the DOM. This tree represents every element, attribute, and piece of text in your HTML document. Each of these becomes a node (or object) in the tree, which can be accessed and manipulated using JavaScript.</p>
+					<p>The DOM is not part of the JavaScript language itself, but rather a web API provided by browsers to interact with web pages programmatically. The DOM is platform and language-neutral, meaning it can be used with any programming language that can interact with the browser.</p>
 					<h2>The DOM Tree Structure</h2>
-					<p>The DOM tree starts with the <code>document</code> object as its root. From there, it branches out to include all the elements in your HTML:</p>
+					<p>The DOM tree starts with the <code>document</code> object as its root. From there, it branches out to include all the elements in your HTML. For example, given this HTML:</p>
+					<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;My Page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello&lt;/h1&gt;
+    &lt;p&gt;World&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+					<p>The DOM tree would look like:</p>
 					<ul>
 						<li><strong>Document Node:</strong> The root of the tree, representing the entire document</li>
-						<li><strong>Element Nodes:</strong> Each HTML element (div, p, a, etc.) becomes a node</li>
-						<li><strong>Text Nodes:</strong> The text content within elements</li>
+						<li><strong>Element Nodes:</strong> Each HTML element (html, head, body, h1, p, etc.) becomes a node</li>
+						<li><strong>Text Nodes:</strong> The text content within elements ("Hello", "World", "My Page")</li>
 						<li><strong>Attribute Nodes:</strong> Attributes of elements (class, id, href, etc.)</li>
 						<li><strong>Comment Nodes:</strong> HTML comments are also represented in the DOM</li>
 					</ul>
 					<h2>Accessing DOM Elements</h2>
 					<p>JavaScript provides several methods to access elements in the DOM:</p>
 					<ul>
-						<li><code>document.getElementById('id')</code> - Select by element ID</li>
-						<li><code>document.querySelector('.class')</code> - Select using CSS selectors</li>
-						<li><code>document.querySelectorAll('div')</code> - Select all matching elements</li>
-						<li><code>document.getElementsByTagName('p')</code> - Select by tag name</li>
-						<li><code>document.getElementsByClassName('class')</code> - Select by class name</li>
+						<li><code>document.getElementById('id')</code> - Select by element ID (returns single element)</li>
+						<li><code>document.querySelector('.class')</code> - Select using CSS selectors (returns first match)</li>
+						<li><code>document.querySelectorAll('div')</code> - Select all matching elements (returns NodeList)</li>
+						<li><code>document.getElementsByTagName('p')</code> - Select by tag name (returns HTMLCollection)</li>
+						<li><code>document.getElementsByClassName('class')</code> - Select by class name (returns HTMLCollection)</li>
 					</ul>
+					<p><strong>Note:</strong> <code>querySelector</code> and <code>querySelectorAll</code> are the most versatile as they accept any CSS selector.</p>
 					<h2>Manipulating the DOM</h2>
 					<p>Once you've selected an element, you can manipulate it in various ways:</p>
 					<ul>
-						<li><strong>Change content:</strong> <code>element.textContent</code> or <code>element.innerHTML</code></li>
-						<li><strong>Change styles:</strong> <code>element.style.property</code></li>
-						<li><strong>Add/remove classes:</strong> <code>element.classList.add/remove</code></li>
+						<li><strong>Change content:</strong> <code>element.textContent</code> (plain text) or <code>element.innerHTML</code> (HTML)</li>
+						<li><strong>Change styles:</strong> <code>element.style.property</code> (inline styles)</li>
+						<li><strong>Add/remove classes:</strong> <code>element.classList.add/remove/toggle</code></li>
 						<li><strong>Create elements:</strong> <code>document.createElement('tag')</code></li>
-						<li><strong>Append elements:</strong> <code>parent.appendChild(child)</code></li>
-						<li><strong>Remove elements:</strong> <code>element.remove()</code></li>
+						<li><strong>Append elements:</strong> <code>parent.appendChild(child)</code> or <code>parent.append(child)</code></li>
+						<li><strong>Remove elements:</strong> <code>element.remove()</code> or <code>parent.removeChild(child)</code></li>
+						<li><strong>Set attributes:</strong> <code>element.setAttribute('name', 'value')</code></li>
 					</ul>
 					<h2>DOM Events</h2>
 					<p>Events are actions that happen in the browser, such as clicks, key presses, or page loads. You can listen for these events and respond to them:</p>
@@ -74,14 +87,25 @@
 						<li><code>element.addEventListener('mouseover', handler)</code> - Listen for hover</li>
 						<li><code>element.addEventListener('submit', handler)</code> - Listen for form submission</li>
 						<li><code>window.addEventListener('load', handler)</code> - Listen for page load</li>
+						<li><code>element.removeEventListener('click', handler)</code> - Remove event listener</li>
 					</ul>
+					<p>Event handlers receive an <code>Event</code> object with useful properties like <code>target</code> (the element that triggered the event) and <code>type</code> (the event type).</p>
+					<h2>Event Bubbling and Capturing</h2>
+					<p>Events in the DOM propagate in two phases:</p>
+					<ul>
+						<li><strong>Capturing:</strong> Event travels from the root down to the target element</li>
+						<li><strong>Bubbling:</strong> Event travels from the target element up to the root (default behavior)</li>
+					</ul>
+					<p>You can control event propagation with <code>event.stopPropagation()</code> and <code>event.preventDefault()</code>.</p>
 					<h2>Performance Considerations</h2>
 					<p>DOM manipulation can be expensive in terms of performance. Here are some tips:</p>
 					<ul>
 						<li>Minimize direct DOM access - cache references to elements you use frequently</li>
 						<li>Batch DOM changes together when possible</li>
-						<li>Use document fragments for multiple insertions</li>
-						<li>Consider using virtual DOM libraries for complex applications</li>
+						<li>Use <code>documentFragment</code> for multiple insertions to reduce reflows</li>
+						<li>Consider using <code>requestAnimationFrame</code> for animations</li>
+						<li>Use event delegation instead of attaching listeners to many elements</li>
+						<li>Consider using virtual DOM libraries (React, Vue) for complex applications</li>
 					</ul>
 					<h2>Conclusion</h2>
 					<p>The DOM is the foundation of interactive web pages. By understanding how it works and how to manipulate it efficiently, you can create dynamic, responsive user experiences. Master the DOM, and you'll have the power to bring your web pages to life with JavaScript.</p>
