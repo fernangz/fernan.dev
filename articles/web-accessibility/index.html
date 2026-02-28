@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>fernan.dev • Web Accessibility Basics</title>
+		<meta name="description" content="Create inclusive experiences that work for everyone">
+		<link rel="canonical" href="https://fernan.dev/articles/web-accessibility" />
+		<meta name="author" content="Fernán García de Zúñiga" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+		<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+		<link rel="shortcut icon" href="/favicon/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+		<meta name="apple-mobile-web-app-title" content="fernan.dev" />
+		<link rel="manifest" href="/favicon/site.webmanifest" />
+		<meta id="androidTheme" name="theme-color" content="hsl(0, 0%, 8%)">
+		<meta id="appleTheme" name="apple-mobile-web-app-status-bar-style" content="hsl(0, 0%, 8%)">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="preload" href="/fonts/outfit.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+		<link rel="preload" href="/fonts/emoji.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+		<link rel="stylesheet" href="/styles/main.css">
+		<link rel="stylesheet" href="/styles/tools.css">
+	</head>
+	<body>
+		<a href="#main-content" class="skip-link">Skip to main content</a>
+		<nav>
+			<a href="/" class="logo" svg="logo" aria-label="Homepage"></a>
+			<hr>
+			<button class="toggle" aria-label="Menu" svg="plus"></button>
+			<ul>
+				<li><a href="/">About</a></li>
+				<li><a href="/tools/">Tools</a></li>
+				<li><a href="/articles/">Articles</a></li>
+				<li><a href="/resources/">Resources</a></li>
+			</ul>
+		</nav>
+		<main id="main-content">
+			<section>
+				<article>
+					<a href="/articles/" class="back-link">← Back to Articles</a>
+					<h1>Web Accessibility Basics</h1>
+					<p>Create inclusive experiences that work for everyone</p>
+					
+					<h2>Introduction</h2>
+					<p>Web accessibility (a11y) ensures that websites and applications are usable by everyone, including people with disabilities. Accessibility isn't just ethical—it's often legally required and benefits all users. Over 1 billion people worldwide have some form of disability.</p>
+					
+					<h2>WCAG Guidelines</h2>
+					<p>The Web Content Accessibility Guidelines (WCAG) define four principles, often remembered by the acronym POUR:</p>
+					<ul>
+						<li><strong>Perceivable:</strong> Information must be presentable to users in ways they can perceive</li>
+						<li><strong>Operable:</strong> Interface components must be operable by all users</li>
+						<li><strong>Understandable:</strong> Information and operation must be understandable</li>
+						<li><strong>Robust:</strong> Content must be robust enough to work with current and future technologies</li>
+					</ul>
+					
+					<h2>Semantic HTML</h2>
+					<p>Using proper HTML elements is the foundation of accessibility:</p>
+					<pre><code>&lt;!-- Bad --&gt;
+&lt;div onclick="submit()"&gt;Submit&lt;/div&gt;
+
+&lt;!-- Good --&gt;
+&lt;button type="submit"&gt;Submit&lt;/button&gt;
+
+&lt;!-- Bad --&gt;
+&lt;div class="heading"&gt;Title&lt;/div&gt;
+
+&lt;!-- Good --&gt;
+&lt;h1&gt;Title&lt;/h1&gt;</code></pre>
+					<p>Use proper heading hierarchy (h1 → h2 → h3), lists, landmarks, and form labels.</p>
+					
+					<h2>Keyboard Navigation</h2>
+					<p>All interactive elements must be accessible via keyboard:</p>
+					<ul>
+						<li>Ensure all links and buttons are focusable</li>
+						<li>Provide visible focus indicators</li>
+						<li>Maintain logical tab order</li>
+						<li>Support common keyboard shortcuts</li>
+					</ul>
+					<pre><code>/* Always include visible focus styles */
+button:focus,
+a:focus {
+    outline: 0.125rem solid var(--light);
+    outline-offset: 0.125rem;
+}
+
+/* Never remove outline without replacement */
+button:focus {
+    outline: none; /* BAD! */
+}</code></pre>
+					
+					<h2>Color and Contrast</h2>
+					<p>Ensure sufficient color contrast for readability:</p>
+					<ul>
+						<li><strong>Normal text:</strong> 4.5:1 contrast ratio minimum</li>
+						<li><strong>Large text (18px+ or 14px+ bold):</strong> 3:1 minimum</li>
+						<li><strong>UI components:</strong> 3:1 minimum</li>
+					</ul>
+					<p>Never use color alone to convey information—add icons, patterns, or text labels.</p>
+					
+					<h2>Images and Media</h2>
+					<p>Provide alternatives for non-text content:</p>
+					<pre><code>&lt;!-- Informative image --&gt;
+&lt;img src="chart.png" alt="Sales increased 20% in Q4"&gt;
+
+&lt;!-- Decorative image --&gt;
+&lt;img src="decoration.png" alt="" role="presentation"&gt;
+
+&lt;!-- Complex image --&gt;
+&lt;img src="infographic.png" alt="Infographic summary" aria-describedby="infographic-desc"&gt;
+&lt;p id="infographic-desc"&gt;Detailed description...&lt;/p&gt;</code></pre>
+					
+					<h2>Forms and Labels</h2>
+					<p>Every form input needs an associated label:</p>
+					<pre><code>&lt;!-- Good --&gt;
+&lt;label for="email"&gt;Email&lt;/label&gt;
+&lt;input type="email" id="email" name="email"&gt;
+
+&lt;!-- Also good (implicit) --&gt;
+&lt;label&gt;
+    Email
+    &lt;input type="email" name="email"&gt;
+&lt;/label&gt;
+
+&lt;!-- Provide error messages --&gt;
+&lt;input type="email" aria-invalid="true" aria-describedby="email-error"&gt;
+&lt;span id="email-error"&gt;Please enter a valid email&lt;/span&gt;</code></pre>
+					
+					<h2>ARIA Attributes</h2>
+					<p>Use ARIA when native HTML isn't sufficient:</p>
+					<ul>
+						<li><code>aria-label</code> - Provide accessible name</li>
+						<li><code>aria-labelledby</code> - Reference visible label</li>
+						<li><code>aria-describedby</code> - Reference description</li>
+						<li><code>aria-expanded</code> - Indicate expanded state</li>
+						<li><code>aria-hidden</code> - Hide from assistive tech</li>
+					</ul>
+					<p>First rule of ARIA: Don't use ARIA if native HTML works.</p>
+					
+					<h2>Motion and Animation</h2>
+					<p>Respect users' motion preferences:</p>
+					<pre><code>@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}</code></pre>
+					<p>Avoid auto-playing videos, blinking content, and parallax effects.</p>
+					
+					<h2>Testing Accessibility</h2>
+					<p>Use multiple testing methods:</p>
+					<ul>
+						<li><strong>Automated tools:</strong> axe, WAVE, Lighthouse</li>
+						<li><strong>Keyboard testing:</strong> Navigate entire site with Tab/Shift+Tab</li>
+						<li><strong>Screen readers:</strong> NVDA (free), VoiceOver (Mac), JAWS</li>
+						<li><strong>Manual testing:</strong> Check color contrast, focus states, semantics</li>
+					</ul>
+					
+					<h2>Conclusion</h2>
+					<p>Accessibility is not a feature—it's a fundamental aspect of quality web development. By following WCAG guidelines, using semantic HTML, and testing with real users, you'll create websites that work for everyone.</p>
+				</article>
+			</section>
+		</main>
+		<script src="/scripts/main.js"></script>
+	</body>
+</html>

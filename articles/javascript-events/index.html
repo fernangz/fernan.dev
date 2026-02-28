@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>fernan.dev • JavaScript Event Handling</title>
+		<meta name="description" content="Master events, delegation, and the event lifecycle">
+		<link rel="canonical" href="https://fernan.dev/articles/javascript-events" />
+		<meta name="author" content="Fernán García de Zúñiga" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+		<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+		<link rel="shortcut icon" href="/favicon/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+		<meta name="apple-mobile-web-app-title" content="fernan.dev" />
+		<link rel="manifest" href="/favicon/site.webmanifest" />
+		<meta id="androidTheme" name="theme-color" content="hsl(0, 0%, 8%)">
+		<meta id="appleTheme" name="apple-mobile-web-app-status-bar-style" content="hsl(0, 0%, 8%)">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="preload" href="/fonts/outfit.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+		<link rel="preload" href="/fonts/emoji.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+		<link rel="stylesheet" href="/styles/main.css">
+		<link rel="stylesheet" href="/styles/tools.css">
+	</head>
+	<body>
+		<a href="#main-content" class="skip-link">Skip to main content</a>
+		<nav>
+			<a href="/" class="logo" svg="logo" aria-label="Homepage"></a>
+			<hr>
+			<button class="toggle" aria-label="Menu" svg="plus"></button>
+			<ul>
+				<li><a href="/">About</a></li>
+				<li><a href="/tools/">Tools</a></li>
+				<li><a href="/articles/">Articles</a></li>
+				<li><a href="/resources/">Resources</a></li>
+			</ul>
+		</nav>
+		<main id="main-content">
+			<section>
+				<article>
+					<a href="/articles/" class="back-link">← Back to Articles</a>
+					<h1>JavaScript Event Handling</h1>
+					<p>Master events, delegation, and the event lifecycle</p>
+					
+					<h2>Introduction</h2>
+					<p>Events are the foundation of interactive web applications. Understanding how events work—from adding listeners to event propagation—is essential for building responsive, efficient user interfaces.</p>
+					
+					<h2>Adding Event Listeners</h2>
+					<p>The modern way to handle events:</p>
+					<pre><code>// Basic listener
+button.addEventListener('click', handleClick);
+
+// With options
+button.addEventListener('click', handleClick, {
+    once: true,  // Remove after first trigger
+    passive: true,  // Won't call preventDefault
+    capture: false  // Use bubbling phase
+});
+
+// Remove listener
+button.removeEventListener('click', handleClick);</code></pre>
+					
+					<h2>The Event Object</h2>
+					<p>Every event handler receives an Event object:</p>
+					<pre><code>element.addEventListener('click', (event) => {
+    console.log(event.type);        // 'click'
+    console.log(event.target);      // Element that triggered
+    console.log(event.currentTarget); // Element with listener
+    console.log(event.clientX);     // Mouse X position
+    console.log(event.preventDefault); // Method to prevent default
+    console.log(event.stopPropagation); // Stop bubbling
+});</code></pre>
+					
+					<h2>Event Propagation</h2>
+					<p>Events flow through the DOM in three phases:</p>
+					<ol>
+						<li><strong>Capturing:</strong> From root down to target</li>
+						<li><strong>Target:</strong> At the target element</li>
+						<li><strong>Bubbling:</strong> From target back up to root</li>
+					</ol>
+					<pre><code>// Capture phase (third argument: true)
+parent.addEventListener('click', handler, true);
+
+// Bubble phase (default, or false)
+parent.addEventListener('click', handler, false);
+
+// Stop propagation
+element.addEventListener('click', (e) => {
+    e.stopPropagation();
+});</code></pre>
+					
+					<h2>Event Delegation</h2>
+					<p>Attach one listener to handle events from many children:</p>
+					<pre><code>// Instead of this (inefficient):
+document.querySelectorAll('.item').forEach(item => {
+    item.addEventListener('click', handleClick);
+});
+
+// Do this (efficient):
+document.querySelector('.list').addEventListener('click', (e) => {
+    const item = e.target.closest('.item');
+    if (item) {
+        handleClick(e, item);
+    }
+});</code></pre>
+					<p>Benefits: fewer listeners, works with dynamic content, less memory.</p>
+					
+					<h2>Common Events</h2>
+					<p><strong>Mouse events:</strong></p>
+					<pre><code>click, dblclick, mousedown, mouseup, 
+mousemove, mouseenter, mouseleave, 
+mouseover, mouseout, contextmenu</code></pre>
+					<p><strong>Keyboard events:</strong></p>
+					<pre><code>keydown, keyup, keypress
+
+element.addEventListener('keydown', (e) => {
+    console.log(e.key);      // 'Enter', 'a', etc.
+    console.log(e.code);     // 'Enter', 'KeyA', etc.
+    console.log(e.ctrlKey);  // Ctrl pressed
+    console.log(e.shiftKey); // Shift pressed
+});</code></pre>
+					<p><strong>Form events:</strong></p>
+					<pre><code>submit, change, input, focus, blur
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+});
+
+input.addEventListener('input', (e) => {
+    console.log(e.target.value);
+});</code></pre>
+					
+					<h2>Touch Events</h2>
+					<p>For mobile touch interactions:</p>
+					<pre><code>element.addEventListener('touchstart', (e) => {
+    e.preventDefault(); // Prevent default touch behavior
+    const touch = e.touches[0];
+    console.log(touch.clientX, touch.clientY);
+});
+
+element.addEventListener('touchmove', handleMove);
+element.addEventListener('touchend', handleEnd);</code></pre>
+					
+					<h2>Custom Events</h2>
+					<p>Create and dispatch your own events:</p>
+					<pre><code>// Create custom event
+const event = new CustomEvent('userLoggedIn', {
+    detail: { userId: 123, username: 'john' },
+    bubbles: true,
+    cancelable: true
+});
+
+// Dispatch event
+element.dispatchEvent(event);
+
+// Listen for custom event
+element.addEventListener('userLoggedIn', (e) => {
+    console.log(e.detail.userId);
+});</code></pre>
+					
+					<h2>Debouncing and Throttling</h2>
+					<p>Limit how often event handlers fire:</p>
+					<pre><code>// Debounce - wait for pause
+function debounce(fn, delay) {
+    let timeout;
+    return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => fn(...args), delay);
+    };
+}
+
+// Throttle - limit to once per interval
+function throttle(fn, limit) {
+    let inThrottle;
+    return (...args) => {
+        if (!inThrottle) {
+            fn(...args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    };
+}
+
+// Usage
+window.addEventListener('resize', debounce(handleResize, 250));
+window.addEventListener('scroll', throttle(handleScroll, 100));</code></pre>
+					
+					<h2>Passive Listeners</h2>
+					<p>Improve scroll performance:</p>
+					<pre><code>// Tell browser you won't call preventDefault
+window.addEventListener('scroll', handleScroll, {
+    passive: true
+});
+
+// Required for touchmove in Chrome
+element.addEventListener('touchmove', handleTouch, {
+    passive: true
+});</code></pre>
+					
+					<h2>Memory Management</h2>
+					<p>Clean up listeners to prevent memory leaks:</p>
+					<pre><code>// Store reference
+const handler = () => { /* ... */ };
+element.addEventListener('click', handler);
+
+// Remove when done
+element.removeEventListener('click', handler);
+
+// Cleanup on component unmount
+function cleanup() {
+    element.removeEventListener('click', handler);
+}</code></pre>
+					
+					<h2>Conclusion</h2>
+					<p>Mastering events is crucial for interactive web development. Use event delegation for efficiency, understand propagation for complex interactions, and always clean up listeners to prevent memory leaks.</p>
+				</article>
+			</section>
+		</main>
+		<script src="/scripts/main.js"></script>
+	</body>
+</html>

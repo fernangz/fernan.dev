@@ -22,6 +22,7 @@
 		<link rel="stylesheet" href="/styles/tools.css">
 	</head>
 	<body>
+		<a href="#main-content" class="skip-link">Skip to main content</a>
 		<nav>
 			<a href="/" class="logo" svg="logo" aria-label="Homepage"></a>
 			<hr>
@@ -33,17 +34,149 @@
 				<li><a href="/resources/">Resources</a></li>
 			</ul>
 		</nav>
-		<main>
+		<main id="main-content">
 			<section>
 				<article>
 					<h1>Articles</h1>
-					<p>Here is a list of articles to help with frontend development. From beginner concepts to advanced topics.</p>
-					<ul class="articles-list">
-						<li><a href="/articles/the-dom/"><span class="emoji">🌳</span> The DOM Tree</a></li>
-						<li><a href="/articles/cascade-of-styles/"><span class="emoji">🎨</span> Cascade of Styles</a></li>
-						<li><a href="/articles/number-8/"><span class="emoji">8︎⃣</span> Multiples of 8 in FrontEnd Design</a></li>
-						<li><a href="/articles/ecmascript/"><span class="emoji">📜</span> ECMAScript, JavaScript or JS</a></li>
-					</ul>
+					<p>A curated collection of FrontEnd development articles, from fundamental concepts to advanced techniques. Start with the basics and work your way up.</p>
+					
+					<div class="articles-section">
+						<h2><span class="emoji">🌱</span> Fundamentals</h2>
+						<p class="section-intro">Essential concepts every FrontEnd developer must understand</p>
+						<ul class="articles-list">
+							<li>
+								<a href="/articles/the-dom/">
+									<span class="article-emoji">🌳</span>
+									<div class="article-info">
+										<strong>The DOM Tree</strong>
+										<span>Understanding the Document Object Model - the foundation of interactive web pages</span>
+										<span class="article-meta"><span class="badge">Beginner</span> 8 min read</span>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="/articles/cascade-of-styles/">
+									<span class="article-emoji">🎨</span>
+									<div class="article-info">
+										<strong>Cascade of Styles</strong>
+										<span>Master CSS cascade, specificity, and inheritance for predictable styling</span>
+										<span class="article-meta"><span class="badge">Beginner</span> 10 min read</span>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="/articles/ecmascript/">
+									<span class="article-emoji">📜</span>
+									<div class="article-info">
+										<strong>ECMAScript, JavaScript or JS</strong>
+										<span>Understand the relationship between the specification and the implementation</span>
+										<span class="article-meta"><span class="badge">Beginner</span> 12 min read</span>
+									</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+					
+					<div class="articles-section">
+						<h2><span class="emoji">📐</span> Layout & Design</h2>
+						<p class="section-intro">Create responsive, beautiful layouts with modern CSS</p>
+						<ul class="articles-list">
+							<li>
+								<a href="/articles/flexbox-grid/">
+									<span class="article-emoji">📏</span>
+									<div class="article-info">
+										<strong>CSS Flexbox & Grid</strong>
+										<span>Master modern CSS layout systems for flexible, responsive designs</span>
+										<span class="article-meta"><span class="badge">Intermediate</span> 15 min read</span>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="/articles/responsive-design/">
+									<span class="article-emoji">📱</span>
+									<div class="article-info">
+										<strong>Responsive Design</strong>
+										<span>Build websites that work perfectly on any screen size</span>
+										<span class="article-meta"><span class="badge">Intermediate</span> 12 min read</span>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="/articles/number-8/">
+									<span class="article-emoji">8️⃣</span>
+									<div class="article-info">
+										<strong>Multiples of 8 in Design</strong>
+										<span>Why the 8-point grid system creates consistent, scalable designs</span>
+										<span class="article-meta"><span class="badge">Beginner</span> 8 min read</span>
+									</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+					
+					<div class="articles-section">
+						<h2><span class="emoji">⚡</span> Performance & Quality</h2>
+						<p class="section-intro">Build fast, accessible, and high-quality web experiences</p>
+						<ul class="articles-list">
+							<li>
+								<a href="/articles/web-accessibility/">
+									<span class="article-emoji">♿</span>
+									<div class="article-info">
+										<strong>Web Accessibility Basics</strong>
+										<span>Create inclusive experiences that work for everyone</span>
+										<span class="article-meta"><span class="badge">Intermediate</span> 10 min read</span>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="/articles/performance-optimization/">
+									<span class="article-emoji">🚀</span>
+									<div class="article-info">
+										<strong>Performance Optimization</strong>
+										<span>Make your websites faster and improve Core Web Vitals</span>
+										<span class="article-meta"><span class="badge">Advanced</span> 15 min read</span>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="/articles/browser-devtools/">
+									<span class="article-emoji">🛠️</span>
+									<div class="article-info">
+										<strong>Browser DevTools Guide</strong>
+										<span>Master the built-in tools for debugging and optimization</span>
+										<span class="article-meta"><span class="badge">Intermediate</span> 10 min read</span>
+									</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+					
+					<div class="articles-section">
+						<h2><span class="emoji">🔧</span> Modern Techniques</h2>
+						<p class="section-intro">Level up with modern CSS and JavaScript features</p>
+						<ul class="articles-list">
+							<li>
+								<a href="/articles/css-custom-properties/">
+									<span class="article-emoji">🎯</span>
+									<div class="article-info">
+										<strong>CSS Custom Properties</strong>
+										<span>Use CSS variables for maintainable, dynamic stylesheets</span>
+										<span class="article-meta"><span class="badge">Intermediate</span> 8 min read</span>
+									</div>
+								</a>
+							</li>
+							<li>
+								<a href="/articles/javascript-events/">
+									<span class="article-emoji">⚡</span>
+									<div class="article-info">
+										<strong>JavaScript Event Handling</strong>
+										<span>Master events, delegation, and the event lifecycle</span>
+										<span class="article-meta"><span class="badge">Intermediate</span> 10 min read</span>
+									</div>
+								</a>
+							</li>
+						</ul>
+					</div>
 				</article>
 			</section>
 		</main>

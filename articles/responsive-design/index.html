@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>fernan.dev • Responsive Design</title>
+		<meta name="description" content="Build websites that work perfectly on any screen size">
+		<link rel="canonical" href="https://fernan.dev/articles/responsive-design" />
+		<meta name="author" content="Fernán García de Zúñiga" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+		<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+		<link rel="shortcut icon" href="/favicon/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+		<meta name="apple-mobile-web-app-title" content="fernan.dev" />
+		<link rel="manifest" href="/favicon/site.webmanifest" />
+		<meta id="androidTheme" name="theme-color" content="hsl(0, 0%, 8%)">
+		<meta id="appleTheme" name="apple-mobile-web-app-status-bar-style" content="hsl(0, 0%, 8%)">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="preload" href="/fonts/outfit.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+		<link rel="preload" href="/fonts/emoji.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+		<link rel="stylesheet" href="/styles/main.css">
+		<link rel="stylesheet" href="/styles/tools.css">
+	</head>
+	<body>
+		<a href="#main-content" class="skip-link">Skip to main content</a>
+		<nav>
+			<a href="/" class="logo" svg="logo" aria-label="Homepage"></a>
+			<hr>
+			<button class="toggle" aria-label="Menu" svg="plus"></button>
+			<ul>
+				<li><a href="/">About</a></li>
+				<li><a href="/tools/">Tools</a></li>
+				<li><a href="/articles/">Articles</a></li>
+				<li><a href="/resources/">Resources</a></li>
+			</ul>
+		</nav>
+		<main id="main-content">
+			<section>
+				<article>
+					<a href="/articles/" class="back-link">← Back to Articles</a>
+					<h1>Responsive Design</h1>
+					<p>Build websites that work perfectly on any screen size</p>
+					
+					<h2>Introduction</h2>
+					<p>Responsive web design ensures that your website looks and functions great on all devices, from small mobile phones to large desktop monitors. With mobile traffic accounting for over 50% of web traffic, responsive design is no longer optional—it's essential.</p>
+					
+					<h2>The Three Pillars of Responsive Design</h2>
+					<p>Responsive design rests on three fundamental techniques:</p>
+					<ul>
+						<li><strong>Fluid Grids:</strong> Use relative units instead of fixed pixels</li>
+						<li><strong>Flexible Images:</strong> Ensure images scale with their containers</li>
+						<li><strong>Media Queries:</strong> Apply different styles at different breakpoints</li>
+					</ul>
+					
+					<h2>Fluid Grids and Relative Units</h2>
+					<p>Instead of fixed pixel values, use relative units that scale with the viewport or parent element:</p>
+					<ul>
+						<li><code>%</code> - Percentage of parent element</li>
+						<li><code>vw</code> - Viewport width (1vw = 1% of viewport width)</li>
+						<li><code>vh</code> - Viewport height (1vh = 1% of viewport height)</li>
+						<li><code>rem</code> - Root element font size (accessible and scalable)</li>
+						<li><code>em</code> - Parent element font size</li>
+					</ul>
+					<pre><code>/* Fixed (avoid) */
+.container {
+    width: 960px;
+}
+
+/* Fluid (preferred) */
+.container {
+    width: 100%;
+    max-width: 960px;
+}</code></pre>
+					
+					<h2>Flexible Images</h2>
+					<p>Images should never overflow their containers. Use these CSS rules to make images responsive:</p>
+					<pre><code>img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}</code></pre>
+					<p>This ensures images scale down on smaller screens while maintaining their aspect ratio.</p>
+					
+					<h2>Media Queries and Breakpoints</h2>
+					<p>Media queries allow you to apply styles based on device characteristics. Common breakpoints:</p>
+					<pre><code>/* Mobile First Approach */
+
+/* Base styles (mobile) */
+body {
+    font-size: 1rem;
+    padding: 1rem;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+    body {
+        font-size: 1.125rem;
+        padding: 2rem;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    body {
+        font-size: 1.25rem;
+        padding: 3rem;
+    }
+}
+
+/* Large Desktop */
+@media (min-width: 1440px) {
+    body {
+        font-size: 1.5rem;
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+}</code></pre>
+					
+					<h2>Mobile-First Approach</h2>
+					<p>Always design for mobile first, then enhance for larger screens:</p>
+					<ol>
+						<li>Start with base styles for the smallest screens</li>
+						<li>Use <code>min-width</code> media queries to add complexity</li>
+						<li>This ensures faster loading on mobile devices</li>
+						<li>Progressive enhancement instead of graceful degradation</li>
+					</ol>
+					
+					<h2>Responsive Typography</h2>
+					<p>Font sizes should scale with the viewport for optimal readability:</p>
+					<pre><code>/* Fluid typography */
+html {
+    font-size: clamp(1rem, 0.875rem + 0.5vw, 1.25rem);
+}
+
+/* Or use media queries */
+body {
+    font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+    body {
+        font-size: 1.125rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    body {
+        font-size: 1.25rem;
+    }
+}</code></pre>
+					
+					<h2>Responsive Navigation</h2>
+					<p>Navigation patterns should adapt to screen size:</p>
+					<ul>
+						<li><strong>Mobile:</strong> Hamburger menu, bottom navigation, or swipe gestures</li>
+						<li><strong>Tablet:</strong> Condensed horizontal menu or expandable sections</li>
+						<li><strong>Desktop:</strong> Full horizontal navigation with dropdowns</li>
+					</ul>
+					
+					<h2>Testing Responsive Designs</h2>
+					<p>Test your responsive designs using:</p>
+					<ul>
+						<li>Browser DevTools device emulation</li>
+						<li>Real devices (borrow or use device labs)</li>
+						<li>Online testing tools (BrowserStack, LambdaTest)</li>
+						<li>Physical device testing for touch interactions</li>
+					</ul>
+					
+					<h2>Common Mistakes to Avoid</h2>
+					<ul>
+						<li>Using too many breakpoints (stick to 3-4 key breakpoints)</li>
+						<li>Fixed-width containers that overflow on small screens</li>
+						<li>Touch targets smaller than 44×44 pixels on mobile</li>
+						<li>Not testing on actual mobile devices</li>
+						<li>Ignoring performance on mobile networks</li>
+					</ul>
+					
+					<h2>Conclusion</h2>
+					<p>Responsive design is about creating flexible, adaptable experiences that work everywhere. By using fluid grids, flexible images, and media queries with a mobile-first approach, you'll create websites that provide optimal experiences across all devices.</p>
+				</article>
+			</section>
+		</main>
+		<script src="/scripts/main.js"></script>
+	</body>
+</html>
