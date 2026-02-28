@@ -159,6 +159,62 @@ const ColorConverter = {
 		if (rgbInput) rgbInput.value = this.hexToRgb(hex);
 		if (hslInput) hslInput.value = this.hexToHsl(hex);
 		if (hsvInput) hsvInput.value = this.hexToHsv(hex);
+		
+		// Update contrast ratios
+		this.updateContrastRatios(hex);
+	},
+	
+	updateContrastRatios(hex) {
+		const contrastBlackEl = document.getElementById('contrast-black');
+		const contrastWhiteEl = document.getElementById('contrast-white');
+		const indicatorBlackEl = document.getElementById('indicator-black');
+		const indicatorWhiteEl = document.getElementById('indicator-white');
+		
+		if (!contrastBlackEl || !contrastWhiteEl) return;
+		
+		const ratioBlack = this.calculateContrastRatio(hex, '#000000');
+		const ratioWhite = this.calculateContrastRatio(hex, '#ffffff');
+		
+		contrastBlackEl.textContent = `${ratioBlack.toFixed(2)}:1`;
+		contrastWhiteEl.textContent = `${ratioWhite.toFixed(2)}:1`;
+		
+		// Update indicators
+		if (indicatorBlackEl) {
+			indicatorBlackEl.className = 'contrast-indicator ' + this.getContrastClass(ratioBlack);
+		}
+		if (indicatorWhiteEl) {
+			indicatorWhiteEl.className = 'contrast-indicator ' + this.getContrastClass(ratioWhite);
+		}
+	},
+	
+	calculateContrastRatio(hex1, hex2) {
+		const l1 = this.getRelativeLuminance(hex1);
+		const l2 = this.getRelativeLuminance(hex2);
+		
+		const lighter = Math.max(l1, l2);
+		const darker = Math.min(l1, l2);
+		
+		return (lighter + 0.05) / (darker + 0.05);
+	},
+	
+	getRelativeLuminance(hex) {
+		const rgb = this.hexToRgb(hex);
+		const match = rgb.match(/(\d+),\s*(\d+),\s*(\d+)/);
+		
+		if (!match) return 0;
+		
+		const [r, g, b] = [parseInt(match[1]), parseInt(match[2]), parseInt(match[3])].map(v => {
+			v = v / 255;
+			return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+		});
+		
+		return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+	},
+	
+	getContrastClass(ratio) {
+		if (ratio >= 7) return 'pass-aaa';
+		if (ratio >= 4.5) return 'pass-aa';
+		return 'fail';
 	},
 
 	hexToRgb(hex) {

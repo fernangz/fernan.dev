@@ -85,6 +85,27 @@
 					</div>
 					<div id="palette-container" class="color-preview"></div>
 					
+					<h2>Contrast Ratio</h2>
+					<p>WCAG contrast ratio for accessibility. Minimum 4.5:1 for normal text, 3:1 for large text.</p>
+					<div class="contrast-ratios">
+						<div class="contrast-item">
+							<div class="contrast-preview contrast-black">
+								<span style="color: #000000;">Aa</span>
+								<span style="color: var(--light); font-size: 0.75rem;">Black</span>
+							</div>
+							<div class="contrast-value" id="contrast-black">--:1</div>
+							<div class="contrast-indicator" id="indicator-black"></div>
+						</div>
+						<div class="contrast-item">
+							<div class="contrast-preview contrast-white">
+								<span style="color: #ffffff;">Aa</span>
+								<span style="color: var(--light); font-size: 0.75rem;">White</span>
+							</div>
+							<div class="contrast-value" id="contrast-white">--:1</div>
+							<div class="contrast-indicator" id="indicator-white"></div>
+						</div>
+					</div>
+					
 					<h2>About Color Formats</h2>
 					<ul>
 						<li><strong>HEX:</strong> Hexadecimal notation (#RRGGBB) used in HTML/CSS</li>

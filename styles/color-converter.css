@@ -120,3 +120,67 @@
 	border-radius: 2px;
 	margin-bottom: 0.25rem;
 }
+
+/* Contrast Ratio Styles */
+.contrast-ratios {
+	display: flex;
+	gap: 1rem;
+	margin: 1rem 0;
+	flex-wrap: wrap;
+}
+
+.contrast-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 1rem;
+	background-color: var(--dark);
+	border-radius: 8px;
+	min-width: 120px;
+}
+
+.contrast-preview {
+	width: 60px;
+	height: 60px;
+	border-radius: 8px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: 2rem;
+	font-weight: bold;
+}
+
+.contrast-preview.contrast-black {
+	background-color: #000000;
+}
+
+.contrast-preview.contrast-white {
+	background-color: #ffffff;
+}
+
+.contrast-value {
+	font-size: var(--small);
+	font-family: 'code', monospace;
+	color: var(--light);
+}
+
+.contrast-indicator {
+	width: 100%;
+	height: 4px;
+	border-radius: 2px;
+	background-color: var(--gray);
+}
+
+.contrast-indicator.pass-aaa {
+	background-color: #2ecc71;
+}
+
+.contrast-indicator.pass-aa {
+	background-color: #f1c40f;
+}
+
+.contrast-indicator.fail {
+	background-color: #e74c3c;
+}
