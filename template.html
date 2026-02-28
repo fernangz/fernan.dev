@@ -2,9 +2,9 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<title>fernan.dev • Symbols & Emojis</title>
-		<meta name="description" content="Browse and copy special symbols and emojis" />
-		<link rel="canonical" href="https://fernan.dev/tools/symbols-emojis" />
+		<title>fernan.dev • {{TITLE}}</title>
+		<meta name="description" content="{{DESCRIPTION}}" />
+		<link rel="canonical" href="https://fernan.dev{{CANONICAL}}" />
 		<meta name="author" content="Fernán García de Zúñiga" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
@@ -20,10 +20,13 @@
 		<link rel="preload" href="/fonts/emoji.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 		<link rel="stylesheet" href="/styles/main.css">
 		<link rel="stylesheet" href="/styles/tools.css">
-		<link rel="stylesheet" href="/styles/symbols-emojis.css">
+		<!-- TOOL_SPECIFIC_CSS -->
 	</head>
 	<body>
+		<!-- Skip Link for Accessibility -->
 		<a href="#main-content" class="skip-link">Skip to main content</a>
+		
+		<!-- Main Navigation -->
 		<nav>
 			<a href="/" class="logo" svg="logo" aria-label="Homepage"></a>
 			<hr>
@@ -35,45 +38,28 @@
 				<li><a href="/resources/">Resources</a></li>
 			</ul>
 		</nav>
+		
+		<!-- Main Content Area -->
 		<main id="main-content">
 			<section>
 				<article>
-					<a href="/tools/" class="back-link">← Back to Tools</a>
-					<h1>Symbols & Emojis</h1>
-					<p>Browse and copy special symbols and emojis for your projects. Click on any item to copy it.</p>
+					<!-- Back Link (for tool pages) -->
+					<!-- <a href="/tools/" class="back-link">← Back to Tools</a> -->
 					
-					<!-- Search Bar -->
-					<div class="search-container">
-						<input type="text" id="symbol-search" class="search-input" placeholder="Search symbols and emojis...">
-						<div class="search-info" id="search-count"></div>
-					</div>
+					<!-- Page Title -->
+					<h1>{{H1}}</h1>
 					
-					<!-- Category Tabs -->
-					<div class="category-tabs" id="category-tabs">
-						<button class="tab-btn active" data-category="all">All</button>
-						<button class="tab-btn" data-category="emoji">😊 Emojis</button>
-						<button class="tab-btn" data-category="currency">💰 Currency</button>
-						<button class="tab-btn" data-category="math">📐 Math</button>
-						<button class="tab-btn" data-category="arrows">➡️ Arrows</button>
-						<button class="tab-btn" data-category="punctuation">📝 Punctuation</button>
-						<button class="tab-btn" data-category="technical">⚙️ Technical</button>
-					</div>
+					<!-- Page Description -->
+					<p>{{DESCRIPTION_LONG}}</p>
 					
-					<!-- Symbols Grid -->
-					<div id="symbols-container" class="symbols-grid">
-						<!-- Items loaded dynamically -->
-					</div>
-					
-					<!-- Loading State -->
-					<div id="loading-state" class="loading-state">
-						<span class="loading-spinner"></span>
-						<span>Loading symbols...</span>
-					</div>
+					<!-- Tool Content -->
+					<!-- TOOL_CONTENT -->
 				</article>
 			</section>
 		</main>
+		
+		<!-- Scripts -->
 		<script src="/scripts/main.js"></script>
-		<script src="/scripts/data-loader.js"></script>
-		<script src="/scripts/symbols-emojis.js"></script>
+		<!-- TOOL_SPECIFIC_JS -->
 	</body>
 </html>

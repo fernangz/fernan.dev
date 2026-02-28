@@ -1,0 +1,25 @@
+User-agent: *
+Allow: /
+Allow: /tools/
+Allow: /articles/
+Allow: /resources/
+Allow: /data/
+
+# Disallow admin or private areas (if any)
+Disallow: /private/
+
+# Sitemap location
+Sitemap: https://test.fernan.dev/sitemap.xml
+
+# Crawl delay (optional, be nice to server)
+Crawl-delay: 1
+
+# Block common bots that waste bandwidth
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /

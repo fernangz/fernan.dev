@@ -1,22 +1,26 @@
 /* ============================================
    fernan.dev - Core JavaScript
-   Optimized and Bug-Fixed Version
+   Handles SVG loading, mobile menu, custom scroll, and color animation
    ============================================ */
 
 const ui = {
 	// Cache for SVG icons to avoid repeated fetches
 	svgCache: {},
 
+	/**
+	 * Load and inject SVG icons
+	 * Finds elements with svg="icon-name" attribute and replaces with inline SVG
+	 */
 	files: async function() {
 		const svgElements = document.querySelectorAll("[svg]");
 		if (svgElements.length === 0) return;
 
-		// Process SVGs in batches to avoid blocking
+		// Process SVGs sequentially to avoid blocking
 		for (const tag of svgElements) {
 			const icon = tag.getAttribute("svg");
-			if (!icon) continue; // Skip if no icon attribute
+			if (!icon) continue;
 
-			// Check cache first
+			// Check cache first for performance
 			if (ui.svgCache[icon]) {
 				ui.insertSVG(tag, ui.svgCache[icon]);
 				continue;
@@ -33,7 +37,7 @@ const ui = {
 				continue;
 			}
 
-			// Fetch new SVG
+			// Fetch new SVG from server
 			try {
 				const response = await fetch(`/svgs/${icon}.svg`);
 				if (!response.ok) throw new Error(`Failed to load ${icon}`);
@@ -45,29 +49,38 @@ const ui = {
 			}
 		}
 
-		// Setup code blocks
+		// Setup code blocks for copying
 		ui.setupCodeBlocks();
 	},
 
-	insertSVG(element, svgCode) {
+	/**
+	 * Insert SVG code into element
+	 * @param {HTMLElement} element - Target element
+	 * @param {string} svgCode - SVG markup
+	 */
+	insertSVG: function(element, svgCode) {
 		element.innerHTML = svgCode + element.innerHTML;
 		element.setAttribute("svgdone", element.getAttribute("svg"));
 		element.removeAttribute("svg");
 	},
 
+	/**
+	 * Setup code blocks with click-to-copy functionality
+	 */
 	setupCodeBlocks: function() {
 		document.querySelectorAll("pre").forEach((code) => {
-			// Only process if not already processed
+			// Skip if already processed
 			if (code.querySelector('code')) return;
-			
+
 			code.innerHTML = "<code>" + code.innerHTML + "</code>";
 			if (code.hasAttribute("code")) {
 				code.classList.add("language-" + code.getAttribute("code"));
 			}
+			
 			code.addEventListener("click", (e) => {
 				const codeElement = e.currentTarget.querySelector("code");
 				if (!codeElement) return;
-				
+
 				navigator.clipboard.writeText(codeElement.innerText)
 					.then(() => {
 						if (ui && ui.notify) {
@@ -90,49 +103,62 @@ const ui = {
 		});
 	},
 
-	menu: () => {
+	/**
+	 * Setup mobile menu toggle
+	 */
+	menu: function() {
 		const toggle = document.querySelector('.toggle');
 		const nav = document.querySelector('nav');
 		if (!toggle || !nav) return;
-		
+
 		toggle.addEventListener('click', () => {
 			nav.classList.toggle('menu');
 		}, { passive: true });
 	},
 
-	scroll: () => {
+	/**
+	 * Setup custom scrollbar
+	 * Creates a custom scrollbar for the main content area
+	 */
+	scroll: function() {
+		// Remove existing scroll element
 		const existingScroll = document.body.querySelector(".scroll");
 		if (existingScroll) {
 			existingScroll.remove();
 		}
-		
+
 		const section = document.body.querySelector("main > section");
 		if (!section) return;
 
+		// Create scroll elements
 		const scroll = document.createElement("div");
 		scroll.classList.add("scroll");
-		
+
 		const track = document.createElement("div");
 		track.classList.add("track");
 		scroll.appendChild(track);
-		
+
 		const thumb = document.createElement("div");
 		thumb.classList.add("thumb");
 		thumb.setAttribute('cursor', 'hand');
 		scroll.appendChild(thumb);
-		
+
 		document.body.appendChild(scroll);
-		
+
+		// Calculate scroll ratio
 		const scrollRatio = section.clientHeight / section.scrollHeight;
+		
+		// Only show scroll if content overflows
 		if (scrollRatio < 1 && scrollRatio > 0) {
 			scroll.classList.add("show");
 			thumb.style.height = `${Math.max(scrollRatio * 100, 2)}%`;
 		} else {
-			return; // Don't show scroll if not needed
+			return;
 		}
 
 		let pos = { top: 0, y: 0 };
-		
+
+		// Mouse/touch down handler
 		const mouseDownThumbHandler = (e) => {
 			pos = {
 				top: section.scrollTop,
@@ -141,12 +167,14 @@ const ui = {
 			scroll.classList.add("grabbing");
 			thumb.setAttribute('cursor', 'grab');
 			document.body.classList.add("grabbing");
+			
 			document.addEventListener("mousemove", scrollActionHandler, { passive: true });
 			document.addEventListener("touchmove", scrollActionHandler, { passive: true });
 			document.addEventListener("mouseup", mouseUpHandler, { passive: true });
 			document.addEventListener("touchend", mouseUpHandler, { passive: true });
 		};
 
+		// Scroll action handler
 		const scrollActionHandler = (e) => {
 			const y = e.clientY || e.touches?.[0]?.clientY || 0;
 			const bound = track.getBoundingClientRect();
@@ -154,59 +182,73 @@ const ui = {
 			section.scrollTop = percentage * (section.scrollHeight - section.clientHeight);
 		};
 
+		// Mouse/touch up handler
 		const mouseUpHandler = () => {
 			scroll.classList.remove("grabbing");
 			thumb.setAttribute('cursor', 'hand');
 			document.body.classList.remove("grabbing");
+			
 			document.removeEventListener("mousemove", scrollActionHandler);
 			document.removeEventListener("touchmove", scrollActionHandler);
 			document.removeEventListener("mouseup", mouseUpHandler);
 			document.removeEventListener("touchend", mouseUpHandler);
 		};
 
+		// Section scroll handler
 		const scrollSectionHandler = () => {
 			window.requestAnimationFrame(() => {
 				thumb.style.top = `${(section.scrollTop * 100) / section.scrollHeight}%`;
 			});
 		};
 
+		// Attach event listeners
 		section.addEventListener("scroll", scrollSectionHandler, { passive: true });
 		thumb.addEventListener("mousedown", mouseDownThumbHandler, { passive: true });
 		thumb.addEventListener("touchstart", mouseDownThumbHandler, { passive: true });
 		track.addEventListener("click", scrollActionHandler, { passive: true });
 	},
 
-	color: () => {
-		// Only run if color animation is needed
+	/**
+	 * Animated color accent for links
+	 * Cycles through hue values to create dynamic accent color
+	 */
+	color: function() {
+		// Check if already running
 		let styleElement = document.getElementById("colorGeneratedVariable");
-		if (styleElement) return; // Already running
+		if (styleElement) return;
 
-		const style = document.createElement("style");
-		style.id = "colorGeneratedVariable";
-		document.head.appendChild(style);
-		styleElement = style; // Update reference
+		// Create style element
+		styleElement = document.createElement("style");
+		styleElement.id = "colorGeneratedVariable";
+		document.head.appendChild(styleElement);
 
 		let hue = 160;
 		let lastUpdate = 0;
 		const interval = 1000 / 24; // 24 FPS
 
 		const loop = (timestamp) => {
-			if (!styleElement || !styleElement.isConnected) return; // Stop if element removed
+			// Stop if element removed
+			if (!styleElement || !styleElement.isConnected) return;
 
 			requestAnimationFrame(loop);
 
-			// Throttle updates
+			// Throttle updates for performance
 			if (timestamp - lastUpdate < interval) return;
 			lastUpdate = timestamp;
 
 			hue = (hue + 1) % 360;
-			style.textContent = `:root{--color:hsl(${hue},80%,80%);}`;
+			styleElement.textContent = `:root{--color:hsl(${hue},80%,80%);}`;
 		};
 
 		requestAnimationFrame(loop);
 	},
 
-	notify: (message) => {
+	/**
+	 * Show notification message
+	 * @param {string} message - Message to display (can include HTML)
+	 */
+	notify: function(message) {
+		// Get or create notifications container
 		let notice = document.getElementById('notifications');
 		if (!notice) {
 			notice = document.createElement('aside');
@@ -214,6 +256,7 @@ const ui = {
 			document.querySelector('main')?.appendChild(notice);
 		}
 
+		// Create notification div
 		const noticeDiv = document.createElement('div');
 		const id = Date.now().toString(36) + Math.random().toString(36).slice(2);
 		noticeDiv.id = id;
@@ -234,15 +277,18 @@ const ui = {
 	}
 };
 
-// Initialize on load
+// Initialize on page load
 window.addEventListener('load', () => {
 	ui.files();
 	ui.menu();
 	ui.scroll();
 	ui.color();
+	
+	// Set active navigation state
+	ui.setActiveNav();
 }, { passive: true });
 
-// Debounced resize handler
+// Debounced resize handler for scroll
 let resizeTimeout;
 window.addEventListener('resize', () => {
 	clearTimeout(resizeTimeout);
@@ -250,6 +296,21 @@ window.addEventListener('resize', () => {
 		ui.scroll();
 	}, 150);
 }, { passive: true });
+
+/**
+ * Set active state on navigation based on current page
+ */
+ui.setActiveNav = function() {
+	const currentPath = window.location.pathname;
+	const navLinks = document.querySelectorAll('nav ul li a');
+	
+	navLinks.forEach(link => {
+		const href = link.getAttribute('href');
+		if (href && currentPath.startsWith(href)) {
+			link.classList.add('active');
+		}
+	});
+};
 
 // Optimized MutationObserver with proper logic
 const observer = new MutationObserver((mutations) => {
