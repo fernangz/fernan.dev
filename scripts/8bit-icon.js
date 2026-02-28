@@ -1,220 +1,302 @@
 /* ============================================
-   8-bit Icon Tool Script
+   8-bit Icon Creator Tool Script
    ============================================ */
 
-const Bit8Icon = {
-	canvas: null,
-	ctx: null,
-	pixelSize: 1.25, // 20px = 1.25rem base multiplier
-	isDrawing: false,
-	isEraser: false,
+const IconCreator = {
+	gridSize: 16,
 	currentColor: '#000000',
-	currentSize: 16,
+	isEraser: false,
+	pixels: {}, // Store pixel colors: { "x,y": "#color" }
+	
+	// Predefined color palette
+	colorPalette: [
+		'#000000', '#1a1a2e', '#16213e', '#0f3460', '#533483', '#e94560',
+		'#ff6b6b', '#feca57', '#48dbfb', '#1dd1a1', '#5f27cd', '#c8d6e5',
+		'#ffffff', '#8395a7', '#576574', '#222f3e', '#ff9ff3', '#54a0ff'
+	],
 
 	init() {
-		this.canvas = document.getElementById('pixel-canvas');
-		const colorPicker = document.getElementById('pixel-color');
-		const sizeSelect = document.getElementById('canvas-size');
-		const clearBtn = document.getElementById('clear-canvas');
-		const downloadBtn = document.getElementById('download-icon');
+		// Initialize color palette
+		this.renderColorPalette();
+		
+		// Set up event listeners
+		this.setupSizeButtons();
+		this.setupColorPicker();
+		this.setupToolButtons();
+		this.setupActionButtons();
+		
+		// Create initial canvas
+		this.createCanvas();
+	},
+
+	renderColorPalette() {
+		const container = document.getElementById('color-palette');
+		if (!container) return;
+		
+		container.innerHTML = this.colorPalette.map(color => 
+			`<div class="palette-color" style="background-color: ${color}" data-color="${color}"></div>`
+		).join('');
+		
+		// Add click handlers
+		container.querySelectorAll('.palette-color').forEach(el => {
+			el.addEventListener('click', () => {
+				const color = el.dataset.color;
+				this.setColor(color);
+				
+				// Update active state
+				container.querySelectorAll('.palette-color').forEach(c => c.classList.remove('active'));
+				el.classList.add('active');
+			});
+		});
+		
+		// Set first color as active
+		if (container.firstChild) {
+			container.firstChild.classList.add('active');
+		}
+	},
+
+	setupSizeButtons() {
+		document.querySelectorAll('.size-btn').forEach(btn => {
+			btn.addEventListener('click', () => {
+				// Update active state
+				document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+				btn.classList.add('active');
+				
+				// Update grid size
+				this.gridSize = parseInt(btn.dataset.size);
+				this.pixels = {}; // Clear pixels
+				this.createCanvas();
+				this.updatePreview();
+			});
+		});
+	},
+
+	setupColorPicker() {
+		const colorInput = document.getElementById('pixel-color');
+		const colorHex = document.getElementById('color-hex');
+		
+		if (colorInput) {
+			colorInput.addEventListener('input', (e) => {
+				this.setColor(e.target.value);
+				if (colorHex) {
+					colorHex.textContent = e.target.value.toUpperCase();
+				}
+				
+				// Update palette active state
+				document.querySelectorAll('.palette-color').forEach(c => {
+					c.classList.toggle('active', c.dataset.color === e.target.value);
+				});
+			});
+		}
+	},
+
+	setupToolButtons() {
 		const eraserBtn = document.getElementById('eraser-btn');
-
-		if (!this.canvas) return;
-
-		this.ctx = this.canvas.getContext('2d');
+		const clearBtn = document.getElementById('clear-btn');
 		
-		// Get initial size
-		this.currentSize = parseInt(sizeSelect?.value) || 16;
-		
-		// Set canvas display size via CSS, then set internal resolution
-		this.updateCanvasDisplaySize();
-		this.initCanvas();
-
-		// Event listeners
-		this.canvas.addEventListener('mousedown', (e) => this.startDrawing(e));
-		this.canvas.addEventListener('mousemove', (e) => this.draw(e));
-		this.canvas.addEventListener('mouseup', () => this.stopDrawing());
-		this.canvas.addEventListener('mouseleave', () => this.stopDrawing());
-		
-		// Touch support
-		this.canvas.addEventListener('touchstart', (e) => this.handleTouch(e), { passive: false });
-		this.canvas.addEventListener('touchmove', (e) => this.handleTouch(e), { passive: false });
-		this.canvas.addEventListener('touchend', () => this.stopDrawing());
-
-		if (colorPicker) {
-			colorPicker.addEventListener('input', (e) => {
-				this.currentColor = e.target.value;
-				this.isEraser = false;
-				if (eraserBtn) eraserBtn.classList.remove('active');
-			});
-		}
-
-		if (sizeSelect) {
-			sizeSelect.addEventListener('change', (e) => {
-				this.currentSize = parseInt(e.target.value);
-				this.updateCanvasDisplaySize();
-				this.initCanvas();
-			});
-		}
-
 		if (eraserBtn) {
 			eraserBtn.addEventListener('click', () => {
 				this.isEraser = !this.isEraser;
 				eraserBtn.classList.toggle('active', this.isEraser);
 			});
 		}
-
+		
 		if (clearBtn) {
 			clearBtn.addEventListener('click', () => {
 				this.clearCanvas();
-				if (ui && ui.notify) {
-					ui.notify('<i>🗑️</i> Canvas cleared!');
-				}
 			});
 		}
+	},
 
-		if (downloadBtn) {
-			downloadBtn.addEventListener('click', () => this.download());
+	setupActionButtons() {
+		const downloadSvg = document.getElementById('download-svg');
+		const downloadPng = document.getElementById('download-png');
+		
+		if (downloadSvg) {
+			downloadSvg.addEventListener('click', () => this.downloadSVG());
+		}
+		
+		if (downloadPng) {
+			downloadPng.addEventListener('click', () => this.downloadPNG());
 		}
 	},
 
-	updateCanvasDisplaySize() {
-		// Set display size based on canvas size (max 512px for large canvases)
-		const maxSize = this.currentSize <= 16 ? 20 : 16;
-		const displaySize = Math.min(this.currentSize * maxSize, 512);
-		this.canvas.style.width = `${displaySize}px`;
-		this.canvas.style.height = `${displaySize}px`;
+	setColor(color) {
+		this.currentColor = color;
+		this.isEraser = false;
+		document.getElementById('eraser-btn')?.classList.remove('active');
 	},
 
-	initCanvas() {
-		// Set internal resolution
-		const scale = this.currentSize <= 16 ? 20 : 16;
-		const size = this.currentSize * scale;
-
-		this.canvas.width = size;
-		this.canvas.height = size;
-		this.pixelSize = scale;
-
-		this.ctx.fillStyle = '#ffffff';
-		this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-
-		this.drawGrid();
-	},
-
-	drawGrid() {
-		this.ctx.strokeStyle = '#e0e0e0';
-		this.ctx.lineWidth = 1;
-
-		for (let i = 0; i <= this.currentSize; i++) {
-			// Vertical lines
-			this.ctx.beginPath();
-			this.ctx.moveTo(i * this.pixelSize, 0);
-			this.ctx.lineTo(i * this.pixelSize, this.canvas.height);
-			this.ctx.stroke();
-
-			// Horizontal lines
-			this.ctx.beginPath();
-			this.ctx.moveTo(0, i * this.pixelSize);
-			this.ctx.lineTo(this.canvas.width, i * this.pixelSize);
-			this.ctx.stroke();
+	createCanvas() {
+		const container = document.getElementById('pixel-canvas');
+		if (!container) return;
+		
+		// Set grid CSS
+		container.style.gridTemplateColumns = `repeat(${this.gridSize}, 1.25rem)`;
+		container.style.gridTemplateRows = `repeat(${this.gridSize}, 1.25rem)`;
+		
+		// Create pixels
+		container.innerHTML = '';
+		for (let y = 0; y < this.gridSize; y++) {
+			for (let x = 0; x < this.gridSize; x++) {
+				const pixel = document.createElement('div');
+				pixel.className = 'pixel';
+				pixel.dataset.x = x;
+				pixel.dataset.y = y;
+				
+				// Restore pixel color if exists
+				const key = `${x},${y}`;
+				if (this.pixels[key]) {
+					pixel.style.backgroundColor = this.pixels[key];
+					pixel.classList.remove('transparent');
+				} else {
+					pixel.classList.add('transparent');
+				}
+				
+				// Add click handler
+				pixel.addEventListener('click', () => this.togglePixel(x, y));
+				pixel.addEventListener('mouseenter', (e) => {
+					if (e.buttons === 1) {
+						this.togglePixel(x, y);
+					}
+				});
+				
+				container.appendChild(pixel);
+			}
 		}
+		
+		this.updatePreview();
 	},
 
-	getMousePos(evt) {
-		const rect = this.canvas.getBoundingClientRect();
-		const scaleX = this.canvas.width / rect.width;
-		const scaleY = this.canvas.height / rect.height;
+	togglePixel(x, y) {
+		const key = `${x},${y}`;
+		const pixel = document.querySelector(`.pixel[data-x="${x}"][data-y="${y}"]`);
 		
-		return {
-			x: Math.floor((evt.clientX - rect.left) * scaleX / this.pixelSize) * this.pixelSize,
-			y: Math.floor((evt.clientY - rect.top) * scaleY / this.pixelSize) * this.pixelSize
-		};
-	},
-
-	handleTouch(e) {
-		e.preventDefault();
-		const touch = e.touches[0];
-		const mouseEvent = new MouseEvent(e.type === 'touchstart' ? 'mousedown' : 'mousemove', {
-			clientX: touch.clientX,
-			clientY: touch.clientY
-		});
-		
-		if (e.type === 'touchstart') {
-			this.startDrawing(mouseEvent);
+		if (this.isEraser) {
+			// Eraser mode: remove color
+			delete this.pixels[key];
+			if (pixel) {
+				pixel.classList.add('transparent');
+			}
+		} else if (this.pixels[key] === this.currentColor) {
+			// Same color: remove
+			delete this.pixels[key];
+			if (pixel) {
+				pixel.classList.add('transparent');
+			}
 		} else {
-			this.draw(mouseEvent);
+			// Set new color
+			this.pixels[key] = this.currentColor;
+			if (pixel) {
+				pixel.style.backgroundColor = this.currentColor;
+				pixel.classList.remove('transparent');
+			}
 		}
-	},
-
-	startDrawing(e) {
-		this.isDrawing = true;
-		const pos = this.getMousePos(e);
-		this.drawPixel(pos.x, pos.y);
-	},
-
-	draw(e) {
-		if (!this.isDrawing) return;
-		const pos = this.getMousePos(e);
-		this.drawPixel(pos.x, pos.y);
-	},
-
-	stopDrawing() {
-		this.isDrawing = false;
-	},
-
-	drawPixel(x, y) {
-		this.ctx.fillStyle = this.isEraser ? '#ffffff' : this.currentColor;
-		this.ctx.fillRect(x, y, this.pixelSize, this.pixelSize);
+		
+		this.updatePreview();
 	},
 
 	clearCanvas() {
-		this.ctx.fillStyle = '#ffffff';
-		this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-		this.drawGrid();
+		this.pixels = {};
+		this.createCanvas();
+		if (ui && ui.notify) {
+			ui.notify('<i>🗑️</i> Canvas cleared!');
+		}
 	},
 
-	download() {
-		// Create a temporary canvas without grid
-		const tempCanvas = document.createElement('canvas');
-		tempCanvas.width = this.canvas.width;
-		tempCanvas.height = this.canvas.height;
-		const tempCtx = tempCanvas.getContext('2d');
+	updatePreview() {
+		const svg = this.generateSVG();
 		
-		// Draw white background
-		tempCtx.fillStyle = '#ffffff';
-		tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+		// Main preview
+		const previewIcon = document.getElementById('preview-icon');
+		if (previewIcon) {
+			previewIcon.innerHTML = svg;
+		}
 		
-		// Draw pixel data (skip grid lines by sampling center of each pixel)
-		for (let row = 0; row < this.currentSize; row++) {
-			for (let col = 0; col < this.currentSize; col++) {
-				const x = col * this.pixelSize;
-				const y = row * this.pixelSize;
-				const pixelData = this.ctx.getImageData(x + this.pixelSize / 2, y + this.pixelSize / 2, 1, 1).data;
-				
-				// Check if pixel is not white (grid color)
-				if (pixelData[0] !== 255 || pixelData[1] !== 224 || pixelData[2] !== 224) {
-					tempCtx.fillStyle = `rgb(${pixelData[0]}, ${pixelData[1]}, ${pixelData[2]})`;
-					tempCtx.fillRect(x, y, this.pixelSize, this.pixelSize);
+		// Size previews
+		[16, 32, 64].forEach(size => {
+			const el = document.getElementById(`preview-${size}`);
+			if (el) {
+				el.innerHTML = svg;
+				const svgEl = el.querySelector('svg');
+				if (svgEl) {
+					svgEl.setAttribute('width', size);
+					svgEl.setAttribute('height', size);
 				}
 			}
-		}
+		});
+	},
 
-		// Create download link
+	generateSVG() {
+		const pixelSize = 100 / this.gridSize;
+		let rects = '';
+		
+		Object.entries(this.pixels).forEach(([key, color]) => {
+			const [x, y] = key.split(',').map(Number);
+			rects += `<rect x="${x * pixelSize}" y="${y * pixelSize}" width="${pixelSize}" height="${pixelSize}" fill="${color}"/>`;
+		});
+		
+		return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="${this.gridSize * 4}" height="${this.gridSize * 4}">${rects}</svg>`;
+	},
+
+	downloadSVG() {
+		const svg = this.generateSVG();
+		const blob = new Blob([svg], { type: 'image/svg+xml' });
+		const url = URL.createObjectURL(blob);
+		
 		const link = document.createElement('a');
-		const timestamp = new Date().toISOString().slice(0, 10).replace(/-/g, '');
-		link.download = `8bit-icon-${timestamp}.png`;
-		link.href = tempCanvas.toDataURL('image/png');
+		link.download = `icon-${this.gridSize}x${this.gridSize}-${this.getTimestamp()}.svg`;
+		link.href = url;
 		link.click();
 		
+		URL.revokeObjectURL(url);
+		
 		if (ui && ui.notify) {
-			ui.notify('<i>⬇️</i> Icon downloaded!');
+			ui.notify('<i>📥</i> SVG downloaded!');
 		}
+	},
+
+	downloadPNG() {
+		const svg = this.generateSVG();
+		const img = new Image();
+		const svgBlob = new Blob([svg], { type: 'image/svg+xml' });
+		const url = URL.createObjectURL(svgBlob);
+		
+		img.onload = () => {
+			const canvas = document.createElement('canvas');
+			const scale = 32; // Export at higher resolution
+			canvas.width = this.gridSize * scale;
+			canvas.height = this.gridSize * scale;
+			
+			const ctx = canvas.getContext('2d');
+			ctx.imageSmoothingEnabled = false;
+			ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+			
+			canvas.toBlob((blob) => {
+				const link = document.createElement('a');
+				link.download = `icon-${this.gridSize}x${this.gridSize}-${this.getTimestamp()}.png`;
+				link.href = URL.createObjectURL(blob);
+				link.click();
+				
+				URL.revokeObjectURL(url);
+				
+				if (ui && ui.notify) {
+					ui.notify('<i>🖼️</i> PNG downloaded!');
+				}
+			}, 'image/png');
+		};
+		
+		img.src = url;
+	},
+
+	getTimestamp() {
+		return new Date().toISOString().slice(0, 10).replace(/-/g, '');
 	}
 };
 
 // Initialize when DOM is ready
 if (document.readyState === 'loading') {
-	document.addEventListener('DOMContentLoaded', () => Bit8Icon.init());
+	document.addEventListener('DOMContentLoaded', () => IconCreator.init());
 } else {
-	Bit8Icon.init();
+	IconCreator.init();
 }

@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>fernan.dev • 8-bit Icon</title>
-		<meta name="description" content="Create pixel art 8-bit style icons">
+		<meta name="description" content="Create 8-bit style icons in SVG format">
 		<link rel="canonical" href="https://fernan.dev/tools/8bit-icon" />
 		<meta name="author" content="Fernán García de Zúñiga" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,43 +33,95 @@
 			<section>
 				<article>
 					<a href="/tools/" class="back-link">← Back to Tools</a>
-					<h1>8-bit Icon Generator</h1>
-					<p>Create pixel art 8-bit style icons and download them as PNG images.</p>
+					<h1>8-bit Icon Creator</h1>
+					<p>Create 8-bit style icons in SVG format. Resolution-independent pixel art.</p>
 					
-					<h2>Canvas Settings</h2>
-					<div class="canvas-settings">
-						<div class="form-group">
-							<label for="canvas-size">Canvas Size</label>
-							<select id="canvas-size">
-								<option value="8">8 × 8 pixels</option>
-								<option value="16" selected>16 × 16 pixels</option>
-								<option value="24">24 × 24 pixels</option>
-								<option value="32">32 × 32 pixels</option>
-								<option value="64">64 × 64 pixels</option>
-							</select>
+					<div class="icon-creator">
+						<div class="creator-sidebar">
+							<div class="tool-section">
+								<h2>Grid Size</h2>
+								<div class="size-options">
+									<button class="size-btn" data-size="8">8×8</button>
+									<button class="size-btn active" data-size="16">16×16</button>
+									<button class="size-btn" data-size="24">24×24</button>
+									<button class="size-btn" data-size="32">32×32</button>
+								</div>
+							</div>
+							
+							<div class="tool-section">
+								<h2>Color</h2>
+								<div class="color-picker-wrapper">
+									<input type="color" id="pixel-color" value="#000000">
+									<span id="color-hex">#000000</span>
+								</div>
+								<div class="color-palette" id="color-palette"></div>
+							</div>
+							
+							<div class="tool-section">
+								<h2>Tools</h2>
+								<div class="tool-buttons">
+									<button id="eraser-btn" class="tool-btn">
+										<span class="tool-icon">🧹</span>
+										<span>Eraser</span>
+									</button>
+									<button id="clear-btn" class="tool-btn btn-secondary">
+										<span class="tool-icon">🗑️</span>
+										<span>Clear All</span>
+									</button>
+								</div>
+							</div>
+							
+							<div class="tool-section">
+								<h2>Actions</h2>
+								<div class="action-buttons">
+									<button id="download-svg" class="btn">
+										<span>📥</span> Download SVG
+									</button>
+									<button id="download-png" class="btn btn-secondary">
+										<span>🖼️</span> Download PNG
+									</button>
+								</div>
+							</div>
 						</div>
-						<div class="form-group">
-							<label for="pixel-color">Brush Color</label>
-							<input type="color" id="pixel-color" value="#000000">
+						
+						<div class="creator-main">
+							<div class="canvas-container">
+								<div id="pixel-canvas" class="pixel-canvas"></div>
+							</div>
+							
+							<div class="preview-section">
+								<h2>Preview</h2>
+								<div class="preview-container">
+									<div class="preview-bg checkered">
+										<div id="preview-icon"></div>
+									</div>
+								</div>
+								<div class="preview-sizes">
+									<div class="preview-size">
+										<span class="preview-label">16px</span>
+										<div class="preview-box small" id="preview-16"></div>
+									</div>
+									<div class="preview-size">
+										<span class="preview-label">32px</span>
+										<div class="preview-box medium" id="preview-32"></div>
+									</div>
+									<div class="preview-size">
+										<span class="preview-label">64px</span>
+										<div class="preview-box large" id="preview-64"></div>
+									</div>
+								</div>
+							</div>
 						</div>
-						<button id="eraser-btn" class="btn btn-secondary">Eraser</button>
-					</div>
-					
-					<h2>Drawing Canvas</h2>
-					<p>Click and drag on the canvas to draw. Use the color picker to change colors.</p>
-					<canvas id="pixel-canvas" class="pixel-canvas"></canvas>
-					<div class="canvas-actions">
-						<button id="clear-canvas" class="btn btn-secondary">Clear Canvas</button>
-						<button id="download-icon" class="btn">Download PNG</button>
 					</div>
 					
 					<div class="tips-section">
 						<h2>Tips</h2>
 						<ul>
-							<li>Start with a smaller canvas size (8×8 or 16×16) for classic 8-bit look</li>
-							<li>Use limited colors for authentic retro style</li>
-							<li>The grid helps you align pixels precisely</li>
-							<li>Download creates a PNG with transparency support</li>
+							<li>Click on a square to apply the selected color</li>
+							<li>Click again on a colored square to make it transparent</li>
+							<li>Use the eraser tool to remove individual pixels</li>
+							<li>Smaller grids (8×8, 16×16) work best for classic 8-bit style</li>
+							<li>SVG format scales without losing quality</li>
 						</ul>
 					</div>
 				</article>
