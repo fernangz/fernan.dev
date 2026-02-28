@@ -66,8 +66,8 @@
 
 .tool-header h1 {
 	color: var(--light);
-	font-size: var(--big);
-	line-height: var(--bigLine);
+	font-size: calc(var(--medium) * 1.25);
+	line-height: calc(var(--mediumLine) * 1.25);
 	margin-bottom: 0.5rem;
 }
 
@@ -83,8 +83,8 @@
 
 .tool-section h2 {
 	color: var(--light);
-	font-size: var(--medium);
-	line-height: var(--mediumLine);
+	font-size: calc(var(--medium) * 1.25);
+	line-height: calc(var(--mediumLine) * 1.25);
 	margin-bottom: 1rem;
 	padding-bottom: 0.5rem;
 	border-bottom: 2px solid var(--dark);
@@ -197,8 +197,8 @@ textarea {
 	align-items: center;
 	gap: 0.75rem;
 	color: var(--light);
-	font-size: var(--medium);
-	line-height: var(--mediumLine);
+	font-size: calc(var(--medium) * 1.25);
+	line-height: calc(var(--mediumLine) * 1.25);
 	text-decoration: none;
 	padding: 0.5rem 0;
 	border-bottom: 1px solid var(--dark);

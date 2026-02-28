@@ -212,9 +212,33 @@ main > section > article > *{
 }
 
 main > section > article h1 {
-	font-size: var(--big);
-	line-height: var(--bigLine);
+	font-size: calc(var(--medium) * 1.25);
+	line-height: calc(var(--mediumLine) * 1.25);
 	color: var(--light);
+}
+
+main > section > article h2 {
+	font-size: calc(var(--medium) * 1.25);
+	line-height: calc(var(--mediumLine) * 1.25);
+	color: var(--light);
+	margin-top: 1.5em;
+	margin-bottom: 0.5em;
+}
+
+main > section > article h3 {
+	font-size: calc(var(--medium) * 1.125);
+	line-height: calc(var(--mediumLine) * 1.125);
+	color: var(--light);
+	margin-top: 1.25em;
+	margin-bottom: 0.5em;
+}
+
+main > section > article h4 {
+	font-size: calc(var(--medium) * 1.0625);
+	line-height: calc(var(--mediumLine) * 1.0625);
+	color: var(--light);
+	margin-top: 1em;
+	margin-bottom: 0.5em;
 }
 
 main > section > article p {
