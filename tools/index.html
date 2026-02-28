@@ -32,6 +32,7 @@
 		<link rel="preload" href="/fonts/emoji.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 		<link rel="stylesheet" href="/styles/main.css">
 		<link rel="stylesheet" href="/styles/tools.css">
+		<link rel="stylesheet" href="/styles/tools-index.css">
 	</head>
 	<body>
 		<a href="#main-content" class="skip-link">Skip to main content</a>
@@ -51,6 +52,11 @@
 				<article>
 					<h1>Tools</h1>
 					<p>A curated collection of essential online tools for FrontEnd developers. All tools are free, run in your browser, and require no installation.</p>
+					
+					<div class="tools-search">
+						<input type="text" id="tools-search" placeholder="Search tools...">
+						<div class="tools-search-info" id="tools-count"></div>
+					</div>
 					
 					<div class="tools-section">
 						<h2><span class="emoji">🎨</span> Color Tools</h2>
@@ -90,5 +96,6 @@
 			</section>
 		</main>
 		<script src="/scripts/main.js"></script>
+		<script src="/scripts/tools-search.js"></script>
 	</body>
 </html>
