@@ -14,7 +14,8 @@ const ui = {
 		// Process SVGs in batches to avoid blocking
 		for (const tag of svgElements) {
 			const icon = tag.getAttribute("svg");
-			
+			if (!icon) continue; // Skip if no icon attribute
+
 			// Check cache first
 			if (this.svgCache[icon]) {
 				this.insertSVG(tag, this.svgCache[icon]);
@@ -22,10 +23,13 @@ const ui = {
 			}
 
 			// Check if already loaded in DOM
-			const existingSVG = document.querySelector(`[svgdone="${icon}"] svg`);
+			const existingSVG = document.querySelector(`[svgdone="${icon}"]`);
 			if (existingSVG) {
-				this.svgCache[icon] = existingSVG.cloneNode(true).outerHTML;
-				this.insertSVG(tag, this.svgCache[icon]);
+				const svgEl = existingSVG.querySelector('svg');
+				if (svgEl) {
+					this.svgCache[icon] = svgEl.cloneNode(true).outerHTML;
+					this.insertSVG(tag, this.svgCache[icon]);
+				}
 				continue;
 			}
 
@@ -174,22 +178,23 @@ const ui = {
 
 	color: () => {
 		// Only run if color animation is needed
-		const styleElement = document.getElementById("colorGeneratedVariable");
+		let styleElement = document.getElementById("colorGeneratedVariable");
 		if (styleElement) return; // Already running
 
 		const style = document.createElement("style");
 		style.id = "colorGeneratedVariable";
 		document.head.appendChild(style);
+		styleElement = style; // Update reference
 
 		let hue = 160;
 		let lastUpdate = 0;
 		const interval = 1000 / 24; // 24 FPS
 
 		const loop = (timestamp) => {
-			if (!styleElement.isConnected) return; // Stop if element removed
-			
+			if (!styleElement || !styleElement.isConnected) return; // Stop if element removed
+
 			requestAnimationFrame(loop);
-			
+
 			// Throttle updates
 			if (timestamp - lastUpdate < interval) return;
 			lastUpdate = timestamp;
