@@ -223,9 +223,6 @@ textarea {
 
 .tools-list li a,
 .articles-list li a {
-	display: flex;
-	align-items: start;
-	gap: var(--space-4);
 	color: inherit;
 	font-size: var(--font-md);
 	line-height: var(--lh-md);
