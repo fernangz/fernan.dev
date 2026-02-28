@@ -25,3 +25,6 @@ github.key.pub
 # Temporary files
 ssh_askpass.sh
 *.tmp
+
+# Publish script (local deployment tool)
+publish.sh
