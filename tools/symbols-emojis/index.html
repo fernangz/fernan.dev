@@ -2,9 +2,9 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<title>fernan.dev • MIME Types</title>
-		<meta name="description" content="Look up MIME type definitions for file extensions">
-		<link rel="canonical" href="https://fernan.dev/tools/mime-types" />
+		<title>fernan.dev • Symbols & Emojis</title>
+		<meta name="description" content="Browse and copy special symbols and emojis">
+		<link rel="canonical" href="https://fernan.dev/tools/symbols-emojis" />
 		<meta name="author" content="Fernán García de Zúñiga" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<link id="favicon" rel="shortcut icon" href="/svgs/f.svg" sizes="any" type="image/svg+xml">
@@ -15,7 +15,7 @@
 		<link rel="preload" href="/fonts/emoji.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 		<link rel="stylesheet" href="/styles/main.css">
 		<link rel="stylesheet" href="/styles/tools.css">
-		<link rel="stylesheet" href="/styles/data-table.css">
+		<link rel="stylesheet" href="/styles/symbols.css">
 	</head>
 	<body>
 		<nav>
@@ -24,34 +24,24 @@
 			<button class="toggle" aria-label="Menu" svg="plus"></button>
 			<ul>
 				<li><a href="/">About</a></li>
-				<li><a href="/tools/index.html">Tools</a></li>
-				<li><a href="/articles/index.html">Articles</a></li>
-				<li><a href="/resources/index.html">Resources</a></li>
+				<li><a href="/tools/">Tools</a></li>
+				<li><a href="/articles/">Articles</a></li>
+				<li><a href="/resources/">Resources</a></li>
 			</ul>
 		</nav>
 		<main>
 			<section>
 				<article>
-					<a href="/tools/index.html" class="back-link">← Back to Tools</a>
-					<h1>MIME Types Reference</h1>
-					<p>Look up MIME type definitions for file extensions.</p>
-					<h2>Search MIME Types</h2>
-					<input type="text" id="mime-search" placeholder="Search by extension or MIME type..." style="margin-top:1rem;">
-					<h2>MIME Types Table</h2>
-					<table class="data-table">
-						<thead>
-							<tr>
-								<th>Extension</th>
-								<th>MIME Type</th>
-								<th>Action</th>
-							</tr>
-						</thead>
-						<tbody id="mime-container"></tbody>
-					</table>
+					<a href="/tools/" class="back-link">← Back to Tools</a>
+					<h1>Symbols & Emojis</h1>
+					<p>Browse and copy special symbols and emojis for your projects. Click on any symbol to copy it.</p>
+					<h2>Common Symbols & Emojis</h2>
+					<p>Click on any symbol to copy it to your clipboard.</p>
+					<div id="symbols-container" class="symbols-grid"></div>
 				</article>
 			</section>
 		</main>
 		<script src="/scripts/main.js"></script>
-		<script src="/scripts/mime-types.js"></script>
+		<script src="/scripts/symbols-emojis.js"></script>
 	</body>
 </html>
