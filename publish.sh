@@ -11,6 +11,10 @@ REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
 SSH_KEY="$REPO_DIR/github.key"
 PASSPHRASE_FILE="$REPO_DIR/github.passphrase"
 
+# Git user configuration
+GIT_USER_NAME="nai"
+GIT_USER_EMAIL="nai@fernan.dev"
+
 # Colors for output
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -60,6 +64,10 @@ if [ ! -d ".git" ]; then
     exit 1
 fi
 
+# Set git user config
+git config user.name "$GIT_USER_NAME"
+git config user.email "$GIT_USER_EMAIL"
+
 # Show current status
 echo -e "${YELLOW}Current Git Status:${NC}"
 git status --short
@@ -69,12 +77,16 @@ echo ""
 echo -e "${YELLOW}Staging all changes...${NC}"
 git add -A
 
-# Remove .DS_Store files from staging
+# Remove ignored files from staging
 git reset HEAD .DS_Store 2>/dev/null
-find . -name ".DS_Store" -delete
+git reset HEAD github.passphrase 2>/dev/null
+git reset HEAD github.key 2>/dev/null
+git reset HEAD github.key.pub 2>/dev/null
+git reset HEAD ssh_askpass.sh 2>/dev/null
+git reset HEAD publish.sh 2>/dev/null
 
-# Remove sensitive files from staging
-git reset HEAD github.passphrase ssh_askpass.sh 2>/dev/null
+# Clean up .DS_Store files
+find . -name ".DS_Store" -delete
 
 # Show what will be committed
 echo ""
@@ -102,7 +114,7 @@ fi
 
 # Commit changes
 echo ""
-echo -e "${YELLOW}Committing changes...${NC}"
+echo -e "${YELLOW}Committing as '$GIT_USER_NAME'...${NC}"
 git commit -m "$COMMIT_MSG"
 
 if [ $? -ne 0 ]; then
