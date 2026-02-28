@@ -1,14 +1,15 @@
 /* ============================================
    8-bit Icon Creator Tool Script
+   Optimized with DocumentFragment and Fixed PNG Export
    ============================================ */
 
 const IconCreator = {
 	gridSize: 16,
 	currentColor: '#000000',
 	isEraser: false,
-	pixels: {}, // Store pixel colors: { "x,y": "#color" }
-	
-	// Predefined color palette
+	pixels: {},
+	isDrawing: false,
+
 	colorPalette: [
 		'#000000', '#1a1a2e', '#16213e', '#0f3460', '#533483', '#e94560',
 		'#ff6b6b', '#feca57', '#48dbfb', '#1dd1a1', '#5f27cd', '#c8d6e5',
@@ -16,183 +17,188 @@ const IconCreator = {
 	],
 
 	init() {
-		// Initialize color palette
+		this.cacheElements();
 		this.renderColorPalette();
-		
-		// Set up event listeners
-		this.setupSizeButtons();
-		this.setupColorPicker();
-		this.setupToolButtons();
-		this.setupActionButtons();
-		
-		// Create initial canvas
+		this.bindEvents();
 		this.createCanvas();
+	},
+
+	cacheElements() {
+		this.elements = {
+			canvas: document.getElementById('pixel-canvas'),
+			colorInput: document.getElementById('pixel-color'),
+			colorHex: document.getElementById('color-hex'),
+			eraserBtn: document.getElementById('eraser-btn'),
+			clearBtn: document.getElementById('clear-btn'),
+			downloadSvg: document.getElementById('download-svg'),
+			downloadPng: document.getElementById('download-png'),
+			previewIcon: document.getElementById('preview-icon'),
+			previews: {
+				16: document.getElementById('preview-16'),
+				32: document.getElementById('preview-32'),
+				64: document.getElementById('preview-64')
+			}
+		};
+	},
+
+	bindEvents() {
+		// Size buttons
+		document.querySelectorAll('.size-btn').forEach(btn => {
+			btn.addEventListener('click', (e) => {
+				document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+				e.target.classList.add('active');
+				this.gridSize = parseInt(e.target.dataset.size);
+				this.pixels = {};
+				this.createCanvas();
+			});
+		});
+
+		// Color picker
+		if (this.elements.colorInput) {
+			this.elements.colorInput.addEventListener('input', (e) => {
+				this.setColor(e.target.value);
+				if (this.elements.colorHex) {
+					this.elements.colorHex.textContent = e.target.value.toUpperCase();
+				}
+			});
+		}
+
+		// Tool buttons
+		if (this.elements.eraserBtn) {
+			this.elements.eraserBtn.addEventListener('click', () => {
+				this.isEraser = !this.isEraser;
+				this.elements.eraserBtn.classList.toggle('active', this.isEraser);
+			});
+		}
+
+		if (this.elements.clearBtn) {
+			this.elements.clearBtn.addEventListener('click', () => {
+				this.clearCanvas();
+			});
+		}
+
+		// Download buttons
+		if (this.elements.downloadSvg) {
+			this.elements.downloadSvg.addEventListener('click', () => this.downloadSVG());
+		}
+
+		if (this.elements.downloadPng) {
+			this.elements.downloadPng.addEventListener('click', () => this.downloadPNG());
+		}
+
+		// Canvas events
+		if (this.elements.canvas) {
+			this.elements.canvas.addEventListener('mousedown', (e) => {
+				this.isDrawing = true;
+				this.handlePixelInteraction(e);
+			});
+			this.elements.canvas.addEventListener('mousemove', (e) => {
+				if (this.isDrawing) {
+					this.handlePixelInteraction(e);
+				}
+			});
+			this.elements.canvas.addEventListener('mouseup', () => {
+				this.isDrawing = false;
+			});
+			this.elements.canvas.addEventListener('mouseleave', () => {
+				this.isDrawing = false;
+			});
+		}
 	},
 
 	renderColorPalette() {
 		const container = document.getElementById('color-palette');
 		if (!container) return;
+
+		const fragment = document.createDocumentFragment();
 		
-		container.innerHTML = this.colorPalette.map(color => 
-			`<div class="palette-color" style="background-color: ${color}" data-color="${color}"></div>`
-		).join('');
-		
-		// Add click handlers
-		container.querySelectorAll('.palette-color').forEach(el => {
-			el.addEventListener('click', () => {
-				const color = el.dataset.color;
+		this.colorPalette.forEach((color, index) => {
+			const div = document.createElement('div');
+			div.className = 'palette-color' + (index === 0 ? ' active' : '');
+			div.style.backgroundColor = color;
+			div.dataset.color = color;
+			div.addEventListener('click', () => {
 				this.setColor(color);
-				
-				// Update active state
-				container.querySelectorAll('.palette-color').forEach(c => c.classList.remove('active'));
-				el.classList.add('active');
+				document.querySelectorAll('.palette-color').forEach(c => c.classList.remove('active'));
+				div.classList.add('active');
 			});
+			fragment.appendChild(div);
 		});
-		
-		// Set first color as active
-		if (container.firstChild) {
-			container.firstChild.classList.add('active');
-		}
-	},
 
-	setupSizeButtons() {
-		document.querySelectorAll('.size-btn').forEach(btn => {
-			btn.addEventListener('click', () => {
-				// Update active state
-				document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
-				btn.classList.add('active');
-				
-				// Update grid size
-				this.gridSize = parseInt(btn.dataset.size);
-				this.pixels = {}; // Clear pixels
-				this.createCanvas();
-				this.updatePreview();
-			});
-		});
-	},
-
-	setupColorPicker() {
-		const colorInput = document.getElementById('pixel-color');
-		const colorHex = document.getElementById('color-hex');
-		
-		if (colorInput) {
-			colorInput.addEventListener('input', (e) => {
-				this.setColor(e.target.value);
-				if (colorHex) {
-					colorHex.textContent = e.target.value.toUpperCase();
-				}
-				
-				// Update palette active state
-				document.querySelectorAll('.palette-color').forEach(c => {
-					c.classList.toggle('active', c.dataset.color === e.target.value);
-				});
-			});
-		}
-	},
-
-	setupToolButtons() {
-		const eraserBtn = document.getElementById('eraser-btn');
-		const clearBtn = document.getElementById('clear-btn');
-		
-		if (eraserBtn) {
-			eraserBtn.addEventListener('click', () => {
-				this.isEraser = !this.isEraser;
-				eraserBtn.classList.toggle('active', this.isEraser);
-			});
-		}
-		
-		if (clearBtn) {
-			clearBtn.addEventListener('click', () => {
-				this.clearCanvas();
-			});
-		}
-	},
-
-	setupActionButtons() {
-		const downloadSvg = document.getElementById('download-svg');
-		const downloadPng = document.getElementById('download-png');
-		
-		if (downloadSvg) {
-			downloadSvg.addEventListener('click', () => this.downloadSVG());
-		}
-		
-		if (downloadPng) {
-			downloadPng.addEventListener('click', () => this.downloadPNG());
-		}
+		container.appendChild(fragment);
 	},
 
 	setColor(color) {
 		this.currentColor = color;
 		this.isEraser = false;
-		document.getElementById('eraser-btn')?.classList.remove('active');
+		this.elements.eraserBtn?.classList.remove('active');
 	},
 
 	createCanvas() {
-		const container = document.getElementById('pixel-canvas');
-		if (!container) return;
-		
+		if (!this.elements.canvas) return;
+
 		// Set grid CSS
-		container.style.gridTemplateColumns = `repeat(${this.gridSize}, 1.25rem)`;
-		container.style.gridTemplateRows = `repeat(${this.gridSize}, 1.25rem)`;
-		
-		// Create pixels
-		container.innerHTML = '';
+		this.elements.canvas.style.gridTemplateColumns = `repeat(${this.gridSize}, 1.25rem)`;
+		this.elements.canvas.style.gridTemplateRows = `repeat(${this.gridSize}, 1.25rem)`;
+
+		// Use DocumentFragment for better performance
+		const fragment = document.createDocumentFragment();
+
 		for (let y = 0; y < this.gridSize; y++) {
 			for (let x = 0; x < this.gridSize; x++) {
 				const pixel = document.createElement('div');
 				pixel.className = 'pixel';
 				pixel.dataset.x = x;
 				pixel.dataset.y = y;
-				
-				// Restore pixel color if exists
+
 				const key = `${x},${y}`;
 				if (this.pixels[key]) {
 					pixel.style.backgroundColor = this.pixels[key];
-					pixel.classList.remove('transparent');
 				} else {
 					pixel.classList.add('transparent');
 				}
-				
-				// Add click handler
-				pixel.addEventListener('click', () => this.togglePixel(x, y));
-				pixel.addEventListener('mouseenter', (e) => {
-					if (e.buttons === 1) {
-						this.togglePixel(x, y);
-					}
-				});
-				
-				container.appendChild(pixel);
+
+				fragment.appendChild(pixel);
 			}
 		}
-		
+
+		this.elements.canvas.innerHTML = '';
+		this.elements.canvas.appendChild(fragment);
 		this.updatePreview();
 	},
 
-	togglePixel(x, y) {
+	handlePixelInteraction(e) {
+		const pixel = e.target;
+		if (!pixel.classList.contains('pixel')) return;
+
+		const x = parseInt(pixel.dataset.x);
+		const y = parseInt(pixel.dataset.y);
+		this.togglePixel(x, y, pixel);
+	},
+
+	togglePixel(x, y, pixel) {
 		const key = `${x},${y}`;
-		const pixel = document.querySelector(`.pixel[data-x="${x}"][data-y="${y}"]`);
-		
+
 		if (this.isEraser) {
-			// Eraser mode: remove color
 			delete this.pixels[key];
 			if (pixel) {
 				pixel.classList.add('transparent');
+				pixel.style.backgroundColor = '';
 			}
 		} else if (this.pixels[key] === this.currentColor) {
-			// Same color: remove
 			delete this.pixels[key];
 			if (pixel) {
 				pixel.classList.add('transparent');
+				pixel.style.backgroundColor = '';
 			}
 		} else {
-			// Set new color
 			this.pixels[key] = this.currentColor;
 			if (pixel) {
 				pixel.style.backgroundColor = this.currentColor;
 				pixel.classList.remove('transparent');
 			}
 		}
-		
+
 		this.updatePreview();
 	},
 
@@ -206,16 +212,14 @@ const IconCreator = {
 
 	updatePreview() {
 		const svg = this.generateSVG();
-		
-		// Main preview
-		const previewIcon = document.getElementById('preview-icon');
-		if (previewIcon) {
-			previewIcon.innerHTML = svg;
+
+		if (this.elements.previewIcon) {
+			this.elements.previewIcon.innerHTML = svg;
 		}
-		
-		// Size previews
+
+		// Update size previews
 		[16, 32, 64].forEach(size => {
-			const el = document.getElementById(`preview-${size}`);
+			const el = this.elements.previews[size];
 			if (el) {
 				el.innerHTML = svg;
 				const svgEl = el.querySelector('svg');
@@ -230,12 +234,12 @@ const IconCreator = {
 	generateSVG() {
 		const pixelSize = 100 / this.gridSize;
 		let rects = '';
-		
+
 		Object.entries(this.pixels).forEach(([key, color]) => {
 			const [x, y] = key.split(',').map(Number);
 			rects += `<rect x="${x * pixelSize}" y="${y * pixelSize}" width="${pixelSize}" height="${pixelSize}" fill="${color}"/>`;
 		});
-		
+
 		return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="${this.gridSize * 4}" height="${this.gridSize * 4}">${rects}</svg>`;
 	},
 
@@ -243,14 +247,14 @@ const IconCreator = {
 		const svg = this.generateSVG();
 		const blob = new Blob([svg], { type: 'image/svg+xml' });
 		const url = URL.createObjectURL(blob);
-		
+
 		const link = document.createElement('a');
 		link.download = `icon-${this.gridSize}x${this.gridSize}-${this.getTimestamp()}.svg`;
 		link.href = url;
 		link.click();
-		
+
 		URL.revokeObjectURL(url);
-		
+
 		if (ui && ui.notify) {
 			ui.notify('<i>📥</i> SVG downloaded!');
 		}
@@ -258,34 +262,44 @@ const IconCreator = {
 
 	downloadPNG() {
 		const svg = this.generateSVG();
-		const img = new Image();
 		const svgBlob = new Blob([svg], { type: 'image/svg+xml' });
 		const url = URL.createObjectURL(svgBlob);
-		
+
+		const img = new Image();
 		img.onload = () => {
 			const canvas = document.createElement('canvas');
-			const scale = 32; // Export at higher resolution
+			const scale = 32;
 			canvas.width = this.gridSize * scale;
 			canvas.height = this.gridSize * scale;
-			
+
 			const ctx = canvas.getContext('2d');
+			
+			// Clear canvas with transparent background
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
 			ctx.imageSmoothingEnabled = false;
 			ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-			
+
 			canvas.toBlob((blob) => {
+				if (!blob) return;
+				
 				const link = document.createElement('a');
 				link.download = `icon-${this.gridSize}x${this.gridSize}-${this.getTimestamp()}.png`;
 				link.href = URL.createObjectURL(blob);
 				link.click();
-				
-				URL.revokeObjectURL(url);
-				
+				URL.revokeObjectURL(link.href);
+
 				if (ui && ui.notify) {
 					ui.notify('<i>🖼️</i> PNG downloaded!');
 				}
 			}, 'image/png');
 		};
-		
+
+		img.onerror = () => {
+			if (ui && ui.notify) {
+				ui.notify('<i>❌</i> Error generating PNG');
+			}
+		};
+
 		img.src = url;
 	},
 

@@ -356,6 +356,10 @@ main > section > article p {
 
 main > section > article ul {
 	list-style: none;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: left;
 }
 
 main > section > article ul li {
@@ -364,6 +368,10 @@ main > section > article ul li {
 	line-height: var(--lh-md);
 	color: var(--light);
 	margin: 0 0 var(--space-5) 0;
+	display: inline-flex;
+	flex-direction: row;
+	align-items: end;
+
 }
 
 main > section > article a {

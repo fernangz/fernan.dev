@@ -1,110 +1,64 @@
 /* ============================================
    Color Converter Tool Script
+   Optimized with Debouncing and Caching
    ============================================ */
 
 const ColorConverter = {
 	currentColor: '#3498db',
+	paletteCache: {},
+	lastPaletteType: null,
 
 	init() {
-		const colorInput = document.getElementById('color-input');
-		const hexInput = document.getElementById('hex-input');
-		const rgbInput = document.getElementById('rgb-input');
-		const hslInput = document.getElementById('hsl-input');
-		const hsvInput = document.getElementById('hsv-input');
-		const colorPreview = document.getElementById('color-preview');
+		this.elements = {
+			colorInput: document.getElementById('color-input'),
+			hexInput: document.getElementById('hex-input'),
+			rgbInput: document.getElementById('rgb-input'),
+			hslInput: document.getElementById('hsl-input'),
+			hsvInput: document.getElementById('hsv-input'),
+			colorPreview: document.getElementById('color-preview'),
+			palettes: {
+				analogous: document.getElementById('palette-analogous'),
+				complementary: document.getElementById('palette-complementary'),
+				triadic: document.getElementById('palette-triadic'),
+				split: document.getElementById('palette-split')
+			},
+			contrast: {
+				black: document.getElementById('contrast-black'),
+				white: document.getElementById('contrast-white'),
+				indicatorBlack: document.getElementById('indicator-black'),
+				indicatorWhite: document.getElementById('indicator-white')
+			}
+		};
 
-		if (!colorInput) return;
+		if (!this.elements.colorInput) return;
 
-		// Set initial color preview
-		if (colorPreview) {
-			colorPreview.style.backgroundColor = this.currentColor;
-		}
-
-		// Generate initial palettes
+		// Set initial state
+		this.elements.colorPreview.style.backgroundColor = this.currentColor;
 		this.generateAllPalettes();
 
-		// Color picker change
-		colorInput.addEventListener('input', (e) => {
-			this.currentColor = e.target.value;
-			this.updateColorInputs(this.currentColor);
-			if (colorPreview) {
-				colorPreview.style.backgroundColor = this.currentColor;
-			}
-			// Auto-generate palettes on color change
-			this.generateAllPalettes();
+		// Bind event handlers with debouncing
+		this.bindEvents();
+	},
+
+	bindEvents() {
+		// Color picker - immediate update
+		this.elements.colorInput.addEventListener('input', (e) => {
+			this.setColor(e.target.value);
 		});
 
-		// HEX input change
-		if (hexInput) {
-			hexInput.addEventListener('input', (e) => {
-				let hex = e.target.value;
-				if (!hex.startsWith('#')) hex = '#' + hex;
-				if (/^#[0-9A-F]{6}$/i.test(hex)) {
-					this.currentColor = hex;
-					this.updateColorInputs(hex);
-					if (colorPreview) {
-						colorPreview.style.backgroundColor = hex;
-					}
-					if (colorInput) {
-						colorInput.value = hex;
-					}
-				}
-			});
-		}
+		// Text inputs - debounced
+		const debouncedUpdate = this.debounce((value, type) => {
+			this.handleTextInput(value, type);
+		}, 150);
 
-		// RGB input change
-		if (rgbInput) {
-			rgbInput.addEventListener('input', (e) => {
-				const rgb = e.target.value;
-				const hex = this.rgbToHex(rgb);
-				if (hex) {
-					this.currentColor = hex;
-					this.updateColorInputs(hex);
-					if (colorPreview) {
-						colorPreview.style.backgroundColor = hex;
-					}
-					if (colorInput) {
-						colorInput.value = hex;
-					}
-				}
-			});
-		}
-
-		// HSL input change
-		if (hslInput) {
-			hslInput.addEventListener('input', (e) => {
-				const hsl = e.target.value;
-				const hex = this.hslToHex(hsl);
-				if (hex) {
-					this.currentColor = hex;
-					this.updateColorInputs(hex);
-					if (colorPreview) {
-						colorPreview.style.backgroundColor = hex;
-					}
-					if (colorInput) {
-						colorInput.value = hex;
-					}
-				}
-			});
-		}
-
-		// HSV input change
-		if (hsvInput) {
-			hsvInput.addEventListener('input', (e) => {
-				const hsv = e.target.value;
-				const hex = this.hsvToHex(hsv);
-				if (hex) {
-					this.currentColor = hex;
-					this.updateColorInputs(hex);
-					if (colorPreview) {
-						colorPreview.style.backgroundColor = hex;
-					}
-					if (colorInput) {
-						colorInput.value = hex;
-					}
-				}
-			});
-		}
+		['hexInput', 'rgbInput', 'hslInput', 'hsvInput'].forEach(inputName => {
+			const input = this.elements[inputName];
+			if (input) {
+				input.addEventListener('input', (e) => {
+					debouncedUpdate(e.target.value, inputName.replace('Input', ''));
+				});
+			}
+		});
 
 		// Copy buttons
 		document.querySelectorAll('.copy-btn').forEach(btn => {
@@ -112,292 +66,334 @@ const ColorConverter = {
 				const targetId = btn.dataset.target;
 				const input = document.getElementById(targetId);
 				if (input) {
-					navigator.clipboard.writeText(input.value);
-					if (ui && ui.notify) {
-						ui.notify(`<i>📋</i> ${input.value} copied!`);
-					}
+					this.copyToClipboard(input.value, `${input.value} copied!`);
 				}
 			});
 		});
 	},
 
+	debounce(func, wait) {
+		let timeout;
+		return (...args) => {
+			clearTimeout(timeout);
+			timeout = setTimeout(() => func.apply(this, args), wait);
+		};
+	},
+
+	setColor(hex) {
+		this.currentColor = hex;
+		this.updateColorInputs(hex);
+		this.elements.colorPreview.style.backgroundColor = hex;
+		this.generateAllPalettes();
+	},
+
+	handleTextInput(value, type) {
+		let hex = null;
+
+		switch (type) {
+			case 'hex':
+				if (!value.startsWith('#')) value = '#' + value;
+				if (/^#[0-9A-F]{6}$/i.test(value)) {
+					hex = value;
+				}
+				break;
+			case 'rgb':
+				hex = this.rgbToHex(value);
+				break;
+			case 'hsl':
+				hex = this.hslToHex(value);
+				break;
+			case 'hsv':
+				hex = this.hsvToHex(value);
+				break;
+		}
+
+		if (hex) {
+			this.setColor(hex);
+			if (this.elements.colorInput) {
+				this.elements.colorInput.value = hex;
+			}
+		}
+	},
+
 	generateAllPalettes() {
-		this.generatePalette('analogous', document.getElementById('palette-analogous'));
-		this.generatePalette('complementary', document.getElementById('palette-complementary'));
-		this.generatePalette('triadic', document.getElementById('palette-triadic'));
-		this.generatePalette('split', document.getElementById('palette-split'));
+		// Generate palettes in next frame to avoid blocking
+		requestAnimationFrame(() => {
+			this.generatePalette('analogous', this.elements.palettes.analogous);
+			this.generatePalette('complementary', this.elements.palettes.complementary);
+			this.generatePalette('triadic', this.elements.palettes.triadic);
+			this.generatePalette('split', this.elements.palettes.split);
+		});
 	},
 
 	updateColorInputs(hex) {
-		const colorInput = document.getElementById('color-input');
-		const hexInput = document.getElementById('hex-input');
-		const rgbInput = document.getElementById('rgb-input');
-		const hslInput = document.getElementById('hsl-input');
-		const hsvInput = document.getElementById('hsv-input');
-
-		if (colorInput) colorInput.value = hex;
-		if (hexInput) hexInput.value = hex;
-		if (rgbInput) rgbInput.value = this.hexToRgb(hex);
-		if (hslInput) hslInput.value = this.hexToHsl(hex);
-		if (hsvInput) hsvInput.value = this.hexToHsv(hex);
-		
-		// Update contrast ratios
+		if (this.elements.hexInput) this.elements.hexInput.value = hex;
+		if (this.elements.rgbInput) this.elements.rgbInput.value = this.hexToRgb(hex);
+		if (this.elements.hslInput) this.elements.hslInput.value = this.hexToHsl(hex);
+		if (this.elements.hsvInput) this.elements.hsvInput.value = this.hexToHsv(hex);
 		this.updateContrastRatios(hex);
 	},
-	
+
 	updateContrastRatios(hex) {
-		const contrastBlackEl = document.getElementById('contrast-black');
-		const contrastWhiteEl = document.getElementById('contrast-white');
-		const indicatorBlackEl = document.getElementById('indicator-black');
-		const indicatorWhiteEl = document.getElementById('indicator-white');
-		
-		if (!contrastBlackEl || !contrastWhiteEl) return;
-		
+		if (!this.elements.contrast.black || !this.elements.contrast.white) return;
+
 		const ratioBlack = this.calculateContrastRatio(hex, '#000000');
 		const ratioWhite = this.calculateContrastRatio(hex, '#ffffff');
-		
-		contrastBlackEl.textContent = `${ratioBlack.toFixed(2)}:1`;
-		contrastWhiteEl.textContent = `${ratioWhite.toFixed(2)}:1`;
-		
-		// Update indicators
-		if (indicatorBlackEl) {
-			indicatorBlackEl.className = 'contrast-indicator ' + this.getContrastClass(ratioBlack);
+
+		this.elements.contrast.black.textContent = `${ratioBlack.toFixed(2)}:1`;
+		this.elements.contrast.white.textContent = `${ratioWhite.toFixed(2)}:1`;
+
+		if (this.elements.contrast.indicatorBlack) {
+			this.elements.contrast.indicatorBlack.className = 
+				'contrast-indicator ' + this.getContrastClass(ratioBlack);
 		}
-		if (indicatorWhiteEl) {
-			indicatorWhiteEl.className = 'contrast-indicator ' + this.getContrastClass(ratioWhite);
+		if (this.elements.contrast.indicatorWhite) {
+			this.elements.contrast.indicatorWhite.className = 
+				'contrast-indicator ' + this.getContrastClass(ratioWhite);
 		}
 	},
-	
+
 	calculateContrastRatio(hex1, hex2) {
 		const l1 = this.getRelativeLuminance(hex1);
 		const l2 = this.getRelativeLuminance(hex2);
-		
 		const lighter = Math.max(l1, l2);
 		const darker = Math.min(l1, l2);
-		
 		return (lighter + 0.05) / (darker + 0.05);
 	},
-	
+
 	getRelativeLuminance(hex) {
 		const rgb = this.hexToRgb(hex);
-		const match = rgb.match(/(\d+),\s*(\d+),\s*(\d+)/);
-		
+		const match = rgb?.match(/(\d+),\s*(\d+),\s*(\d+)/);
 		if (!match) return 0;
-		
+
 		const [r, g, b] = [parseInt(match[1]), parseInt(match[2]), parseInt(match[3])].map(v => {
 			v = v / 255;
 			return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
 		});
-		
+
 		return 0.2126 * r + 0.7152 * g + 0.0722 * b;
 	},
-	
+
 	getContrastClass(ratio) {
 		if (ratio >= 7) return 'pass-aaa';
 		if (ratio >= 4.5) return 'pass-aa';
 		return 'fail';
 	},
 
+	copyToClipboard(text, message) {
+		navigator.clipboard.writeText(text)
+			.then(() => {
+				if (ui && ui.notify) {
+					ui.notify(`<i>📋</i> ${message}`);
+				}
+			})
+			.catch(() => {
+				// Fallback
+				const textArea = document.createElement('textarea');
+				textArea.value = text;
+				document.body.appendChild(textArea);
+				textArea.select();
+				document.execCommand('copy');
+				document.body.removeChild(textArea);
+				if (ui && ui.notify) {
+					ui.notify(`<i>📋</i> ${message}`);
+				}
+			});
+	},
+
+	// Color conversion methods
 	hexToRgb(hex) {
 		const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-		if (result) {
-			const r = parseInt(result[1], 16);
-			const g = parseInt(result[2], 16);
-			const b = parseInt(result[3], 16);
-			return `rgb(${r}, ${g}, ${b})`;
-		}
-		return '';
+		return result ? `rgb(${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, ${parseInt(result[3], 16)})` : '';
 	},
 
 	rgbToHex(rgb) {
-		const match = rgb.match(/(\d+),\s*(\d+),\s*(\d+)/);
-		if (match) {
-			const r = parseInt(match[1]);
-			const g = parseInt(match[2]);
-			const b = parseInt(match[3]);
-			return '#' + [r, g, b].map(x => x.toString(16).padStart(2, '0')).join('');
-		}
-		return '';
+		const match = rgb?.match(/(\d+),\s*(\d+),\s*(\d+)/);
+		if (!match) return '';
+		return '#' + [match[1], match[2], match[3]].map(x => {
+			const hex = parseInt(x).toString(16);
+			return hex.length === 1 ? '0' + hex : hex;
+		}).join('');
 	},
 
 	hexToHsl(hex) {
 		const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-		if (result) {
-			let r = parseInt(result[1], 16) / 255;
-			let g = parseInt(result[2], 16) / 255;
-			let b = parseInt(result[3], 16) / 255;
+		if (!result) return '';
 
-			const max = Math.max(r, g, b);
-			const min = Math.min(r, g, b);
-			let h, s, l = (max + min) / 2;
+		let r = parseInt(result[1], 16) / 255;
+		let g = parseInt(result[2], 16) / 255;
+		let b = parseInt(result[3], 16) / 255;
 
-			if (max === min) {
-				h = s = 0;
-			} else {
-				const d = max - min;
-				s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-				switch (max) {
-					case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
-					case g: h = ((b - r) / d + 2) / 6; break;
-					case b: h = ((r - g) / d + 4) / 6; break;
-				}
+		const max = Math.max(r, g, b), min = Math.min(r, g, b);
+		let h, s, l = (max + min) / 2;
+
+		if (max === min) {
+			h = s = 0;
+		} else {
+			const d = max - min;
+			s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+			switch (max) {
+				case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+				case g: h = ((b - r) / d + 2) / 6; break;
+				case b: h = ((r - g) / d + 4) / 6; break;
 			}
-
-			return `hsl(${Math.round(h * 360)}, ${Math.round(s * 100)}%, ${Math.round(l * 100)}%)`;
 		}
-		return '';
+
+		return `hsl(${Math.round(h * 360)}, ${Math.round(s * 100)}%, ${Math.round(l * 100)}%)`;
 	},
 
 	hslToHex(hsl) {
-		const match = hsl.match(/(\d+),\s*(\d+)%,\s*(\d+)%/);
-		if (match) {
-			let h = parseInt(match[1]) / 360;
-			let s = parseInt(match[2]) / 100;
-			let l = parseInt(match[3]) / 100;
+		const match = hsl?.match(/(\d+),\s*(\d+)%,\s*(\d+)%/);
+		if (!match) return '';
 
-			let r, g, b;
-			if (s === 0) {
-				r = g = b = l;
-			} else {
-				const hue2rgb = (p, q, t) => {
-					if (t < 0) t += 1;
-					if (t > 1) t -= 1;
-					if (t < 1/6) return p + (q - p) * 6 * t;
-					if (t < 1/2) return q;
-					if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
-					return p;
-				};
-				const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
-				const p = 2 * l - q;
-				r = hue2rgb(p, q, h + 1/3);
-				g = hue2rgb(p, q, h);
-				b = hue2rgb(p, q, h - 1/3);
-			}
+		let h = parseInt(match[1]) / 360;
+		let s = parseInt(match[2]) / 100;
+		let l = parseInt(match[3]) / 100;
 
-			return '#' + [r, g, b].map(x => Math.round(x * 255).toString(16).padStart(2, '0')).join('');
-		}
-		return '';
+		const hue2rgb = (p, q, t) => {
+			if (t < 0) t += 1;
+			if (t > 1) t -= 1;
+			if (t < 1/6) return p + (q - p) * 6 * t;
+			if (t < 1/2) return q;
+			if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+			return p;
+		};
+
+		const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+		const p = 2 * l - q;
+
+		return '#' + [
+			Math.round(hue2rgb(p, q, h + 1/3) * 255).toString(16).padStart(2, '0'),
+			Math.round(hue2rgb(p, q, h) * 255).toString(16).padStart(2, '0'),
+			Math.round(hue2rgb(p, q, h - 1/3) * 255).toString(16).padStart(2, '0')
+		].join('');
 	},
 
 	hexToHsv(hex) {
 		const rgbResult = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-		if (rgbResult) {
-			let r = parseInt(rgbResult[1], 16) / 255;
-			let g = parseInt(rgbResult[2], 16) / 255;
-			let b = parseInt(rgbResult[3], 16) / 255;
+		if (!rgbResult) return '';
 
-			const max = Math.max(r, g, b);
-			const min = Math.min(r, g, b);
-			const d = max - min;
-			
-			let h = 0;
-			if (max !== min) {
-				switch (max) {
-					case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
-					case g: h = ((b - r) / d + 2) / 6; break;
-					case b: h = ((r - g) / d + 4) / 6; break;
-				}
+		let r = parseInt(rgbResult[1], 16) / 255;
+		let g = parseInt(rgbResult[2], 16) / 255;
+		let b = parseInt(rgbResult[3], 16) / 255;
+
+		const max = Math.max(r, g, b), min = Math.min(r, g, b);
+		const d = max - min;
+		let h = 0;
+
+		if (max !== min) {
+			switch (max) {
+				case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+				case g: h = ((b - r) / d + 2) / 6; break;
+				case b: h = ((r - g) / d + 4) / 6; break;
 			}
-
-			const s = max === 0 ? 0 : d / max;
-			const v = max;
-
-			return `hsv(${Math.round(h * 360)}, ${Math.round(s * 100)}%, ${Math.round(v * 100)}%)`;
 		}
-		return '';
+
+		const s = max === 0 ? 0 : d / max;
+		return `hsv(${Math.round(h * 360)}, ${Math.round(s * 100)}%, ${Math.round(max * 100)}%)`;
 	},
 
 	hsvToHex(hsv) {
-		const match = hsv.match(/(\d+),\s*(\d+)%,\s*(\d+)%/);
-		if (match) {
-			let h = parseInt(match[1]) / 360;
-			let s = parseInt(match[2]) / 100;
-			let v = parseInt(match[3]) / 100;
+		const match = hsv?.match(/(\d+),\s*(\d+)%,\s*(\d+)%/);
+		if (!match) return '';
 
-			let r, g, b;
-			const i = Math.floor(h * 6);
-			const f = h * 6 - i;
-			const p = v * (1 - s);
-			const q = v * (1 - f * s);
-			const t = v * (1 - (1 - f) * s);
+		let h = parseInt(match[1]) / 360;
+		let s = parseInt(match[2]) / 100;
+		let v = parseInt(match[3]) / 100;
 
-			switch (i % 6) {
-				case 0: r = v; g = t; b = p; break;
-				case 1: r = q; g = v; b = p; break;
-				case 2: r = p; g = v; b = t; break;
-				case 3: r = p; g = q; b = v; break;
-				case 4: r = t; g = p; b = v; break;
-				case 5: r = v; g = p; b = q; break;
-			}
+		const i = Math.floor(h * 6);
+		const f = h * 6 - i;
+		const p = v * (1 - s);
+		const q = v * (1 - f * s);
+		const t = v * (1 - (1 - f) * s);
 
-			return '#' + [r, g, b].map(x => Math.round(x * 255).toString(16).padStart(2, '0')).join('');
+		let r, g, b;
+		switch (i % 6) {
+			case 0: r = v; g = t; b = p; break;
+			case 1: r = q; g = v; b = p; break;
+			case 2: r = p; g = v; b = t; break;
+			case 3: r = p; g = q; b = v; break;
+			case 4: r = t; g = p; b = v; break;
+			case 5: r = v; g = p; b = q; break;
 		}
-		return '';
+
+		return '#' + [r, g, b].map(x => {
+			const hex = Math.round(x * 255).toString(16);
+			return hex.length === 1 ? '0' + hex : hex;
+		}).join('');
 	},
 
 	generatePalette(type, container) {
+		if (!container) return;
+
+		const cacheKey = `${this.currentColor}-${type}`;
+		if (this.paletteCache[cacheKey]) {
+			container.innerHTML = this.paletteCache[cacheKey];
+			this.attachPaletteListeners(container);
+			return;
+		}
+
 		const hex = this.currentColor.startsWith('#') ? this.currentColor : '#' + this.currentColor;
 		const hsl = this.hexToHsl(hex);
-		const hMatch = hsl.match(/(\d+)/);
+		const hMatch = hsl?.match(/(\d+)/);
 		if (!hMatch) return;
-		
-		const baseHue = parseInt(hMatch[1]);
-		let colors = [];
 
+		const baseHue = parseInt(hMatch[1]);
+		const offsets = this.getPaletteOffsets(type);
+
+		let html = '';
+		offsets.forEach(({ offset, name }) => {
+			const newHue = ((baseHue + offset) % 360 + 360) % 360;
+			const newHex = this.hslToHex(`hsl(${newHue}, 70%, 50%)`);
+			html += `
+				<div class="color-box" data-color="${newHex}">
+					<span class="color-name">${name}</span>
+					<span>${newHex}</span>
+				</div>
+			`;
+		});
+
+		container.innerHTML = html;
+		this.paletteCache[cacheKey] = html;
+		this.attachPaletteListeners(container);
+	},
+
+	getPaletteOffsets(type) {
 		switch (type) {
 			case 'analogous':
-				colors = [
-					{ offset: -30, name: 'Analogous -30°' },
-					{ offset: -15, name: 'Analogous -15°' },
-					{ offset: 0, name: 'Base Color' },
-					{ offset: 15, name: 'Analogous +15°' },
-					{ offset: 30, name: 'Analogous +30°' }
+				return [
+					{ offset: -30, name: '-30°' }, { offset: -15, name: '-15°' },
+					{ offset: 0, name: 'Base' },
+					{ offset: 15, name: '+15°' }, { offset: 30, name: '+30°' }
 				];
-				break;
 			case 'complementary':
-				colors = [
-					{ offset: 0, name: 'Base Color' },
-					{ offset: 180, name: 'Complementary' }
+				return [
+					{ offset: 0, name: 'Base' },
+					{ offset: 180, name: 'Complement' }
 				];
-				break;
 			case 'triadic':
-				colors = [
-					{ offset: 0, name: 'Base Color' },
-					{ offset: 120, name: 'Triadic +120°' },
-					{ offset: 240, name: 'Triadic +240°' }
+				return [
+					{ offset: 0, name: 'Base' },
+					{ offset: 120, name: '+120°' },
+					{ offset: 240, name: '+240°' }
 				];
-				break;
 			case 'split':
-				colors = [
-					{ offset: 0, name: 'Base Color' },
-					{ offset: 150, name: 'Split +150°' },
-					{ offset: 210, name: 'Split +210°' }
+				return [
+					{ offset: 0, name: 'Base' },
+					{ offset: 150, name: '+150°' },
+					{ offset: 210, name: '+210°' }
 				];
-				break;
+			default:
+				return [];
 		}
-		
-		container.innerHTML = '';
-		
-		colors.forEach(({ offset, name }) => {
-			const newHue = ((baseHue + offset) % 360 + 360) % 360;
-			const newHsl = `hsl(${newHue}, 70%, 50%)`;
-			const newHex = this.hslToHex(newHsl);
-			
-			const colorBox = document.createElement('div');
-			colorBox.className = 'color-box';
-			colorBox.style.backgroundColor = newHex;
-			colorBox.innerHTML = `
-				<span class="color-name">${name}</span>
-				<span>${newHex}</span>
-			`;
-			colorBox.addEventListener('click', () => {
-				navigator.clipboard.writeText(newHex);
-				if (ui && ui.notify) {
-					ui.notify(`<i>📋</i> ${newHex} copied!`);
-				}
+	},
+
+	attachPaletteListeners(container) {
+		container.querySelectorAll('.color-box').forEach(box => {
+			box.addEventListener('click', () => {
+				const color = box.dataset.color;
+				this.copyToClipboard(color, `${color} copied!`);
 			});
-			
-			container.appendChild(colorBox);
 		});
 	}
 };

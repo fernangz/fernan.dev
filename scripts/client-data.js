@@ -4,17 +4,18 @@
 
 const ClientData = {
 	data: {},
-	
+	locationInterval: null,
+
 	init() {
 		const refreshBtn = document.getElementById('refresh-data');
 		const copyBtn = document.getElementById('copy-data');
-		
+
 		// Load initial data
 		this.collectAllData();
-		
+
 		// Set up real-time updates
 		this.setupInteractionTracking();
-		
+
 		// Event listeners
 		if (refreshBtn) {
 			refreshBtn.addEventListener('click', () => {
@@ -24,13 +25,46 @@ const ClientData = {
 				}
 			});
 		}
-		
+
 		if (copyBtn) {
 			copyBtn.addEventListener('click', () => this.copyAllData());
 		}
-		
-		// Auto-refresh location data every 30 seconds
-		setInterval(() => this.fetchLocationData(), 30000);
+
+		// Auto-refresh location data every 30 seconds (only when page is visible)
+		this.startLocationRefresh();
+
+		// Cleanup on page unload
+		window.addEventListener('beforeunload', () => {
+			if (this.locationInterval) {
+				clearInterval(this.locationInterval);
+			}
+		});
+
+		// Pause/resume based on visibility
+		document.addEventListener('visibilitychange', () => {
+			if (document.hidden) {
+				this.stopLocationRefresh();
+			} else {
+				this.startLocationRefresh();
+			}
+		});
+	},
+
+	startLocationRefresh() {
+		if (!this.locationInterval) {
+			this.locationInterval = setInterval(() => {
+				if (!document.hidden) {
+					this.fetchLocationData();
+				}
+			}, 30000);
+		}
+	},
+
+	stopLocationRefresh() {
+		if (this.locationInterval) {
+			clearInterval(this.locationInterval);
+			this.locationInterval = null;
+		}
 	},
 	
 	collectAllData() {
@@ -334,13 +368,24 @@ const ClientData = {
 	
 	copyAllData() {
 		const text = JSON.stringify(this.data, null, 2);
-		navigator.clipboard.writeText(text).then(() => {
-			if (ui && ui.notify) {
-				ui.notify('<i>📋</i> All data copied to clipboard!');
-			}
-		}).catch(err => {
-			console.error('Failed to copy:', err);
-		});
+		navigator.clipboard.writeText(text)
+			.then(() => {
+				if (ui && ui.notify) {
+					ui.notify('<i>📋</i> All data copied to clipboard!');
+				}
+			})
+			.catch(() => {
+				// Fallback
+				const textArea = document.createElement('textarea');
+				textArea.value = text;
+				document.body.appendChild(textArea);
+				textArea.select();
+				document.execCommand('copy');
+				document.body.removeChild(textArea);
+				if (ui && ui.notify) {
+					ui.notify('<i>📋</i> All data copied to clipboard!');
+				}
+			});
 	}
 };
 

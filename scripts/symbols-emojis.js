@@ -70,41 +70,39 @@ const SymbolsEmojis = {
 		if (this.currentCategory === 'all') {
 			// Combine all symbol categories
 			Object.values(this.symbolsData).forEach(categorySymbols => {
-				if (categorySymbols.currency) {
-					symbols = symbols.concat(categorySymbols.currency);
-				} else {
+				if (Array.isArray(categorySymbols)) {
 					symbols = symbols.concat(categorySymbols);
 				}
 			});
-			
+
 			// Add emojis
-			if (this.emojisData) {
+			if (this.emojisData && typeof this.emojisData === 'object') {
 				const emojiSymbols = Object.keys(this.emojisData).slice(0, 20).map(symbol => ({
 					symbol,
-					name: this.emojisData[symbol].name
+					name: this.emojisData[symbol]?.name || 'Emoji'
 				}));
 				symbols = symbols.concat(emojiSymbols);
 			}
 		} else if (this.currentCategory === 'emoji') {
 			// Get emojis from emoji.json
-			if (this.emojisData) {
+			if (this.emojisData && typeof this.emojisData === 'object') {
 				symbols = Object.keys(this.emojisData).slice(0, 50).map(symbol => ({
 					symbol,
-					name: this.emojisData[symbol].name
+					name: this.emojisData[symbol]?.name || 'Emoji'
 				}));
 			}
 		} else {
 			// Get specific category
 			const categoryData = this.symbolsData[this.currentCategory];
-			if (categoryData) {
-				symbols = categoryData.currency || categoryData;
+			if (Array.isArray(categoryData)) {
+				symbols = categoryData;
 			}
 		}
 
 		// Apply search filter
 		if (this.searchQuery) {
-			symbols = symbols.filter(item => 
-				item.name.toLowerCase().includes(this.searchQuery)
+			symbols = symbols.filter(item =>
+				item.name?.toLowerCase().includes(this.searchQuery)
 			);
 		}
 
@@ -113,28 +111,40 @@ const SymbolsEmojis = {
 
 	renderSymbols(container) {
 		const symbols = this.getFilteredSymbols();
-		container.innerHTML = '';
-
+		
 		if (symbols.length === 0) {
 			container.innerHTML = '<p style="color: var(--gray); grid-column: 1/-1;">No symbols found.</p>';
 			return;
 		}
+
+		const fragment = document.createDocumentFragment();
 
 		symbols.forEach(item => {
 			const symbolEl = document.createElement('div');
 			symbolEl.className = 'symbol-item';
 			symbolEl.innerHTML = `
 				<span class="symbol">${item.symbol}</span>
-				<span class="code">${item.name}</span>
+				<span class="code">${item.name || ''}</span>
 			`;
 			symbolEl.addEventListener('click', () => {
-				navigator.clipboard.writeText(item.symbol);
+				navigator.clipboard.writeText(item.symbol).catch(() => {
+					// Fallback
+					const textArea = document.createElement('textarea');
+					textArea.value = item.symbol;
+					document.body.appendChild(textArea);
+					textArea.select();
+					document.execCommand('copy');
+					document.body.removeChild(textArea);
+				});
 				if (ui && ui.notify) {
 					ui.notify(`<i>📋</i> ${item.symbol} copied!`);
 				}
 			});
-			container.appendChild(symbolEl);
+			fragment.appendChild(symbolEl);
 		});
+
+		container.innerHTML = '';
+		container.appendChild(fragment);
 	}
 };
 
