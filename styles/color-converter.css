@@ -1,6 +1,6 @@
 /* ============================================
    Color Converter Tool Styles
-   Base: 1.25rem font-size, 1.5rem line-height, 2rem spacing
+   Base: 1.5rem font-size, 2rem line-height, 2rem spacing
    All units in rem
    ============================================ */
 
@@ -195,7 +195,7 @@
 
 .contrast-indicator {
 	width: 100%;
-	height: 0.25rem;  /* 4px */
+	height: 0.25rem;
 	border-radius: var(--radius-sm);
 	background-color: var(--gray);
 }

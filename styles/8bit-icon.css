@@ -1,6 +1,6 @@
 /* ============================================
    8-bit Icon Creator Tool Styles
-   Base: 1.25rem font-size, 1.5rem line-height, 2rem spacing
+   Base: 1.5rem font-size, 2rem line-height, 2rem spacing
    All units in rem
    ============================================ */
 
@@ -77,7 +77,7 @@
 
 .color-picker-wrapper input[type="color"] {
 	width: 3rem;
-	height: 1.5rem;
+	height: 1.75rem;
 	border: none;
 	border-radius: var(--radius-sm);
 	cursor: pointer;
@@ -201,11 +201,11 @@
 
 .pixel-canvas {
 	display: grid;
-	gap: 0.0625rem;  /* 1px */
+	gap: 0.0625rem;
 	background-color: var(--gray);
 	border: var(--border-lg) solid var(--black);
 	border-radius: var(--radius-sm);
-	padding: 0.0625rem;  /* 1px */
+	padding: 0.0625rem;
 }
 
 .pixel {
@@ -219,8 +219,8 @@
 }
 
 .pixel:focus {
-	outline: 0.125rem solid var(--light);
-	outline-offset: -0.125rem;
+	outline: 0.0625rem solid var(--light);
+	outline-offset: -0.0625rem;
 }
 
 .pixel.transparent {

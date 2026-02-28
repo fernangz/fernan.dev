@@ -1,6 +1,6 @@
 /* ============================================
    Tools - Common Styles
-   Base: 1.25rem font-size, 1.5rem line-height, 2rem spacing
+   Base: 1.5rem font-size, 2rem line-height, 2rem spacing
    All units in rem
    ============================================ */
 
@@ -224,7 +224,7 @@ textarea {
 .tools-list li a,
 .articles-list li a {
 	display: flex;
-	align-items: center;
+	align-items: start;
 	gap: var(--space-4);
 	color: inherit;
 	font-size: var(--font-md);
@@ -233,7 +233,6 @@ textarea {
 	text-decoration-thickness: 0.08em;
 	text-underline-offset: 0.12em;
 	padding: var(--space-3) 0;
-	border-bottom: var(--border-sm) solid var(--dark);
 	transition: all var(--transition-md);
 }
 
@@ -298,7 +297,7 @@ textarea {
 /* Symbols Grid */
 .symbols-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(3.75rem, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(4rem, 1fr));
 	gap: var(--space-2);
 	margin-top: var(--space-4);
 }
@@ -324,7 +323,7 @@ textarea {
 }
 
 .symbol-item .symbol {
-	font-size: 1.5rem;
+	font-size: 1.75rem;
 	margin-bottom: var(--space-1);
 }
 
