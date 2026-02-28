@@ -103,7 +103,7 @@
 	line-height: inherit;
 	font-family: 'emoji';
 	color: inherit;
-	letter-spacing: 0.28em;
+	letter-spacing: 0.28rem;
 }
 
 html,
@@ -145,8 +145,8 @@ body {
 a {
 	color: inherit;
 	text-decoration: underline;
-	text-decoration-thickness: 0.08em;
-	text-underline-offset: 0.12em;
+	text-decoration-thickness: 0.08rem;
+	text-underline-offset: 0.12rem;
 	transition: all var(--transition-md);
 	font-size: var(--font-md);
 	line-height: var(--lh-md);
@@ -154,7 +154,7 @@ a {
 
 a:hover {
 	color: var(--color);
-	text-underline-offset: 0.24em;
+	text-underline-offset: 0.24rem;
 	text-decoration-style: wavy;
 }
 
@@ -171,8 +171,8 @@ a:focus {
 	line-height: var(--lh-md);
 	color: inherit;
 	text-decoration: underline;
-	text-decoration-thickness: 0.08em;
-	text-underline-offset: 0.12em;
+	text-decoration-thickness: 0.08rem;
+	text-underline-offset: 0.12rem;
 	transition: all var(--transition-md);
 }
 
@@ -180,7 +180,7 @@ a:focus {
 .tools-list a:hover,
 .resources-list a:hover {
 	color: var(--color);
-	text-underline-offset: 0.24em;
+	text-underline-offset: 0.24rem;
 	text-decoration-style: wavy;
 }
 
@@ -369,8 +369,8 @@ main > section > article ul li {
 main > section > article a {
 	font-size: inherit;
 	line-height: inherit;
-	text-decoration-thickness: 0.06em;
-	text-underline-offset: 0.32em;
+	text-decoration-thickness: 0.08rem;
+	text-underline-offset: 0.25rem;
 	color: inherit;
 	display: inline;
 }

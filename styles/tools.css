@@ -179,8 +179,8 @@ textarea {
 	margin-bottom: var(--space-6);
 	color: var(--light);
 	text-decoration: underline;
-	text-decoration-thickness: 0.08em;
-	text-underline-offset: 0.12em;
+	text-decoration-thickness: 0.08rem;
+	text-underline-offset: 0.12rem;
 	transition: all var(--transition-md);
 	font-size: var(--font-md);
 	line-height: var(--lh-md);
@@ -188,7 +188,7 @@ textarea {
 
 .back-link:hover {
 	color: var(--color);
-	text-underline-offset: 0.24em;
+	text-underline-offset: 0.24rem;
 	text-decoration-style: wavy;
 }
 
@@ -227,8 +227,8 @@ textarea {
 	font-size: var(--font-md);
 	line-height: var(--lh-md);
 	text-decoration: underline;
-	text-decoration-thickness: 0.08em;
-	text-underline-offset: 0.12em;
+	text-decoration-thickness: 0.08rem;
+	text-underline-offset: 0.25rem;
 	padding: var(--space-3) 0;
 	transition: all var(--transition-md);
 }
@@ -236,7 +236,7 @@ textarea {
 .tools-list li a:hover,
 .articles-list li a:hover {
 	color: var(--color);
-	text-underline-offset: 0.24em;
+	text-underline-offset: 0.24rem;
 	text-decoration-style: wavy;
 	border-bottom-color: var(--color);
 }
@@ -250,8 +250,8 @@ textarea {
 .tools-list .emoji,
 .articles-list .emoji {
 	font-family: 'emoji', sans-serif;
-	font-size: 1.5em;
-	line-height: 1;
+	font-size: 1.5rem;
+	line-height: 2rem;
 }
 
 /* Data Table */
