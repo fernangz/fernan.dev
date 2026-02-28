@@ -106,8 +106,8 @@
 }
 
 .color-box {
-	width: 6.25rem;
-	height: 6.25rem;
+	width: fit-content;
+	height: fit-content;
 	border-radius: var(--radius-lg);
 	box-shadow: var(--shadow-md);
 	display: flex;
