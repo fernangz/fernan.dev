@@ -1,20 +1,22 @@
 /* ============================================
    Tools - Common Styles
+   Base: 1.25rem font-size, 1.5rem line-height, 2rem spacing
    ============================================ */
 
+/* Tools Grid (for tools listing page) */
 .tools-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-	gap: 1.5rem;
-	margin-top: 2rem;
+	grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+	gap: var(--space-8);
+	margin-top: var(--space-8);
 }
 
 .tool-card {
 	background-color: var(--black);
-	padding: 1.5rem;
-	border-radius: 10px;
-	border: 1px solid var(--dark);
-	transition: var(--transition);
+	padding: var(--space-6);
+	border-radius: var(--radius-lg);
+	border: var(--border-sm) solid var(--dark);
+	transition: all var(--transition-md);
 	text-align: center;
 }
 
@@ -24,25 +26,25 @@
 
 .tool-card h3 {
 	color: var(--light);
-	margin-bottom: 0.5rem;
-	font-size: var(--medium);
-	line-height: var(--mediumLine);
+	margin-bottom: var(--space-4);
+	font-size: var(--font-md);
+	line-height: var(--lh-md);
 }
 
 .tool-card p {
 	color: var(--gray);
-	font-size: var(--small);
-	line-height: var(--smallLine);
-	margin-bottom: 1rem;
+	font-size: var(--font-sm);
+	line-height: var(--lh-sm);
+	margin-bottom: var(--space-4);
 }
 
 .tool-card .btn {
 	display: inline-block;
-	padding: 0.5rem 1.5rem;
+	padding: var(--space-3) var(--space-6);
 	background-color: var(--dark);
 	color: var(--light);
-	border-radius: 5px;
-	transition: var(--transition);
+	border-radius: var(--radius-md);
+	transition: all var(--transition-md);
 	text-decoration: none;
 }
 
@@ -50,62 +52,62 @@
 	background-color: var(--gray);
 }
 
-/* Tool container */
+/* Tool Container (for individual tool pages) */
 .tool-container {
 	background-color: var(--black);
-	padding: 2rem;
-	border-radius: 10px;
-	border: 1px solid var(--dark);
-	margin-top: 2rem;
+	padding: var(--space-8);
+	border-radius: var(--radius-lg);
+	border: var(--border-sm) solid var(--dark);
+	margin-top: var(--space-8);
 }
 
 .tool-header {
 	text-align: center;
-	margin-bottom: 2rem;
+	margin-bottom: var(--space-8);
 }
 
 .tool-header h1 {
 	color: var(--light);
-	font-size: calc(var(--medium) * 1.25);
-	line-height: calc(var(--mediumLine) * 1.25);
-	margin-bottom: 0.5rem;
+	font-size: var(--font-2xl);
+	line-height: var(--lh-2xl);
+	margin-bottom: var(--space-4);
 }
 
 .tool-header p {
 	color: var(--gray);
-	font-size: var(--medium);
-	line-height: var(--mediumLine);
+	font-size: var(--font-md);
+	line-height: var(--lh-md);
 }
 
 .tool-section {
-	margin-bottom: 2rem;
+	margin-bottom: var(--space-8);
 }
 
 .tool-section h2 {
 	color: var(--light);
-	font-size: calc(var(--medium) * 1.25);
-	line-height: calc(var(--mediumLine) * 1.25);
-	margin-bottom: 1rem;
-	padding-bottom: 0.5rem;
-	border-bottom: 2px solid var(--dark);
+	font-size: var(--font-lg);
+	line-height: var(--lh-lg);
+	margin-bottom: var(--space-4);
+	padding-bottom: var(--space-3);
+	border-bottom: var(--border-md) solid var(--dark);
 }
 
-/* Form elements */
+/* Form Elements */
 input[type="text"],
 input[type="color"],
 input[type="number"],
 select,
 textarea {
 	width: 100%;
-	padding: 0.75rem;
-	border: 1px solid var(--dark);
-	border-radius: 5px;
-	font-size: var(--medium);
-	line-height: var(--mediumLine);
+	padding: var(--space-4);
+	border: var(--border-sm) solid var(--dark);
+	border-radius: var(--radius-md);
+	font-size: var(--font-md);
+	line-height: var(--lh-md);
 	background-color: var(--black);
 	color: var(--light);
 	font-family: 'outfit', sans-serif;
-	transition: all 0.3s ease;
+	transition: all var(--transition-md);
 }
 
 input[type="text"]:focus,
@@ -115,26 +117,26 @@ select:focus,
 textarea:focus {
 	outline: none;
 	border-color: var(--gray);
-	box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+	box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
 }
 
 textarea {
 	resize: vertical;
-	min-height: 100px;
+	min-height: 6rem;
 }
 
 /* Buttons */
 .btn {
 	display: inline-block;
-	padding: 0.75rem 1.5rem;
+	padding: var(--space-4) var(--space-6);
 	background-color: var(--dark);
 	color: var(--light);
 	border: none;
-	border-radius: 5px;
+	border-radius: var(--radius-md);
 	cursor: pointer;
-	font-size: var(--medium);
-	line-height: var(--mediumLine);
-	transition: all 0.3s ease;
+	font-size: var(--font-md);
+	line-height: var(--lh-md);
+	transition: all var(--transition-md);
 	text-decoration: none;
 }
 
@@ -144,7 +146,7 @@ textarea {
 
 .btn-secondary {
 	background-color: var(--black);
-	border: 1px solid var(--dark);
+	border: var(--border-sm) solid var(--dark);
 }
 
 .btn-secondary:hover {
@@ -153,59 +155,61 @@ textarea {
 
 .btn-group {
 	display: flex;
-	gap: 0.5rem;
+	gap: var(--space-4);
 	flex-wrap: wrap;
-	margin-top: 1rem;
+	margin-top: var(--space-4);
 }
 
-/* Back link */
+/* Back Link */
 .back-link {
 	display: inline-block;
-	margin-bottom: 1.5rem;
+	margin-bottom: var(--space-6);
 	color: var(--light);
 	text-decoration: none;
+	font-size: var(--font-sm);
+	line-height: var(--lh-sm);
 }
 
 .back-link:hover {
 	color: var(--color);
 }
 
-/* Utility classes */
-.mt-1 { margin-top: 0.5rem; }
-.mt-2 { margin-top: 1rem; }
-.mt-3 { margin-top: 1.5rem; }
-.mb-1 { margin-bottom: 0.5rem; }
-.mb-2 { margin-bottom: 1rem; }
-.mb-3 { margin-bottom: 1.5rem; }
+/* Utility Classes */
+.mt-1 { margin-top: var(--space-4); }
+.mt-2 { margin-top: var(--space-6); }
+.mt-3 { margin-top: var(--space-8); }
+.mb-1 { margin-bottom: var(--space-4); }
+.mb-2 { margin-bottom: var(--space-6); }
+.mb-3 { margin-bottom: var(--space-8); }
 
 .hidden {
 	display: none;
 }
 
-/* Tools list (similar to articles list) */
+/* Tools List (for tools and articles index pages) */
 .tools-list,
 .articles-list {
-	margin-top: 2rem;
+	margin-top: var(--space-8);
 }
 
 .tools-list li,
 .articles-list li {
 	list-style: none;
-	margin-bottom: 1rem;
+	margin-bottom: var(--space-4);
 }
 
 .tools-list li a,
 .articles-list li a {
 	display: flex;
 	align-items: center;
-	gap: 0.75rem;
+	gap: var(--space-4);
 	color: var(--light);
-	font-size: calc(var(--medium) * 1.25);
-	line-height: calc(var(--mediumLine) * 1.25);
+	font-size: var(--font-lg);
+	line-height: var(--lh-lg);
 	text-decoration: none;
-	padding: 0.5rem 0;
-	border-bottom: 1px solid var(--dark);
-	transition: all 0.2s ease-in-out;
+	padding: var(--space-3) 0;
+	border-bottom: var(--border-sm) solid var(--dark);
+	transition: all var(--transition-fast);
 }
 
 .tools-list li a:hover,
@@ -217,5 +221,94 @@ textarea {
 .tools-list .emoji,
 .articles-list .emoji {
 	font-family: 'emoji', sans-serif;
-	font-size: 1.25em;
+	font-size: 1.5em;
+	line-height: 1;
+}
+
+/* Data Table */
+.data-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: var(--space-4);
+}
+
+.data-table th,
+.data-table td {
+	padding: var(--space-4);
+	text-align: left;
+	border-bottom: var(--border-sm) solid var(--dark);
+	color: var(--light);
+	font-size: var(--font-sm);
+	line-height: var(--lh-sm);
+}
+
+.data-table th {
+	background-color: var(--dark);
+	font-weight: 600;
+	color: var(--light);
+}
+
+.data-table tr:hover {
+	background-color: var(--dark);
+}
+
+.data-table .copy-btn {
+	padding: var(--space-2) var(--space-4);
+	font-size: var(--font-xs);
+}
+
+/* Symbols Grid */
+.symbols-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(3.75rem, 1fr));
+	gap: var(--space-2);
+	margin-top: var(--space-4);
+}
+
+.symbol-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: var(--space-4);
+	background-color: var(--dark);
+	border-radius: var(--radius-md);
+	cursor: pointer;
+	transition: all var(--transition-fast);
+}
+
+.symbol-item:hover {
+	background-color: var(--gray);
+}
+
+.symbol-item .symbol {
+	font-size: 1.5rem;
+	margin-bottom: var(--space-1);
+}
+
+.symbol-item .code {
+	font-size: var(--font-xs);
+	font-family: 'code', monospace;
+	color: var(--light);
+}
+
+/* Responsive */
+@media screen and (max-width: 64rem) {
+	.tools-grid {
+		grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+	}
+}
+
+@media screen and (max-width: 40rem) {
+	.tools-grid {
+		grid-template-columns: 1fr;
+	}
+	
+	.btn-group {
+		flex-direction: column;
+	}
+	
+	.btn {
+		width: 100%;
+		text-align: center;
+	}
 }

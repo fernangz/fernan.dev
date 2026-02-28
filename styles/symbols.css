@@ -1,23 +1,24 @@
 /* ============================================
    Symbols & Emojis / HTML Entities Tool Styles
+   Base: 1.25rem font-size, 1.5rem line-height, 2rem spacing
    ============================================ */
 
 .symbol-categories {
 	display: flex;
-	gap: 0.5rem;
+	gap: var(--space-2);
 	flex-wrap: wrap;
-	margin: 1rem 0;
+	margin: var(--space-4) 0;
 }
 
 .category-btn {
-	padding: 0.5rem 1rem;
+	padding: var(--space-2) var(--space-4);
 	background-color: var(--dark);
 	color: var(--light);
 	border: none;
-	border-radius: 5px;
+	border-radius: var(--radius-md);
 	cursor: pointer;
-	font-size: var(--small);
-	transition: all 0.2s ease;
+	font-size: var(--font-sm);
+	transition: all var(--transition-fast);
 }
 
 .category-btn:hover {
@@ -30,20 +31,20 @@
 
 .symbols-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
-	gap: 0.5rem;
-	margin-top: 1rem;
+	grid-template-columns: repeat(auto-fill, minmax(3.75rem, 1fr));
+	gap: var(--space-2);
+	margin-top: var(--space-4);
 }
 
 .symbol-item {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 0.75rem;
+	padding: var(--space-4);
 	background-color: var(--dark);
-	border-radius: 5px;
+	border-radius: var(--radius-md);
 	cursor: pointer;
-	transition: all 0.3s ease;
+	transition: all var(--transition-fast);
 }
 
 .symbol-item:hover {
@@ -52,11 +53,11 @@
 
 .symbol-item .symbol {
 	font-size: 1.5rem;
-	margin-bottom: 0.25rem;
+	margin-bottom: var(--space-1);
 }
 
 .symbol-item .code {
-	font-size: 0.7rem;
+	font-size: var(--font-xs);
 	font-family: 'code', monospace;
 	color: var(--light);
 }

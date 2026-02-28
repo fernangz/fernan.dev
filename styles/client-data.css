@@ -1,59 +1,60 @@
 /* ============================================
    Client Data Visualizer Tool Styles
+   Base: 1.25rem font-size, 1.5rem line-height, 2rem spacing
    ============================================ */
 
 .data-controls {
 	display: flex;
-	gap: 0.75rem;
-	margin: 1rem 0;
+	gap: var(--space-3);
+	margin: var(--space-4) 0;
 	flex-wrap: wrap;
 }
 
 .data-controls .btn {
-	padding: 0.625rem 1.25rem;
-	font-size: 0.875rem;
+	padding: var(--space-3) var(--space-5);
+	font-size: var(--font-sm);
 }
 
 #data-container {
 	display: flex;
 	flex-direction: column;
-	gap: 1.5rem;
-	margin-top: 1.5rem;
+	gap: var(--space-6);
+	margin-top: var(--space-6);
 }
 
 .data-section {
 	background-color: var(--dark);
-	border-radius: 0.5rem;
-	padding: 1rem;
-	border: 1px solid var(--gray);
+	border-radius: var(--radius-md);
+	padding: var(--space-4);
+	border: var(--border-sm) solid var(--gray);
 }
 
 .data-section h2 {
 	color: var(--light);
-	font-size: 1rem;
-	margin-bottom: 1rem;
-	padding-bottom: 0.5rem;
-	border-bottom: 1px solid var(--gray);
+	font-size: var(--font-md);
+	margin-bottom: var(--space-4);
+	padding-bottom: var(--space-3);
+	border-bottom: var(--border-sm) solid var(--gray);
 }
 
 .data-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
-	gap: 0.75rem;
+	gap: var(--space-3);
 }
 
 .data-item {
 	display: flex;
 	flex-direction: column;
-	gap: 0.25rem;
-	padding: 0.75rem;
+	gap: var(--space-1);
+	padding: var(--space-3);
 	background-color: var(--black);
-	border-radius: 0.375rem;
+	border-radius: var(--radius-sm);
 	min-height: 4rem;
 }
 
 .data-label {
-	font-size: 0.75rem;
+	font-size: var(--font-xs);
 	color: var(--gray);
 	font-weight: 500;
 	text-transform: uppercase;
@@ -63,9 +64,9 @@
 .data-value {
 	color: var(--light);
 	font-family: 'code', monospace;
-	font-size: 0.875rem;
+	font-size: var(--font-sm);
 	word-break: break-word;
-	line-height: 1.4;
+	line-height: var(--lh-md);
 }
 
 .data-value.empty {
@@ -77,8 +78,8 @@
 .storage-list {
 	grid-column: 1 / -1;
 	background-color: var(--black);
-	border-radius: 0.375rem;
-	padding: 0.75rem;
+	border-radius: var(--radius-sm);
+	padding: var(--space-3);
 	max-height: 12rem;
 	overflow-y: auto;
 }
@@ -86,9 +87,9 @@
 .storage-item {
 	display: flex;
 	justify-content: space-between;
-	padding: 0.5rem 0;
-	border-bottom: 1px solid var(--dark);
-	font-size: 0.875rem;
+	padding: var(--space-2) 0;
+	border-bottom: var(--border-sm) solid var(--dark);
+	font-size: var(--font-sm);
 }
 
 .storage-item:last-child {
@@ -117,25 +118,25 @@
 .storage-empty {
 	color: var(--gray);
 	font-style: italic;
-	font-size: 0.875rem;
+	font-size: var(--font-sm);
 	text-align: center;
-	padding: 1rem;
+	padding: var(--space-4);
 }
 
 /* Media Devices */
 .device-item {
 	display: flex;
 	align-items: center;
-	gap: 0.5rem;
-	padding: 0.5rem;
+	gap: var(--space-2);
+	padding: var(--space-2);
 	background-color: var(--black);
-	border-radius: 0.375rem;
-	font-size: 0.875rem;
+	border-radius: var(--radius-sm);
+	font-size: var(--font-sm);
 	color: var(--light);
 }
 
 .device-icon {
-	font-size: 1.25rem;
+	font-size: var(--font-lg);
 }
 
 /* Location Data */
@@ -150,36 +151,36 @@
 
 /* Data Info Section */
 .data-info {
-	margin-top: 2rem;
-	padding: 1rem;
+	margin-top: var(--space-8);
+	padding: var(--space-4);
 	background-color: var(--dark);
-	border-radius: 0.5rem;
-	border-left: 0.25rem solid var(--gray);
+	border-radius: var(--radius-md);
+	border-left: var(--border-md) solid var(--gray);
 }
 
 .data-info h2 {
 	color: var(--light);
-	font-size: 1rem;
-	margin-bottom: 0.75rem;
+	font-size: var(--font-md);
+	margin-bottom: var(--space-3);
 }
 
 .data-info p {
 	color: var(--gray);
-	font-size: 0.875rem;
-	line-height: 1.6;
-	margin-bottom: 1rem;
+	font-size: var(--font-sm);
+	line-height: var(--lh-md);
+	margin-bottom: var(--space-4);
 }
 
 .data-info ul {
 	list-style: disc;
-	margin-left: 1.25rem;
+	margin-left: var(--space-5);
 }
 
 .data-info li {
 	color: var(--gray);
-	font-size: 0.875rem;
-	line-height: 1.6;
-	margin-bottom: 0.5rem;
+	font-size: var(--font-sm);
+	line-height: var(--lh-md);
+	margin-bottom: var(--space-2);
 }
 
 /* Loading State */
@@ -195,7 +196,7 @@
 	left: 50%;
 	transform: translate(-50%, -50%);
 	color: var(--light);
-	font-size: 0.875rem;
+	font-size: var(--font-sm);
 }
 
 /* Responsive */
@@ -214,7 +215,7 @@
 	
 	.storage-item {
 		flex-direction: column;
-		gap: 0.25rem;
+		gap: var(--space-1);
 	}
 	
 	.storage-key,

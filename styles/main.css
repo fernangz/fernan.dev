@@ -1,22 +1,68 @@
 /* ============================================
    fernan.dev - Core Styles
+   Base: font-size 100% (16px), 1.25rem (20px) default, 1.5rem line-height, 2rem spacing
    ============================================ */
 
 :root {
-	--sh: 8px;
+	/* Colors */
 	--black: hsl(0, 0%, 8%);
 	--dark: hsl(0, 0%, 24%);
 	--gray: hsl(0, 0%, 40%);
 	--light: hsl(0, 0%, 80%);
 	--white: hsl(0, 0%, 96%);
-	--big: calc(32px + 32 * ((100vmin - 320px) / 1440));
-	--medium: calc(24px + 24 * ((100vmin - 320px) / 1440));
-	--small: calc(16px + 16 * ((100vmin - 320px) / 1440));
-	--tiny: calc(8px + 8 * ((100vmin - 320px) / 1440));
-	--bigLine: calc(40px + 40 * ((100vmin - 320px) / 1440));
-	--mediumLine: calc(32px + 32 * ((100vmin - 320px) / 1440));
-	--smallLine: calc(24px + 24 * ((100vmin - 320px) / 1440));
-	--tinyLine: calc(16px + 16 * ((100vmin - 320px) / 1440));
+	
+	/* Typography Scale (based on 1.25rem = 20px default) */
+	--font-xs: 0.75rem;    /* 12px */
+	--font-sm: 0.875rem;   /* 14px */
+	--font-md: 1.25rem;    /* 20px - base */
+	--font-lg: 1.5rem;     /* 24px */
+	--font-xl: 1.75rem;    /* 28px */
+	--font-2xl: 2rem;      /* 32px */
+	--font-3xl: 2.5rem;    /* 40px */
+	
+	/* Line Heights (based on 1.5rem = 24px) */
+	--lh-xs: 1.25rem;      /* 20px */
+	--lh-sm: 1.375rem;     /* 22px */
+	--lh-md: 1.5rem;       /* 24px - base */
+	--lh-lg: 1.75rem;      /* 28px */
+	--lh-xl: 2rem;         /* 32px */
+	--lh-2xl: 2.5rem;      /* 40px */
+	--lh-3xl: 3rem;        /* 48px */
+	
+	/* Spacing Scale (based on 2rem = 32px) */
+	--space-0: 0;
+	--space-1: 0.25rem;    /* 4px */
+	--space-2: 0.5rem;     /* 8px */
+	--space-3: 0.75rem;    /* 12px */
+	--space-4: 1rem;       /* 16px */
+	--space-5: 1.25rem;    /* 20px */
+	--space-6: 1.5rem;     /* 24px */
+	--space-8: 2rem;       /* 32px - base */
+	--space-10: 2.5rem;    /* 40px */
+	--space-12: 3rem;      /* 48px */
+	--space-16: 4rem;      /* 64px */
+	--space-20: 5rem;      /* 80px */
+	--space-24: 6rem;      /* 96px */
+	
+	/* Borders & Radius */
+	--border-sm: 1px;
+	--border-md: 2px;
+	--border-lg: 4px;
+	--radius-sm: 0.25rem;  /* 4px */
+	--radius-md: 0.5rem;   /* 8px */
+	--radius-lg: 0.75rem;  /* 12px */
+	--radius-xl: 1rem;     /* 16px */
+	--radius-full: 9999px;
+	
+	/* Shadows */
+	--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+	--shadow-md: 0 2px 8px rgba(0, 0, 0, 0.4);
+	--shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.5);
+	
+	/* Transitions */
+	--transition-fast: 0.15s ease;
+	--transition-md: 0.25s ease;
+	--transition-slow: 0.4s ease;
 }
 
 @font-face {
@@ -46,23 +92,23 @@
 	padding: 0;
 }
 
-*[icon]::before{
+*[icon]::before {
 	content: attr(icon);
 	display: inline;
 	font-size: inherit;
 	line-height: inherit;
 	font-family: 'emoji';
 	color: inherit;
-	letter-spacing: .28em;
+	letter-spacing: 0.28em;
 }
 
 html,
 body {
 	font-family: 'outfit', sans-serif;
-	font-size: 1em;
-	line-height: 1.2em;
-	margin-bottom: 1.2em;
-	font-weight: 320;
+	font-size: 100%;
+	line-height: var(--lh-md);
+	margin-bottom: var(--lh-md);
+	font-weight: 300;
 	width: 100svw;
 	min-height: 100svh;
 	background-color: var(--black);
@@ -75,14 +121,14 @@ body {
 a {
 	color: inherit;
 	text-decoration: underline;
-	text-decoration-thickness: .08em;
-	text-underline-offset: .12em;
-	transition: all .2s ease-in-out;
+	text-decoration-thickness: 0.08em;
+	text-underline-offset: 0.12em;
+	transition: all var(--transition-md);
 }
 
-a:hover{
+a:hover {
 	color: var(--color);
-	text-underline-offset: .24em;
+	text-underline-offset: 0.24em;
 	text-decoration-style: wavy;
 }
 
@@ -91,22 +137,23 @@ body {
 	flex-direction: column;
 }
 
+/* Navigation */
 nav {
 	display: flex;
 	background-color: var(--black);
-	z-index: 1;
-	height: 56px;
-	border-bottom: 1px solid var(--dark);
-	font-size: 24px;
-	line-height: 24px;
+	z-index: 100;
+	height: 3.5rem;
+	border-bottom: var(--border-sm) solid var(--dark);
+	font-size: var(--font-md);
+	line-height: var(--lh-md);
 }
 
 nav a,
 nav button {
 	display: inline-block;
-	height: 24px;
-	line-height: 24px;
-	margin: 16px 38px;
+	height: var(--lh-md);
+	line-height: var(--lh-md);
+	margin: var(--space-4) var(--space-8);
 	padding: 0;
 	border: 0;
 	outline: none;
@@ -114,168 +161,170 @@ nav button {
 	cursor: pointer;
 }
 
-body>nav>a>svg {
+body > nav > a > svg {
 	width: 100%;
 	height: 100%;
 	fill: var(--white);
 	pointer-events: none;
 }
 
-nav>hr {
+nav > hr {
 	flex-grow: 1;
 	outline: none;
 	border: 0;
 	background-color: transparent;
 }
 
-body>nav>button {
+body > nav > button {
 	background-color: transparent;
 }
 
-nav>button>svg {
+nav > button > svg {
 	width: 100%;
 	height: 100%;
 	fill: var(--white);
 	pointer-events: none;
 }
 
-nav>ul {
+nav > ul {
 	display: none;
 	list-style: none;
 	padding: 0;
-	height: 24px;
+	height: var(--lh-md);
 	margin: 0;
 }
 
-nav>ul>li>a {
-	height: 24px;
+nav > ul > li > a {
+	height: var(--lh-md);
 	margin-left: 0;
 }
 
+/* Main Content */
 main {
-	height: calc(100vh - 57px);
+	height: calc(100vh - 3.5rem);
 	background-color: var(--black);
 	overflow: hidden;
 }
 
-nav.menu>button>svg {
+nav.menu > button > svg {
 	transform: rotate(45deg);
 }
 
-nav.menu>ul {
+nav.menu > ul {
 	display: table-cell;
 	position: fixed;
 	width: 100%;
-	height: calc(100vh - 56px);
-	top: 56px;
+	height: calc(100vh - 3.5rem);
+	top: 3.5rem;
 }
 
-nav.menu>ul::before {
+nav.menu > ul::before {
 	content: '';
 	display: block;
 	background-color: hsla(0, 0%, 8%, 64%);
 	position: absolute;
 	width: 100%;
-	height: calc(100vh - 56px);
+	height: calc(100vh - 3.5rem);
 	top: 0;
 	backdrop-filter: saturate(25%) blur(4px);
 }
 
-nav.menu>ul>li {
+nav.menu > ul > li {
 	position: relative;
 	display: block;
 	text-align: right;
 	z-index: 2;
 }
 
-main>section{
+main > section {
 	display: block;
 	height: 100%;
 	overflow-y: auto;
 	overflow-x: hidden;
-	margin-right: -1.2rem;
-	padding-right: 1.2rem;
+	margin-right: calc(-1 * var(--space-8));
+	padding-right: var(--space-8);
 }
 
 main > section > article {
-	padding: 38px;
+	padding: var(--space-8);
 }
 
-main > section > article>*:not(:last-child){
-	margin-bottom: var(--mediumLine);
+main > section > article > *:not(:last-child) {
+	margin-bottom: var(--space-8);
 }
 
-main > section > article > *{
+main > section > article > * {
 	width: 100%;
 	display: block;
 	text-align: left;
 }
 
+/* Typography in Articles */
 main > section > article h1 {
-	font-size: calc(var(--medium) * 1.25);
-	line-height: calc(var(--mediumLine) * 1.25);
+	font-size: var(--font-2xl);
+	line-height: var(--lh-2xl);
 	color: var(--light);
 }
 
 main > section > article h2 {
-	font-size: calc(var(--medium) * 1.25);
-	line-height: calc(var(--mediumLine) * 1.25);
+	font-size: var(--font-lg);
+	line-height: var(--lh-lg);
 	color: var(--light);
-	margin-top: 1.5em;
-	margin-bottom: 0.5em;
+	margin-top: var(--space-12);
+	margin-bottom: var(--space-4);
 }
 
 main > section > article h3 {
-	font-size: calc(var(--medium) * 1.125);
-	line-height: calc(var(--mediumLine) * 1.125);
+	font-size: var(--font-md);
+	line-height: var(--lh-md);
 	color: var(--light);
-	margin-top: 1.25em;
-	margin-bottom: 0.5em;
+	margin-top: var(--space-10);
+	margin-bottom: var(--space-4);
 }
 
 main > section > article h4 {
-	font-size: calc(var(--medium) * 1.0625);
-	line-height: calc(var(--mediumLine) * 1.0625);
+	font-size: var(--font-sm);
+	line-height: var(--lh-sm);
 	color: var(--light);
-	margin-top: 1em;
-	margin-bottom: 0.5em;
+	margin-top: var(--space-8);
+	margin-bottom: var(--space-4);
 }
 
 main > section > article p {
-	font-size: var(--medium);
-	line-height: var(--mediumLine);
+	font-size: var(--font-md);
+	line-height: var(--lh-md);
 	color: var(--light);
 }
 
-main > section > article ul{
+main > section > article ul {
 	list-style: none;
 }
 
 main > section > article ul li {
 	list-style: none;
-	font-size: var(--medium);
-	line-height: var(--mediumLine);
+	font-size: var(--font-md);
+	line-height: var(--lh-md);
 	color: var(--light);
-	margin: 0 0 var(--medium) 0;
+	margin: 0 0 var(--space-5) 0;
 }
 
 main > section > article a {
 	font-size: inherit;
 	line-height: inherit;
-	text-decoration-thickness: .06em;
-	text-underline-offset: .32em;
+	text-decoration-thickness: 0.06em;
+	text-underline-offset: 0.32em;
 	color: inherit;
 	display: inline;
 }
 
-main > section > article input[name="filter"]{
-	border-radius: .4em;
-    padding: .2em .4em;
-    line-height: 1.2em;
-    font-size: .72em;
-    font-family: 'code';
-    height: 1.6em;
-    margin: 0;
+main > section > article input[name="filter"] {
+	border-radius: var(--radius-sm);
+	padding: var(--space-1) var(--space-2);
+	line-height: var(--lh-xs);
+	font-size: var(--font-xs);
+	font-family: 'code', monospace;
+	height: var(--lh-xs);
+	margin: 0;
 	outline: none;
 	color: var(--dark);
 	background-color: var(--light);
@@ -284,7 +333,31 @@ main > section > article input[name="filter"]{
 	max-width: 100%;
 }
 
-.scroll{
+main > section > article code {
+	background-color: var(--dark);
+	padding: var(--space-1) var(--space-2);
+	border-radius: var(--radius-sm);
+	font-family: 'code', monospace;
+	font-size: var(--font-sm);
+	color: var(--light);
+}
+
+main > section > article pre {
+	background-color: var(--dark);
+	padding: var(--space-4);
+	border-radius: var(--radius-md);
+	overflow-x: auto;
+	margin: var(--space-4) 0;
+}
+
+main > section > article pre code {
+	background-color: transparent;
+	padding: 0;
+	color: var(--light);
+}
+
+/* Scrollbar */
+.scroll {
 	display: none;
 }
 
@@ -292,12 +365,12 @@ main > section > article input[name="filter"]{
 	display: inline-block;
 	position: fixed;
 	width: 6px;
-	top: calc(50% + 28px);
-	right: 16px;
-	height: 96px;
-	max-height: calc(100vh - 80px);
-	transform: translate(0,-50%);
-	border-radius: 9999px;
+	top: calc(50% + var(--space-7, 28px));
+	right: var(--space-4);
+	height: 6rem;
+	max-height: calc(100vh - 5rem);
+	transform: translate(0, -50%);
+	border-radius: var(--radius-full);
 }
 
 .scroll > .track {
@@ -305,16 +378,16 @@ main > section > article input[name="filter"]{
 	width: 100%;
 	height: 100%;
 	background-color: var(--dark);
-	border-radius: 9999px;
+	border-radius: var(--radius-full);
 }
 
-.scroll.grabbing > .track{
+.scroll.grabbing > .track {
 	background-color: var(--gray);
 }
 
 .scroll > .thumb {
 	background-color: var(--light);
-	border-radius: 9999px;
+	border-radius: var(--radius-full);
 	left: 0;
 	position: absolute;
 	width: 100%;
@@ -322,73 +395,82 @@ main > section > article input[name="filter"]{
 	cursor: pointer;
 }
 
-.scroll.grabbing > .thumb{
+.scroll.grabbing > .thumb {
 	background-color: var(--color);
 }
 
-main > aside#notifications{
+/* Notifications */
+main > aside#notifications {
 	position: fixed;
-	top: 3.6rem;
+	top: var(--space-9, 3.6rem);
 	right: 0;
 	z-index: 100;
 }
 
-main > aside#notifications > div{
+main > aside#notifications > div {
 	position: relative;
-	padding: 1em;
-	margin: 1em;
-	border-radius: 1em;
+	padding: var(--space-4);
+	margin: var(--space-4);
+	border-radius: var(--radius-lg);
 	overflow: hidden;
 }
 
-main > aside#notifications > div::before{
-	content:'';
+main > aside#notifications > div::before {
+	content: '';
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
 	background-color: var(--color);
-	opacity: .5;
+	opacity: 0.5;
 }
 
-/* Responsive */
-@media screen and (min-width: 768px) {
-	main > aside#notifications {
-		top: 0;
-	}
+/* Responsive - Desktop */
+@media screen and (min-width: 48rem) {
 	body {
 		flex-direction: column-reverse;
 	}
+	
 	nav {
-		border-top: 1px solid var(--dark);
+		border-top: var(--border-sm) solid var(--dark);
 		border-bottom: 0;
 	}
-	nav>button {
-		display: none
+	
+	nav > button {
+		display: none;
 	}
-	nav>ul {
+	
+	nav > ul {
 		display: block;
 		width: auto;
 	}
-	nav>ul>li {
+	
+	nav > ul > li {
 		padding: 0;
 		display: inline-block;
 		list-style: none;
-		height: 32px;
-		line-height: 32px;
+		height: 2rem;
+		line-height: 2rem;
+	}
+	
+	main > aside#notifications {
+		top: 0;
 	}
 }
 
+/* Hover Effects */
 @media (hover: hover) {
 	a:hover {
 		color: var(--color);
 	}
+	
 	nav > a:hover > svg {
 		fill: var(--color);
 	}
+	
 	nav > button:hover > svg {
 		fill: var(--color);
-		transition: transform .4s ease-in-out;
+		transition: transform var(--transition-slow);
 	}
 }

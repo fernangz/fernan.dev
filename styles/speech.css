@@ -1,21 +1,22 @@
 /* ============================================
    Speech to Text Tool Styles
+   Base: 1.25rem font-size, 1.5rem line-height, 2rem spacing
    ============================================ */
 
 .speech-controls {
 	display: flex;
-	gap: 1rem;
-	margin: 1rem 0;
+	gap: var(--space-4);
+	margin: var(--space-4) 0;
 	flex-wrap: wrap;
 	align-items: center;
 }
 
 .speech-status {
-	padding: 0.5rem 1rem;
+	padding: var(--space-2) var(--space-4);
 	background-color: var(--dark);
-	border-radius: 5px;
-	font-size: var(--small);
-	line-height: var(--smallLine);
+	border-radius: var(--radius-md);
+	font-size: var(--font-sm);
+	line-height: var(--lh-sm);
 	color: var(--light);
 }
 
