@@ -74,17 +74,26 @@
 							</div>
 						</div>
 					</div>
-					
-					<h2>Generate Palette</h2>
-					<p>Click the button below to generate a color palette based on the selected color.</p>
-					<div class="palette-types">
-						<button id="generate-analogous" class="btn">Analogous</button>
-						<button id="generate-complementary" class="btn btn-secondary">Complementary</button>
-						<button id="generate-triadic" class="btn btn-secondary">Triadic</button>
-						<button id="generate-split" class="btn btn-secondary">Split Complementary</button>
+
+					<h2>Generate Palettes</h2>
+					<p>Color palettes automatically generated based on the selected color.</p>
+					<div class="palette-section">
+						<h3>Analogous</h3>
+						<div id="palette-analogous" class="color-preview"></div>
 					</div>
-					<div id="palette-container" class="color-preview"></div>
-					
+					<div class="palette-section">
+						<h3>Complementary</h3>
+						<div id="palette-complementary" class="color-preview"></div>
+					</div>
+					<div class="palette-section">
+						<h3>Triadic</h3>
+						<div id="palette-triadic" class="color-preview"></div>
+					</div>
+					<div class="palette-section">
+						<h3>Split Complementary</h3>
+						<div id="palette-split" class="color-preview"></div>
+					</div>
+
 					<h2>Contrast Ratio</h2>
 					<p>WCAG contrast ratio for accessibility. Minimum 4.5:1 for normal text, 3:1 for large text.</p>
 					<div class="contrast-ratios">

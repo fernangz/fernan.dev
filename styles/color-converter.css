@@ -76,6 +76,16 @@
 	margin: 1rem 0;
 }
 
+.palette-section {
+	margin: 1.5rem 0;
+}
+
+.palette-section h3 {
+	color: var(--light);
+	font-size: var(--medium);
+	margin-bottom: 0.75rem;
+}
+
 .color-preview {
 	display: flex;
 	gap: 1rem;

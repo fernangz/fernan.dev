@@ -12,7 +12,6 @@ const ColorConverter = {
 		const hslInput = document.getElementById('hsl-input');
 		const hsvInput = document.getElementById('hsv-input');
 		const colorPreview = document.getElementById('color-preview');
-		const paletteContainer = document.getElementById('palette-container');
 
 		if (!colorInput) return;
 
@@ -21,6 +20,9 @@ const ColorConverter = {
 			colorPreview.style.backgroundColor = this.currentColor;
 		}
 
+		// Generate initial palettes
+		this.generateAllPalettes();
+
 		// Color picker change
 		colorInput.addEventListener('input', (e) => {
 			this.currentColor = e.target.value;
@@ -28,6 +30,8 @@ const ColorConverter = {
 			if (colorPreview) {
 				colorPreview.style.backgroundColor = this.currentColor;
 			}
+			// Auto-generate palettes on color change
+			this.generateAllPalettes();
 		});
 
 		// HEX input change
@@ -115,36 +119,13 @@ const ColorConverter = {
 				}
 			});
 		});
+	},
 
-		// Palette generation buttons
-		const analogousBtn = document.getElementById('generate-analogous');
-		const complementaryBtn = document.getElementById('generate-complementary');
-		const triadicBtn = document.getElementById('generate-triadic');
-		const splitBtn = document.getElementById('generate-split');
-
-		if (analogousBtn) {
-			analogousBtn.addEventListener('click', () => {
-				this.generatePalette('analogous', paletteContainer);
-			});
-		}
-
-		if (complementaryBtn) {
-			complementaryBtn.addEventListener('click', () => {
-				this.generatePalette('complementary', paletteContainer);
-			});
-		}
-
-		if (triadicBtn) {
-			triadicBtn.addEventListener('click', () => {
-				this.generatePalette('triadic', paletteContainer);
-			});
-		}
-
-		if (splitBtn) {
-			splitBtn.addEventListener('click', () => {
-				this.generatePalette('split', paletteContainer);
-			});
-		}
+	generateAllPalettes() {
+		this.generatePalette('analogous', document.getElementById('palette-analogous'));
+		this.generatePalette('complementary', document.getElementById('palette-complementary'));
+		this.generatePalette('triadic', document.getElementById('palette-triadic'));
+		this.generatePalette('split', document.getElementById('palette-split'));
 	},
 
 	updateColorInputs(hex) {
