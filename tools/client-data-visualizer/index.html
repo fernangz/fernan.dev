@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>fernan.dev • Client Data</title>
+		<meta name="description" content="View and inspect client-side data">
+		<link rel="canonical" href="https://fernan.dev/tools/client-data" />
+		<meta name="author" content="Fernán García de Zúñiga" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+		<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+		<link rel="shortcut icon" href="/favicon/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+		<meta name="apple-mobile-web-app-title" content="fernan.dev" />
+		<link rel="manifest" href="/favicon/site.webmanifest" />
+		<meta id="androidTheme" name="theme-color" content="hsl(0, 0%, 8%)">
+		<meta id="appleTheme" name="apple-mobile-web-app-status-bar-style" content="hsl(0, 0%, 8%)">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="preload" href="/fonts/outfit.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+		<link rel="preload" href="/fonts/emoji.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+		<link rel="stylesheet" href="/styles/main.css">
+		<link rel="stylesheet" href="/styles/tools.css">
+		<link rel="stylesheet" href="/styles/client-data.css">
+	</head>
+	<body>
+		<nav>
+			<a href="/" class="logo" svg="logo" aria-label="Homepage"></a>
+			<hr>
+			<button class="toggle" aria-label="Menu" svg="plus"></button>
+			<ul>
+				<li><a href="/">About</a></li>
+				<li><a href="/tools/">Tools</a></li>
+				<li><a href="/articles/">Articles</a></li>
+				<li><a href="/resources/">Resources</a></li>
+			</ul>
+		</nav>
+		<main>
+			<section>
+				<article>
+					<a href="/tools/" class="back-link">← Back to Tools</a>
+					<h1>Client Data Visualizer</h1>
+					<p>View all data that websites can access from your browser and device.</p>
+					
+					<div class="data-controls">
+						<button id="refresh-data" class="btn">Refresh Data</button>
+						<button id="copy-data" class="btn btn-secondary">Copy All Data</button>
+					</div>
+					
+					<div id="data-container">
+						<section class="data-section">
+							<h2>🖥️ Navigator & Platform</h2>
+							<div class="data-grid" id="navigator-data"></div>
+						</section>
+						
+						<section class="data-section">
+							<h2>📱 Screen & Display</h2>
+							<div class="data-grid" id="screen-data"></div>
+						</section>
+						
+						<section class="data-section">
+							<h2>🌐 Network & Connection</h2>
+							<div class="data-grid" id="network-data"></div>
+						</section>
+						
+						<section class="data-section">
+							<h2>🪟 Window & Document</h2>
+							<div class="data-grid" id="window-data"></div>
+						</section>
+						
+						<section class="data-section">
+							<h2>💾 Storage</h2>
+							<div class="data-grid" id="storage-data"></div>
+						</section>
+						
+						<section class="data-section">
+							<h2>🎤 Media Devices</h2>
+							<div class="data-grid" id="media-data"></div>
+						</section>
+						
+						<section class="data-section">
+							<h2>📍 Location & IP</h2>
+							<div class="data-grid" id="location-data"></div>
+						</section>
+						
+						<section class="data-section">
+							<h2>🖱️ User Interactions</h2>
+							<div class="data-grid" id="interaction-data">
+								<div class="data-item">
+									<span class="data-label">Mouse Position</span>
+									<span class="data-value" id="mouse-pos">--</span>
+								</div>
+								<div class="data-item">
+									<span class="data-label">Scroll Position</span>
+									<span class="data-value" id="scroll-pos">--</span>
+								</div>
+								<div class="data-item">
+									<span class="data-label">Last Key Pressed</span>
+									<span class="data-value" id="last-key">--</span>
+								</div>
+							</div>
+						</section>
+					</div>
+					
+					<div class="data-info">
+						<h2>About This Data</h2>
+						<p>All data shown above is collected client-side using standard JavaScript APIs. This is the same type of data that websites can access when you visit them.</p>
+						<ul>
+							<li><strong>Navigator data:</strong> Browser and platform information</li>
+							<li><strong>Screen data:</strong> Display properties and capabilities</li>
+							<li><strong>Network data:</strong> Connection type and speed estimates</li>
+							<li><strong>Storage data:</strong> Cookies and local storage usage</li>
+							<li><strong>Media devices:</strong> Available cameras and microphones</li>
+							<li><strong>Location data:</strong> IP-based geolocation from Cloudflare</li>
+							<li><strong>Interactions:</strong> Real-time mouse, scroll, and keyboard tracking</li>
+						</ul>
+					</div>
+				</article>
+			</section>
+		</main>
+		<script src="/scripts/main.js"></script>
+		<script src="/scripts/client-data.js"></script>
+	</body>
+</html>
