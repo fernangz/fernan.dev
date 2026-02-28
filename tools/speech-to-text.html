@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>fernan.dev • Speech to Text</title>
+		<meta name="description" content="Convert spoken audio to text using browser speech recognition">
+		<link rel="canonical" href="https://fernan.dev/tools/speech-to-text" />
+		<meta name="author" content="Fernán García de Zúñiga" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link id="favicon" rel="shortcut icon" href="/svgs/f.svg" sizes="any" type="image/svg+xml">
+		<meta id="androidTheme" name="theme-color" content="hsl(0, 0%, 8%)">
+		<meta id="appleTheme" name="apple-mobile-web-app-status-bar-style" content="hsl(0, 0%, 8%)">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/styles.css">
+		<link rel="preload" href="/fonts/outfit.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+		<link rel="preload" href="/fonts/emoji.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+	</head>
+	<body>
+		<nav>
+			<a href="/" class="logo" svg="logo" aria-label="Homepage"></a>
+			<hr>
+			<button class="toggle" aria-label="Menu" svg="plus"></button>
+			<ul>
+				<li><a href="/about.html">About</a></li>
+				<li><a href="/tools/index.html">Tools</a></li>
+				<li><a href="/articles/index.html">Articles</a></li>
+				<li><a href="/resources/index.html">Resources</a></li>
+			</ul>
+		</nav>
+		<main>
+			<section>
+				<article>
+					<a href="/tools/index.html" class="back-link">← Back to Tools</a>
+					<h1>Speech to Text Converter</h1>
+					<p>Convert spoken audio to text using your browser's speech recognition.</p>
+					<h2>Controls</h2>
+					<div class="speech-controls">
+						<button id="start-speech" class="btn">Start Listening</button>
+						<button id="stop-speech" class="btn btn-secondary" disabled>Stop</button>
+						<span id="speech-status" class="speech-status">Ready</span>
+					</div>
+					<h2>Output</h2>
+					<p>Speak into your microphone and the text will appear below.</p>
+					<textarea id="speech-output" placeholder="Your transcribed text will appear here..." style="min-height: 200px; margin-top: 1rem;"></textarea>
+					<div class="btn-group">
+						<button id="copy-speech" class="btn">Copy Text</button>
+						<button id="clear-speech" class="btn btn-secondary">Clear</button>
+					</div>
+					<h2>Browser Support</h2>
+					<p>This tool uses the Web Speech API. It works best in Google Chrome, Microsoft Edge, and Safari. Some browsers may require you to grant microphone permissions.</p>
+				</article>
+			</section>
+		</main>
+		<script src="/main.js"></script>
+	</body>
+</html>

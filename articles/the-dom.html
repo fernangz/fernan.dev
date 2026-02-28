@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>fernan.dev • The DOM</title>
+		<meta name="description" content="Understanding the Document Object Model">
+		<link rel="canonical" href="https://fernan.dev/articles/the-dom" />
+		<meta name="author" content="Fernán García de Zúñiga" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link id="favicon" rel="shortcut icon" href="/svgs/f.svg" sizes="any" type="image/svg+xml">
+		<meta id="androidTheme" name="theme-color" content="hsl(0, 0%, 8%)">
+		<meta id="appleTheme" name="apple-mobile-web-app-status-bar-style" content="hsl(0, 0%, 8%)">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/styles.css">
+		<link rel="preload" href="/fonts/outfit.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+		<link rel="preload" href="/fonts/emoji.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+	</head>
+	<body>
+		<nav>
+			<a href="/" class="logo" svg="logo" aria-label="Homepage"></a>
+			<hr>
+			<button class="toggle" aria-label="Menu" svg="plus"></button>
+			<ul>
+				<li><a href="/about.html">About</a></li>
+				<li><a href="/tools/index.html">Tools</a></li>
+				<li><a href="/articles/index.html">Articles</a></li>
+				<li><a href="/resources/index.html">Resources</a></li>
+			</ul>
+		</nav>
+		<main>
+			<section>
+				<article>
+					<a href="/articles/index.html" class="back-link">← Back to Articles</a>
+					<span class="category">Beginner</span>
+					<h1>The DOM</h1>
+					<p>Understanding the Document Object Model is fundamental for FrontEnd development</p>
+					<h2>Introduction</h2>
+					<p>The Document Object Model (DOM) is a programming interface for web documents. It represents the structure of a document as a tree of objects, where each node in the tree corresponds to a part of the document. Understanding the DOM is essential for any FrontEnd developer, as it's the bridge between your HTML and JavaScript.</p>
+					<h2>What is the DOM?</h2>
+					<p>When a web page loads, the browser creates a tree-like structure called the DOM. This tree represents every element, attribute, and piece of text in your HTML document. Each of these becomes a node (or object) in the tree, which can be accessed and manipulated using JavaScript.</p>
+					<p>The DOM is not part of the JavaScript language itself, but rather a web API provided by browsers to interact with web pages programmatically.</p>
+					<h2>The DOM Tree Structure</h2>
+					<p>The DOM tree starts with the <code>document</code> object as its root. From there, it branches out to include all the elements in your HTML:</p>
+					<ul>
+						<li><strong>Document Node:</strong> The root of the tree, representing the entire document</li>
+						<li><strong>Element Nodes:</strong> Each HTML element (div, p, a, etc.) becomes a node</li>
+						<li><strong>Text Nodes:</strong> The text content within elements</li>
+						<li><strong>Attribute Nodes:</strong> Attributes of elements (class, id, href, etc.)</li>
+						<li><strong>Comment Nodes:</strong> HTML comments are also represented in the DOM</li>
+					</ul>
+					<h2>Accessing DOM Elements</h2>
+					<p>JavaScript provides several methods to access elements in the DOM:</p>
+					<ul>
+						<li><code>document.getElementById('id')</code> - Select by element ID</li>
+						<li><code>document.querySelector('.class')</code> - Select using CSS selectors</li>
+						<li><code>document.querySelectorAll('div')</code> - Select all matching elements</li>
+						<li><code>document.getElementsByTagName('p')</code> - Select by tag name</li>
+						<li><code>document.getElementsByClassName('class')</code> - Select by class name</li>
+					</ul>
+					<h2>Manipulating the DOM</h2>
+					<p>Once you've selected an element, you can manipulate it in various ways:</p>
+					<ul>
+						<li><strong>Change content:</strong> <code>element.textContent</code> or <code>element.innerHTML</code></li>
+						<li><strong>Change styles:</strong> <code>element.style.property</code></li>
+						<li><strong>Add/remove classes:</strong> <code>element.classList.add/remove</code></li>
+						<li><strong>Create elements:</strong> <code>document.createElement('tag')</code></li>
+						<li><strong>Append elements:</strong> <code>parent.appendChild(child)</code></li>
+						<li><strong>Remove elements:</strong> <code>element.remove()</code></li>
+					</ul>
+					<h2>DOM Events</h2>
+					<p>Events are actions that happen in the browser, such as clicks, key presses, or page loads. You can listen for these events and respond to them:</p>
+					<ul>
+						<li><code>element.addEventListener('click', handler)</code> - Listen for clicks</li>
+						<li><code>element.addEventListener('mouseover', handler)</code> - Listen for hover</li>
+						<li><code>element.addEventListener('submit', handler)</code> - Listen for form submission</li>
+						<li><code>window.addEventListener('load', handler)</code> - Listen for page load</li>
+					</ul>
+					<h2>Performance Considerations</h2>
+					<p>DOM manipulation can be expensive in terms of performance. Here are some tips:</p>
+					<ul>
+						<li>Minimize direct DOM access - cache references to elements you use frequently</li>
+						<li>Batch DOM changes together when possible</li>
+						<li>Use document fragments for multiple insertions</li>
+						<li>Consider using virtual DOM libraries for complex applications</li>
+					</ul>
+					<h2>Conclusion</h2>
+					<p>The DOM is the foundation of interactive web pages. By understanding how it works and how to manipulate it efficiently, you can create dynamic, responsive user experiences. Master the DOM, and you'll have the power to bring your web pages to life with JavaScript.</p>
+				</article>
+			</section>
+		</main>
+		<script src="/main.js"></script>
+	</body>
+</html>

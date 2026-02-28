@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>fernan.dev • Client Data</title>
+		<meta name="description" content="View and inspect cookies, localStorage, and sessionStorage">
+		<link rel="canonical" href="https://fernan.dev/tools/client-data" />
+		<meta name="author" content="Fernán García de Zúñiga" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link id="favicon" rel="shortcut icon" href="/svgs/f.svg" sizes="any" type="image/svg+xml">
+		<meta id="androidTheme" name="theme-color" content="hsl(0, 0%, 8%)">
+		<meta id="appleTheme" name="apple-mobile-web-app-status-bar-style" content="hsl(0, 0%, 8%)">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/styles.css">
+		<link rel="preload" href="/fonts/outfit.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+		<link rel="preload" href="/fonts/emoji.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+	</head>
+	<body>
+		<nav>
+			<a href="/" class="logo" svg="logo" aria-label="Homepage"></a>
+			<hr>
+			<button class="toggle" aria-label="Menu" svg="plus"></button>
+			<ul>
+				<li><a href="/about.html">About</a></li>
+				<li><a href="/tools/index.html">Tools</a></li>
+				<li><a href="/articles/index.html">Articles</a></li>
+				<li><a href="/resources/index.html">Resources</a></li>
+			</ul>
+		</nav>
+		<main>
+			<section>
+				<article>
+					<a href="/tools/index.html" class="back-link">← Back to Tools</a>
+					<h1>Client Data Visualizer</h1>
+					<p>View and inspect cookies, localStorage, and sessionStorage data stored in your browser.</p>
+					<button id="refresh-data" class="btn">Refresh Data</button>
+					<h2>Cookies</h2>
+					<div class="data-section">
+						<div id="cookies-container"></div>
+					</div>
+					<h2>LocalStorage</h2>
+					<div class="data-section">
+						<div id="localstorage-container"></div>
+					</div>
+					<h2>SessionStorage</h2>
+					<div class="data-section">
+						<div id="sessionstorage-container"></div>
+					</div>
+					<h2>About Client Data</h2>
+					<p><strong>Cookies:</strong> Small pieces of data stored by websites in your browser. They persist based on their expiration settings.</p>
+					<p><strong>LocalStorage:</strong> A web storage mechanism that persists even after the browser is closed. Data has no expiration date.</p>
+					<p><strong>SessionStorage:</strong> Similar to LocalStorage but data is cleared when the browser tab/window is closed.</p>
+				</article>
+			</section>
+		</main>
+		<script src="/main.js"></script>
+	</body>
+</html>

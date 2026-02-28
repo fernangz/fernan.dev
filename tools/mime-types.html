@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>fernan.dev • MIME Types</title>
+		<meta name="description" content="Look up MIME type definitions for file extensions">
+		<link rel="canonical" href="https://fernan.dev/tools/mime-types" />
+		<meta name="author" content="Fernán García de Zúñiga" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link id="favicon" rel="shortcut icon" href="/svgs/f.svg" sizes="any" type="image/svg+xml">
+		<meta id="androidTheme" name="theme-color" content="hsl(0, 0%, 8%)">
+		<meta id="appleTheme" name="apple-mobile-web-app-status-bar-style" content="hsl(0, 0%, 8%)">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/styles.css">
+		<link rel="preload" href="/fonts/outfit.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+		<link rel="preload" href="/fonts/emoji.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+	</head>
+	<body>
+		<nav>
+			<a href="/" class="logo" svg="logo" aria-label="Homepage"></a>
+			<hr>
+			<button class="toggle" aria-label="Menu" svg="plus"></button>
+			<ul>
+				<li><a href="/about.html">About</a></li>
+				<li><a href="/tools/index.html">Tools</a></li>
+				<li><a href="/articles/index.html">Articles</a></li>
+				<li><a href="/resources/index.html">Resources</a></li>
+			</ul>
+		</nav>
+		<main>
+			<section>
+				<article>
+					<a href="/tools/index.html" class="back-link">← Back to Tools</a>
+					<h1>MIME Types Reference</h1>
+					<p>Look up MIME type definitions for file extensions.</p>
+					<h2>Search MIME Types</h2>
+					<input type="text" id="mime-search" placeholder="Search by extension or MIME type..." style="margin-top:1rem;">
+					<h2>MIME Types Table</h2>
+					<table class="data-table">
+						<thead>
+							<tr>
+								<th>Extension</th>
+								<th>MIME Type</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody id="mime-container"></tbody>
+					</table>
+				</article>
+			</section>
+		</main>
+		<script src="/main.js"></script>
+	</body>
+</html>

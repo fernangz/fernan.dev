@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>fernan.dev • 8-bit Icon</title>
+		<meta name="description" content="Create pixel art 8-bit style icons">
+		<link rel="canonical" href="https://fernan.dev/tools/8bit-icon" />
+		<meta name="author" content="Fernán García de Zúñiga" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link id="favicon" rel="shortcut icon" href="/svgs/f.svg" sizes="any" type="image/svg+xml">
+		<meta id="androidTheme" name="theme-color" content="hsl(0, 0%, 8%)">
+		<meta id="appleTheme" name="apple-mobile-web-app-status-bar-style" content="hsl(0, 0%, 8%)">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/styles.css">
+		<link rel="preload" href="/fonts/outfit.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+		<link rel="preload" href="/fonts/emoji.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+	</head>
+	<body>
+		<nav>
+			<a href="/" class="logo" svg="logo" aria-label="Homepage"></a>
+			<hr>
+			<button class="toggle" aria-label="Menu" svg="plus"></button>
+			<ul>
+				<li><a href="/about.html">About</a></li>
+				<li><a href="/tools/index.html">Tools</a></li>
+				<li><a href="/articles/index.html">Articles</a></li>
+				<li><a href="/resources/index.html">Resources</a></li>
+			</ul>
+		</nav>
+		<main>
+			<section>
+				<article>
+					<a href="/tools/index.html" class="back-link">← Back to Tools</a>
+					<h1>8-bit Icon Generator</h1>
+					<p>Create pixel art 8-bit style icons and download them as PNG images.</p>
+					<h2>Canvas Settings</h2>
+					<div class="canvas-controls">
+						<div>
+							<label for="canvas-size" style="color:var(--light);">Canvas Size:</label>
+							<select id="canvas-size" style="margin-top:0.5rem;">
+								<option value="8">8x8</option>
+								<option value="16" selected>16x16</option>
+								<option value="24">24x24</option>
+								<option value="32">32x32</option>
+								<option value="64">64x64</option>
+							</select>
+						</div>
+						<div>
+							<label for="pixel-color" style="color:var(--light);">Color:</label>
+							<input type="color" id="pixel-color" value="#000000" style="width: 50px; height: 35px; margin-top:0.5rem;">
+						</div>
+						<button id="eraser-btn" class="btn btn-secondary">Eraser</button>
+					</div>
+					<h2>Drawing Canvas</h2>
+					<p>Click and drag on the canvas to draw. Use the color picker to change colors.</p>
+					<canvas id="pixel-canvas" class="pixel-canvas" width="320" height="320"></canvas>
+					<div class="canvas-controls">
+						<button id="clear-canvas" class="btn btn-secondary">Clear Canvas</button>
+						<button id="download-icon" class="btn">Download PNG</button>
+					</div>
+					<h2>Tips</h2>
+					<ul>
+						<li>Start with a smaller canvas size (8x8 or 16x16) for classic 8-bit look</li>
+						<li>Use limited colors for authentic retro style</li>
+						<li>The grid helps you align pixels precisely</li>
+						<li>Download creates a PNG with transparency support</li>
+					</ul>
+				</article>
+			</section>
+		</main>
+		<script src="/main.js"></script>
+	</body>
+</html>

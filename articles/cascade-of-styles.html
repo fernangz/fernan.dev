@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>fernan.dev • Cascade of Styles</title>
+		<meta name="description" content="Understanding CSS cascade and specificity">
+		<link rel="canonical" href="https://fernan.dev/articles/cascade-of-styles" />
+		<meta name="author" content="Fernán García de Zúñiga" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link id="favicon" rel="shortcut icon" href="/svgs/f.svg" sizes="any" type="image/svg+xml">
+		<meta id="androidTheme" name="theme-color" content="hsl(0, 0%, 8%)">
+		<meta id="appleTheme" name="apple-mobile-web-app-status-bar-style" content="hsl(0, 0%, 8%)">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/styles.css">
+		<link rel="preload" href="/fonts/outfit.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+		<link rel="preload" href="/fonts/emoji.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+	</head>
+	<body>
+		<nav>
+			<a href="/" class="logo" svg="logo" aria-label="Homepage"></a>
+			<hr>
+			<button class="toggle" aria-label="Menu" svg="plus"></button>
+			<ul>
+				<li><a href="/about.html">About</a></li>
+				<li><a href="/tools/index.html">Tools</a></li>
+				<li><a href="/articles/index.html">Articles</a></li>
+				<li><a href="/resources/index.html">Resources</a></li>
+			</ul>
+		</nav>
+		<main>
+			<section>
+				<article>
+					<a href="/articles/index.html" class="back-link">← Back to Articles</a>
+					<span class="category">Beginner</span>
+					<h1>Cascade of Styles</h1>
+					<p>Understanding CSS cascade and specificity is crucial for writing maintainable styles</p>
+					<h2>Introduction</h2>
+					<p>CSS (Cascading Style Sheets) is the language used to style web pages. The "cascading" part of CSS is fundamental to how styles are applied to elements. Understanding the cascade, inheritance, and specificity will help you write more predictable and maintainable CSS.</p>
+					<h2>What is the Cascade?</h2>
+					<p>The cascade is the algorithm CSS uses to determine which styles to apply to an element when multiple rules could apply. It's a decision-making process that considers three main factors:</p>
+					<ul>
+						<li><strong>Importance:</strong> Whether a declaration is marked as <code>!important</code></li>
+						<li><strong>Specificity:</strong> How specific a selector is</li>
+						<li><strong>Source Order:</strong> The order in which rules appear</li>
+					</ul>
+					<h2>Specificity Explained</h2>
+					<p>Specificity is a weight assigned to CSS selectors that determines which rule wins when multiple rules target the same element. It's calculated as a four-part value:</p>
+					<ul>
+						<li><strong>Inline styles:</strong> (1,0,0,0) - Styles applied directly to an element</li>
+						<li><strong>ID selectors:</strong> (0,1,0,0) - Each #id adds to this column</li>
+						<li><strong>Class/Attribute/Pseudo-class:</strong> (0,0,1,0) - Each .class, [attribute], or :pseudo-class</li>
+						<li><strong>Element/Pseudo-element:</strong> (0,0,0,1) - Each tag name or ::pseudo-element</li>
+					</ul>
+					<h2>Specificity Examples</h2>
+					<p>Here are some common selectors and their specificity values:</p>
+					<ul>
+						<li><code>#header .nav a</code> = (0,1,1,1) - One ID, one class, one element</li>
+						<li><code>.button.primary</code> = (0,0,2,0) - Two classes</li>
+						<li><code>div.container p</code> = (0,0,1,2) - One class, two elements</li>
+						<li><code>a:hover</code> = (0,0,1,1) - One pseudo-class, one element</li>
+						<li><code>* </code> = (0,0,0,0) - Universal selector has no specificity</li>
+					</ul>
+					<h2>Source Order</h2>
+					<p>When two rules have the same specificity, the one that comes later in the CSS file wins. This is why the order of your CSS matters.</p>
+					<h2>Inheritance</h2>
+					<p>Some CSS properties are inherited from parent elements to their children. This is useful for setting default values:</p>
+					<ul>
+						<li><strong>Inherited properties:</strong> color, font-family, font-size, line-height, text-align</li>
+						<li><strong>Non-inherited properties:</strong> border, margin, padding, background, display</li>
+					</ul>
+					<p>You can force inheritance with the <code>inherit</code> keyword or prevent it with <code>initial</code> or <code>unset</code>.</p>
+					<h2>The !important Declaration</h2>
+					<p>Adding <code>!important</code> to a CSS declaration gives it the highest priority, overriding normal cascade rules. However, it should be used sparingly. Overuse of <code>!important</code> makes CSS harder to maintain and debug. It's better to increase specificity or restructure your CSS when possible.</p>
+					<h2>Best Practices</h2>
+					<ul>
+						<li>Keep specificity low - avoid overly specific selectors</li>
+						<li>Use classes for styling, reserve IDs for JavaScript hooks</li>
+						<li>Organize your CSS logically - group related styles together</li>
+						<li>Consider using CSS methodologies like BEM for consistent naming</li>
+						<li>Avoid <code>!important</code> unless absolutely necessary</li>
+						<li>Use CSS custom properties (variables) for consistent values</li>
+					</ul>
+					<h2>Conclusion</h2>
+					<p>Understanding the cascade of styles is essential for writing effective CSS. By mastering specificity, inheritance, and source order, you'll be able to predict how your styles will be applied and avoid common pitfalls. Remember: the goal is to write CSS that is both effective and maintainable.</p>
+				</article>
+			</section>
+		</main>
+		<script src="/main.js"></script>
+	</body>
+</html>

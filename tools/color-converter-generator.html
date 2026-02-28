@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>fernan.dev • Color Converter</title>
+		<meta name="description" content="Convert between color formats and generate palettes">
+		<link rel="canonical" href="https://fernan.dev/tools/color-converter" />
+		<meta name="author" content="Fernán García de Zúñiga" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<link id="favicon" rel="shortcut icon" href="/svgs/f.svg" sizes="any" type="image/svg+xml">
+		<meta id="androidTheme" name="theme-color" content="hsl(0, 0%, 8%)">
+		<meta id="appleTheme" name="apple-mobile-web-app-status-bar-style" content="hsl(0, 0%, 8%)">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/styles.css">
+		<link rel="preload" href="/fonts/outfit.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+		<link rel="preload" href="/fonts/emoji.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+	</head>
+	<body>
+		<nav>
+			<a href="/" class="logo" svg="logo" aria-label="Homepage"></a>
+			<hr>
+			<button class="toggle" aria-label="Menu" svg="plus"></button>
+			<ul>
+				<li><a href="/about.html">About</a></li>
+				<li><a href="/tools/index.html">Tools</a></li>
+				<li><a href="/articles/index.html">Articles</a></li>
+				<li><a href="/resources/index.html">Resources</a></li>
+			</ul>
+		</nav>
+		<main>
+			<section>
+				<article>
+					<a href="/tools/index.html" class="back-link">← Back to Tools</a>
+					<h1>Color Converter & Generator</h1>
+					<p>Convert between HEX, RGB, and HSL color formats. Generate color palettes.</p>
+					<h2>Color Picker</h2>
+					<input type="color" id="color-input" value="#3498db" style="width: 100%; height: 60px; cursor: pointer; border: none; background: none;">
+					<h2>Color Formats</h2>
+					<div style="display: grid; gap: 1rem; margin-top: 1rem;">
+						<div>
+							<label for="hex-input" style="display:block;margin-bottom:0.5rem;color:var(--light);">HEX</label>
+							<input type="text" id="hex-input" value="#3498db" placeholder="#000000">
+						</div>
+						<div>
+							<label for="rgb-input" style="display:block;margin-bottom:0.5rem;color:var(--light);">RGB</label>
+							<input type="text" id="rgb-input" value="rgb(52, 152, 219)" placeholder="rgb(0, 0, 0)">
+						</div>
+						<div>
+							<label for="hsl-input" style="display:block;margin-bottom:0.5rem;color:var(--light);">HSL</label>
+							<input type="text" id="hsl-input" value="hsl(204, 70%, 53%)" placeholder="hsl(0, 0%, 0%)">
+						</div>
+					</div>
+					<h2>Generate Palette</h2>
+					<p>Click the button below to generate a color palette based on the selected color.</p>
+					<button id="generate-palette" class="btn mt-2">Generate Palette</button>
+					<div id="palette-container" class="color-preview"></div>
+				</article>
+			</section>
+		</main>
+		<script src="/main.js"></script>
+	</body>
+</html>
