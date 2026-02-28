@@ -12,7 +12,7 @@
 
 .data-controls .btn {
 	padding: var(--space-3) var(--space-5);
-	font-size: var(--font-sm);
+	font-size: var(--font-md);
 }
 
 #data-container {
@@ -89,7 +89,7 @@
 	justify-content: space-between;
 	padding: var(--space-2) 0;
 	border-bottom: var(--border-sm) solid var(--dark);
-	font-size: var(--font-sm);
+	font-size: var(--font-md);
 }
 
 .storage-item:last-child {
@@ -118,7 +118,7 @@
 .storage-empty {
 	color: var(--gray);
 	font-style: italic;
-	font-size: var(--font-sm);
+	font-size: var(--font-md);
 	text-align: center;
 	padding: var(--space-4);
 }
@@ -131,7 +131,7 @@
 	padding: var(--space-2);
 	background-color: var(--black);
 	border-radius: var(--radius-sm);
-	font-size: var(--font-sm);
+	font-size: var(--font-md);
 	color: var(--light);
 }
 
@@ -166,7 +166,7 @@
 
 .data-info p {
 	color: var(--gray);
-	font-size: var(--font-sm);
+	font-size: var(--font-md);
 	line-height: var(--lh-md);
 	margin-bottom: var(--space-4);
 }
@@ -178,7 +178,7 @@
 
 .data-info li {
 	color: var(--gray);
-	font-size: var(--font-sm);
+	font-size: var(--font-md);
 	line-height: var(--lh-md);
 	margin-bottom: var(--space-2);
 }

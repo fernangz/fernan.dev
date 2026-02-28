@@ -42,7 +42,7 @@
 
 .format-input label {
 	color: var(--light);
-	font-size: var(--font-sm);
+	font-size: var(--font-md);
 	margin-bottom: var(--space-2);
 }
 
@@ -62,7 +62,7 @@
 	border: none;
 	border-radius: var(--radius-md);
 	cursor: pointer;
-	font-size: var(--font-sm);
+	font-size: var(--font-md);
 	transition: all var(--transition-fast);
 }
 
@@ -117,14 +117,14 @@
 	background-color: rgba(0, 0, 0, 0.7);
 	padding: var(--space-1) var(--space-2);
 	border-radius: var(--radius-sm);
-	font-size: 0.625rem;
+	font-size: var(--font-md);
 	font-family: 'code', monospace;
 	color: var(--light);
 	margin-top: var(--space-1);
 }
 
 .color-box .color-name {
-	font-size: 0.5625rem;
+	font-size: var(--font-md);
 	color: var(--light);
 	background-color: rgba(0, 0, 0, 0.5);
 	padding: var(--space-1);
@@ -172,7 +172,7 @@
 }
 
 .contrast-value {
-	font-size: var(--font-sm);
+	font-size: var(--font-md);
 	font-family: 'code', monospace;
 	color: var(--light);
 }

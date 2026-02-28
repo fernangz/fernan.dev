@@ -15,8 +15,8 @@
 	padding: var(--space-2) var(--space-4);
 	background-color: var(--dark);
 	border-radius: var(--radius-md);
-	font-size: var(--font-sm);
-	line-height: var(--lh-sm);
+	font-size: var(--font-md);
+	line-height: var(--lh-md);
 	color: var(--light);
 }
 

@@ -26,7 +26,7 @@
 
 .tool-section h2 {
 	color: var(--light);
-	font-size: var(--font-xs);
+	font-size: var(--font-md);
 	margin-bottom: var(--space-3);
 	font-weight: 600;
 	text-transform: uppercase;
@@ -46,7 +46,7 @@
 	color: var(--light);
 	border: var(--border-sm) solid var(--gray);
 	border-radius: var(--radius-sm);
-	font-size: var(--font-sm);
+	font-size: var(--font-md);
 	cursor: pointer;
 	transition: all var(--transition-fast);
 }
@@ -81,7 +81,7 @@
 #color-hex {
 	font-family: 'code', monospace;
 	color: var(--light);
-	font-size: var(--font-sm);
+	font-size: var(--font-md);
 }
 
 /* Color Palette */
@@ -125,7 +125,7 @@
 	color: var(--light);
 	border: var(--border-sm) solid var(--gray);
 	border-radius: var(--radius-sm);
-	font-size: var(--font-sm);
+	font-size: var(--font-md);
 	cursor: pointer;
 	transition: all var(--transition-fast);
 }
@@ -157,7 +157,7 @@
 	justify-content: center;
 	gap: var(--space-2);
 	padding: var(--space-3) var(--space-4);
-	font-size: var(--font-sm);
+	font-size: var(--font-md);
 }
 
 /* Main Canvas Area */
@@ -218,7 +218,7 @@
 
 .preview-section h2 {
 	color: var(--light);
-	font-size: var(--font-xs);
+	font-size: var(--font-md);
 	margin-bottom: var(--space-4);
 	font-weight: 600;
 	text-transform: uppercase;
@@ -268,7 +268,7 @@
 
 .preview-label {
 	color: var(--gray);
-	font-size: var(--font-xs);
+	font-size: var(--font-md);
 	font-weight: 500;
 }
 
@@ -317,7 +317,7 @@
 
 .tips-section li {
 	color: var(--gray);
-	font-size: var(--font-sm);
+	font-size: var(--font-md);
 	line-height: var(--lh-md);
 	margin-bottom: var(--space-2);
 }

@@ -124,9 +124,32 @@ a {
 	text-decoration-thickness: 0.08em;
 	text-underline-offset: 0.12em;
 	transition: all var(--transition-md);
+	font-size: var(--font-md);
+	line-height: var(--lh-md);
 }
 
 a:hover {
+	color: var(--color);
+	text-underline-offset: 0.24em;
+	text-decoration-style: wavy;
+}
+
+/* Article Links (homepage and lists) */
+.article-list a,
+.tools-list a,
+.resources-list a {
+	font-size: var(--font-md);
+	line-height: var(--lh-md);
+	color: inherit;
+	text-decoration: underline;
+	text-decoration-thickness: 0.08em;
+	text-underline-offset: 0.12em;
+	transition: all var(--transition-md);
+}
+
+.article-list a:hover,
+.tools-list a:hover,
+.resources-list a:hover {
 	color: var(--color);
 	text-underline-offset: 0.24em;
 	text-decoration-style: wavy;

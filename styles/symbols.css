@@ -17,7 +17,7 @@
 	border: none;
 	border-radius: var(--radius-md);
 	cursor: pointer;
-	font-size: var(--font-sm);
+	font-size: var(--font-md);
 	transition: all var(--transition-fast);
 }
 
@@ -57,7 +57,7 @@
 }
 
 .symbol-item .code {
-	font-size: var(--font-xs);
+	font-size: var(--font-md);
 	font-family: 'code', monospace;
 	color: var(--light);
 }
