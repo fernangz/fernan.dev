@@ -1,0 +1,116 @@
+/* ============================================
+   Base64 Tool Styles
+   ============================================ */
+
+.base64-tool {
+	background-color: var(--dark);
+	border-radius: var(--radius-lg);
+	padding: var(--space-6);
+	margin-top: var(--space-6);
+	border: var(--border-sm) solid var(--gray);
+}
+
+.toolbar {
+	display: flex;
+	gap: var(--space-3);
+	margin-bottom: var(--space-4);
+	flex-wrap: wrap;
+}
+
+.tool-btn {
+	padding: var(--space-2) var(--space-4);
+	background-color: var(--black);
+	color: var(--light);
+	border: var(--border-sm) solid var(--gray);
+	border-radius: var(--radius-md);
+	cursor: pointer;
+	font-size: var(--font-sm);
+	transition: all var(--transition-fast);
+}
+
+.tool-btn:hover {
+	background-color: var(--gray);
+}
+
+.editors {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: var(--space-4);
+}
+
+.editor {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-2);
+}
+
+.editor label {
+	color: var(--light);
+	font-size: var(--font-sm);
+}
+
+.editor textarea {
+	flex: 1;
+	min-height: 16rem;
+	padding: var(--space-4);
+	background-color: var(--black);
+	border: var(--border-sm) solid var(--gray);
+	border-radius: var(--radius-md);
+	color: var(--light);
+	font-family: 'code', monospace;
+	font-size: var(--font-md);
+	line-height: var(--lh-md);
+	resize: vertical;
+}
+
+.editor textarea:focus {
+	outline: none;
+	border-color: var(--gray);
+}
+
+.editor textarea[readonly] {
+	background-color: var(--black);
+	cursor: default;
+}
+
+.status-message {
+	margin-top: var(--space-4);
+	padding: var(--space-3);
+	border-radius: var(--radius-md);
+	font-size: var(--font-md);
+}
+
+.status-message.hidden {
+	display: none;
+}
+
+.status-message.error {
+	background-color: rgba(231, 76, 60, 0.2);
+	border: var(--border-sm) solid #e74c3c;
+	color: #e74c3c;
+}
+
+.status-message.success {
+	background-color: rgba(39, 174, 96, 0.2);
+	border: var(--border-sm) solid #27ae60;
+	color: #27ae60;
+}
+
+/* Responsive */
+@media screen and (max-width: 50rem) {
+	.base64-tool {
+		padding: var(--space-4);
+	}
+	
+	.editors {
+		grid-template-columns: 1fr;
+	}
+	
+	.toolbar {
+		flex-direction: column;
+	}
+	
+	.tool-btn {
+		width: 100%;
+	}
+}
