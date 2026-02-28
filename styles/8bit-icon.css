@@ -1,6 +1,7 @@
 /* ============================================
    8-bit Icon Creator Tool Styles
    Base: 1.25rem font-size, 1.5rem line-height, 2rem spacing
+   All units in rem
    ============================================ */
 
 .icon-creator {
@@ -55,6 +56,11 @@
 	background-color: var(--gray);
 }
 
+.size-btn:focus {
+	outline: 0.125rem solid var(--light);
+	outline-offset: 0.125rem;
+}
+
 .size-btn.active {
 	background-color: var(--light);
 	color: var(--black);
@@ -78,6 +84,11 @@
 	background: none;
 }
 
+.color-picker-wrapper input[type="color"]:focus {
+	outline: 0.125rem solid var(--light);
+	outline-offset: 0.125rem;
+}
+
 #color-hex {
 	font-family: 'code', monospace;
 	color: var(--light);
@@ -96,7 +107,7 @@
 	aspect-ratio: 1;
 	border-radius: var(--radius-sm);
 	cursor: pointer;
-	border: 2px solid transparent;
+	border: 0.125rem solid transparent;
 	transition: all var(--transition-fast);
 }
 
@@ -104,9 +115,14 @@
 	transform: scale(1.1);
 }
 
+.palette-color:focus {
+	outline: 0.125rem solid var(--light);
+	outline-offset: 0.125rem;
+}
+
 .palette-color.active {
 	border-color: var(--light);
-	box-shadow: 0 0 0 2px var(--black);
+	box-shadow: 0 0 0 0.125rem var(--black);
 }
 
 /* Tool Buttons */
@@ -132,6 +148,11 @@
 
 .tool-btn:hover {
 	background-color: var(--gray);
+}
+
+.tool-btn:focus {
+	outline: 0.125rem solid var(--light);
+	outline-offset: 0.125rem;
 }
 
 .tool-btn.active {
@@ -180,11 +201,11 @@
 
 .pixel-canvas {
 	display: grid;
-	gap: 1px;
+	gap: 0.0625rem;  /* 1px */
 	background-color: var(--gray);
 	border: var(--border-lg) solid var(--black);
 	border-radius: var(--radius-sm);
-	padding: 1px;
+	padding: 0.0625rem;  /* 1px */
 }
 
 .pixel {
@@ -195,6 +216,11 @@
 
 .pixel:hover {
 	opacity: 0.8;
+}
+
+.pixel:focus {
+	outline: 0.125rem solid var(--light);
+	outline-offset: -0.125rem;
 }
 
 .pixel.transparent {
@@ -320,6 +346,21 @@
 	font-size: var(--font-md);
 	line-height: var(--lh-md);
 	margin-bottom: var(--space-2);
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+	
+	.palette-color:hover {
+		transform: none;
+	}
 }
 
 /* Responsive */

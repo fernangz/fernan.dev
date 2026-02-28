@@ -1,6 +1,7 @@
 /* ============================================
    Data Table Styles (MIME Types, ISO Codes)
    Base: 1.25rem font-size, 1.5rem line-height, 2rem spacing
+   All units in rem
    ============================================ */
 
 .data-table {
@@ -15,8 +16,8 @@
 	text-align: left;
 	border-bottom: var(--border-sm) solid var(--dark);
 	color: var(--light);
-	font-size: var(--font-sm);
-	line-height: var(--lh-sm);
+	font-size: var(--font-md);
+	line-height: var(--lh-md);
 }
 
 .data-table th {
@@ -31,5 +32,10 @@
 
 .data-table .copy-btn {
 	padding: var(--space-2) var(--space-4);
-	font-size: var(--font-xs);
+	font-size: var(--font-md);
+}
+
+.data-table .copy-btn:focus {
+	outline: 0.125rem solid var(--light);
+	outline-offset: 0.125rem;
 }

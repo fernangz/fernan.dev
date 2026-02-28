@@ -1,6 +1,7 @@
 /* ============================================
    Symbols & Emojis / HTML Entities Tool Styles
    Base: 1.25rem font-size, 1.5rem line-height, 2rem spacing
+   All units in rem
    ============================================ */
 
 .symbol-categories {
@@ -23,6 +24,11 @@
 
 .category-btn:hover {
 	background-color: var(--gray);
+}
+
+.category-btn:focus {
+	outline: 0.125rem solid var(--light);
+	outline-offset: 0.125rem;
 }
 
 .category-btn.active {
@@ -51,6 +57,11 @@
 	background-color: var(--gray);
 }
 
+.symbol-item:focus {
+	outline: 0.125rem solid var(--light);
+	outline-offset: 0.125rem;
+}
+
 .symbol-item .symbol {
 	font-size: 1.5rem;
 	margin-bottom: var(--space-1);
@@ -60,4 +71,20 @@
 	font-size: var(--font-md);
 	font-family: 'code', monospace;
 	color: var(--light);
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+	
+	.category-btn:hover,
+	.symbol-item:hover {
+		transform: none;
+	}
 }

@@ -1,6 +1,7 @@
 /* ============================================
    Client Data Visualizer Tool Styles
    Base: 1.25rem font-size, 1.5rem line-height, 2rem spacing
+   All units in rem
    ============================================ */
 
 .data-controls {
@@ -197,6 +198,17 @@
 	transform: translate(-50%, -50%);
 	color: var(--light);
 	font-size: var(--font-sm);
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
 }
 
 /* Responsive */
