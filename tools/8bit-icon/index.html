@@ -35,38 +35,43 @@
 					<a href="/tools/" class="back-link">← Back to Tools</a>
 					<h1>8-bit Icon Generator</h1>
 					<p>Create pixel art 8-bit style icons and download them as PNG images.</p>
+					
 					<h2>Canvas Settings</h2>
-					<div class="canvas-controls">
-						<div>
-							<label for="canvas-size" style="color:var(--light);">Canvas Size:</label>
-							<select id="canvas-size" style="margin-top:0.5rem;">
-								<option value="8">8x8</option>
-								<option value="16" selected>16x16</option>
-								<option value="24">24x24</option>
-								<option value="32">32x32</option>
-								<option value="64">64x64</option>
+					<div class="canvas-settings">
+						<div class="form-group">
+							<label for="canvas-size">Canvas Size</label>
+							<select id="canvas-size">
+								<option value="8">8 × 8 pixels</option>
+								<option value="16" selected>16 × 16 pixels</option>
+								<option value="24">24 × 24 pixels</option>
+								<option value="32">32 × 32 pixels</option>
+								<option value="64">64 × 64 pixels</option>
 							</select>
 						</div>
-						<div>
-							<label for="pixel-color" style="color:var(--light);">Color:</label>
-							<input type="color" id="pixel-color" value="#000000" style="width: 50px; height: 35px; margin-top:0.5rem;">
+						<div class="form-group">
+							<label for="pixel-color">Brush Color</label>
+							<input type="color" id="pixel-color" value="#000000">
 						</div>
 						<button id="eraser-btn" class="btn btn-secondary">Eraser</button>
 					</div>
+					
 					<h2>Drawing Canvas</h2>
 					<p>Click and drag on the canvas to draw. Use the color picker to change colors.</p>
-					<canvas id="pixel-canvas" class="pixel-canvas" width="320" height="320"></canvas>
-					<div class="canvas-controls">
+					<canvas id="pixel-canvas" class="pixel-canvas"></canvas>
+					<div class="canvas-actions">
 						<button id="clear-canvas" class="btn btn-secondary">Clear Canvas</button>
 						<button id="download-icon" class="btn">Download PNG</button>
 					</div>
-					<h2>Tips</h2>
-					<ul>
-						<li>Start with a smaller canvas size (8x8 or 16x16) for classic 8-bit look</li>
-						<li>Use limited colors for authentic retro style</li>
-						<li>The grid helps you align pixels precisely</li>
-						<li>Download creates a PNG with transparency support</li>
-					</ul>
+					
+					<div class="tips-section">
+						<h2>Tips</h2>
+						<ul>
+							<li>Start with a smaller canvas size (8×8 or 16×16) for classic 8-bit look</li>
+							<li>Use limited colors for authentic retro style</li>
+							<li>The grid helps you align pixels precisely</li>
+							<li>Download creates a PNG with transparency support</li>
+						</ul>
+					</div>
 				</article>
 			</section>
 		</main>
