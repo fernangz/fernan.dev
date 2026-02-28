@@ -1,0 +1,45 @@
+/* ============================================
+   Client Data Visualizer Tool Styles
+   ============================================ */
+
+.data-section {
+	margin-bottom: 2rem;
+	padding: 1rem;
+	background-color: var(--dark);
+	border-radius: 5px;
+}
+
+.data-section h3 {
+	color: var(--light);
+	margin-bottom: 0.5rem;
+	font-size: var(--medium);
+	line-height: var(--mediumLine);
+}
+
+.data-item {
+	display: flex;
+	justify-content: space-between;
+	padding: 0.5rem;
+	border-bottom: 1px solid var(--black);
+}
+
+.data-item:last-child {
+	border-bottom: none;
+}
+
+.data-key {
+	font-weight: 600;
+	color: var(--light);
+}
+
+.data-value {
+	color: var(--gray);
+	font-family: 'code', monospace;
+	font-size: var(--small);
+	line-height: var(--smallLine);
+}
+
+.no-data {
+	color: var(--gray);
+	font-style: italic;
+}

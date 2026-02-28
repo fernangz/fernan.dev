@@ -1,0 +1,21 @@
+/* ============================================
+   8-bit Icon Tool Styles
+   ============================================ */
+
+.pixel-canvas {
+	border: 2px solid var(--dark);
+	border-radius: 5px;
+	cursor: crosshair;
+	display: block;
+	margin: 1rem auto;
+	image-rendering: pixelated;
+	background-color: var(--white);
+}
+
+.canvas-controls {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	margin: 1rem 0;
+	flex-wrap: wrap;
+}

@@ -1,0 +1,24 @@
+/* ============================================
+   Speech to Text Tool Styles
+   ============================================ */
+
+.speech-controls {
+	display: flex;
+	gap: 1rem;
+	margin: 1rem 0;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.speech-status {
+	padding: 0.5rem 1rem;
+	background-color: var(--dark);
+	border-radius: 5px;
+	font-size: var(--small);
+	line-height: var(--smallLine);
+	color: var(--light);
+}
+
+.speech-status.recording {
+	background-color: var(--gray);
+}

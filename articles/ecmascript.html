@@ -11,9 +11,9 @@
 		<meta id="androidTheme" name="theme-color" content="hsl(0, 0%, 8%)">
 		<meta id="appleTheme" name="apple-mobile-web-app-status-bar-style" content="hsl(0, 0%, 8%)">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="/styles.css">
 		<link rel="preload" href="/fonts/outfit.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 		<link rel="preload" href="/fonts/emoji.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+		<link rel="stylesheet" href="/styles/main.css">
 	</head>
 	<body>
 		<nav>
@@ -31,29 +31,25 @@
 			<section>
 				<article>
 					<a href="/articles/index.html" class="back-link">← Back to Articles</a>
-					<span class="category">Intermediate</span>
 					<h1>ECMAScript, JavaScript or JS</h1>
 					<p>Understanding the relationship between ECMAScript and JavaScript</p>
 					<h2>Introduction</h2>
-					<p>JavaScript, originally named Mocha, was created in just 10 days by Brendan Eich in 1995 while he was working at Netscape Communications. It was later renamed to LiveScript, and finally to JavaScript. Despite its name, JavaScript is not directly related to Java. The terms JavaScript, ECMAScript, and JS are often used interchangeably, but understanding their differences is important for any FrontEnd developer.</p>
+					<p>JavaScript, originally named Mocha, was created in just 10 days by Brendan Eich in 1995 while he was working at Netscape Communications. It was later renamed to LiveScript, and finally to JavaScript. Despite its name, JavaScript is not directly related to Java.</p>
 					<h2>What is ECMAScript?</h2>
-					<p>ECMAScript is the standardized specification that defines how JavaScript should work. It's maintained by ECMA International (European Computer Manufacturers Association) through the TC39 committee, which consists of representatives from various browser vendors and companies.</p>
+					<p>ECMAScript is the standardized specification that defines how JavaScript should work. It's maintained by ECMA International through the TC39 committee, which consists of representatives from various browser vendors and companies.</p>
 					<p>Think of ECMAScript as the blueprint or recipe, while JavaScript is the implementation of that specification in web browsers and other environments.</p>
 					<h2>JavaScript vs ECMAScript</h2>
-					<p>The relationship between JavaScript and ECMAScript can be confusing:</p>
 					<ul>
 						<li><strong>ECMAScript:</strong> The specification/standard that defines the language</li>
 						<li><strong>JavaScript:</strong> The most popular implementation of ECMAScript (used in browsers and Node.js)</li>
 						<li><strong>JS:</strong> Common abbreviation for JavaScript</li>
 					</ul>
-					<p>Other implementations of ECMAScript include JScript (Microsoft's old implementation) and ActionScript (used in Adobe Flash).</p>
 					<h2>ECMAScript Versions</h2>
-					<p>ECMAScript has evolved through several versions:</p>
 					<ul>
 						<li><strong>ES1 (1997):</strong> First standardized version</li>
 						<li><strong>ES3 (1999):</strong> Added regular expressions, better error handling</li>
 						<li><strong>ES5 (2009):</strong> Added strict mode, JSON support, array methods</li>
-						<li><strong>ES6/ES2015:</strong> Major update with classes, modules, arrow functions, let/const, promises, and more</li>
+						<li><strong>ES6/ES2015:</strong> Major update with classes, modules, arrow functions, let/const, promises</li>
 						<li><strong>ES2016-ES2023:</strong> Annual releases with incremental improvements</li>
 					</ul>
 					<h2>Key Features by Version</h2>
@@ -62,7 +58,6 @@
 						<li><code>'use strict'</code> - Strict mode</li>
 						<li><code>Array.forEach()</code>, <code>Array.map()</code>, <code>Array.filter()</code></li>
 						<li><code>JSON.parse()</code> and <code>JSON.stringify()</code></li>
-						<li><code>Object.create()</code> and <code>Object.defineProperty()</code></li>
 					</ul>
 					<h3>ES6/ES2015 Features</h3>
 					<ul>
@@ -73,15 +68,11 @@
 						<li>Destructuring - <code>const {a, b} = obj</code></li>
 						<li>Modules - <code>import</code> and <code>export</code></li>
 						<li>Promises - Native async handling</li>
-						<li>Default parameters - <code>function f(x = 1) {}</code></li>
 					</ul>
 					<h3>Recent ES Features</h3>
 					<ul>
 						<li><strong>ES2017:</strong> Async/await</li>
-						<li><strong>ES2018:</strong> Object spread/rest, async iteration</li>
-						<li><strong>ES2019:</strong> Array flat/flatMap, Object.fromEntries</li>
 						<li><strong>ES2020:</strong> Optional chaining (<code>?.</code>), nullish coalescing (<code>??</code>)</li>
-						<li><strong>ES2021:</strong> Logical assignment operators, numeric separators</li>
 						<li><strong>ES2022:</strong> Class fields, top-level await</li>
 					</ul>
 					<h2>JavaScript Basics</h2>
@@ -91,27 +82,6 @@
 						<li><strong>let:</strong> Block-scoped, cannot be redeclared in same scope</li>
 						<li><strong>const:</strong> Block-scoped, cannot be reassigned</li>
 					</ul>
-					<h2>JavaScript Data Types</h2>
-					<p>JavaScript supports several data types:</p>
-					<ul>
-						<li><strong>Primitive types:</strong> Number, String, Boolean, Null, Undefined, Symbol, BigInt</li>
-						<li><strong>Reference types:</strong> Object, Array, Function, Date, RegExp</li>
-					</ul>
-					<h2>Why Version Numbers Matter</h2>
-					<p>Understanding ECMAScript versions is important because:</p>
-					<ul>
-						<li>Different browsers support different ES versions</li>
-						<li>You need to know what features are available in your target environment</li>
-						<li>Transpilers like Babel convert modern ES to older versions for compatibility</li>
-						<li>Job interviews and technical discussions often reference ES versions</li>
-					</ul>
-					<h2>Checking Browser Support</h2>
-					<p>Always check browser support for new features using resources like:</p>
-					<ul>
-						<li>caniuse.com - Browser compatibility tables</li>
-						<li>compat-table - ES compatibility table</li>
-						<li>MDN Web Docs - Feature documentation with support info</li>
-					</ul>
 					<h2>Best Practices</h2>
 					<ul>
 						<li>Use <code>const</code> by default, <code>let</code> when reassignment is needed</li>
@@ -119,14 +89,12 @@
 						<li>Use transpilers (Babel) for broader browser support</li>
 						<li>Use polyfills for missing features</li>
 						<li>Stay updated with new ECMAScript proposals and releases</li>
-						<li>Understand the TC39 proposal process for new features</li>
 					</ul>
 					<h2>Conclusion</h2>
-					<p>JavaScript continues to evolve, with new features and improvements being added regularly through the ECMAScript standard. Understanding the relationship between ECMAScript and JavaScript helps you write better, more informed code. Whether you're using the latest ES2023 features or maintaining legacy ES5 code, knowing the specification helps you navigate the JavaScript ecosystem more effectively.</p>
-					<p>As always, the future of JavaScript looks bright and exciting, with ongoing improvements to the language and its ecosystem.</p>
+					<p>JavaScript continues to evolve, with new features and improvements being added regularly through the ECMAScript standard. Understanding the relationship between ECMAScript and JavaScript helps you write better, more informed code.</p>
 				</article>
 			</section>
 		</main>
-		<script src="/main.js"></script>
+		<script src="/scripts/main.js"></script>
 	</body>
 </html>

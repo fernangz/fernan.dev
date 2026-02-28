@@ -11,9 +11,9 @@
 		<meta id="androidTheme" name="theme-color" content="hsl(0, 0%, 8%)">
 		<meta id="appleTheme" name="apple-mobile-web-app-status-bar-style" content="hsl(0, 0%, 8%)">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="/styles.css">
 		<link rel="preload" href="/fonts/outfit.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 		<link rel="preload" href="/fonts/emoji.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+		<link rel="stylesheet" href="/styles/main.css">
 	</head>
 	<body>
 		<nav>
@@ -32,35 +32,15 @@
 				<article>
 					<h1>Articles</h1>
 					<p>Here is a list of articles to help with frontend development. From beginner concepts to advanced topics.</p>
-					<div class="articles-list">
-						<div class="article-item">
-							<span class="category">Beginner</span>
-							<h2>The DOM Tree</h2>
-							<p>Understanding the Document Object Model (DOM) is fundamental for FrontEnd development. Learn how browsers parse HTML and create the tree structure that represents your page.</p>
-							<a href="/articles/the-dom.html" class="read-more">Read Article →</a>
-						</div>
-						<div class="article-item">
-							<span class="category">Beginner</span>
-							<h2>Cascade of Styles</h2>
-							<p>CSS cascade and specificity can be confusing. This article breaks down how styles are applied, the importance of selector specificity, and how to write maintainable CSS.</p>
-							<a href="/articles/cascade-of-styles.html" class="read-more">Read Article →</a>
-						</div>
-						<div class="article-item">
-							<span class="category">Design</span>
-							<h2>Multiples of 8 in FrontEnd Design</h2>
-							<p>Why do designers love multiples of 8? Discover the reasoning behind using an 8-point grid system and how it can improve your UI consistency and development workflow.</p>
-							<a href="/articles/number-8.html" class="read-more">Read Article →</a>
-						</div>
-						<div class="article-item">
-							<span class="category">Intermediate</span>
-							<h2>ECMAScript, JavaScript or JS</h2>
-							<p>What's the difference between ECMAScript and JavaScript? Understand the relationship between the specification and the implementation, and learn about the evolution of the language.</p>
-							<a href="/articles/ecmascript.html" class="read-more">Read Article →</a>
-						</div>
-					</div>
+					<ul>
+						<li><a href="/articles/the-dom.html">The DOM Tree</a></li>
+						<li><a href="/articles/cascade-of-styles.html">Cascade of Styles</a></li>
+						<li><a href="/articles/number-8.html">Multiples of 8 in FrontEnd Design</a></li>
+						<li><a href="/articles/ecmascript.html">ECMAScript, JavaScript or JS</a></li>
+					</ul>
 				</article>
 			</section>
 		</main>
-		<script src="/main.js"></script>
+		<script src="/scripts/main.js"></script>
 	</body>
 </html>

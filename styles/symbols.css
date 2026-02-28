@@ -1,0 +1,36 @@
+/* ============================================
+   Symbols & Emojis / HTML Entities Tool Styles
+   ============================================ */
+
+.symbols-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+	gap: 0.5rem;
+	margin-top: 1rem;
+}
+
+.symbol-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 0.75rem;
+	background-color: var(--dark);
+	border-radius: 5px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.symbol-item:hover {
+	background-color: var(--gray);
+}
+
+.symbol-item .symbol {
+	font-size: 1.5rem;
+	margin-bottom: 0.25rem;
+}
+
+.symbol-item .code {
+	font-size: 0.7rem;
+	font-family: 'code', monospace;
+	color: var(--light);
+}

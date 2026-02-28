@@ -11,9 +11,9 @@
 		<meta id="androidTheme" name="theme-color" content="hsl(0, 0%, 8%)">
 		<meta id="appleTheme" name="apple-mobile-web-app-status-bar-style" content="hsl(0, 0%, 8%)">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="/styles.css">
 		<link rel="preload" href="/fonts/outfit.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 		<link rel="preload" href="/fonts/emoji.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+		<link rel="stylesheet" href="/styles/main.css">
 	</head>
 	<body>
 		<nav>
@@ -31,7 +31,6 @@
 			<section>
 				<article>
 					<a href="/articles/index.html" class="back-link">← Back to Articles</a>
-					<span class="category">Beginner</span>
 					<h1>Cascade of Styles</h1>
 					<p>Understanding CSS cascade and specificity is crucial for writing maintainable styles</p>
 					<h2>Introduction</h2>
@@ -50,15 +49,6 @@
 						<li><strong>ID selectors:</strong> (0,1,0,0) - Each #id adds to this column</li>
 						<li><strong>Class/Attribute/Pseudo-class:</strong> (0,0,1,0) - Each .class, [attribute], or :pseudo-class</li>
 						<li><strong>Element/Pseudo-element:</strong> (0,0,0,1) - Each tag name or ::pseudo-element</li>
-					</ul>
-					<h2>Specificity Examples</h2>
-					<p>Here are some common selectors and their specificity values:</p>
-					<ul>
-						<li><code>#header .nav a</code> = (0,1,1,1) - One ID, one class, one element</li>
-						<li><code>.button.primary</code> = (0,0,2,0) - Two classes</li>
-						<li><code>div.container p</code> = (0,0,1,2) - One class, two elements</li>
-						<li><code>a:hover</code> = (0,0,1,1) - One pseudo-class, one element</li>
-						<li><code>* </code> = (0,0,0,0) - Universal selector has no specificity</li>
 					</ul>
 					<h2>Source Order</h2>
 					<p>When two rules have the same specificity, the one that comes later in the CSS file wins. This is why the order of your CSS matters.</p>
@@ -85,6 +75,6 @@
 				</article>
 			</section>
 		</main>
-		<script src="/main.js"></script>
+		<script src="/scripts/main.js"></script>
 	</body>
 </html>

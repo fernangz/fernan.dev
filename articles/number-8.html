@@ -11,9 +11,9 @@
 		<meta id="androidTheme" name="theme-color" content="hsl(0, 0%, 8%)">
 		<meta id="appleTheme" name="apple-mobile-web-app-status-bar-style" content="hsl(0, 0%, 8%)">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="/styles.css">
 		<link rel="preload" href="/fonts/outfit.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 		<link rel="preload" href="/fonts/emoji.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+		<link rel="stylesheet" href="/styles/main.css">
 	</head>
 	<body>
 		<nav>
@@ -31,7 +31,6 @@
 			<section>
 				<article>
 					<a href="/articles/index.html" class="back-link">← Back to Articles</a>
-					<span class="category">Design</span>
 					<h1>Multiples of 8 in FrontEnd Design</h1>
 					<p>Why the 8-point grid system is a designer's best friend</p>
 					<h2>Introduction</h2>
@@ -42,60 +41,31 @@
 					<h2>Benefits of Using Multiples of 8</h2>
 					<p>Using multiples of 8 in your design can bring several benefits:</p>
 					<ul>
-						<li><strong>Consistency:</strong> Consistent spacing and sizing lead to a more predictable and harmonious design. When all elements follow the same grid, the interface feels cohesive and professional.</li>
-						<li><strong>Scalability:</strong> The 8-point grid scales well for different screen sizes and resolutions, making it ideal for responsive design. What works on desktop can be easily adapted for mobile.</li>
-						<li><strong>Efficiency:</strong> Having a standard system for spacing and sizing can speed up the design and development process. Less time debating pixel values means more time for creativity.</li>
-						<li><strong>Accessibility:</strong> Consistent spacing improves readability and makes interfaces easier to navigate for all users, including those with visual impairments.</li>
+						<li><strong>Consistency:</strong> Consistent spacing and sizing lead to a more predictable and harmonious design.</li>
+						<li><strong>Scalability:</strong> The 8-point grid scales well for different screen sizes and resolutions, making it ideal for responsive design.</li>
+						<li><strong>Efficiency:</strong> Having a standard system for spacing and sizing can speed up the design and development process.</li>
+						<li><strong>Accessibility:</strong> Consistent spacing improves readability and makes interfaces easier to navigate.</li>
 					</ul>
 					<h2>Implementing the 8-Point Grid System</h2>
-					<p>Implementing the 8-point grid system involves using multiples of 8 when defining dimensions, padding, margin, and positioning of elements. For example:</p>
+					<p>Implementing the 8-point grid system involves using multiples of 8 when defining dimensions, padding, margin, and positioning of elements.</p>
 					<ul>
 						<li>An element might have a width of <code>320px</code> (40 × 8)</li>
 						<li>A margin of <code>16px</code> (2 × 8)</li>
 						<li>Padding of <code>24px</code> (3 × 8)</li>
 						<li>Line height of <code>32px</code> (4 × 8)</li>
 					</ul>
-					<h2>CSS Implementation</h2>
-					<p>Here's how you might implement an 8-point grid in CSS using custom properties:</p>
-					<ul>
-						<li><code>--space-1: 8px</code></li>
-						<li><code>--space-2: 16px</code></li>
-						<li><code>--space-3: 24px</code></li>
-						<li><code>--space-4: 32px</code></li>
-						<li><code>--space-5: 40px</code></li>
-						<li><code>--space-6: 48px</code></li>
-						<li><code>--space-8: 64px</code></li>
-					</ul>
 					<h2>Typography and the 8-Point Grid</h2>
 					<p>The 8-point grid can also be applied to typography:</p>
 					<ul>
 						<li>Font sizes: 16px, 24px, 32px, 48px</li>
 						<li>Line heights: multiples of 8 (24px, 32px, 40px)</li>
-						<li>Letter spacing: can also follow the grid for consistency</li>
 					</ul>
 					<p>This creates a vertical rhythm that makes content easier to read and scan.</p>
-					<h2>Responsive Considerations</h2>
-					<p>When designing responsively, the 8-point grid adapts well:</p>
-					<ul>
-						<li>On mobile: Use smaller multiples (8px, 16px, 24px)</li>
-						<li>On tablet: Medium multiples (16px, 24px, 32px)</li>
-						<li>On desktop: Larger multiples (24px, 32px, 48px, 64px)</li>
-					</ul>
-					<h2>When to Break the Grid</h2>
-					<p>While the 8-point grid is a valuable tool, it's not a one-size-fits-all solution. There are times when you might need to deviate:</p>
-					<ul>
-						<li>When working with brand-specific requirements</li>
-						<li>When creating unique visual hierarchies</li>
-						<li>When dealing with content that doesn't fit the grid naturally</li>
-						<li>When optimizing for specific content or interactions</li>
-					</ul>
-					<p>The grid should serve your design, not constrain it. Use it as a guide, not a rule.</p>
 					<h2>Conclusion</h2>
-					<p>The 8-point grid system is a valuable tool in a designer's toolkit. It promotes consistency, scalability, and efficiency in design, leading to more intuitive and visually pleasing interfaces. As with any design principle, it should be used thoughtfully and adapted to fit the needs of each project.</p>
-					<p>Start incorporating the 8-point grid into your designs, and you'll notice improved consistency, faster development times, and more harmonious interfaces.</p>
+					<p>The 8-point grid system is a valuable tool in a designer's toolkit. It promotes consistency, scalability, and efficiency in design, leading to more intuitive and visually pleasing interfaces.</p>
 				</article>
 			</section>
 		</main>
-		<script src="/main.js"></script>
+		<script src="/scripts/main.js"></script>
 	</body>
 </html>
