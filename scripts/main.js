@@ -7,7 +7,7 @@ const ui = {
 	// Cache for SVG icons to avoid repeated fetches
 	svgCache: {},
 
-	files: async () => {
+	files: async function() {
 		const svgElements = document.querySelectorAll("[svg]");
 		if (svgElements.length === 0) return;
 
@@ -17,8 +17,8 @@ const ui = {
 			if (!icon) continue; // Skip if no icon attribute
 
 			// Check cache first
-			if (this.svgCache[icon]) {
-				this.insertSVG(tag, this.svgCache[icon]);
+			if (ui.svgCache[icon]) {
+				ui.insertSVG(tag, ui.svgCache[icon]);
 				continue;
 			}
 
@@ -27,8 +27,8 @@ const ui = {
 			if (existingSVG) {
 				const svgEl = existingSVG.querySelector('svg');
 				if (svgEl) {
-					this.svgCache[icon] = svgEl.cloneNode(true).outerHTML;
-					this.insertSVG(tag, this.svgCache[icon]);
+					ui.svgCache[icon] = svgEl.cloneNode(true).outerHTML;
+					ui.insertSVG(tag, ui.svgCache[icon]);
 				}
 				continue;
 			}
@@ -38,15 +38,15 @@ const ui = {
 				const response = await fetch(`/svgs/${icon}.svg`);
 				if (!response.ok) throw new Error(`Failed to load ${icon}`);
 				const svgCode = await response.text();
-				this.svgCache[icon] = svgCode;
-				this.insertSVG(tag, svgCode);
+				ui.svgCache[icon] = svgCode;
+				ui.insertSVG(tag, svgCode);
 			} catch (error) {
 				console.error(`Error loading SVG ${icon}:`, error);
 			}
 		}
 
 		// Setup code blocks
-		this.setupCodeBlocks();
+		ui.setupCodeBlocks();
 	},
 
 	insertSVG(element, svgCode) {
@@ -55,7 +55,7 @@ const ui = {
 		element.removeAttribute("svg");
 	},
 
-	setupCodeBlocks() {
+	setupCodeBlocks: function() {
 		document.querySelectorAll("pre").forEach((code) => {
 			// Only process if not already processed
 			if (code.querySelector('code')) return;
