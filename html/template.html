@@ -35,6 +35,11 @@ layout: default
 		<!-- include trick menu.html -->
 		{% capture navigation %}{% include /html/menu.html %}{% endcapture %} {{ navigation | markdownify }}
 		
+		<!-- include menu.html -->
+		{% include  navigation.html %}
+		<!-- include trick menu.html -->
+		{% capture navigation %}{% include /html/navigation.html %}{% endcapture %} {{ navigation | markdownify }}
+		
 		<!-- Main Content Area -->
 		<main id="main-content">
 			<section>
