@@ -11,14 +11,14 @@
 	--light: hsl(0, 0%, 80%);
 	--white: hsl(0, 0%, 96%);
 	
-	/* Typography Scale (minimum 1rem = 16px, base 1.5rem = 24px) */
-	--font-xs: 1.125rem;   /* 18px */
-	--font-sm: 1.25rem;    /* 20px */
-	--font-md: 1.5rem;     /* 24px - base */
-	--font-lg: 1.75rem;    /* 28px */
-	--font-xl: 2rem;       /* 32px */
-	--font-2xl: 2.25rem;   /* 36px */
-	--font-3xl: 2.75rem;   /* 44px */
+	/* Typography Scale with fluid sizing using clamp() */
+	--font-xs: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+	--font-sm: clamp(1.125rem, 1.05rem + 0.35vw, 1.25rem);
+	--font-md: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+	--font-lg: clamp(1.5rem, 1.35rem + 0.75vw, 1.75rem);
+	--font-xl: clamp(1.75rem, 1.55rem + 1vw, 2rem);
+	--font-2xl: clamp(2rem, 1.75rem + 1.25vw, 2.25rem);
+	--font-3xl: clamp(2.25rem, 2rem + 1.5vw, 2.75rem);
 	
 	/* Line Heights (based on 2rem = 32px base) */
 	--lh-xs: 1.5rem;       /* 24px */

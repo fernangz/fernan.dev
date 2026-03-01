@@ -1,0 +1,27 @@
+/* ============================================
+   Reading Time Badge Styles
+   ============================================ */
+
+.reading-time {
+	display: inline-block;
+	padding: var(--space-1) var(--space-2);
+	background-color: var(--dark);
+	color: var(--gray);
+	border-radius: var(--radius-sm);
+	font-size: var(--font-xs);
+	font-weight: 500;
+	margin-left: var(--space-2);
+}
+
+.articles-list a {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.article-link-content {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	flex: 1;
+}

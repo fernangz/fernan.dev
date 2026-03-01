@@ -1,0 +1,70 @@
+/* ============================================
+   Tools Index - Card Layout with Descriptions
+   ============================================ */
+
+.tools-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+	gap: var(--space-4);
+	margin: var(--space-6) 0;
+}
+
+.tool-card {
+	display: flex;
+	flex-direction: column;
+	padding: var(--space-4);
+	background-color: var(--dark);
+	border: var(--border-sm) solid var(--gray);
+	border-radius: var(--radius-md);
+	text-decoration: none;
+	color: inherit;
+	transition: all var(--transition-fast);
+	min-height: 8rem;
+}
+
+.tool-card:hover {
+	border-color: var(--light);
+	background-color: var(--black);
+	transform: translateY(-0.125rem);
+}
+
+.tool-card:focus {
+	outline: 0.125rem solid var(--light);
+	outline-offset: 0.125rem;
+}
+
+.tool-card .emoji {
+	font-family: 'emoji', sans-serif;
+	font-size: 2rem;
+	line-height: 1;
+	margin-bottom: var(--space-2);
+}
+
+.tool-card strong {
+	display: block;
+	color: var(--light);
+	font-size: var(--font-md);
+	line-height: var(--lh-md);
+	margin-bottom: var(--space-2);
+	font-weight: 600;
+}
+
+.tool-card span {
+	display: block;
+	color: var(--gray);
+	font-size: var(--font-sm);
+	line-height: var(--lh-sm);
+}
+
+/* Hide old list on desktop, show on mobile */
+@media screen and (min-width: 48rem) {
+	.tools-list {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 47.9375rem) {
+	.tools-grid {
+		display: none;
+	}
+}
