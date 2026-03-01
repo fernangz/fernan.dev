@@ -46,7 +46,10 @@
 					<div class="tool-section">
 						<h2>Color Picker</h2>
 						<div class="color-picker-wrapper">
-							<input type="color" id="color-input" value="#3498db" class="color-picker-input">
+							<button type="button" class="color-trigger" id="color-trigger" aria-label="Pick color">
+								<span class="color-trigger-fill" id="color-trigger-fill"></span>
+							</button>
+							<input type="color" id="color-input" value="#3498db" class="color-input-hidden">
 							<div class="color-preview-large" id="color-preview"></div>
 						</div>
 					</div>
@@ -95,14 +98,20 @@
 							<div class="contrast-input">
 								<label for="fg-color">Foreground</label>
 								<div class="color-input-group">
-									<input type="color" id="fg-color" value="#000000">
+									<button type="button" class="color-trigger-small" id="fg-trigger" aria-label="Pick foreground color">
+										<span class="color-trigger-fill" id="fg-trigger-fill"></span>
+									</button>
+									<input type="color" id="fg-color" value="#000000" class="color-input-hidden">
 									<input type="text" id="fg-text" value="#000000" placeholder="#000000">
 								</div>
 							</div>
 							<div class="contrast-input">
 								<label for="bg-color">Background</label>
 								<div class="color-input-group">
-									<input type="color" id="bg-color" value="#ffffff">
+									<button type="button" class="color-trigger-small" id="bg-trigger" aria-label="Pick background color">
+										<span class="color-trigger-fill" id="bg-trigger-fill"></span>
+									</button>
+									<input type="color" id="bg-color" value="#ffffff" class="color-input-hidden">
 									<input type="text" id="bg-text" value="#ffffff" placeholder="#ffffff">
 								</div>
 							</div>
@@ -148,7 +157,7 @@
 						<p class="section-description">Generate harmonious color palettes from your selected color.</p>
 						
 						<div class="palette-types">
-							<button class="palette-btn" data-palette="analogous">Analogous</button>
+							<button class="palette-btn active" data-palette="analogous">Analogous</button>
 							<button class="palette-btn" data-palette="complementary">Complementary</button>
 							<button class="palette-btn" data-palette="triadic">Triadic</button>
 							<button class="palette-btn" data-palette="split">Split Complementary</button>

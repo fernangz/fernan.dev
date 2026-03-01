@@ -12,6 +12,7 @@ const ColorTools = {
 		this.cacheElements();
 		this.bindEvents();
 		this.updateColorPreview();
+		this.updateColorTrigger('color-trigger-fill', this.currentColor);
 		this.updateContrast();
 	},
 
@@ -19,6 +20,8 @@ const ColorTools = {
 		this.elements = {
 			// Color picker
 			colorInput: document.getElementById('color-input'),
+			colorTrigger: document.getElementById('color-trigger'),
+			colorTriggerFill: document.getElementById('color-trigger-fill'),
 			colorPreview: document.getElementById('color-preview'),
 			
 			// Color formats
@@ -29,8 +32,12 @@ const ColorTools = {
 			
 			// Contrast checker
 			fgColor: document.getElementById('fg-color'),
+			fgTrigger: document.getElementById('fg-trigger'),
+			fgTriggerFill: document.getElementById('fg-trigger-fill'),
 			fgText: document.getElementById('fg-text'),
 			bgColor: document.getElementById('bg-color'),
+			bgTrigger: document.getElementById('bg-trigger'),
+			bgTriggerFill: document.getElementById('bg-trigger-fill'),
 			bgText: document.getElementById('bg-text'),
 			previewBox: document.getElementById('preview-box'),
 			previewText: document.getElementById('preview-text'),
@@ -48,11 +55,68 @@ const ColorTools = {
 	},
 
 	bindEvents() {
-		// Color picker
-		if (this.elements.colorInput) {
+		// Main color picker trigger
+		if (this.elements.colorTrigger && this.elements.colorInput) {
+			this.elements.colorTrigger.addEventListener('click', () => {
+				this.elements.colorInput.click();
+			});
+			
 			this.elements.colorInput.addEventListener('input', (e) => {
 				this.currentColor = e.target.value;
+				this.updateColorTrigger('color-trigger-fill', this.currentColor);
 				this.updateColorFormats(this.currentColor);
+			});
+		}
+
+		// Contrast checker foreground trigger
+		if (this.elements.fgTrigger && this.elements.fgColor) {
+			this.elements.fgTrigger.addEventListener('click', () => {
+				this.elements.fgColor.click();
+			});
+			
+			this.elements.fgColor.addEventListener('input', (e) => {
+				this.fgColor = e.target.value;
+				this.updateColorTrigger('fg-trigger-fill', this.fgColor);
+				if (this.elements.fgText) this.elements.fgText.value = this.fgColor;
+				this.updateContrast();
+			});
+		}
+		
+		if (this.elements.fgText) {
+			this.elements.fgText.addEventListener('input', (e) => {
+				const hex = this.normalizeHex(e.target.value);
+				if (this.isValidHex(hex)) {
+					this.fgColor = hex;
+					this.updateColorTrigger('fg-trigger-fill', hex);
+					if (this.elements.fgColor) this.elements.fgColor.value = hex;
+					this.updateContrast();
+				}
+			});
+		}
+		
+		// Contrast checker background trigger
+		if (this.elements.bgTrigger && this.elements.bgColor) {
+			this.elements.bgTrigger.addEventListener('click', () => {
+				this.elements.bgColor.click();
+			});
+			
+			this.elements.bgColor.addEventListener('input', (e) => {
+				this.bgColor = e.target.value;
+				this.updateColorTrigger('bg-trigger-fill', this.bgColor);
+				if (this.elements.bgText) this.elements.bgText.value = this.bgColor;
+				this.updateContrast();
+			});
+		}
+		
+		if (this.elements.bgText) {
+			this.elements.bgText.addEventListener('input', (e) => {
+				const hex = this.normalizeHex(e.target.value);
+				if (this.isValidHex(hex)) {
+					this.bgColor = hex;
+					this.updateColorTrigger('bg-trigger-fill', hex);
+					if (this.elements.bgColor) this.elements.bgColor.value = hex;
+					this.updateContrast();
+				}
 			});
 		}
 
@@ -74,42 +138,6 @@ const ColorTools = {
 				}
 			});
 		});
-
-		// Contrast checker
-		if (this.elements.fgColor) {
-			this.elements.fgColor.addEventListener('input', (e) => {
-				this.fgColor = e.target.value;
-				if (this.elements.fgText) this.elements.fgText.value = this.fgColor;
-				this.updateContrast();
-			});
-		}
-		if (this.elements.fgText) {
-			this.elements.fgText.addEventListener('input', (e) => {
-				const hex = this.normalizeHex(e.target.value);
-				if (this.isValidHex(hex)) {
-					this.fgColor = hex;
-					if (this.elements.fgColor) this.elements.fgColor.value = hex;
-					this.updateContrast();
-				}
-			});
-		}
-		if (this.elements.bgColor) {
-			this.elements.bgColor.addEventListener('input', (e) => {
-				this.bgColor = e.target.value;
-				if (this.elements.bgText) this.elements.bgText.value = this.bgColor;
-				this.updateContrast();
-			});
-		}
-		if (this.elements.bgText) {
-			this.elements.bgText.addEventListener('input', (e) => {
-				const hex = this.normalizeHex(e.target.value);
-				if (this.isValidHex(hex)) {
-					this.bgColor = hex;
-					if (this.elements.bgColor) this.elements.bgColor.value = hex;
-					this.updateContrast();
-				}
-			});
-		}
 
 		// Palette buttons
 		this.elements.paletteBtns.forEach(btn => {
@@ -141,9 +169,17 @@ const ColorTools = {
 
 			if (hex) {
 				this.currentColor = hex;
+				this.updateColorTrigger('color-trigger-fill', hex);
 				this.updateColorFormats(hex);
 			}
 		});
+	},
+
+	updateColorTrigger(elementId, color) {
+		const element = document.getElementById(elementId);
+		if (element) {
+			element.style.backgroundColor = color;
+		}
 	},
 
 	updateColorFormats(hex) {
