@@ -28,3 +28,7 @@ ssh_askpass.sh
 
 # Publish script (local deployment tool)
 publish.sh
+
+# Documentation (auto-generated, reference git for history)
+README.md
+QWEN.md
