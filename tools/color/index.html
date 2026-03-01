@@ -46,10 +46,12 @@
 					<div class="tool-section">
 						<h2>Color Picker</h2>
 						<div class="color-picker-wrapper">
-							<button type="button" class="color-trigger" id="color-trigger" aria-label="Pick color">
-								<span class="color-trigger-fill" id="color-trigger-fill"></span>
-							</button>
-							<input type="color" id="color-input" value="#3498db" class="color-input-hidden">
+							<div class="color-trigger-container">
+								<button type="button" class="color-trigger" id="color-trigger" aria-label="Pick color">
+									<span class="color-trigger-fill" id="color-trigger-fill"></span>
+								</button>
+								<input type="color" id="color-input" value="#3498db" class="color-input-hidden">
+							</div>
 						</div>
 					</div>
 
@@ -97,20 +99,24 @@
 							<div class="contrast-input">
 								<label for="fg-color">Foreground</label>
 								<div class="color-input-group">
-									<button type="button" class="color-trigger-small" id="fg-trigger" aria-label="Pick foreground color">
-										<span class="color-trigger-fill" id="fg-trigger-fill"></span>
-									</button>
-									<input type="color" id="fg-color" value="#000000" class="color-input-hidden">
+									<div class="color-trigger-container-small">
+										<button type="button" class="color-trigger-small" id="fg-trigger" aria-label="Pick foreground color">
+											<span class="color-trigger-fill" id="fg-trigger-fill"></span>
+										</button>
+										<input type="color" id="fg-color" value="#000000" class="color-input-hidden">
+									</div>
 									<input type="text" id="fg-text" value="#000000" placeholder="#000000">
 								</div>
 							</div>
 							<div class="contrast-input">
 								<label for="bg-color">Background</label>
 								<div class="color-input-group">
-									<button type="button" class="color-trigger-small" id="bg-trigger" aria-label="Pick background color">
-										<span class="color-trigger-fill" id="bg-trigger-fill"></span>
-									</button>
-									<input type="color" id="bg-color" value="#ffffff" class="color-input-hidden">
+									<div class="color-trigger-container-small">
+										<button type="button" class="color-trigger-small" id="bg-trigger" aria-label="Pick background color">
+											<span class="color-trigger-fill" id="bg-trigger-fill"></span>
+										</button>
+										<input type="color" id="bg-color" value="#ffffff" class="color-input-hidden">
+									</div>
 									<input type="text" id="bg-text" value="#ffffff" placeholder="#ffffff">
 								</div>
 							</div>

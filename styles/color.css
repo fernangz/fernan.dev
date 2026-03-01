@@ -30,17 +30,21 @@
 	align-items: center;
 }
 
+/* Color trigger container - relative positioning context */
+.color-trigger-container {
+	position: relative;
+	display: inline-block;
+}
+
 /* Hidden native color input */
 .color-input-hidden {
 	position: absolute;
-	width: 1px;
-	height: 1px;
-	padding: 0;
-	margin: -1px;
-	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
-	white-space: nowrap;
-	border: 0;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	cursor: pointer;
 }
 
 /* Color trigger button */
@@ -70,6 +74,12 @@
 .color-trigger:focus {
 	outline: 0.125rem solid var(--light);
 	outline-offset: 0.125rem;
+}
+
+/* Small color trigger container */
+.color-trigger-container-small {
+	position: relative;
+	display: inline-block;
 }
 
 /* Small color trigger for contrast checker */
