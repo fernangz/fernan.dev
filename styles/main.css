@@ -186,6 +186,7 @@ body {
 /* Navigation */
 nav {
 	display: flex;
+	flex-direction: row;
     background-color: var(--black);
     z-index: 100;
     height: var(--space-16);
@@ -360,29 +361,42 @@ main > section > article p {
 	font-weight: 300;
 }
 
+main > section > article ul {
+	list-style: disc;
+	padding-left: var(--space-6);
+	margin: var(--space-4) 0;
+}
+
+main > section > article ol {
+	list-style: decimal;
+	padding-left: var(--space-6);
+	margin: var(--space-4) 0;
+}
+
+main > section > article ul li,
+main > section > article ol li {
+	font-size: var(--font-md);
+	line-height: var(--lh-md);
+	color: var(--light);
+	font-weight: 300;
+	margin-bottom: var(--space-2);
+}
+
+main > section > article ul ul,
+main > section > article ol ol {
+	margin: var(--space-2) 0;
+}
 
 main > section > article > p:first-child {
 	margin-top: var(--space-10);
 }
 
-main > section > article strong{
+main > section > article strong {
 	color: inherit;
 	font-size: inherit;
 	line-height: inherit;
 	margin: 0;
 	font-weight: 600;
-}
-
-main > section > article ul {
-	list-style: none;
-}
-
-main > section > article ul li {
-	list-style: none;
-	font-size: var(--font-md);
-	line-height: var(--lh-md);
-	color: var(--light);
-	margin: 0 0 var(--space-5) 0;
 }
 
 main > section > article a {
