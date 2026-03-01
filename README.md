@@ -75,6 +75,7 @@ fernan.dev/
 ./history.sh -n 10          # View recent commits
 ./publish.sh "feat: ..."    # Publish changes
 ./rebase.sh                 # If push fails
+./restore.sh                # Restore files from repo (⚠️ loses changes)
 ```
 
 ---
