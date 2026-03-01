@@ -1,71 +1,38 @@
+---
+---
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8">
+		<!-- COMMON HTML START-->
+		{% include startHtml.html %}
+		<!-- PAGE SPECIFIC METAS GO HERE -->
 		<title>fernan.dev • Frontend Development Tools &amp; Resources</title>
 		<meta name="description" content="Essential online tools for FrontEnd developers: color converters, CSS generators, code formatters, and reference guides. Free, browser-based, no installation required." />
 		<meta name="keywords" content="FrontEnd tools, CSS tools, color converter, web development, developer tools, HTML entities, JSON formatter" />
-		<link rel="canonical" href="https://test.fernan.dev/" />
-		<meta name="author" content="Fernán García de Zúñiga" />
+		<link rel="canonical" href="https://fernan.dev/" />
 		<meta name="robots" content="index, follow" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 		<!-- Open Graph / Social Media -->
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content="fernan.dev • Frontend Development Tools" />
 		<meta property="og:description" content="Essential online tools for FrontEnd developers" />
-		<meta property="og:url" content="https://test.fernan.dev/" />
+		<meta property="og:url" content="https://fernan.dev/" />
 		<meta property="og:site_name" content="fernan.dev" />
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:title" content="fernan.dev • Frontend Development Tools" />
 		<meta name="twitter:description" content="Essential online tools for FrontEnd developers" />
-
-		<!-- Favicon -->
-		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
-		<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-		<link rel="shortcut icon" href="/favicon/favicon.ico" />
-		<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-		<meta name="apple-mobile-web-app-title" content="fernan.dev" />
-		<link rel="manifest" href="/favicon/site.webmanifest" />
-
-		<!-- Theme Colors -->
-		<meta id="androidTheme" name="theme-color" content="hsl(0, 0%, 8%)">
-		<meta id="appleTheme" name="apple-mobile-web-app-status-bar-style" content="hsl(0, 0%, 8%)">
-
-		<!-- Viewport -->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-		<!-- Preload Fonts -->
-		<link rel="preload" href="/fonts/outfit.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-		<link rel="preload" href="/fonts/emoji.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-
-		<!-- Stylesheets -->
-		<link rel="stylesheet" href="/styles/main.css">
-	</head>
-	<body>
-		<a href="#main-content" class="skip-link">Skip to main content</a>
-		<nav>
-			<a href="/" class="logo" svg="logo" aria-label="fernan.dev"></a>
-			<button class="toggle" aria-label="Menu" svg="plus"></button>
-			<ul>
-				<li><a href="/" class="active">Brief</a></li>
-				<li><a href="/tools/">Tools</a></li>
-				<li><a href="/articles/">Articles</a></li>
-				<li><a href="/resources/">Resources</a></li>
-			</ul>
-		</nav>
-		<main id="main-content" tabindex="-1">
-			<section>
-				<article>
-					<h1 class="mainTitle">I'm <strong>Fernán García de Zúñiga</strong>.</h1>
-					<p>I work in FrontEnd development, and this site reflects what I've gathered along the way.</p>
-					<p>The <a href="/tools/">tools</a> section contains utilities I built for my own workflow: color converters, CSS generators, code formatters, and various reference guides. They're all free, run entirely in your browser, and don't require any installation. Use them if they're helpful.</p>
-					<p>The <a href="/articles/">articles</a> cover topics I've found worth writing about: DOM fundamentals, CSS cascade and specificity, JavaScript events, layout systems, accessibility, security, and performance. They range from introductory material to more advanced subjects. Start wherever makes sense for where you are.</p>
-					<p>The <a href="/resources/">resources</a> section lists external tools and applications I've found useful over time: code editors, design software, fonts, and icon collections. All are free or open source. These are simply recommendations based on what has worked for me.</p>
-					<p>Browse around and take what's useful. Leave the rest.</p>
-				</article>
-			</section>
-		</main>
-		<script src="/scripts/main.js"></script>
+		<!-- COMMON BODY START-->
+		{% include startBody.html %}
+		<!-- PAGE CONTENT -->
+			<h1 class="mainTitle">I'm <strong>Fernán García de Zúñiga</strong>.</h1>
+			<p>I work in FrontEnd development, and this site reflects what I've gathered along the way.</p>
+			<p>The <a href="/tools/">tools</a> section contains utilities I built for my own workflow: color converters, CSS generators, code formatters, and various reference guides. They're all free, run entirely in your browser, and don't require any installation. Use them if they're helpful.</p>
+			<p>The <a href="/articles/">articles</a> cover topics I've found worth writing about: DOM fundamentals, CSS cascade and specificity, JavaScript events, layout systems, accessibility, security, and performance. They range from introductory material to more advanced subjects. Start wherever makes sense for where you are.</p>
+			<p>The <a href="/resources/">resources</a> section lists external tools and applications I've found useful over time: code editors, design software, fonts, and icon collections. All are free or open source. These are simply recommendations based on what has worked for me.</p>
+			<p>Browse around and take what's useful. Leave the rest.</p>
+		<!-- PAGE SCRIPTS GO HERE-->
+		<!-- COMMON BODY HTML END-->
+		{% include endBodyHtml.html %}
 	</body>
 </html>

@@ -1,157 +1,133 @@
+---
+---
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8">
+		<!-- COMMON HTML START-->
+		{% include startHtml.html %}
+		<!-- PAGE SPECIFIC METAS GO HERE -->
 		<title>fernan.dev • Resources</title>
 		<meta name="description" content="Curated list of free and open-source resources for FrontEnd development: code editors, design tools, fonts, icons, and more" />
 		<meta name="keywords" content="FrontEnd resources, open source tools, free software, web development" />
-		<link rel="canonical" href="https://test.fernan.dev/resources/" />
-		<meta name="author" content="Fernán García de Zúñiga" />
+		<link rel="canonical" href="https://fernan.dev/resources/" />
 		<meta name="robots" content="index, follow" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 		<!-- Open Graph / Social Media -->
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content="fernan.dev • Resources" />
 		<meta property="og:description" content="Curated list of free and open-source resources for FrontEnd developers" />
-		<meta property="og:url" content="https://test.fernan.dev/resources/" />
+		<meta property="og:url" content="https://fernan.dev/resources/" />
 		<meta property="og:site_name" content="fernan.dev" />
 		<meta name="twitter:card" content="summary" />
-
-		<!-- Favicon -->
-		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
-		<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-		<link rel="shortcut icon" href="/favicon/favicon.ico" />
-		<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-		<meta name="apple-mobile-web-app-title" content="fernan.dev" />
-		<link rel="manifest" href="/favicon/site.webmanifest" />
-		<meta id="androidTheme" name="theme-color" content="hsl(0, 0%, 8%)">
-		<meta id="appleTheme" name="apple-mobile-web-app-status-bar-style" content="hsl(0, 0%, 8%)">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="preload" href="/fonts/outfit.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-		<link rel="preload" href="/fonts/emoji.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-		<link rel="stylesheet" href="/styles/main.css">
+		<!-- PAGE SPECIFIC CSS GO HERE -->
 		<link rel="stylesheet" href="/styles/tools.css">
 		<link rel="stylesheet" href="/styles/tools-cards.css">
-	</head>
-	<body>
-		<a href="#main-content" class="skip-link">Skip to main content</a>
-		<nav>
-			<a href="/" class="logo" svg="logo" aria-label="fernan.dev"></a>
-			<button class="toggle" aria-label="Menu" svg="plus"></button>
-			<ul>
-				<li><a href="/">Brief</a></li>
-				<li><a href="/tools/">Tools</a></li>
-				<li><a href="/articles/">Articles</a></li>
-				<li><a href="/resources/" class="active">Resources</a></li>
-			</ul>
-		</nav>
-		<main id="main-content" tabindex="-1">
-			<section>
-				<article>
-					<h1>Resources</h1>
-					<p>A curated collection of free and open-source tools for FrontEnd development. These are applications and resources that have proven genuinely useful in real projects.</p>
+		<!-- COMMON BODY START-->
+		{% include startBody.html %}
+		<!-- PAGE CONTENT -->
+			<h1>Resources</h1>
+			<p>A curated collection of free and open-source tools for FrontEnd development. These are applications and resources that have proven genuinely useful in real projects.</p>
 
-					<div class="tools-grid">
-						<a href="https://vscodium.com/" target="_blank" rel="noopener noreferrer" class="tool-card">
-							<span class="emoji">🔒</span>
-							<strong>VSCodium</strong>
-							<span>Binary releases of VS Code without Microsoft telemetry and licensing</span>
-						</a>
-						<a href="https://penpot.app/" target="_blank" rel="noopener noreferrer" class="tool-card">
-							<span class="emoji">🎨</span>
-							<strong>Penpot</strong>
-							<span>Open-source design and prototyping platform with collaborative features</span>
-						</a>
-						<a href="https://inkscape.org/" target="_blank" rel="noopener noreferrer" class="tool-card">
-							<span class="emoji">🖊️</span>
-							<strong>Inkscape</strong>
-							<span>Professional vector graphics editor for SVG creation and illustration</span>
-						</a>
-						<a href="https://krita.org/" target="_blank" rel="noopener noreferrer" class="tool-card">
-							<span class="emoji">🎨</span>
-							<strong>Krita</strong>
-							<span>Digital painting application for concept art and illustrations</span>
-						</a>
-						<a href="https://www.blender.org/" target="_blank" rel="noopener noreferrer" class="tool-card">
-							<span class="emoji">🧊</span>
-							<strong>Blender</strong>
-							<span>Complete 3D creation suite for modeling, animation, and rendering</span>
-						</a>
-						<a href="https://kdenlive.org/" target="_blank" rel="noopener noreferrer" class="tool-card">
-							<span class="emoji">🎞️</span>
-							<strong>Kdenlive</strong>
-							<span>Free video editor with multi-track editing and effects</span>
-						</a>
-						<a href="https://www.audacityteam.org/" target="_blank" rel="noopener noreferrer" class="tool-card">
-							<span class="emoji">🎵</span>
-							<strong>Audacity</strong>
-							<span>Audio editing and recording application with powerful features</span>
-						</a>
-						<a href="https://obsproject.com/" target="_blank" rel="noopener noreferrer" class="tool-card">
-							<span class="emoji">📹</span>
-							<strong>OBS Studio</strong>
-							<span>Free software for live streaming and screen recording</span>
-						</a>
-						<a href="https://fonts.google.com/specimen/Outfit" target="_blank" rel="noopener noreferrer" class="tool-card">
-							<span class="emoji">🅰️</span>
-							<strong>Outfit</strong>
-							<span>Modern, clean sans-serif font perfect for UI design</span>
-						</a>
-						<a href="https://github.com/tonsky/FiraCode" target="_blank" rel="noopener noreferrer" class="tool-card">
-							<span class="emoji">⌨️</span>
-							<strong>Fira Code</strong>
-							<span>Monospace font with programming ligatures for code editors</span>
-						</a>
-						<a href="https://fonts.google.com/specimen/Rasa" target="_blank" rel="noopener noreferrer" class="tool-card">
-							<span class="emoji">📖</span>
-							<strong>Rasa</strong>
-							<span>Serif font with excellent readability for long-form text</span>
-						</a>
-						<a href="https://github.com/googlefonts/noto-emoji" target="_blank" rel="noopener noreferrer" class="tool-card">
-							<span class="emoji">😊</span>
-							<strong>Noto Emoji</strong>
-							<span>Comprehensive emoji font in monochrome and color variants</span>
-						</a>
-						<a href="https://fonts.google.com/icons" target="_blank" rel="noopener noreferrer" class="tool-card">
-							<span class="emoji">🔷</span>
-							<strong>Material Symbols</strong>
-							<span>Google's comprehensive icon library with variable font support</span>
-						</a>
-						<a href="https://heroicons.com/" target="_blank" rel="noopener noreferrer" class="tool-card">
-							<span class="emoji">⚡</span>
-							<strong>Heroicons</strong>
-							<span>Beautiful hand-crafted SVG icons by the makers of Tailwind CSS</span>
-						</a>
-						<a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer" class="tool-card">
-							<span class="emoji">🪶</span>
-							<strong>Feather Icons</strong>
-							<span>Simple, clean open-source SVG icon set</span>
-						</a>
-						<a href="https://github.com/Templarian/MaterialDesign" target="_blank" rel="noopener noreferrer" class="tool-card">
-							<span class="emoji">🎯</span>
-							<strong>Material Design Icons</strong>
-							<span>Community-maintained icon collection with 7000+ icons</span>
-						</a>
-						<a href="https://caniuse.com/" target="_blank" rel="noopener noreferrer" class="tool-card">
-							<span class="emoji">🔍</span>
-							<strong>Can I Use</strong>
-							<span>Browser support tables for HTML, CSS, and JavaScript features</span>
-						</a>
-						<a href="https://web.dev/" target="_blank" rel="noopener noreferrer" class="tool-card">
-							<span class="emoji">📊</span>
-							<strong>web.dev</strong>
-							<span>Google's guidance for building modern web experiences</span>
-						</a>
-						<a href="https://developer.mozilla.org/" target="_blank" rel="noopener noreferrer" class="tool-card">
-							<span class="emoji">📚</span>
-							<strong>MDN Web Docs</strong>
-							<span>Comprehensive documentation for web technologies</span>
-						</a>
-					</div>
-				</article>
-			</section>
-		</main>
-		<script src="/scripts/main.js"></script>
+			<div class="tools-grid">
+				<a href="https://vscodium.com/" target="_blank" rel="noopener noreferrer" class="tool-card">
+					<span class="emoji">🔒</span>
+					<strong>VSCodium</strong>
+					<span>Binary releases of VS Code without Microsoft telemetry and licensing</span>
+				</a>
+				<a href="https://penpot.app/" target="_blank" rel="noopener noreferrer" class="tool-card">
+					<span class="emoji">🎨</span>
+					<strong>Penpot</strong>
+					<span>Open-source design and prototyping platform with collaborative features</span>
+				</a>
+				<a href="https://inkscape.org/" target="_blank" rel="noopener noreferrer" class="tool-card">
+					<span class="emoji">🖊️</span>
+					<strong>Inkscape</strong>
+					<span>Professional vector graphics editor for SVG creation and illustration</span>
+				</a>
+				<a href="https://krita.org/" target="_blank" rel="noopener noreferrer" class="tool-card">
+					<span class="emoji">🎨</span>
+					<strong>Krita</strong>
+					<span>Digital painting application for concept art and illustrations</span>
+				</a>
+				<a href="https://www.blender.org/" target="_blank" rel="noopener noreferrer" class="tool-card">
+					<span class="emoji">🧊</span>
+					<strong>Blender</strong>
+					<span>Complete 3D creation suite for modeling, animation, and rendering</span>
+				</a>
+				<a href="https://kdenlive.org/" target="_blank" rel="noopener noreferrer" class="tool-card">
+					<span class="emoji">🎞️</span>
+					<strong>Kdenlive</strong>
+					<span>Free video editor with multi-track editing and effects</span>
+				</a>
+				<a href="https://www.audacityteam.org/" target="_blank" rel="noopener noreferrer" class="tool-card">
+					<span class="emoji">🎵</span>
+					<strong>Audacity</strong>
+					<span>Audio editing and recording application with powerful features</span>
+				</a>
+				<a href="https://obsproject.com/" target="_blank" rel="noopener noreferrer" class="tool-card">
+					<span class="emoji">📹</span>
+					<strong>OBS Studio</strong>
+					<span>Free software for live streaming and screen recording</span>
+				</a>
+				<a href="https://fonts.google.com/specimen/Outfit" target="_blank" rel="noopener noreferrer" class="tool-card">
+					<span class="emoji">🅰️</span>
+					<strong>Outfit</strong>
+					<span>Modern, clean sans-serif font perfect for UI design</span>
+				</a>
+				<a href="https://github.com/tonsky/FiraCode" target="_blank" rel="noopener noreferrer" class="tool-card">
+					<span class="emoji">⌨️</span>
+					<strong>Fira Code</strong>
+					<span>Monospace font with programming ligatures for code editors</span>
+				</a>
+				<a href="https://fonts.google.com/specimen/Rasa" target="_blank" rel="noopener noreferrer" class="tool-card">
+					<span class="emoji">📖</span>
+					<strong>Rasa</strong>
+					<span>Serif font with excellent readability for long-form text</span>
+				</a>
+				<a href="https://github.com/googlefonts/noto-emoji" target="_blank" rel="noopener noreferrer" class="tool-card">
+					<span class="emoji">😊</span>
+					<strong>Noto Emoji</strong>
+					<span>Comprehensive emoji font in monochrome and color variants</span>
+				</a>
+				<a href="https://fonts.google.com/icons" target="_blank" rel="noopener noreferrer" class="tool-card">
+					<span class="emoji">🔷</span>
+					<strong>Material Symbols</strong>
+					<span>Google's comprehensive icon library with variable font support</span>
+				</a>
+				<a href="https://heroicons.com/" target="_blank" rel="noopener noreferrer" class="tool-card">
+					<span class="emoji">⚡</span>
+					<strong>Heroicons</strong>
+					<span>Beautiful hand-crafted SVG icons by the makers of Tailwind CSS</span>
+				</a>
+				<a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer" class="tool-card">
+					<span class="emoji">🪶</span>
+					<strong>Feather Icons</strong>
+					<span>Simple, clean open-source SVG icon set</span>
+				</a>
+				<a href="https://github.com/Templarian/MaterialDesign" target="_blank" rel="noopener noreferrer" class="tool-card">
+					<span class="emoji">🎯</span>
+					<strong>Material Design Icons</strong>
+					<span>Community-maintained icon collection with 7000+ icons</span>
+				</a>
+				<a href="https://caniuse.com/" target="_blank" rel="noopener noreferrer" class="tool-card">
+					<span class="emoji">🔍</span>
+					<strong>Can I Use</strong>
+					<span>Browser support tables for HTML, CSS, and JavaScript features</span>
+				</a>
+				<a href="https://web.dev/" target="_blank" rel="noopener noreferrer" class="tool-card">
+					<span class="emoji">📊</span>
+					<strong>web.dev</strong>
+					<span>Google's guidance for building modern web experiences</span>
+				</a>
+				<a href="https://developer.mozilla.org/" target="_blank" rel="noopener noreferrer" class="tool-card">
+					<span class="emoji">📚</span>
+					<strong>MDN Web Docs</strong>
+					<span>Comprehensive documentation for web technologies</span>
+				</a>
+			</div>
+		<!-- PAGE SCRIPTS GO HERE-->
+		<!-- COMMON BODY HTML END-->
+		{% include endBodyHtml.html %}
 	</body>
 </html>

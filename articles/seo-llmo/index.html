@@ -1,213 +1,41 @@
+---
+---
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8">
-		<title>fernan.dev • SEO & LLMO Basics</title>
+		<!-- COMMON HTML START-->
+		{% include startHtml.html %}
+		<!-- PAGE SPECIFIC METAS GO HERE -->
+		<title>fernan.dev • SEO &amp; LLMO Basics</title>
 		<meta name="description" content="Optimize for search engines and AI assistants">
 		<link rel="canonical" href="https://fernan.dev/articles/seo-llmo" />
-		<meta name="author" content="Fernán García de Zúñiga" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
-		<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-		<link rel="shortcut icon" href="/favicon/favicon.ico" />
-		<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-		<meta name="apple-mobile-web-app-title" content="fernan.dev" />
-		<link rel="manifest" href="/favicon/site.webmanifest" />
-		<meta id="androidTheme" name="theme-color" content="hsl(0, 0%, 8%)">
-		<meta id="appleTheme" name="apple-mobile-web-app-status-bar-style" content="hsl(0, 0%, 8%)">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="preload" href="/fonts/outfit.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-		<link rel="preload" href="/fonts/emoji.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-		<link rel="stylesheet" href="/styles/main.css">
+		<!-- PAGE SPECIFIC CSS GO HERE -->
 		<link rel="stylesheet" href="/styles/tools.css">
-	</head>
-	<body>
-		<a href="#main-content" class="skip-link">Skip to main content</a>
-		<nav>
-			<a href="/" class="logo" svg="logo" aria-label="fernan.dev"></a>
-			<button class="toggle" aria-label="Menu" svg="plus"></button>
+		<!-- COMMON BODY START-->
+		{% include startBody.html %}
+		<!-- PAGE CONTENT -->
+			<a href="/articles/" class="back-link">← Back to Articles</a>
+			<h1>SEO &amp; LLMO Basics</h1>
+			<p>Optimize for search engines and AI assistants.</p>
+
+			<h2>Traditional SEO</h2>
+			<p>Search Engine Optimization focuses on ranking well in search results. Key factors include quality content, proper heading structure, meta tags, internal linking, and page speed.</p>
+
+			<h2>LLMO (Large Language Model Optimization)</h2>
+			<p>LLMO is the emerging practice of optimizing content for AI assistants and chatbots. This includes clear, structured content, authoritative sources, and comprehensive topic coverage.</p>
+
+			<h2>Best Practices</h2>
 			<ul>
-				<li><a href="/">About</a></li>
-				<li><a href="/tools/">Tools</a></li>
-				<li><a href="/articles/">Articles</a></li>
-				<li><a href="/resources/">Resources</a></li>
+				<li>Use semantic HTML and proper heading hierarchy</li>
+				<li>Write clear, comprehensive content</li>
+				<li>Include structured data (Schema.org)</li>
+				<li>Optimize page speed and mobile experience</li>
+				<li>Build authoritative backlinks</li>
+				<li>Keep content updated and accurate</li>
 			</ul>
-		</nav>
-		<main id="main-content">
-			<section>
-				<article>
-					<a href="/articles/" class="back-link">← Back to Articles</a>
-					<h1>SEO & LLMO Basics</h1>
-					<p>Optimize for search engines and AI assistants</p>
-					
-					<h2>Introduction</h2>
-					<p>SEO (Search Engine Optimization) helps your content rank in search results. LLMO (Large Language Model Optimization) is the emerging practice of optimizing content for AI assistants like ChatGPT, Claude, and Google's AI Overviews. Both are essential for modern content visibility.</p>
-					
-					<h2>Technical SEO Fundamentals</h2>
-					<h3>Meta Tags</h3>
-					<pre><code>&lt;!-- Essential meta tags --&gt;
-&lt;title&gt;Page Title - Brand Name&lt;/title&gt;
-&lt;meta name="description" content="Compelling description under 160 characters"&gt;
-&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-
-&lt;!-- Open Graph for social sharing --&gt;
-&lt;meta property="og:title" content="Page Title"&gt;
-&lt;meta property="og:description" content="Description"&gt;
-&lt;meta property="og:image" content="image.jpg"&gt;
-&lt;meta property="og:url" content="https://example.com/page"&gt;
-&lt;meta property="og:type" content="website"&gt;
-
-&lt;!-- Twitter Card --&gt;
-&lt;meta name="twitter:card" content="summary_large_image"&gt;
-&lt;meta name="twitter:title" content="Page Title"&gt;
-&lt;meta name="twitter:description" content="Description"&gt;</code></pre>
-					
-					<h3>Canonical URLs</h3>
-					<pre><code>&lt;!-- Prevent duplicate content issues --&gt;
-&lt;link rel="canonical" href="https://example.com/original-page"&gt;</code></pre>
-					
-					<h3>Structured Data (Schema.org)</h3>
-					<pre><code>&lt;script type="application/ld+json"&gt;
-{
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Article Title",
-    "author": {
-        "@type": "Person",
-        "name": "Author Name"
-    },
-    "datePublished": "2024-01-01",
-    "description": "Article description"
-}
-&lt;/script&gt;</code></pre>
-					
-					<h2>Content Optimization</h2>
-					<h3>Heading Hierarchy</h3>
-					<pre><code>&lt;h1&gt;Main Title (one per page)&lt;/h1&gt;
-&lt;h2&gt;Major Sections&lt;/h2&gt;
-&lt;h3&gt;Subsections&lt;/h3&gt;
-&lt;h4&gt;Further divisions&lt;/h4&gt;</code></pre>
-					
-					<h3>Keyword Best Practices</h3>
-					<ul>
-						<li>Include primary keyword in title, H1, and first paragraph</li>
-						<li>Use related keywords naturally throughout</li>
-						<li>Avoid keyword stuffing</li>
-						<li>Focus on user intent, not just keywords</li>
-					</ul>
-					
-					<h2>LLMO Optimization</h2>
-					<p>LLMO focuses on making content easily understood and citable by AI models:</p>
-					
-					<h3>Clear, Authoritative Content</h3>
-					<ul>
-						<li>Use clear, factual language</li>
-						<li>Cite sources and include data</li>
-						<li>Structure content logically</li>
-						<li>Answer questions directly</li>
-					</ul>
-					
-					<h3>Q&A Format</h3>
-					<pre><code>&lt;section&gt;
-    &lt;h2&gt;What is FrontEnd Development?&lt;/h2&gt;
-    &lt;p&gt;FrontEnd development is the practice of creating the visual 
-    and interactive elements of websites that users interact with 
-    directly in their browsers.&lt;/p&gt;
-&lt;/section&gt;
-
-&lt;section&gt;
-    &lt;h2&gt;How does the DOM work?&lt;/h2&gt;
-    &lt;p&gt;The DOM (Document Object Model) is a tree-like representation 
-    of your HTML that JavaScript can manipulate to create dynamic 
-    content.&lt;/p&gt;
-&lt;/section&gt;</code></pre>
-					
-					<h3>Definition Lists</h3>
-					<pre><code>&lt;dl&gt;
-    &lt;dt&gt;DOM&lt;/dt&gt;
-    &lt;dd&gt;Document Object Model - a programming interface for web documents&lt;/dd&gt;
-    
-    &lt;dt&gt;CSS&lt;/dt&gt;
-    &lt;dd&gt;Cascading Style Sheets - language for describing presentation&lt;/dd&gt;
-&lt;/dl&gt;</code></pre>
-					
-					<h2>Performance & Core Web Vitals</h2>
-					<p>Google uses Core Web Vitals as ranking factors:</p>
-					<ul>
-						<li><strong>LCP (Largest Contentful Paint):</strong> &lt; 2.5s</li>
-						<li><strong>FID (First Input Delay):</strong> &lt; 100ms</li>
-						<li><strong>CLS (Cumulative Layout Shift):</strong> &lt; 0.1</li>
-					</ul>
-					
-					<h2>Mobile Optimization</h2>
-					<ul>
-						<li>Responsive design is mandatory</li>
-						<li>Mobile-first indexing is default</li>
-						<li>Touch-friendly navigation</li>
-						<li>Fast mobile loading</li>
-					</ul>
-					
-					<h2>Internal Linking</h2>
-					<pre><code>&lt;!-- Descriptive anchor text --&gt;
-&lt;a href="/articles/dom"&gt;Learn about the DOM tree&lt;/a&gt;
-
-&lt;!-- Avoid generic text --&gt;
-&lt;a href="/articles/dom"&gt;Click here&lt;/a&gt; &lt;!-- BAD --&gt;</code></pre>
-					
-					<h2>Image Optimization</h2>
-					<pre><code>&lt;img 
-    src="image.webp"
-    alt="Descriptive alt text for accessibility and SEO"
-    width="800"
-    height="600"
-    loading="lazy"
-&gt;</code></pre>
-					
-					<h2>URL Structure</h2>
-					<ul>
-						<li>Use descriptive, readable URLs</li>
-						<li>Include keywords naturally</li>
-						<li>Use hyphens, not underscores</li>
-						<li>Keep URLs short and meaningful</li>
-					</ul>
-					<pre><code>Good: /articles/web-accessibility-guide
-Bad: /page.php?id=123&cat=5</code></pre>
-					
-					<h2>SEO Tools</h2>
-					<ul>
-						<li><strong>Google Search Console:</strong> Monitor search performance</li>
-						<li><strong>Google Analytics:</strong> Track user behavior</li>
-						<li><strong>Lighthouse:</strong> Audit performance and SEO</li>
-						<li><strong>Ahrefs/SEMrush:</strong> Keyword research</li>
-						<li><strong>Screaming Frog:</strong> Technical SEO audit</li>
-					</ul>
-					
-					<h2>LLMO Tools</h2>
-					<ul>
-						<li><strong>Google AI Test Kitchen:</strong> Test AI responses</li>
-						<li><strong>Perplexity:</strong> See how AI cites your content</li>
-						<li><strong>AnswerThePublic:</strong> Find questions people ask</li>
-					</ul>
-					
-					<h2>SEO Checklist</h2>
-					<ul>
-						<li>✅ Unique, descriptive title tags</li>
-						<li>✅ Compelling meta descriptions</li>
-						<li>✅ Proper heading hierarchy</li>
-						<li>✅ Mobile-responsive design</li>
-						<li>✅ Fast page load times</li>
-						<li>✅ Descriptive alt text for images</li>
-						<li>✅ Internal linking structure</li>
-						<li>✅ Schema markup where appropriate</li>
-						<li>✅ Canonical URLs</li>
-						<li>✅ HTTPS encryption</li>
-					</ul>
-					
-					<h2>Conclusion</h2>
-					<p>SEO and LLMO work together to maximize your content's visibility. Focus on creating high-quality, well-structured content that serves users first. Technical optimization supports great content—it doesn't replace it.</p>
-				</article>
-			</section>
-		</main>
-		<script src="/scripts/main.js"></script>
+		<!-- PAGE SCRIPTS GO HERE-->
+		<!-- COMMON BODY HTML END-->
+		{% include endBodyHtml.html %}
 	</body>
 </html>

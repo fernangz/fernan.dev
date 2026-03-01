@@ -1,108 +1,88 @@
+---
+---
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8">
+		<!-- COMMON HTML START-->
+		{% include startHtml.html %}
+		<!-- PAGE SPECIFIC METAS GO HERE -->
 		<title>fernan.dev • Tools</title>
 		<meta name="description" content="Essential online tools for FrontEnd developers: color tools, code formatters, and reference guides" />
 		<meta name="keywords" content="FrontEnd tools, CSS tools, color converter, web development, developer tools" />
-		<link rel="canonical" href="https://test.fernan.dev/tools/" />
-		<meta name="author" content="Fernán García de Zúñiga" />
+		<link rel="canonical" href="https://fernan.dev/tools/" />
 		<meta name="robots" content="index, follow" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<!-- Open Graph / Social Media -->
 		<meta property="og:type" content="website" />
 		<meta property="og:title" content="fernan.dev • Tools" />
 		<meta property="og:description" content="Essential online tools for FrontEnd developers" />
-		<meta property="og:url" content="https://test.fernan.dev/tools/" />
+		<meta property="og:url" content="https://fernan.dev/tools/" />
 		<meta property="og:site_name" content="fernan.dev" />
 		<meta name="twitter:card" content="summary" />
-		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
-		<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-		<link rel="shortcut icon" href="/favicon/favicon.ico" />
-		<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-		<meta name="apple-mobile-web-app-title" content="fernan.dev" />
-		<link rel="manifest" href="/favicon/site.webmanifest" />
-		<meta id="androidTheme" name="theme-color" content="hsl(0, 0%, 8%)">
-		<meta id="appleTheme" name="apple-mobile-web-app-status-bar-style" content="hsl(0, 0%, 8%)">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="preload" href="/fonts/outfit.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-		<link rel="preload" href="/fonts/emoji.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-		<link rel="stylesheet" href="/styles/main.css">
+		<!-- PAGE SPECIFIC CSS GO HERE -->
 		<link rel="stylesheet" href="/styles/tools.css">
 		<link rel="stylesheet" href="/styles/tools-cards.css">
-	</head>
-	<body>
-		<a href="#main-content" class="skip-link">Skip to main content</a>
-		<nav>
-			<a href="/" class="logo" svg="logo" aria-label="Homepage"></a>
-			<button class="toggle" aria-label="Menu" svg="plus"></button>
-			<ul>
-				<li><a href="/">Brief</a></li>
-				<li><a href="/tools/" class="active">Tools</a></li>
-				<li><a href="/articles/">Articles</a></li>
-				<li><a href="/resources/">Resources</a></li>
-			</ul>
-		</nav>
-		<main id="main-content" tabindex="-1">
-			<section>
-				<article>
-					<h1>Tools</h1>
-					<p>Practical utilities for FrontEnd development. All tools run in your browser—no installation required.</p>
+		<!-- COMMON BODY START-->
+		{% include startBody.html %}
+		<!-- PAGE CONTENT -->
+			<h1>Tools</h1>
+			<p>Practical utilities for FrontEnd development. All tools run in your browser—no installation required.</p>
 
-					<div class="tools-grid">
-						<a href="/tools/color/" class="tool-card">
-							<span class="emoji">🎨</span>
-							<strong>Color Tools</strong>
-							<span>Convert colors, generate palettes, and check WCAG contrast ratios</span>
-						</a>
-						<a href="/tools/box-shadow/" class="tool-card">
-							<span class="emoji">⬜</span>
-							<strong>Box Shadow</strong>
-							<span>Generate CSS box-shadow values with live preview</span>
-						</a>
-						<a href="/tools/html-entities/" class="tool-card">
-							<span class="emoji">🔣</span>
-							<strong>HTML Entities</strong>
-							<span>Convert special characters to HTML entity codes</span>
-						</a>
-						<a href="/tools/json-formatter/" class="tool-card">
-							<span class="emoji">📋</span>
-							<strong>JSON Formatter</strong>
-							<span>Format, validate, and minify JSON data</span>
-						</a>
-						<a href="/tools/base64/" class="tool-card">
-							<span class="emoji">🔐</span>
-							<strong>Base64</strong>
-							<span>Encode and decode Base64 strings</span>
-						</a>
-						<a href="/tools/unit-converter/" class="tool-card">
-							<span class="emoji">📏</span>
-							<strong>Unit Converter</strong>
-							<span>Convert between px, rem, em, vh, vw, and %</span>
-						</a>
-						<a href="/tools/mime-types/" class="tool-card">
-							<span class="emoji">📄</span>
-							<strong>MIME Types</strong>
-							<span>Look up MIME type definitions for file extensions</span>
-						</a>
-						<a href="/tools/iso-language-codes/" class="tool-card">
-							<span class="emoji">🌐</span>
-							<strong>ISO Language Codes</strong>
-							<span>Reference ISO 639-1 standard language codes</span>
-						</a>
-						<a href="/tools/symbols-emojis/" class="tool-card">
-							<span class="emoji">✨</span>
-							<strong>Symbols &amp; Emojis</strong>
-							<span>Browse and copy special symbols and emojis</span>
-						</a>
-						<a href="/tools/client-data-visualizer/" class="tool-card">
-							<span class="emoji">📊</span>
-							<strong>Client Data</strong>
-							<span>View cookies, localStorage, and sessionStorage</span>
-						</a>
-					</div>
-				</article>
-			</section>
-		</main>
-		<script src="/scripts/main.js"></script>
+			<div class="tools-grid">
+				<a href="/tools/color/" class="tool-card">
+					<span class="emoji">🎨</span>
+					<strong>Color Tools</strong>
+					<span>Convert colors, generate palettes, and check WCAG contrast ratios</span>
+				</a>
+				<a href="/tools/box-shadow/" class="tool-card">
+					<span class="emoji">⬜</span>
+					<strong>Box Shadow</strong>
+					<span>Generate CSS box-shadow values with live preview</span>
+				</a>
+				<a href="/tools/html-entities/" class="tool-card">
+					<span class="emoji">🔣</span>
+					<strong>HTML Entities</strong>
+					<span>Convert special characters to HTML entity codes</span>
+				</a>
+				<a href="/tools/json-formatter/" class="tool-card">
+					<span class="emoji">📋</span>
+					<strong>JSON Formatter</strong>
+					<span>Format, validate, and minify JSON data</span>
+				</a>
+				<a href="/tools/base64/" class="tool-card">
+					<span class="emoji">🔐</span>
+					<strong>Base64</strong>
+					<span>Encode and decode Base64 strings</span>
+				</a>
+				<a href="/tools/unit-converter/" class="tool-card">
+					<span class="emoji">📏</span>
+					<strong>Unit Converter</strong>
+					<span>Convert between px, rem, em, vh, vw, and %</span>
+				</a>
+				<a href="/tools/mime-types/" class="tool-card">
+					<span class="emoji">📄</span>
+					<strong>MIME Types</strong>
+					<span>Look up MIME type definitions for file extensions</span>
+				</a>
+				<a href="/tools/iso-language-codes/" class="tool-card">
+					<span class="emoji">🌐</span>
+					<strong>ISO Language Codes</strong>
+					<span>Reference ISO 639-1 standard language codes</span>
+				</a>
+				<a href="/tools/symbols-emojis/" class="tool-card">
+					<span class="emoji">✨</span>
+					<strong>Symbols &amp; Emojis</strong>
+					<span>Browse and copy special symbols and emojis</span>
+				</a>
+				<a href="/tools/client-data-visualizer/" class="tool-card">
+					<span class="emoji">📊</span>
+					<strong>Client Data</strong>
+					<span>View cookies, localStorage, and sessionStorage</span>
+				</a>
+			</div>
+		<!-- PAGE SCRIPTS GO HERE-->
+		<!-- COMMON BODY HTML END-->
+		{% include endBodyHtml.html %}
 	</body>
 </html>

@@ -1,121 +1,46 @@
+---
+---
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8">
+		<!-- COMMON HTML START-->
+		{% include startHtml.html %}
+		<!-- PAGE SPECIFIC METAS GO HERE -->
 		<title>fernan.dev • The DOM</title>
 		<meta name="description" content="Understanding the Document Object Model">
 		<link rel="canonical" href="https://fernan.dev/articles/the-dom" />
-		<meta name="author" content="Fernán García de Zúñiga" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
-		<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-		<link rel="shortcut icon" href="/favicon/favicon.ico" />
-		<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-		<meta name="apple-mobile-web-app-title" content="fernan.dev" />
-		<link rel="manifest" href="/favicon/site.webmanifest" />
-		<meta id="androidTheme" name="theme-color" content="hsl(0, 0%, 8%)">
-		<meta id="appleTheme" name="apple-mobile-web-app-status-bar-style" content="hsl(0, 0%, 8%)">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="preload" href="/fonts/outfit.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-		<link rel="preload" href="/fonts/emoji.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-		<link rel="stylesheet" href="/styles/main.css">
+		<!-- PAGE SPECIFIC CSS GO HERE -->
 		<link rel="stylesheet" href="/styles/tools.css">
-	</head>
-	<body>
-		<nav>
-			<a href="/" class="logo" svg="logo" aria-label="fernan.dev"></a>
-			<button class="toggle" aria-label="Menu" svg="plus"></button>
+		<!-- COMMON BODY START-->
+		{% include startBody.html %}
+		<!-- PAGE CONTENT -->
+			<a href="/articles/" class="back-link">← Back to Articles</a>
+			<h1>The DOM</h1>
+			<p>Understanding the Document Object Model is fundamental for FrontEnd development</p>
+
+			<h2>What is the DOM?</h2>
+			<p>The Document Object Model (DOM) is a programming interface for HTML and XML documents. It represents the page so that programs can change the document structure, style, and content.</p>
+
+			<h2>DOM Tree Structure</h2>
+			<p>The DOM represents a document as a tree structure where each node is an object representing a part of the document. The DOM tree starts with the document object at the root, followed by the html element, and then head and body elements.</p>
+
+			<h2>Accessing DOM Elements</h2>
+			<p>JavaScript provides multiple ways to access and manipulate DOM elements:</p>
 			<ul>
-				<li><a href="/">About</a></li>
-				<li><a href="/tools/">Tools</a></li>
-				<li><a href="/articles/">Articles</a></li>
-				<li><a href="/resources/">Resources</a></li>
+				<li><code>document.getElementById()</code> - Select by element ID</li>
+				<li><code>document.querySelector()</code> - Select using CSS selectors</li>
+				<li><code>document.querySelectorAll()</code> - Select all matching elements</li>
+				<li><code>document.createElement()</code> - Create new elements</li>
 			</ul>
-		</nav>
-		<main>
-			<section>
-				<article>
-					<a href="/articles/" class="back-link">← Back to Articles</a>
-					<h1>The DOM</h1>
-					<p>Understanding the Document Object Model is fundamental for FrontEnd development</p>
-					<h2>Introduction</h2>
-					<p>The Document Object Model (DOM) is a W3C standard programming interface for web documents. It represents the structure of a document as a tree of objects, where each node in the tree corresponds to a part of the document. Understanding the DOM is essential for any FrontEnd developer, as it's the bridge between your HTML and JavaScript.</p>
-					<h2>What is the DOM?</h2>
-					<p>When a web page loads, the browser parses the HTML and creates a tree-like structure called the DOM. This tree represents every element, attribute, and piece of text in your HTML document. Each of these becomes a node (or object) in the tree, which can be accessed and manipulated using JavaScript.</p>
-					<p>The DOM is not part of the JavaScript language itself, but rather a web API provided by browsers to interact with web pages programmatically. The DOM is platform and language-neutral, meaning it can be used with any programming language that can interact with the browser.</p>
-					<h2>The DOM Tree Structure</h2>
-					<p>The DOM tree starts with the <code>document</code> object as its root. From there, it branches out to include all the elements in your HTML. For example, given this HTML:</p>
-					<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;My Page&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Hello&lt;/h1&gt;
-    &lt;p&gt;World&lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;</code></pre>
-					<p>The DOM tree would look like:</p>
-					<ul>
-						<li><strong>Document Node:</strong> The root of the tree, representing the entire document</li>
-						<li><strong>Element Nodes:</strong> Each HTML element (html, head, body, h1, p, etc.) becomes a node</li>
-						<li><strong>Text Nodes:</strong> The text content within elements ("Hello", "World", "My Page")</li>
-						<li><strong>Attribute Nodes:</strong> Attributes of elements (class, id, href, etc.)</li>
-						<li><strong>Comment Nodes:</strong> HTML comments are also represented in the DOM</li>
-					</ul>
-					<h2>Accessing DOM Elements</h2>
-					<p>JavaScript provides several methods to access elements in the DOM:</p>
-					<ul>
-						<li><code>document.getElementById('id')</code> - Select by element ID (returns single element)</li>
-						<li><code>document.querySelector('.class')</code> - Select using CSS selectors (returns first match)</li>
-						<li><code>document.querySelectorAll('div')</code> - Select all matching elements (returns NodeList)</li>
-						<li><code>document.getElementsByTagName('p')</code> - Select by tag name (returns HTMLCollection)</li>
-						<li><code>document.getElementsByClassName('class')</code> - Select by class name (returns HTMLCollection)</li>
-					</ul>
-					<p><strong>Note:</strong> <code>querySelector</code> and <code>querySelectorAll</code> are the most versatile as they accept any CSS selector.</p>
-					<h2>Manipulating the DOM</h2>
-					<p>Once you've selected an element, you can manipulate it in various ways:</p>
-					<ul>
-						<li><strong>Change content:</strong> <code>element.textContent</code> (plain text) or <code>element.innerHTML</code> (HTML)</li>
-						<li><strong>Change styles:</strong> <code>element.style.property</code> (inline styles)</li>
-						<li><strong>Add/remove classes:</strong> <code>element.classList.add/remove/toggle</code></li>
-						<li><strong>Create elements:</strong> <code>document.createElement('tag')</code></li>
-						<li><strong>Append elements:</strong> <code>parent.appendChild(child)</code> or <code>parent.append(child)</code></li>
-						<li><strong>Remove elements:</strong> <code>element.remove()</code> or <code>parent.removeChild(child)</code></li>
-						<li><strong>Set attributes:</strong> <code>element.setAttribute('name', 'value')</code></li>
-					</ul>
-					<h2>DOM Events</h2>
-					<p>Events are actions that happen in the browser, such as clicks, key presses, or page loads. You can listen for these events and respond to them:</p>
-					<ul>
-						<li><code>element.addEventListener('click', handler)</code> - Listen for clicks</li>
-						<li><code>element.addEventListener('mouseover', handler)</code> - Listen for hover</li>
-						<li><code>element.addEventListener('submit', handler)</code> - Listen for form submission</li>
-						<li><code>window.addEventListener('load', handler)</code> - Listen for page load</li>
-						<li><code>element.removeEventListener('click', handler)</code> - Remove event listener</li>
-					</ul>
-					<p>Event handlers receive an <code>Event</code> object with useful properties like <code>target</code> (the element that triggered the event) and <code>type</code> (the event type).</p>
-					<h2>Event Bubbling and Capturing</h2>
-					<p>Events in the DOM propagate in two phases:</p>
-					<ul>
-						<li><strong>Capturing:</strong> Event travels from the root down to the target element</li>
-						<li><strong>Bubbling:</strong> Event travels from the target element up to the root (default behavior)</li>
-					</ul>
-					<p>You can control event propagation with <code>event.stopPropagation()</code> and <code>event.preventDefault()</code>.</p>
-					<h2>Performance Considerations</h2>
-					<p>DOM manipulation can be expensive in terms of performance. Here are some tips:</p>
-					<ul>
-						<li>Minimize direct DOM access - cache references to elements you use frequently</li>
-						<li>Batch DOM changes together when possible</li>
-						<li>Use <code>documentFragment</code> for multiple insertions to reduce reflows</li>
-						<li>Consider using <code>requestAnimationFrame</code> for animations</li>
-						<li>Use event delegation instead of attaching listeners to many elements</li>
-						<li>Consider using virtual DOM libraries (React, Vue) for complex applications</li>
-					</ul>
-					<h2>Conclusion</h2>
-					<p>The DOM is the foundation of interactive web pages. By understanding how it works and how to manipulate it efficiently, you can create dynamic, responsive user experiences. Master the DOM, and you'll have the power to bring your web pages to life with JavaScript.</p>
-				</article>
-			</section>
-		</main>
-		<script src="/scripts/main.js"></script>
+
+			<h2>Manipulating the DOM</h2>
+			<p>Once you have selected an element, you can modify its content, attributes, styles, and structure. Common operations include changing text content, adding or removing classes, and appending or removing child elements.</p>
+
+			<h2>Events and the DOM</h2>
+			<p>The DOM allows you to listen for and respond to user interactions through events. You can attach event listeners to elements to handle clicks, keyboard input, mouse movements, and many other interactions.</p>
+		<!-- PAGE SCRIPTS GO HERE-->
+		<!-- COMMON BODY HTML END-->
+		{% include endBodyHtml.html %}
 	</body>
 </html>

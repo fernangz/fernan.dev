@@ -1,192 +1,40 @@
+---
+---
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8">
+		<!-- COMMON HTML START-->
+		{% include startHtml.html %}
+		<!-- PAGE SPECIFIC METAS GO HERE -->
 		<title>fernan.dev • Browser DevTools Guide</title>
 		<meta name="description" content="Master the built-in tools for debugging and optimization">
 		<link rel="canonical" href="https://fernan.dev/articles/browser-devtools" />
-		<meta name="author" content="Fernán García de Zúñiga" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
-		<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-		<link rel="shortcut icon" href="/favicon/favicon.ico" />
-		<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-		<meta name="apple-mobile-web-app-title" content="fernan.dev" />
-		<link rel="manifest" href="/favicon/site.webmanifest" />
-		<meta id="androidTheme" name="theme-color" content="hsl(0, 0%, 8%)">
-		<meta id="appleTheme" name="apple-mobile-web-app-status-bar-style" content="hsl(0, 0%, 8%)">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="preload" href="/fonts/outfit.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-		<link rel="preload" href="/fonts/emoji.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-		<link rel="stylesheet" href="/styles/main.css">
+		<!-- PAGE SPECIFIC CSS GO HERE -->
 		<link rel="stylesheet" href="/styles/tools.css">
-	</head>
-	<body>
-		<a href="#main-content" class="skip-link">Skip to main content</a>
-		<nav>
-			<a href="/" class="logo" svg="logo" aria-label="fernan.dev"></a>
-			<button class="toggle" aria-label="Menu" svg="plus"></button>
-			<ul>
-				<li><a href="/">About</a></li>
-				<li><a href="/tools/">Tools</a></li>
-				<li><a href="/articles/">Articles</a></li>
-				<li><a href="/resources/">Resources</a></li>
-			</ul>
-		</nav>
-		<main id="main-content">
-			<section>
-				<article>
-					<a href="/articles/" class="back-link">← Back to Articles</a>
-					<h1>Browser DevTools Guide</h1>
-					<p>Master the built-in tools for debugging and optimization</p>
-					
-					<h2>Introduction</h2>
-					<p>Browser DevTools are the most important tools in a FrontEnd developer's toolkit. Built into every modern browser, they allow you to inspect, debug, and optimize your websites without leaving the browser. This guide covers essential DevTools features.</p>
-					
-					<h2>Opening DevTools</h2>
-					<ul>
-						<li><strong>Windows/Linux:</strong> F12 or Ctrl+Shift+I</li>
-						<li><strong>Mac:</strong> Cmd+Option+I</li>
-						<li><strong>Right-click:</strong> Inspect element</li>
-						<li><strong>Menu:</strong> More tools → Developer tools</li>
-					</ul>
-					
-					<h2>Elements Panel</h2>
-					<p>Inspect and modify HTML and CSS in real-time:</p>
-					<ul>
-						<li>Click any element to inspect it</li>
-						<li>Edit HTML by double-clicking</li>
-						<li>Toggle CSS properties on/off</li>
-						<li>Modify values with arrow keys</li>
-						<li>Copy element or styles (right-click)</li>
-					</ul>
-					<p><strong>Pro tip:</strong> Use <code>document.querySelector()</code> in Console to find elements.</p>
-					
-					<h2>Console Panel</h2>
-					<p>Execute JavaScript and view logs:</p>
-					<pre><code>// Log messages
-console.log('Info');
-console.warn('Warning');
-console.error('Error');
+		<!-- COMMON BODY START-->
+		{% include startBody.html %}
+		<!-- PAGE CONTENT -->
+			<a href="/articles/" class="back-link">← Back to Articles</a>
+			<h1>Browser DevTools Guide</h1>
+			<p>Master the built-in tools for debugging and optimization.</p>
 
-// Table for objects
-console.table([{name: 'Item', price: 10}]);
+			<h2>Elements Panel</h2>
+			<p>Inspect and modify HTML and CSS in real-time. Use it to debug layout issues, test style changes, and understand the DOM structure.</p>
 
-// Timing
-console.time('operation');
-// ... code ...
-console.timeEnd('operation');
+			<h2>Console</h2>
+			<p>View log messages, errors, and warnings. Execute JavaScript commands and interact with the page programmatically.</p>
 
-// Select elements
-const el = document.querySelector('.my-class');
+			<h2>Network Panel</h2>
+			<p>Monitor all network requests, analyze load times, identify bottlenecks, and debug API calls.</p>
 
-// Monitor events
-monitorEvents(document.body, 'click');</code></pre>
-					
-					<h2>Sources Panel</h2>
-					<p>Debug JavaScript with breakpoints:</p>
-					<ul>
-						<li>Click line numbers to set breakpoints</li>
-						<li>Use <code>debugger</code> statement in code</li>
-						<li>Step through code (F10, F11)</li>
-						<li>Watch variables and expressions</li>
-						<li>View call stack and scope</li>
-					</ul>
-					
-					<h2>Network Panel</h2>
-					<p>Monitor all network requests:</p>
-					<ul>
-						<li>See all requests (HTML, CSS, JS, images)</li>
-						<li>Check timing and size</li>
-						<li>Filter by type or search</li>
-						<li>Throttle network speed</li>
-						<li>Replay or block requests</li>
-					</ul>
-					<p><strong>Pro tip:</strong> Use "Slow 3G" to test mobile performance.</p>
-					
-					<h2>Performance Panel</h2>
-					<p>Profile and optimize performance:</p>
-					<ul>
-						<li>Record page load or interaction</li>
-						<li>View flame chart of activities</li>
-						<li>Identify long tasks</li>
-						<li>Find layout thrashing</li>
-						<li>Measure paint and composite time</li>
-					</ul>
-					
-					<h2>Application Panel</h2>
-					<p>Manage storage and PWA features:</p>
-					<ul>
-						<li>View/edit LocalStorage and SessionStorage</li>
-						<li>Inspect cookies</li>
-						<li>View IndexedDB</li>
-						<li>Check Service Workers</li>
-						<li>Test PWA offline functionality</li>
-					</ul>
-					
-					<h2>Lighthouse Panel</h2>
-					<p>Audit for quality and best practices:</p>
-					<ul>
-						<li>Performance score</li>
-						<li>Accessibility score</li>
-						<li>Best Practices score</li>
-						<li>SEO score</li>
-						<li>PWA compliance</li>
-					</ul>
-					<p>Run audits for mobile and desktop separately.</p>
-					
-					<h2>Device Mode</h2>
-					<p>Test responsive designs:</p>
-					<ul>
-						<li>Toggle with Ctrl+Shift+M or device icon</li>
-						<li>Select preset devices or custom dimensions</li>
-						<li>Test touch events</li>
-						<li>Simulate device pixel ratio</li>
-						<li>Test different network conditions</li>
-					</ul>
-					
-					<h2>Color Picker</h2>
-					<p>Built-in color tools:</p>
-					<ul>
-						<li>Click any color swatch in Styles</li>
-						<li>Picker with eyedropper</li>
-						<li>Convert between formats (HEX, RGB, HSL)</li>
-						<li>Check contrast ratio</li>
-					</ul>
-					
-					<h2>Useful Shortcuts</h2>
-					<table class="data-table">
-						<thead>
-							<tr>
-								<th>Shortcut</th>
-								<th>Action</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td><code>Ctrl/Cmd + P</code></td>
-								<td>Quick open files</td>
-							</tr>
-							<tr>
-								<td><code>Ctrl/Cmd + Shift + P</code></td>
-								<td>Run command</td>
-							</tr>
-							<tr>
-								<td><code>Ctrl/Cmd + /</code></td>
-								<td>Toggle comment</td>
-							</tr>
-							<tr>
-								<td><code>Esc</code></td>
-								<td>Toggle console drawer</td>
-							</tr>
-						</tbody>
-					</table>
-					
-					<h2>Conclusion</h2>
-					<p>DevTools are essential for modern web development. Master these tools to debug faster, optimize better, and build higher quality websites. Practice using them daily—they'll become second nature.</p>
-				</article>
-			</section>
-		</main>
-		<script src="/scripts/main.js"></script>
+			<h2>Sources Panel</h2>
+			<p>Set breakpoints, step through code, and debug JavaScript. View and edit source files directly in the browser.</p>
+
+			<h2>Performance Panel</h2>
+			<p>Record and analyze runtime performance, identify jank, and optimize rendering.</p>
+		<!-- PAGE SCRIPTS GO HERE-->
+		<!-- COMMON BODY HTML END-->
+		{% include endBodyHtml.html %}
 	</body>
 </html>

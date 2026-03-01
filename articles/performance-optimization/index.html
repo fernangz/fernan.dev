@@ -1,185 +1,41 @@
+---
+---
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8">
+		<!-- COMMON HTML START-->
+		{% include startHtml.html %}
+		<!-- PAGE SPECIFIC METAS GO HERE -->
 		<title>fernan.dev • Performance Optimization</title>
 		<meta name="description" content="Make your websites faster and improve Core Web Vitals">
 		<link rel="canonical" href="https://fernan.dev/articles/performance-optimization" />
-		<meta name="author" content="Fernán García de Zúñiga" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
-		<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-		<link rel="shortcut icon" href="/favicon/favicon.ico" />
-		<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-		<meta name="apple-mobile-web-app-title" content="fernan.dev" />
-		<link rel="manifest" href="/favicon/site.webmanifest" />
-		<meta id="androidTheme" name="theme-color" content="hsl(0, 0%, 8%)">
-		<meta id="appleTheme" name="apple-mobile-web-app-status-bar-style" content="hsl(0, 0%, 8%)">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="preload" href="/fonts/outfit.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-		<link rel="preload" href="/fonts/emoji.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-		<link rel="stylesheet" href="/styles/main.css">
+		<!-- PAGE SPECIFIC CSS GO HERE -->
 		<link rel="stylesheet" href="/styles/tools.css">
-	</head>
-	<body>
-		<a href="#main-content" class="skip-link">Skip to main content</a>
-		<nav>
-			<a href="/" class="logo" svg="logo" aria-label="fernan.dev"></a>
-			<button class="toggle" aria-label="Menu" svg="plus"></button>
+		<!-- COMMON BODY START-->
+		{% include startBody.html %}
+		<!-- PAGE CONTENT -->
+			<a href="/articles/" class="back-link">← Back to Articles</a>
+			<h1>Performance Optimization</h1>
+			<p>Make your websites faster and improve Core Web Vitals.</p>
+
+			<h2>Core Web Vitals</h2>
+			<p>Google's Core Web Vitals measure user experience: Largest Contentful Paint (LCP), First Input Delay (FID), and Cumulative Layout Shift (CLS).</p>
+
+			<h2>Optimization Strategies</h2>
 			<ul>
-				<li><a href="/">About</a></li>
-				<li><a href="/tools/">Tools</a></li>
-				<li><a href="/articles/">Articles</a></li>
-				<li><a href="/resources/">Resources</a></li>
+				<li>Minimize and compress assets (CSS, JS, images)</li>
+				<li>Use lazy loading for images and below-fold content</li>
+				<li>Implement code splitting and tree shaking</li>
+				<li>Use a Content Delivery Network (CDN)</li>
+				<li>Enable browser caching</li>
+				<li>Optimize critical rendering path</li>
 			</ul>
-		</nav>
-		<main id="main-content">
-			<section>
-				<article>
-					<a href="/articles/" class="back-link">← Back to Articles</a>
-					<h1>Performance Optimization</h1>
-					<p>Make your websites faster and improve Core Web Vitals</p>
-					
-					<h2>Introduction</h2>
-					<p>Website performance directly impacts user experience, conversions, and search rankings. A 1-second delay can reduce conversions by 7%. Google's Core Web Vitals are now ranking factors. This guide covers practical techniques to make your websites faster.</p>
-					
-					<h2>Core Web Vitals</h2>
-					<p>Google measures three key metrics:</p>
-					<ul>
-						<li><strong>LCP (Largest Contentful Paint):</strong> Loading performance. Target: &lt;2.5s</li>
-						<li><strong>FID (First Input Delay):</strong> Interactivity. Target: &lt;100ms</li>
-						<li><strong>CLS (Cumulative Layout Shift):</strong> Visual stability. Target: &lt;0.1</li>
-					</ul>
-					
-					<h2>Optimize Images</h2>
-					<p>Images are often the largest assets on a page:</p>
-					<ul>
-						<li>Use modern formats (WebP, AVIF) with fallbacks</li>
-						<li>Implement responsive images with srcset</li>
-						<li>Lazy load off-screen images</li>
-						<li>Compress images appropriately</li>
-					</ul>
-					<pre><code>&lt;img 
-    src="image.webp"
-    srcset="image-400.webp 400w, image-800.webp 800w"
-    sizes="(max-width: 600px) 400px, 800px"
-    alt="Description"
-    loading="lazy"
-    decoding="async"
-    width="800"
-    height="600"
-&gt;</code></pre>
-					
-					<h2>Minimize JavaScript</h2>
-					<p>JavaScript blocks rendering and delays interactivity:</p>
-					<ul>
-						<li>Remove unused JavaScript (tree-shaking)</li>
-						<li>Code-split large bundles</li>
-						<li>Use <code>async</code> or <code>defer</code> for scripts</li>
-						<li>Consider vanilla JS over heavy frameworks</li>
-					</ul>
-					<pre><code>&lt;!-- Defer non-critical scripts --&gt;
-&lt;script src="app.js" defer&gt;&lt;/script&gt;
 
-&lt;!-- Async for independent scripts --&gt;
-&lt;script src="analytics.js" async&gt;&lt;/script&gt;</code></pre>
-					
-					<h2>Optimize CSS Delivery</h2>
-					<p>CSS blocks rendering too:</p>
-					<ul>
-						<li>Critical CSS inline in &lt;head&gt;</li>
-						<li>Defer non-critical CSS</li>
-						<li>Remove unused CSS</li>
-						<li>Minify CSS files</li>
-					</ul>
-					<pre><code>&lt;!-- Critical CSS inline --&gt;
-&lt;style&gt;
-    /* Above-the-fold styles only */
-    header, nav, .hero { ... }
-&lt;/style&gt;
-
-&lt;!-- Non-critical CSS deferred --&gt;
-&lt;link rel="preload" href="styles.css" as="style" onload="this.rel='stylesheet'"&gt;</code></pre>
-					
-					<h2>Use a CDN</h2>
-					<p>Content Delivery Networks serve assets from servers closer to users:</p>
-					<ul>
-						<li>Reduced latency for global audiences</li>
-						<li>Better caching and compression</li>
-						<li>HTTP/2 support</li>
-						<li>DDoS protection</li>
-					</ul>
-					
-					<h2>Enable Compression</h2>
-					<p>Compress text-based assets:</p>
-					<ul>
-						<li><strong>Gzip:</strong> Widely supported, good compression</li>
-						<li><strong>Brotli:</strong> Better compression, modern browsers</li>
-					</ul>
-					<pre><code># Nginx configuration
-gzip on;
-gzip_types text/plain text/css application/json application/javascript;
-gzip_min_length 1000;</code></pre>
-					
-					<h2>Leverage Browser Caching</h2>
-					<p>Cache static assets to reduce repeat visits:</p>
-					<pre><code># Cache static assets for 1 year
-Cache-Control: public, max-age=31536000
-
-# HTML should not be cached long
-Cache-Control: no-cache</code></pre>
-					<p>Use content hashes in filenames for cache busting.</p>
-					
-					<h2>Reduce Layout Shifts</h2>
-					<p>Prevent CLS by reserving space:</p>
-					<ul>
-						<li>Specify width and height on images</li>
-						<li>Reserve space for ads and embeds</li>
-						<li>Use aspect-ratio CSS property</li>
-						<li>Avoid inserting content above existing content</li>
-					</ul>
-					<pre><code>/* Reserve space for images */
-img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-}
-
-/* Reserve space for embeds */
-.embed-container {
-    aspect-ratio: 16 / 9;
-}</code></pre>
-					
-					<h2>Optimize Web Fonts</h2>
-					<p>Fonts can significantly impact performance:</p>
-					<ul>
-						<li>Use <code>font-display: swap</code></li>
-						<li>Subset fonts to include only needed characters</li>
-						<li>Preload critical fonts</li>
-						<li>Consider system fonts for body text</li>
-					</ul>
-					<pre><code>@font-face {
-    font-family: 'MyFont';
-    src: url('font.woff2') format('woff2');
-    font-display: swap;
-    unicode-range: U+0000-00FF; /* Latin only */
-}
-
-&lt;link rel="preload" href="font.woff2" as="font" crossorigin&gt;</code></pre>
-					
-					<h2>Performance Testing Tools</h2>
-					<ul>
-						<li><strong>Lighthouse:</strong> Built into Chrome DevTools</li>
-						<li><strong>PageSpeed Insights:</strong> Google's online tool</li>
-						<li><strong>WebPageTest:</strong> Advanced testing from multiple locations</li>
-						<li><strong>Chrome DevTools Performance tab:</strong> Real-time profiling</li>
-					</ul>
-					
-					<h2>Conclusion</h2>
-					<p>Performance optimization is an ongoing process. Start with measuring (Lighthouse), identify bottlenecks, implement fixes, and measure again. Small improvements compound into significant gains.</p>
-				</article>
-			</section>
-		</main>
-		<script src="/scripts/main.js"></script>
+			<h2>Measuring Performance</h2>
+			<p>Use tools like Lighthouse, PageSpeed Insights, and WebPageTest to measure and track performance. Monitor real-user metrics with tools like Google Analytics.</p>
+		<!-- PAGE SCRIPTS GO HERE-->
+		<!-- COMMON BODY HTML END-->
+		{% include endBodyHtml.html %}
 	</body>
 </html>

@@ -1,54 +1,34 @@
+---
+---
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8">
+		<!-- COMMON HTML START-->
+		{% include startHtml.html %}
+		<!-- PAGE SPECIFIC METAS GO HERE -->
 		<title>fernan.dev • HTML Entities</title>
 		<meta name="description" content="Convert special characters to HTML entity codes">
 		<link rel="canonical" href="https://fernan.dev/tools/html-entities" />
-		<meta name="author" content="Fernán García de Zúñiga" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
-		<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-		<link rel="shortcut icon" href="/favicon/favicon.ico" />
-		<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-		<meta name="apple-mobile-web-app-title" content="fernan.dev" />
-		<link rel="manifest" href="/favicon/site.webmanifest" />
-		<meta id="androidTheme" name="theme-color" content="hsl(0, 0%, 8%)">
-		<meta id="appleTheme" name="apple-mobile-web-app-status-bar-style" content="hsl(0, 0%, 8%)">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="preload" href="/fonts/outfit.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-		<link rel="preload" href="/fonts/emoji.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-		<link rel="stylesheet" href="/styles/main.css">
+		<!-- PAGE SPECIFIC CSS GO HERE -->
 		<link rel="stylesheet" href="/styles/tools.css">
 		<link rel="stylesheet" href="/styles/html-entities.css">
-	</head>
-	<body>
-		<a href="#main-content" class="skip-link">Skip to main content</a>
-		<nav>
-			<a href="/" class="logo" svg="logo" aria-label="fernan.dev"></a>
-			<button class="toggle" aria-label="Menu" svg="plus"></button>
-			<ul>
-				<li><a href="/">About</a></li>
-				<li><a href="/tools/">Tools</a></li>
-				<li><a href="/articles/">Articles</a></li>
-				<li><a href="/resources/">Resources</a></li>
-			</ul>
-		</nav>
-		<main id="main-content">
-			<section>
-				<article>
-					<a href="/tools/" class="back-link">← Back to Tools</a>
-					<h1>HTML Entities</h1>
-					<p>Convert special characters to HTML entity codes. Click on any card to copy the entity code.</p>
-					
-					<input type="text" id="entity-search" class="entity-search" placeholder="Search entities by name or symbol...">
-					
-					<h2>HTML Entities Reference</h2>
-					<div id="entities-container" class="symbols-grid"></div>
-				</article>
-			</section>
-		</main>
-		<script src="/scripts/main.js"></script>
+		<!-- COMMON BODY START-->
+		{% include startBody.html %}
+		<!-- PAGE CONTENT -->
+			<a href="/tools/" class="back-link">← Back to Tools</a>
+			<h1>HTML Entities</h1>
+			<p>Convert special characters to HTML entity codes. Click on any entity to copy it.</p>
+
+			<h2>Search</h2>
+			<input type="text" id="entity-search" placeholder="Search entities by name or symbol..." style="margin-top: 1rem; width: 100%; max-width: 400px;">
+
+			<h2>HTML Entities Reference</h2>
+			<p>Click on any entity to copy the HTML entity code to your clipboard.</p>
+			<div id="entities-container" class="symbols-grid"></div>
+		<!-- PAGE SCRIPTS GO HERE-->
 		<script src="/scripts/html-entities.js"></script>
+		<!-- COMMON BODY HTML END-->
+		{% include endBodyHtml.html %}
 	</body>
 </html>

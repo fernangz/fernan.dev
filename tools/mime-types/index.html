@@ -1,61 +1,42 @@
+---
+---
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8">
+		<!-- COMMON HTML START-->
+		{% include startHtml.html %}
+		<!-- PAGE SPECIFIC METAS GO HERE -->
 		<title>fernan.dev • MIME Types</title>
 		<meta name="description" content="Look up MIME type definitions for file extensions">
 		<link rel="canonical" href="https://fernan.dev/tools/mime-types" />
-		<meta name="author" content="Fernán García de Zúñiga" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
-		<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-		<link rel="shortcut icon" href="/favicon/favicon.ico" />
-		<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-		<meta name="apple-mobile-web-app-title" content="fernan.dev" />
-		<link rel="manifest" href="/favicon/site.webmanifest" />
-		<meta id="androidTheme" name="theme-color" content="hsl(0, 0%, 8%)">
-		<meta id="appleTheme" name="apple-mobile-web-app-status-bar-style" content="hsl(0, 0%, 8%)">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="preload" href="/fonts/outfit.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-		<link rel="preload" href="/fonts/emoji.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-		<link rel="stylesheet" href="/styles/main.css">
+		<!-- PAGE SPECIFIC CSS GO HERE -->
 		<link rel="stylesheet" href="/styles/tools.css">
 		<link rel="stylesheet" href="/styles/data-table.css">
-	</head>
-	<body>
-		<nav>
-			<a href="/" class="logo" svg="logo" aria-label="fernan.dev"></a>
-			<button class="toggle" aria-label="Menu" svg="plus"></button>
-			<ul>
-				<li><a href="/">About</a></li>
-				<li><a href="/tools/">Tools</a></li>
-				<li><a href="/articles/">Articles</a></li>
-				<li><a href="/resources/">Resources</a></li>
-			</ul>
-		</nav>
-		<main>
-			<section>
-				<article>
-					<a href="/tools/" class="back-link">← Back to Tools</a>
-					<h1>MIME Types Reference</h1>
-					<p>Look up MIME type definitions for file extensions.</p>
-					<h2>Search MIME Types</h2>
-					<input type="text" id="mime-search" placeholder="Search by extension or MIME type..." style="margin-top:1rem;">
-					<h2>MIME Types Table</h2>
-					<table class="data-table">
-						<thead>
-							<tr>
-								<th>Extension</th>
-								<th>MIME Type</th>
-								<th>Action</th>
-							</tr>
-						</thead>
-						<tbody id="mime-container"></tbody>
-					</table>
-				</article>
-			</section>
-		</main>
-		<script src="/scripts/main.js"></script>
+		<!-- COMMON BODY START-->
+		{% include startBody.html %}
+		<!-- PAGE CONTENT -->
+			<a href="/tools/" class="back-link">← Back to Tools</a>
+			<h1>MIME Types Reference</h1>
+			<p>Look up MIME type definitions for file extensions.</p>
+
+			<h2>Search MIME Types</h2>
+			<input type="text" id="mime-search" placeholder="Search by extension or MIME type..." style="margin-top:1rem;">
+
+			<h2>MIME Types Table</h2>
+			<table class="data-table">
+				<thead>
+					<tr>
+						<th>Extension</th>
+						<th>MIME Type</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody id="mime-container"></tbody>
+			</table>
+		<!-- PAGE SCRIPTS GO HERE-->
 		<script src="/scripts/mime-types.js"></script>
+		<!-- COMMON BODY HTML END-->
+		{% include endBodyHtml.html %}
 	</body>
 </html>

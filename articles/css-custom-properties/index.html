@@ -1,213 +1,39 @@
+---
+---
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8">
+		<!-- COMMON HTML START-->
+		{% include startHtml.html %}
+		<!-- PAGE SPECIFIC METAS GO HERE -->
 		<title>fernan.dev • CSS Custom Properties</title>
 		<meta name="description" content="Use CSS variables for maintainable, dynamic stylesheets">
 		<link rel="canonical" href="https://fernan.dev/articles/css-custom-properties" />
-		<meta name="author" content="Fernán García de Zúñiga" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
-		<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-		<link rel="shortcut icon" href="/favicon/favicon.ico" />
-		<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-		<meta name="apple-mobile-web-app-title" content="fernan.dev" />
-		<link rel="manifest" href="/favicon/site.webmanifest" />
-		<meta id="androidTheme" name="theme-color" content="hsl(0, 0%, 8%)">
-		<meta id="appleTheme" name="apple-mobile-web-app-status-bar-style" content="hsl(0, 0%, 8%)">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="preload" href="/fonts/outfit.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-		<link rel="preload" href="/fonts/emoji.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-		<link rel="stylesheet" href="/styles/main.css">
+		<!-- PAGE SPECIFIC CSS GO HERE -->
 		<link rel="stylesheet" href="/styles/tools.css">
-	</head>
-	<body>
-		<a href="#main-content" class="skip-link">Skip to main content</a>
-		<nav>
-			<a href="/" class="logo" svg="logo" aria-label="fernan.dev"></a>
-			<button class="toggle" aria-label="Menu" svg="plus"></button>
+		<!-- COMMON BODY START-->
+		{% include startBody.html %}
+		<!-- PAGE CONTENT -->
+			<a href="/articles/" class="back-link">← Back to Articles</a>
+			<h1>CSS Custom Properties</h1>
+			<p>Use CSS variables for maintainable, dynamic stylesheets.</p>
+
+			<h2>What are CSS Custom Properties?</h2>
+			<p>CSS Custom Properties, also known as CSS variables, allow you to store values that can be reused throughout your stylesheet. They're defined with -- prefix and accessed with var().</p>
+
+			<h2>Benefits</h2>
 			<ul>
-				<li><a href="/">About</a></li>
-				<li><a href="/tools/">Tools</a></li>
-				<li><a href="/articles/">Articles</a></li>
-				<li><a href="/resources/">Resources</a></li>
+				<li>Single source of truth for values like colors and spacing</li>
+				<li>Easier theme switching and dark mode implementation</li>
+				<li>Dynamic updates via JavaScript</li>
+				<li>Better maintainability and consistency</li>
 			</ul>
-		</nav>
-		<main id="main-content">
-			<section>
-				<article>
-					<a href="/articles/" class="back-link">← Back to Articles</a>
-					<h1>CSS Custom Properties</h1>
-					<p>Use CSS variables for maintainable, dynamic stylesheets</p>
-					
-					<h2>Introduction</h2>
-					<p>CSS Custom Properties (CSS variables) allow you to store values that can be reused throughout your stylesheet. They're native to CSS, support theming, and can be manipulated with JavaScript—making them far more powerful than preprocessor variables.</p>
-					
-					<h2>Basic Syntax</h2>
-					<p>Custom properties start with <code>--</code> and are accessed with <code>var()</code>:</p>
-					<pre><code>:root {
-    --primary-color: #3498db;
-    --spacing-unit: 8px;
-    --font-size-base: 1rem;
-}
 
-.button {
-    background-color: var(--primary-color);
-    padding: var(--spacing-unit);
-    font-size: var(--font-size-base);
-}</code></pre>
-					
-					<h2>Scoping Variables</h2>
-					<p>Variables cascade like regular CSS:</p>
-					<pre><code>/* Global scope */
-:root {
-    --color: blue;
-}
-
-/* Component scope */
-.card {
-    --color: red; /* Overrides global */
-}
-
-/* Child inherits */
-.card .text {
-    color: var(--color); /* red */
-}
-
-/* Outside component */
-.text {
-    color: var(--color); /* blue */
-}</code></pre>
-					
-					<h2>Fallback Values</h2>
-					<p>Provide fallbacks for unsupported browsers or missing variables:</p>
-					<pre><code>.element {
-    color: var(--text-color, #333);
-    /* Multiple fallbacks */
-    background: var(--bg, var(--fallback-bg, white));
-}</code></pre>
-					
-					<h2>Theming with Custom Properties</h2>
-					<p>Create light and dark themes easily:</p>
-					<pre><code>/* Light theme (default) */
-:root {
-    --bg-color: #ffffff;
-    --text-color: #333333;
-    --link-color: #0066cc;
-}
-
-/* Dark theme */
-[data-theme="dark"] {
-    --bg-color: #1a1a1a;
-    --text-color: #ffffff;
-    --link-color: #66b3ff;
-}
-
-/* Usage */
-body {
-    background: var(--bg-color);
-    color: var(--text-color);
-}
-
-a {
-    color: var(--link-color);
-}</code></pre>
-					<p>Toggle theme with JavaScript:</p>
-					<pre><code>document.documentElement.setAttribute(
-    'data-theme', 
-    'dark'
-);</code></pre>
-					
-					<h2>Responsive Values</h2>
-					<p>Change variables at breakpoints:</p>
-					<pre><code>:root {
-    --font-size: 1rem;
-    --spacing: 1rem;
-}
-
-@media (min-width: 768px) {
-    :root {
-        --font-size: 1.125rem;
-        --spacing: 1.5rem;
-    }
-}
-
-@media (min-width: 1024px) {
-    :root {
-        --font-size: 1.25rem;
-        --spacing: 2rem;
-    }
-}</code></pre>
-					
-					<h2>JavaScript Integration</h2>
-					<p>Read and write custom properties with JavaScript:</p>
-					<pre><code>// Read a variable
-const color = getComputedStyle(document.documentElement)
-    .getPropertyValue('--primary-color');
-
-// Write a variable
-document.documentElement.style
-    .setProperty('--primary-color', '#ff0000');
-
-// Remove a variable
-document.documentElement.style
-    .removeProperty('--primary-color');</code></pre>
-					
-					<h2>Practical Examples</h2>
-					<p><strong>Spacing system:</strong></p>
-					<pre><code>:root {
-    --space-1: 0.25rem;
-    --space-2: 0.5rem;
-    --space-3: 0.75rem;
-    --space-4: 1rem;
-    --space-6: 1.5rem;
-    --space-8: 2rem;
-}
-
-.card {
-    padding: var(--space-4);
-    margin-bottom: var(--space-4);
-}
-
-.card-header {
-    margin-bottom: var(--space-3);
-}</code></pre>
-					<p><strong>Color palette:</strong></p>
-					<pre><code>:root {
-    --color-primary: #3498db;
-    --color-secondary: #2ecc71;
-    --color-danger: #e74c3c;
-    --color-warning: #f1c40f;
-    
-    --color-text: #333;
-    --color-text-light: #666;
-    --color-border: #ddd;
-}</code></pre>
-					
-					<h2>Browser Support</h2>
-					<ul>
-						<li>Chrome 49+</li>
-						<li>Firefox 31+</li>
-						<li>Safari 9.1+</li>
-						<li>Edge 15+</li>
-						<li>Not supported in IE11</li>
-					</ul>
-					<p>Use PostCSS custom-properties plugin for legacy support.</p>
-					
-					<h2>Best Practices</h2>
-					<ul>
-						<li>Define variables in <code>:root</code> for global scope</li>
-						<li>Use descriptive, consistent naming</li>
-						<li>Group related variables together</li>
-						<li>Document your design tokens</li>
-						<li>Use fallbacks for critical properties</li>
-					</ul>
-					
-					<h2>Conclusion</h2>
-					<p>CSS Custom Properties are essential for modern CSS. They enable theming, reduce repetition, and create more maintainable stylesheets. Start using them today for a more efficient workflow.</p>
-				</article>
-			</section>
-		</main>
-		<script src="/scripts/main.js"></script>
+			<h2>Best Practices</h2>
+			<p>Define global variables in :root, use meaningful names, organize variables by category (colors, spacing, typography), and document your design tokens.</p>
+		<!-- PAGE SCRIPTS GO HERE-->
+		<!-- COMMON BODY HTML END-->
+		{% include endBodyHtml.html %}
 	</body>
 </html>

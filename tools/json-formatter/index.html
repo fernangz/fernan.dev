@@ -1,64 +1,43 @@
+---
+---
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8">
+		<!-- COMMON HTML START-->
+		{% include startHtml.html %}
+		<!-- PAGE SPECIFIC METAS GO HERE -->
 		<title>fernan.dev • JSON Formatter</title>
 		<meta name="description" content="Format, validate and beautify JSON">
 		<link rel="canonical" href="https://fernan.dev/tools/json-formatter" />
-		<meta name="author" content="Fernán García de Zúñiga" />
-		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
-		<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-		<link rel="shortcut icon" href="/favicon/favicon.ico" />
-		<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-		<meta name="apple-mobile-web-app-title" content="fernan.dev" />
-		<link rel="manifest" href="/favicon/site.webmanifest" />
-		<meta id="androidTheme" name="theme-color" content="hsl(0, 0%, 8%)">
-		<meta id="appleTheme" name="apple-mobile-web-app-status-bar-style" content="hsl(0, 0%, 8%)">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="preload" href="/fonts/outfit.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-		<link rel="preload" href="/fonts/emoji.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-		<link rel="stylesheet" href="/styles/main.css">
+		<!-- PAGE SPECIFIC CSS GO HERE -->
 		<link rel="stylesheet" href="/styles/tools.css">
 		<link rel="stylesheet" href="/styles/json-formatter.css">
-	</head>
-	<body>
-		<a href="#main-content" class="skip-link">Skip to main content</a>
-		<nav>
-			<a href="/" class="logo" svg="logo" aria-label="fernan.dev"></a>
-			<button class="toggle" aria-label="Menu" svg="plus"></button>
-			<ul>
-				<li><a href="/">About</a></li>
-				<li><a href="/tools/">Tools</a></li>
-				<li><a href="/articles/">Articles</a></li>
-				<li><a href="/resources/">Resources</a></li>
-			</ul>
-		</nav>
-		<main id="main-content">
-			<section>
-				<article>
-					<a href="/tools/" class="back-link">← Back to Tools</a>
-					<h1>JSON Formatter</h1>
-					<p>Format, validate and beautify JSON data.</p>
-					
-					<div class="json-tool">
-						<div class="toolbar">
-							<button class="tool-btn" id="format-btn">✨ Format</button>
-							<button class="tool-btn" id="minify-btn">🗜️ Minify</button>
-							<button class="tool-btn" id="copy-btn">📋 Copy</button>
-							<button class="tool-btn" id="clear-btn">🗑️ Clear</button>
-						</div>
-						
-						<div class="editor-container">
-							<textarea id="json-input" placeholder="Paste your JSON here..."></textarea>
-							<pre id="json-output" class="hidden"></pre>
-						</div>
-						
-						<div id="status-message" class="status-message hidden"></div>
-					</div>
-				</article>
-			</section>
-		</main>
-		<script src="/scripts/main.js"></script>
+		<!-- COMMON BODY START-->
+		{% include startBody.html %}
+		<!-- PAGE CONTENT -->
+			<a href="/tools/" class="back-link">← Back to Tools</a>
+			<h1>JSON Formatter</h1>
+			<p>Format, validate, and minify JSON data.</p>
+
+			<div class="json-tool">
+				<div class="toolbar">
+					<button class="tool-btn" id="format-btn">✨ Format</button>
+					<button class="tool-btn" id="minify-btn">🗜️ Minify</button>
+					<button class="tool-btn" id="copy-btn">📋 Copy</button>
+					<button class="tool-btn" id="clear-btn">🗑️ Clear</button>
+				</div>
+
+				<div class="editor-container">
+					<textarea id="json-input" placeholder="Paste your JSON here..."></textarea>
+					<pre id="json-output" class="hidden"></pre>
+				</div>
+
+				<div id="status-message" class="status-message hidden"></div>
+			</div>
+		<!-- PAGE SCRIPTS GO HERE-->
 		<script src="/scripts/json-formatter.js"></script>
+		<!-- COMMON BODY HTML END-->
+		{% include endBodyHtml.html %}
 	</body>
 </html>

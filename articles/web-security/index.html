@@ -1,209 +1,37 @@
+---
+---
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8">
+		<!-- COMMON HTML START-->
+		{% include startHtml.html %}
+		<!-- PAGE SPECIFIC METAS GO HERE -->
 		<title>fernan.dev • Web Security Essentials</title>
 		<meta name="description" content="Protect your users and applications from common threats">
 		<link rel="canonical" href="https://fernan.dev/articles/web-security" />
-		<meta name="author" content="Fernán García de Zúñiga" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
-		<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-		<link rel="shortcut icon" href="/favicon/favicon.ico" />
-		<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-		<meta name="apple-mobile-web-app-title" content="fernan.dev" />
-		<link rel="manifest" href="/favicon/site.webmanifest" />
-		<meta id="androidTheme" name="theme-color" content="hsl(0, 0%, 8%)">
-		<meta id="appleTheme" name="apple-mobile-web-app-status-bar-style" content="hsl(0, 0%, 8%)">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="preload" href="/fonts/outfit.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-		<link rel="preload" href="/fonts/emoji.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-		<link rel="stylesheet" href="/styles/main.css">
+		<!-- PAGE SPECIFIC CSS GO HERE -->
 		<link rel="stylesheet" href="/styles/tools.css">
-	</head>
-	<body>
-		<a href="#main-content" class="skip-link">Skip to main content</a>
-		<nav>
-			<a href="/" class="logo" svg="logo" aria-label="fernan.dev"></a>
-			<button class="toggle" aria-label="Menu" svg="plus"></button>
-			<ul>
-				<li><a href="/">About</a></li>
-				<li><a href="/tools/">Tools</a></li>
-				<li><a href="/articles/">Articles</a></li>
-				<li><a href="/resources/">Resources</a></li>
-			</ul>
-		</nav>
-		<main id="main-content">
-			<section>
-				<article>
-					<a href="/articles/" class="back-link">← Back to Articles</a>
-					<h1>Web Security Essentials</h1>
-					<p>Protect your users and applications from common threats</p>
-					
-					<h2>Introduction</h2>
-					<p>Web security is critical for protecting user data and maintaining trust. FrontEnd developers play a crucial role in preventing common attacks like XSS, CSRF, and clickjacking. This guide covers essential security practices every developer should implement.</p>
-					
-					<h2>Cross-Site Scripting (XSS)</h2>
-					<p>XSS attacks inject malicious scripts into trusted websites:</p>
-					<h3>Types of XSS</h3>
-					<ul>
-						<li><strong>Reflected:</strong> Malicious script reflected off web server</li>
-						<li><strong>Stored:</strong> Malicious script stored on target server</li>
-						<li><strong>DOM-based:</strong> Vulnerability in client-side code</li>
-					</ul>
-					<h3>Prevention</h3>
-					<pre><code>// NEVER use innerHTML with user input
-element.innerHTML = userInput; // DANGEROUS
+		<!-- COMMON BODY START-->
+		{% include startBody.html %}
+		<!-- PAGE CONTENT -->
+			<a href="/articles/" class="back-link">← Back to Articles</a>
+			<h1>Web Security Essentials</h1>
+			<p>Protect your users and applications from common threats.</p>
 
-// Use textContent instead
-element.textContent = userInput; // SAFE
+			<h2>HTTPS Everywhere</h2>
+			<p>Always use HTTPS to encrypt data in transit. This protects user credentials, session tokens, and sensitive data from interception.</p>
 
-// Or escape HTML entities
-function escapeHTML(str) {
-    return str.replace(/[&<>'"]/g, 
-        tag => ({
-            '&': '&amp;',
-            '<': '&lt;',
-            '>': '&gt;',
-            "'": '&#39;',
-            '"': '&quot;'
-        }[tag]));
-}
+			<h2>Cross-Site Scripting (XSS)</h2>
+			<p>Prevent XSS by sanitizing user input, escaping output, and using Content Security Policy (CSP) headers. Never trust user-provided data.</p>
 
-// Frameworks handle this automatically
-// React, Vue, Angular escape by default</code></pre>
-					
-					<h2>Cross-Site Request Forgery (CSRF)</h2>
-					<p>CSRF tricks users into executing unwanted actions:</p>
-					<h3>Prevention</h3>
-					<ul>
-						<li>Use CSRF tokens for state-changing requests</li>
-						<li>Implement SameSite cookie attribute</li>
-						<li>Verify Origin and Referer headers</li>
-					</ul>
-					<pre><code>// Set SameSite cookie
-Set-Cookie: session=abc123; SameSite=Strict; Secure
+			<h2>Cross-Site Request Forgery (CSRF)</h2>
+			<p>Protect against CSRF attacks by using anti-CSRF tokens, checking referrer headers, and requiring re-authentication for sensitive actions.</p>
 
-// Or Lax for less strict requirement
-Set-Cookie: session=abc123; SameSite=Lax; Secure
-
-// CSRF token in forms
-&lt;input type="hidden" name="csrf_token" value="abc123"&gt;</code></pre>
-					
-					<h2>Content Security Policy (CSP)</h2>
-					<p>CSP prevents XSS by controlling resource loading:</p>
-					<pre><code>// HTTP Header
-Content-Security-Policy: default-src 'self'; 
-    script-src 'self' https://trusted.com;
-    style-src 'self' 'unsafe-inline';
-    img-src 'self' data: https:;
-    connect-src 'self' https://api.example.com;
-    frame-ancestors 'none';
-
-// Meta tag alternative
-&lt;meta http-equiv="Content-Security-Policy" 
-    content="default-src 'self'"&gt;</code></pre>
-					<h3>Common Directives</h3>
-					<ul>
-						<li><code>default-src</code> - Fallback for other directives</li>
-						<li><code>script-src</code> - Allowed JavaScript sources</li>
-						<li><code>style-src</code> - Allowed CSS sources</li>
-						<li><code>img-src</code> - Allowed image sources</li>
-						<li><code>connect-src</code> - Allowed fetch/XHR endpoints</li>
-						<li><code>frame-ancestors</code> - Clickjacking protection</li>
-					</ul>
-					
-					<h2>HTTPS and Secure Headers</h2>
-					<p>Always use HTTPS and security headers:</p>
-					<pre><code>// Essential security headers
-Strict-Transport-Security: max-age=31536000; includeSubDomains
-X-Content-Type-Options: nosniff
-X-Frame-Options: DENY
-X-XSS-Protection: 1; mode=block
-Referrer-Policy: strict-origin-when-cross-origin
-Permissions-Policy: geolocation=(), microphone=()</code></pre>
-					
-					<h2>Input Validation</h2>
-					<p>Validate and sanitize all user input:</p>
-					<pre><code>// Validate email
-function isValidEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-// Validate and sanitize
-function sanitizeInput(input) {
-    return input
-        .trim()
-        .replace(/[&<>"']/g, '');
-}
-
-// Use validation libraries
-import { z } from 'zod';
-
-const userSchema = z.object({
-    email: z.string().email(),
-    age: z.number().min(18),
-    name: z.string().min(1).max(100)
-});</code></pre>
-					
-					<h2>Authentication Security</h2>
-					<ul>
-						<li>Use secure password hashing (bcrypt, Argon2)</li>
-						<li>Implement rate limiting on login attempts</li>
-						<li>Store tokens securely (httpOnly cookies)</li>
-						<li>Implement proper session timeout</li>
-						<li>Use multi-factor authentication</li>
-					</ul>
-					<pre><code>// Secure cookie for tokens
-res.cookie('token', token, {
-    httpOnly: true,  // Not accessible via JavaScript
-    secure: true,    // HTTPS only
-    sameSite: 'strict',
-    maxAge: 3600000  // 1 hour
-});</code></pre>
-					
-					<h2>Dependency Security</h2>
-					<p>Keep dependencies secure and updated:</p>
-					<ul>
-						<li>Regularly update packages</li>
-						<li>Use npm audit or yarn audit</li>
-						<li>Check for known vulnerabilities</li>
-						<li>Pin dependency versions</li>
-					</ul>
-					<pre><code># Check for vulnerabilities
-npm audit
-npm audit fix
-
-# Use Snyk for continuous monitoring
-npx snyk test</code></pre>
-					
-					<h2>Security Checklist</h2>
-					<ul>
-						<li>✅ Use HTTPS everywhere</li>
-						<li>✅ Implement CSP headers</li>
-						<li>✅ Escape all user input</li>
-						<li>✅ Use CSRF tokens</li>
-						<li>✅ Set secure cookie flags</li>
-						<li>✅ Validate input client and server-side</li>
-						<li>✅ Keep dependencies updated</li>
-						<li>✅ Use security headers</li>
-						<li>✅ Implement rate limiting</li>
-						<li>✅ Use httpOnly cookies for tokens</li>
-					</ul>
-					
-					<h2>Security Testing Tools</h2>
-					<ul>
-						<li><strong>OWASP ZAP:</strong> Free security scanner</li>
-						<li><strong>Security Headers:</strong> Check security headers</li>
-						<li><strong>Mozilla Observatory:</strong> Comprehensive security testing</li>
-						<li><strong>npm audit:</strong> Check dependency vulnerabilities</li>
-					</ul>
-					
-					<h2>Conclusion</h2>
-					<p>Security is not optional—it's essential. Implement these practices from the start, stay informed about new threats, and regularly audit your applications. A secure application protects your users and your reputation.</p>
-				</article>
-			</section>
-		</main>
-		<script src="/scripts/main.js"></script>
+			<h2>Security Headers</h2>
+			<p>Implement security headers like X-Content-Type-Options, X-Frame-Options, Strict-Transport-Security, and Content-Security-Policy to add layers of protection.</p>
+		<!-- PAGE SCRIPTS GO HERE-->
+		<!-- COMMON BODY HTML END-->
+		{% include endBodyHtml.html %}
 	</body>
 </html>
