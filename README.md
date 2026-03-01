@@ -42,59 +42,54 @@ fernan.dev/
 ├── tools/                     # 10 tool pages
 ├── articles/                  # 13 article pages
 ├── resources/                 # Resources index
-├── _includes/                 # Jekyll includes (startHtml, startBody, endBodyHtml, structured-data)
+├── _includes/                 # Jekyll includes
 ├── styles/                    # 16 CSS files
-├── scripts/                   # 9 JS files (including service worker)
+├── scripts/                   # 9 JS files
 ├── data/                      # JSON data files
-├── fonts/                     # Custom fonts (Outfit, Fira Code, Emoji)
-├── favicon/                   # PWA icons and manifest
-└── publish.sh                 # Deployment script
+├── fonts/                     # Custom fonts
+├── favicon/                   # PWA icons
+└── *.sh                       # Deployment scripts
 ```
 
 ---
 
-## Deployment Scripts
+## Scripts
 
-| Script | Purpose | Usage | Warning |
-|--------|---------|-------|---------|
-| **publish.sh** | Commit and push | `./publish.sh "Message"` | Stages all changes |
-| **rebase.sh** | Pull + rebase + push | `./rebase.sh` | May have conflicts |
-| **restore.sh** | Reset to origin/main | `./restore.sh` | ⚠️ Discards local changes |
+| Script | Usage | Purpose |
+|--------|-------|---------|
+| `./publish.sh "msg"` | `./publish.sh "feat: add tool"` | Commit and push changes |
+| `./history.sh [-n N]` | `./history.sh -n 10` | View commit history |
+| `./rebase.sh` | `./rebase.sh` | Pull + rebase + push |
+| `./restore.sh` | `./restore.sh` | ⚠️ Reset to origin/main |
 
-### publish.sh
-- Stages all changed files
-- Commits with provided message
-- Pushes to GitHub main branch
-- Uses local SSH key (`github.key`)
+---
 
-### rebase.sh
-- Pulls latest from remote with rebase
-- Pushes rebased changes
-- Use when remote has new commits
+## Development Workflow
 
-### restore.sh
-- ⚠️ **Destructive:** Discards all local changes
-- Resets to origin/main state
-- Auto-stashes changes (recoverable with `git stash pop`)
-- Requires typing `YES` to confirm
+```
+1. TASK → 2. Read README + ./history.sh → 3. Plan → 4. BUILD → 5. Update sitemap.xml → 6. Update README.md → 7. ./publish.sh → 8. If error: ./rebase.sh → 9. Verify
+```
+
+**Quick Reference:**
+```bash
+./history.sh -n 10          # View recent commits
+./publish.sh "feat: ..."    # Publish changes
+./rebase.sh                 # If push fails
+```
 
 ---
 
 ## Jekyll Includes
 
-All pages use includes from `_includes/` for consistent structure:
-
 ```liquid
 ---
 ---
 {% include startHtml.html %}
-<!-- PAGE METAS -->
 <title>...</title>
 <meta name="description" content="...">
 <link rel="canonical" href="...">
 <link rel="stylesheet" href="/styles/page.css">
 {% include startBody.html %}
-<!-- PAGE CONTENT -->
 <h1>Title</h1>
 <p>Content...</p>
 <script src="/scripts/page.js"></script>
@@ -104,100 +99,9 @@ All pages use includes from `_includes/` for consistent structure:
 **Rules:**
 1. Start with `---` `---` (empty front matter)
 2. Don't add `<html>`, `<head>`, `<body>` in pages
-3. Page-specific content between comment markers
+3. Page content between comment markers
 
-**Available Includes:**
-- `startHtml.html` - DOCTYPE, security headers, universal structured data
-- `startBody.html` - Skip link, navigation with ARIA landmarks & roles
-- `endBodyHtml.html` - Main script, service worker registration
-- `structured-data.html` - Universal schema (WebSite, Person, Organization, Breadcrumb)
-- `structured-data-tool.html` - WebApplication schema template
-- `structured-data-articles.html` - Article schema template
-
----
-
-## Development Workflow
-
-### Standard Task Process
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│  1. TASK                                                       │
-│     ↓                                                          │
-│  2. Read README.md + Check ./history.sh                        │
-│     ↓                                                          │
-│  3. Plan Build (create todo list, identify files)              │
-│     ↓                                                          │
-│  4. BUILD (implement changes)                                  │
-│     ↓                                                          │
-│  5. Update sitemap.xml (if new/modified pages)                 │
-│     ↓                                                          │
-│  6. Update README.md (if features/structure changed)           │
-│     ↓                                                          │
-│  7. Run ./publish.sh "Description"                             │
-│     ↓                                                          │
-│  8. If error → ./rebase.sh and retry                           │
-│     ↓                                                          │
-│  9. Verify at https://fernan.dev/                              │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-### Step-by-Step Guide
-
-| Step | Action | Command/Tool |
-|------|--------|--------------|
-| **1** | Define task | User request or issue |
-| **2** | Review context | `cat README.md`, `./history.sh -n 10` |
-| **3** | Plan implementation | Create todo list, identify files to modify |
-| **4** | Implement changes | Edit files, test locally |
-| **5** | Update sitemap | Edit `sitemap.xml` if pages added/modified |
-| **6** | Update docs | Edit `README.md` if features changed |
-| **7** | Publish | `./publish.sh "Description"` |
-| **8** | Handle errors | `./rebase.sh` if push fails |
-| **9** | Verify | Open https://fernan.dev/ |
-
-### Quick Reference
-
-```bash
-# View recent commits before starting
-./history.sh -n 10
-
-# View commit history with file changes
-./history.sh -s -n 5
-
-# After making changes
-./publish.sh "feat: add new feature"
-# or
-./publish.sh "fix: resolve issue #123"
-# or
-./publish.sh "docs: update README"
-
-# If push fails (remote has changes)
-./rebase.sh
-
-# Emergency reset (WARNING: loses local changes)
-./restore.sh
-```
-
----
-
-## Git Commands
-
-```bash
-# View history
-git log --oneline
-
-# Check status
-git status
-
-# View file changes
-git diff HEAD
-
-# Recover stashed changes
-git stash pop
-```
-
-**Note:** Git is the source of truth for project history.
+**Includes:** `startHtml`, `startBody`, `endBodyHtml`, `structured-data`, `structured-data-tool`, `structured-data-articles`
 
 ---
 
@@ -209,33 +113,16 @@ Chrome 90+, Firefox 88+, Safari 14+, Edge 90+
 
 ## Contributing
 
-Follow the **Development Workflow** above for all changes.
-
 1. Test in Chrome, Firefox, Safari
-2. Test on mobile
-3. Test with keyboard only (Tab, Enter, Escape)
-4. Run Lighthouse audit (target: 95+ all categories)
-5. Verify structured data (Google Rich Results Test)
-6. Run `./publish.sh "Description"`
-7. Verify at https://fernan.dev/
+2. Test on mobile + keyboard
+3. Run Lighthouse (target: 95+)
+4. `./publish.sh "Description"`
+5. Verify at https://fernan.dev/
 
 ---
 
 ## License
 
-This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) — Share and adapt for non-commercial purposes with attribution.
 
-**CC BY-NC-SA 4.0**
-
-You are free to:
-- **Share** — copy and redistribute the material in any medium or format
-- **Adapt** — remix, transform, and build upon the material
-
-Under the following terms:
-- **Attribution** — You must give appropriate credit, provide a link to the license, and indicate if changes were made
-- **NonCommercial** — You may not use the material for commercial purposes
-- **ShareAlike** — If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original
-
-© Fernán García de Zúñiga
-
-**Last Updated:** 2026-03-01
+---
