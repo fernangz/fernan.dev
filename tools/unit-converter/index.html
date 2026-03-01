@@ -1,93 +1,87 @@
 ---
 ---
+<!-- COMMON HTML START-->
+{% include startHtml.html %}
+<!-- PAGE SPECIFIC METAS GO HERE -->
+<title>fernan.dev • CSS Unit Converter</title>
+<meta name="description" content="Convert between px, rem, em, vh, vw, and %">
+<link rel="canonical" href="https://fernan.dev/tools/unit-converter" />
+<!-- PAGE SPECIFIC CSS GO HERE -->
+<link rel="stylesheet" href="/styles/tools.css">
+<link rel="stylesheet" href="/styles/unit-converter.css">
+<!-- COMMON BODY START-->
+{% include startBody.html %}
+<!-- PAGE CONTENT -->
+	<a href="/tools/" class="back-link">← Back to Tools</a>
+	<h1>CSS Unit Converter</h1>
+	<p>Convert between px, rem, em, vh, vw, and %.</p>
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<!-- COMMON HTML START-->
-		{% include startHtml.html %}
-		<!-- PAGE SPECIFIC METAS GO HERE -->
-		<title>fernan.dev • CSS Unit Converter</title>
-		<meta name="description" content="Convert between px, rem, em, vh, vw, and %">
-		<link rel="canonical" href="https://fernan.dev/tools/unit-converter" />
-		<!-- PAGE SPECIFIC CSS GO HERE -->
-		<link rel="stylesheet" href="/styles/tools.css">
-		<link rel="stylesheet" href="/styles/unit-converter.css">
-		<!-- COMMON BODY START-->
-		{% include startBody.html %}
-		<!-- PAGE CONTENT -->
-			<a href="/tools/" class="back-link">← Back to Tools</a>
-			<h1>CSS Unit Converter</h1>
-			<p>Convert between px, rem, em, vh, vw, and %.</p>
-
-			<div class="converter-tool">
-				<div class="settings">
-					<div class="setting-group">
-						<label for="base-size">Base Font Size (px)</label>
-						<input type="number" id="base-size" value="16" min="1">
-					</div>
-					<div class="setting-group">
-						<label for="parent-size">Parent Font Size (px)</label>
-						<input type="number" id="parent-size" value="16" min="1">
-					</div>
-					<div class="setting-group">
-						<label for="viewport-width">Viewport Width (px)</label>
-						<input type="number" id="viewport-width" value="1920" min="1">
-					</div>
-					<div class="setting-group">
-						<label for="viewport-height">Viewport Height (px)</label>
-						<input type="number" id="viewport-height" value="1080" min="1">
-					</div>
-				</div>
-
-				<div class="converter-inputs">
-					<div class="input-group">
-						<label for="input-value">Value</label>
-						<input type="number" id="input-value" value="16" step="0.5">
-					</div>
-					<div class="input-group">
-						<label for="input-unit">From Unit</label>
-						<select id="input-unit">
-							<option value="px">px</option>
-							<option value="rem">rem</option>
-							<option value="em">em</option>
-							<option value="vh">vh</option>
-							<option value="vw">vw</option>
-							<option value="%">%</option>
-						</select>
-					</div>
-				</div>
-
-				<div class="results">
-					<div class="result-item">
-						<span class="result-label">Pixels</span>
-						<span class="result-value" id="result-px">16px</span>
-					</div>
-					<div class="result-item">
-						<span class="result-label">Rem</span>
-						<span class="result-value" id="result-rem">1rem</span>
-					</div>
-					<div class="result-item">
-						<span class="result-label">Em</span>
-						<span class="result-value" id="result-em">1em</span>
-					</div>
-					<div class="result-item">
-						<span class="result-label">Viewport Height</span>
-						<span class="result-value" id="result-vh">1.48vh</span>
-					</div>
-					<div class="result-item">
-						<span class="result-label">Viewport Width</span>
-						<span class="result-value" id="result-vw">0.83vw</span>
-					</div>
-					<div class="result-item">
-						<span class="result-label">Percentage</span>
-						<span class="result-value" id="result-percent">100%</span>
-					</div>
-				</div>
+	<div class="converter-tool">
+		<div class="settings">
+			<div class="setting-group">
+				<label for="base-size">Base Font Size (px)</label>
+				<input type="number" id="base-size" value="16" min="1">
 			</div>
-		<!-- PAGE SCRIPTS GO HERE-->
-		<script src="/scripts/unit-converter.js"></script>
-		<!-- COMMON BODY HTML END-->
-		{% include endBodyHtml.html %}
-	</body>
-</html>
+			<div class="setting-group">
+				<label for="parent-size">Parent Font Size (px)</label>
+				<input type="number" id="parent-size" value="16" min="1">
+			</div>
+			<div class="setting-group">
+				<label for="viewport-width">Viewport Width (px)</label>
+				<input type="number" id="viewport-width" value="1920" min="1">
+			</div>
+			<div class="setting-group">
+				<label for="viewport-height">Viewport Height (px)</label>
+				<input type="number" id="viewport-height" value="1080" min="1">
+			</div>
+		</div>
+
+		<div class="converter-inputs">
+			<div class="input-group">
+				<label for="input-value">Value</label>
+				<input type="number" id="input-value" value="16" step="0.5">
+			</div>
+			<div class="input-group">
+				<label for="input-unit">From Unit</label>
+				<select id="input-unit">
+					<option value="px">px</option>
+					<option value="rem">rem</option>
+					<option value="em">em</option>
+					<option value="vh">vh</option>
+					<option value="vw">vw</option>
+					<option value="%">%</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="results">
+			<div class="result-item">
+				<span class="result-label">Pixels</span>
+				<span class="result-value" id="result-px">16px</span>
+			</div>
+			<div class="result-item">
+				<span class="result-label">Rem</span>
+				<span class="result-value" id="result-rem">1rem</span>
+			</div>
+			<div class="result-item">
+				<span class="result-label">Em</span>
+				<span class="result-value" id="result-em">1em</span>
+			</div>
+			<div class="result-item">
+				<span class="result-label">Viewport Height</span>
+				<span class="result-value" id="result-vh">1.48vh</span>
+			</div>
+			<div class="result-item">
+				<span class="result-label">Viewport Width</span>
+				<span class="result-value" id="result-vw">0.83vw</span>
+			</div>
+			<div class="result-item">
+				<span class="result-label">Percentage</span>
+				<span class="result-value" id="result-percent">100%</span>
+			</div>
+		</div>
+	</div>
+<!-- PAGE SCRIPTS GO HERE-->
+<script src="/scripts/unit-converter.js"></script>
+<!-- COMMON BODY HTML END-->
+{% include endBodyHtml.html %}

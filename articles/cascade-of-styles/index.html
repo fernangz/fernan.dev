@@ -1,37 +1,31 @@
 ---
 ---
+<!-- COMMON HTML START-->
+{% include startHtml.html %}
+<!-- PAGE SPECIFIC METAS GO HERE -->
+<title>fernan.dev • Cascade of Styles</title>
+<meta name="description" content="Master CSS cascade, specificity, and inheritance">
+<link rel="canonical" href="https://fernan.dev/articles/cascade-of-styles" />
+<!-- PAGE SPECIFIC CSS GO HERE -->
+<link rel="stylesheet" href="/styles/tools.css">
+<!-- COMMON BODY START-->
+{% include startBody.html %}
+<!-- PAGE CONTENT -->
+	<a href="/articles/" class="back-link">← Back to Articles</a>
+	<h1>Cascade of Styles</h1>
+	<p>Understanding CSS cascade, specificity, and inheritance is crucial for writing maintainable stylesheets.</p>
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<!-- COMMON HTML START-->
-		{% include startHtml.html %}
-		<!-- PAGE SPECIFIC METAS GO HERE -->
-		<title>fernan.dev • Cascade of Styles</title>
-		<meta name="description" content="Master CSS cascade, specificity, and inheritance">
-		<link rel="canonical" href="https://fernan.dev/articles/cascade-of-styles" />
-		<!-- PAGE SPECIFIC CSS GO HERE -->
-		<link rel="stylesheet" href="/styles/tools.css">
-		<!-- COMMON BODY START-->
-		{% include startBody.html %}
-		<!-- PAGE CONTENT -->
-			<a href="/articles/" class="back-link">← Back to Articles</a>
-			<h1>Cascade of Styles</h1>
-			<p>Understanding CSS cascade, specificity, and inheritance is crucial for writing maintainable stylesheets.</p>
+	<h2>The Cascade</h2>
+	<p>CSS stands for Cascading Style Sheets. The cascade determines which styles are applied when multiple rules target the same element. The cascade considers origin, importance, specificity, and order of appearance.</p>
 
-			<h2>The Cascade</h2>
-			<p>CSS stands for Cascading Style Sheets. The cascade determines which styles are applied when multiple rules target the same element. The cascade considers origin, importance, specificity, and order of appearance.</p>
+	<h2>Specificity</h2>
+	<p>Specificity is the weight assigned to a CSS selector. More specific selectors override less specific ones. The specificity hierarchy is: inline styles > IDs > classes/attributes > elements.</p>
 
-			<h2>Specificity</h2>
-			<p>Specificity is the weight assigned to a CSS selector. More specific selectors override less specific ones. The specificity hierarchy is: inline styles > IDs > classes/attributes > elements.</p>
+	<h2>Inheritance</h2>
+	<p>Some CSS properties are inherited from parent elements to their children. Properties like color, font-family, and line-height are inherited by default, while properties like border, padding, and margin are not.</p>
 
-			<h2>Inheritance</h2>
-			<p>Some CSS properties are inherited from parent elements to their children. Properties like color, font-family, and line-height are inherited by default, while properties like border, padding, and margin are not.</p>
-
-			<h2>Best Practices</h2>
-			<p>To write maintainable CSS, keep specificity low, avoid inline styles, use classes over IDs for styling, and organize your stylesheets logically.</p>
-		<!-- PAGE SCRIPTS GO HERE-->
-		<!-- COMMON BODY HTML END-->
-		{% include endBodyHtml.html %}
-	</body>
-</html>
+	<h2>Best Practices</h2>
+	<p>To write maintainable CSS, keep specificity low, avoid inline styles, use classes over IDs for styling, and organize your stylesheets logically.</p>
+<!-- PAGE SCRIPTS GO HERE-->
+<!-- COMMON BODY HTML END-->
+{% include endBodyHtml.html %}

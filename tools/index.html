@@ -1,88 +1,81 @@
 ---
 ---
+<!-- COMMON HTML START-->
+{% include startHtml.html %}
+<!-- PAGE SPECIFIC METAS GO HERE -->
+<title>fernan.dev • Tools</title>
+<meta name="description" content="Essential online tools for FrontEnd developers: color tools, code formatters, and reference guides" />
+<meta name="keywords" content="FrontEnd tools, CSS tools, color converter, web development, developer tools" />
+<link rel="canonical" href="https://fernan.dev/tools/" />
+<meta name="robots" content="index, follow" />
+<!-- Open Graph / Social Media -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="fernan.dev • Tools" />
+<meta property="og:description" content="Essential online tools for FrontEnd developers" />
+<meta property="og:url" content="https://fernan.dev/tools/" />
+<meta property="og:site_name" content="fernan.dev" />
+<meta name="twitter:card" content="summary" />
+<!-- PAGE SPECIFIC CSS GO HERE -->
+<link rel="stylesheet" href="/styles/tools.css">
+<link rel="stylesheet" href="/styles/tools-cards.css">
+<!-- COMMON BODY START-->
+{% include startBody.html %}
+<!-- PAGE CONTENT -->
+	<h1>Tools</h1>
+	<p>Practical utilities for FrontEnd development. All tools run in your browser—no installation required.</p>
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<!-- COMMON HTML START-->
-		{% include startHtml.html %}
-		<!-- PAGE SPECIFIC METAS GO HERE -->
-		<title>fernan.dev • Tools</title>
-		<meta name="description" content="Essential online tools for FrontEnd developers: color tools, code formatters, and reference guides" />
-		<meta name="keywords" content="FrontEnd tools, CSS tools, color converter, web development, developer tools" />
-		<link rel="canonical" href="https://fernan.dev/tools/" />
-		<meta name="robots" content="index, follow" />
-
-		<!-- Open Graph / Social Media -->
-		<meta property="og:type" content="website" />
-		<meta property="og:title" content="fernan.dev • Tools" />
-		<meta property="og:description" content="Essential online tools for FrontEnd developers" />
-		<meta property="og:url" content="https://fernan.dev/tools/" />
-		<meta property="og:site_name" content="fernan.dev" />
-		<meta name="twitter:card" content="summary" />
-		<!-- PAGE SPECIFIC CSS GO HERE -->
-		<link rel="stylesheet" href="/styles/tools.css">
-		<link rel="stylesheet" href="/styles/tools-cards.css">
-		<!-- COMMON BODY START-->
-		{% include startBody.html %}
-		<!-- PAGE CONTENT -->
-			<h1>Tools</h1>
-			<p>Practical utilities for FrontEnd development. All tools run in your browser—no installation required.</p>
-
-			<div class="tools-grid">
-				<a href="/tools/color/" class="tool-card">
-					<span class="emoji">🎨</span>
-					<strong>Color Tools</strong>
-					<span>Convert colors, generate palettes, and check WCAG contrast ratios</span>
-				</a>
-				<a href="/tools/box-shadow/" class="tool-card">
-					<span class="emoji">⬜</span>
-					<strong>Box Shadow</strong>
-					<span>Generate CSS box-shadow values with live preview</span>
-				</a>
-				<a href="/tools/html-entities/" class="tool-card">
-					<span class="emoji">🔣</span>
-					<strong>HTML Entities</strong>
-					<span>Convert special characters to HTML entity codes</span>
-				</a>
-				<a href="/tools/json-formatter/" class="tool-card">
-					<span class="emoji">📋</span>
-					<strong>JSON Formatter</strong>
-					<span>Format, validate, and minify JSON data</span>
-				</a>
-				<a href="/tools/base64/" class="tool-card">
-					<span class="emoji">🔐</span>
-					<strong>Base64</strong>
-					<span>Encode and decode Base64 strings</span>
-				</a>
-				<a href="/tools/unit-converter/" class="tool-card">
-					<span class="emoji">📏</span>
-					<strong>Unit Converter</strong>
-					<span>Convert between px, rem, em, vh, vw, and %</span>
-				</a>
-				<a href="/tools/mime-types/" class="tool-card">
-					<span class="emoji">📄</span>
-					<strong>MIME Types</strong>
-					<span>Look up MIME type definitions for file extensions</span>
-				</a>
-				<a href="/tools/iso-language-codes/" class="tool-card">
-					<span class="emoji">🌐</span>
-					<strong>ISO Language Codes</strong>
-					<span>Reference ISO 639-1 standard language codes</span>
-				</a>
-				<a href="/tools/symbols-emojis/" class="tool-card">
-					<span class="emoji">✨</span>
-					<strong>Symbols &amp; Emojis</strong>
-					<span>Browse and copy special symbols and emojis</span>
-				</a>
-				<a href="/tools/client-data-visualizer/" class="tool-card">
-					<span class="emoji">📊</span>
-					<strong>Client Data</strong>
-					<span>View cookies, localStorage, and sessionStorage</span>
-				</a>
-			</div>
-		<!-- PAGE SCRIPTS GO HERE-->
-		<!-- COMMON BODY HTML END-->
-		{% include endBodyHtml.html %}
-	</body>
-</html>
+	<div class="tools-grid">
+		<a href="/tools/color/" class="tool-card">
+			<span class="emoji">🎨</span>
+			<strong>Color Tools</strong>
+			<span>Convert colors, generate palettes, and check WCAG contrast ratios</span>
+		</a>
+		<a href="/tools/box-shadow/" class="tool-card">
+			<span class="emoji">⬜</span>
+			<strong>Box Shadow</strong>
+			<span>Generate CSS box-shadow values with live preview</span>
+		</a>
+		<a href="/tools/html-entities/" class="tool-card">
+			<span class="emoji">🔣</span>
+			<strong>HTML Entities</strong>
+			<span>Convert special characters to HTML entity codes</span>
+		</a>
+		<a href="/tools/json-formatter/" class="tool-card">
+			<span class="emoji">📋</span>
+			<strong>JSON Formatter</strong>
+			<span>Format, validate, and minify JSON data</span>
+		</a>
+		<a href="/tools/base64/" class="tool-card">
+			<span class="emoji">🔐</span>
+			<strong>Base64</strong>
+			<span>Encode and decode Base64 strings</span>
+		</a>
+		<a href="/tools/unit-converter/" class="tool-card">
+			<span class="emoji">📏</span>
+			<strong>Unit Converter</strong>
+			<span>Convert between px, rem, em, vh, vw, and %</span>
+		</a>
+		<a href="/tools/mime-types/" class="tool-card">
+			<span class="emoji">📄</span>
+			<strong>MIME Types</strong>
+			<span>Look up MIME type definitions for file extensions</span>
+		</a>
+		<a href="/tools/iso-language-codes/" class="tool-card">
+			<span class="emoji">🌐</span>
+			<strong>ISO Language Codes</strong>
+			<span>Reference ISO 639-1 standard language codes</span>
+		</a>
+		<a href="/tools/symbols-emojis/" class="tool-card">
+			<span class="emoji">✨</span>
+			<strong>Symbols &amp; Emojis</strong>
+			<span>Browse and copy special symbols and emojis</span>
+		</a>
+		<a href="/tools/client-data-visualizer/" class="tool-card">
+			<span class="emoji">📊</span>
+			<strong>Client Data</strong>
+			<span>View cookies, localStorage, and sessionStorage</span>
+		</a>
+	</div>
+<!-- PAGE SCRIPTS GO HERE-->
+<!-- COMMON BODY HTML END-->
+{% include endBodyHtml.html %}

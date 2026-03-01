@@ -1,39 +1,33 @@
 ---
 ---
+<!-- COMMON HTML START-->
+{% include startHtml.html %}
+<!-- PAGE SPECIFIC METAS GO HERE -->
+<title>fernan.dev • Multiples of 8 in Design</title>
+<meta name="description" content="Why the 8-point grid system creates consistent, scalable designs">
+<link rel="canonical" href="https://fernan.dev/articles/number-8" />
+<!-- PAGE SPECIFIC CSS GO HERE -->
+<link rel="stylesheet" href="/styles/tools.css">
+<!-- COMMON BODY START-->
+{% include startBody.html %}
+<!-- PAGE CONTENT -->
+	<a href="/articles/" class="back-link">← Back to Articles</a>
+	<h1>Multiples of 8 in FrontEnd Design</h1>
+	<p>Why the 8-point grid system creates consistent, scalable designs.</p>
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<!-- COMMON HTML START-->
-		{% include startHtml.html %}
-		<!-- PAGE SPECIFIC METAS GO HERE -->
-		<title>fernan.dev • Multiples of 8 in Design</title>
-		<meta name="description" content="Why the 8-point grid system creates consistent, scalable designs">
-		<link rel="canonical" href="https://fernan.dev/articles/number-8" />
-		<!-- PAGE SPECIFIC CSS GO HERE -->
-		<link rel="stylesheet" href="/styles/tools.css">
-		<!-- COMMON BODY START-->
-		{% include startBody.html %}
-		<!-- PAGE CONTENT -->
-			<a href="/articles/" class="back-link">← Back to Articles</a>
-			<h1>Multiples of 8 in FrontEnd Design</h1>
-			<p>Why the 8-point grid system creates consistent, scalable designs.</p>
+	<h2>The 8-Point Grid System</h2>
+	<p>Using multiples of 8 for spacing, sizing, and layout creates visual harmony and simplifies design decisions. This system works well because 8 is divisible by 2 and 4, providing flexibility while maintaining consistency.</p>
 
-			<h2>The 8-Point Grid System</h2>
-			<p>Using multiples of 8 for spacing, sizing, and layout creates visual harmony and simplifies design decisions. This system works well because 8 is divisible by 2 and 4, providing flexibility while maintaining consistency.</p>
+	<h2>Benefits</h2>
+	<ul>
+		<li>Consistent spacing throughout the interface</li>
+		<li>Easier collaboration between designers and developers</li>
+		<li>Simplified responsive design decisions</li>
+		<li>Reduced cognitive load when making layout choices</li>
+	</ul>
 
-			<h2>Benefits</h2>
-			<ul>
-				<li>Consistent spacing throughout the interface</li>
-				<li>Easier collaboration between designers and developers</li>
-				<li>Simplified responsive design decisions</li>
-				<li>Reduced cognitive load when making layout choices</li>
-			</ul>
-
-			<h2>Implementation</h2>
-			<p>Apply the 8-point grid to margins, padding, element sizes, and layout dimensions. Use CSS custom properties to define your spacing scale based on multiples of 8.</p>
-		<!-- PAGE SCRIPTS GO HERE-->
-		<!-- COMMON BODY HTML END-->
-		{% include endBodyHtml.html %}
-	</body>
-</html>
+	<h2>Implementation</h2>
+	<p>Apply the 8-point grid to margins, padding, element sizes, and layout dimensions. Use CSS custom properties to define your spacing scale based on multiples of 8.</p>
+<!-- PAGE SCRIPTS GO HERE-->
+<!-- COMMON BODY HTML END-->
+{% include endBodyHtml.html %}

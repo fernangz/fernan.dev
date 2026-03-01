@@ -1,37 +1,31 @@
 ---
 ---
+<!-- COMMON HTML START-->
+{% include startHtml.html %}
+<!-- PAGE SPECIFIC METAS GO HERE -->
+<title>fernan.dev • JavaScript Event Handling</title>
+<meta name="description" content="Master events, delegation, and the event lifecycle">
+<link rel="canonical" href="https://fernan.dev/articles/javascript-events" />
+<!-- PAGE SPECIFIC CSS GO HERE -->
+<link rel="stylesheet" href="/styles/tools.css">
+<!-- COMMON BODY START-->
+{% include startBody.html %}
+<!-- PAGE CONTENT -->
+	<a href="/articles/" class="back-link">← Back to Articles</a>
+	<h1>JavaScript Event Handling</h1>
+	<p>Understanding events, event delegation, and the event lifecycle in JavaScript.</p>
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<!-- COMMON HTML START-->
-		{% include startHtml.html %}
-		<!-- PAGE SPECIFIC METAS GO HERE -->
-		<title>fernan.dev • JavaScript Event Handling</title>
-		<meta name="description" content="Master events, delegation, and the event lifecycle">
-		<link rel="canonical" href="https://fernan.dev/articles/javascript-events" />
-		<!-- PAGE SPECIFIC CSS GO HERE -->
-		<link rel="stylesheet" href="/styles/tools.css">
-		<!-- COMMON BODY START-->
-		{% include startBody.html %}
-		<!-- PAGE CONTENT -->
-			<a href="/articles/" class="back-link">← Back to Articles</a>
-			<h1>JavaScript Event Handling</h1>
-			<p>Understanding events, event delegation, and the event lifecycle in JavaScript.</p>
+	<h2>What are Events?</h2>
+	<p>Events are actions or occurrences that happen in the browser, such as clicks, keyboard input, page loads, and form submissions. JavaScript allows you to listen for and respond to these events.</p>
 
-			<h2>What are Events?</h2>
-			<p>Events are actions or occurrences that happen in the browser, such as clicks, keyboard input, page loads, and form submissions. JavaScript allows you to listen for and respond to these events.</p>
+	<h2>Event Listeners</h2>
+	<p>The modern way to handle events is with addEventListener. This method allows you to attach multiple listeners to the same element and provides better control over event handling compared to older inline event handlers.</p>
 
-			<h2>Event Listeners</h2>
-			<p>The modern way to handle events is with addEventListener. This method allows you to attach multiple listeners to the same element and provides better control over event handling compared to older inline event handlers.</p>
+	<h2>Event Propagation</h2>
+	<p>Events propagate through the DOM in two phases: capturing (from document to target) and bubbling (from target to document). Understanding propagation is crucial for event delegation and preventing unwanted behavior.</p>
 
-			<h2>Event Propagation</h2>
-			<p>Events propagate through the DOM in two phases: capturing (from document to target) and bubbling (from target to document). Understanding propagation is crucial for event delegation and preventing unwanted behavior.</p>
-
-			<h2>Event Delegation</h2>
-			<p>Event delegation leverages event bubbling to handle events on multiple elements with a single listener. This technique is efficient for dynamic content and reduces memory usage.</p>
-		<!-- PAGE SCRIPTS GO HERE-->
-		<!-- COMMON BODY HTML END-->
-		{% include endBodyHtml.html %}
-	</body>
-</html>
+	<h2>Event Delegation</h2>
+	<p>Event delegation leverages event bubbling to handle events on multiple elements with a single listener. This technique is efficient for dynamic content and reduces memory usage.</p>
+<!-- PAGE SCRIPTS GO HERE-->
+<!-- COMMON BODY HTML END-->
+{% include endBodyHtml.html %}

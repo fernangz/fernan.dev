@@ -1,42 +1,36 @@
 ---
 ---
+<!-- COMMON HTML START-->
+{% include startHtml.html %}
+<!-- PAGE SPECIFIC METAS GO HERE -->
+<title>fernan.dev • MIME Types</title>
+<meta name="description" content="Look up MIME type definitions for file extensions">
+<link rel="canonical" href="https://fernan.dev/tools/mime-types" />
+<!-- PAGE SPECIFIC CSS GO HERE -->
+<link rel="stylesheet" href="/styles/tools.css">
+<link rel="stylesheet" href="/styles/data-table.css">
+<!-- COMMON BODY START-->
+{% include startBody.html %}
+<!-- PAGE CONTENT -->
+	<a href="/tools/" class="back-link">← Back to Tools</a>
+	<h1>MIME Types Reference</h1>
+	<p>Look up MIME type definitions for file extensions.</p>
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<!-- COMMON HTML START-->
-		{% include startHtml.html %}
-		<!-- PAGE SPECIFIC METAS GO HERE -->
-		<title>fernan.dev • MIME Types</title>
-		<meta name="description" content="Look up MIME type definitions for file extensions">
-		<link rel="canonical" href="https://fernan.dev/tools/mime-types" />
-		<!-- PAGE SPECIFIC CSS GO HERE -->
-		<link rel="stylesheet" href="/styles/tools.css">
-		<link rel="stylesheet" href="/styles/data-table.css">
-		<!-- COMMON BODY START-->
-		{% include startBody.html %}
-		<!-- PAGE CONTENT -->
-			<a href="/tools/" class="back-link">← Back to Tools</a>
-			<h1>MIME Types Reference</h1>
-			<p>Look up MIME type definitions for file extensions.</p>
+	<h2>Search MIME Types</h2>
+	<input type="text" id="mime-search" placeholder="Search by extension or MIME type..." style="margin-top:1rem;">
 
-			<h2>Search MIME Types</h2>
-			<input type="text" id="mime-search" placeholder="Search by extension or MIME type..." style="margin-top:1rem;">
-
-			<h2>MIME Types Table</h2>
-			<table class="data-table">
-				<thead>
-					<tr>
-						<th>Extension</th>
-						<th>MIME Type</th>
-						<th>Action</th>
-					</tr>
-				</thead>
-				<tbody id="mime-container"></tbody>
-			</table>
-		<!-- PAGE SCRIPTS GO HERE-->
-		<script src="/scripts/mime-types.js"></script>
-		<!-- COMMON BODY HTML END-->
-		{% include endBodyHtml.html %}
-	</body>
-</html>
+	<h2>MIME Types Table</h2>
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>Extension</th>
+				<th>MIME Type</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody id="mime-container"></tbody>
+	</table>
+<!-- PAGE SCRIPTS GO HERE-->
+<script src="/scripts/mime-types.js"></script>
+<!-- COMMON BODY HTML END-->
+{% include endBodyHtml.html %}

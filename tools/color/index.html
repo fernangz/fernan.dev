@@ -1,157 +1,151 @@
 ---
 ---
+<!-- COMMON HTML START-->
+{% include startHtml.html %}
+<!-- PAGE SPECIFIC METAS GO HERE -->
+<title>fernan.dev • Color Tools</title>
+<meta name="description" content="Convert colors between formats, generate palettes, and check WCAG contrast ratios" />
+<link rel="canonical" href="https://fernan.dev/tools/color/" />
+<meta name="robots" content="index, follow" />
+<!-- PAGE SPECIFIC CSS GO HERE -->
+<link rel="stylesheet" href="/styles/tools.css">
+<link rel="stylesheet" href="/styles/color.css">
+<!-- COMMON BODY START-->
+{% include startBody.html %}
+<!-- PAGE CONTENT -->
+	<a href="/tools/" class="back-link">← Back to Tools</a>
+	<h1>Color Tools</h1>
+	<p>Convert colors, generate palettes, and check contrast ratios for accessibility.</p>
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<!-- COMMON HTML START-->
-		{% include startHtml.html %}
-		<!-- PAGE SPECIFIC METAS GO HERE -->
-		<title>fernan.dev • Color Tools</title>
-		<meta name="description" content="Convert colors between formats, generate palettes, and check WCAG contrast ratios" />
-		<link rel="canonical" href="https://fernan.dev/tools/color/" />
-		<meta name="robots" content="index, follow" />
-		<!-- PAGE SPECIFIC CSS GO HERE -->
-		<link rel="stylesheet" href="/styles/tools.css">
-		<link rel="stylesheet" href="/styles/color.css">
-		<!-- COMMON BODY START-->
-		{% include startBody.html %}
-		<!-- PAGE CONTENT -->
-			<a href="/tools/" class="back-link">← Back to Tools</a>
-			<h1>Color Tools</h1>
-			<p>Convert colors, generate palettes, and check contrast ratios for accessibility.</p>
+	<!-- Color Picker Section -->
+	<div class="tool-section">
+		<h2>Color Picker</h2>
+		<div class="color-picker-wrapper">
+			<div class="color-trigger-container">
+				<button type="button" class="color-trigger" id="color-trigger" aria-label="Pick color">
+					<span class="color-trigger-fill" id="color-trigger-fill"></span>
+				</button>
+				<input type="color" id="color-input" value="#3498db" class="color-input-hidden">
+			</div>
+		</div>
+	</div>
 
-			<!-- Color Picker Section -->
-			<div class="tool-section">
-				<h2>Color Picker</h2>
-				<div class="color-picker-wrapper">
-					<div class="color-trigger-container">
-						<button type="button" class="color-trigger" id="color-trigger" aria-label="Pick color">
-							<span class="color-trigger-fill" id="color-trigger-fill"></span>
+	<!-- Color Formats Section -->
+	<div class="tool-section">
+		<h2>Color Formats</h2>
+		<div class="color-formats-grid">
+			<div class="format-input">
+				<label for="hex-input">HEX</label>
+				<div class="input-with-copy">
+					<input type="text" id="hex-input" value="#3498db" placeholder="#000000">
+					<button class="copy-btn" data-target="hex-input" aria-label="Copy HEX">📋</button>
+				</div>
+			</div>
+			<div class="format-input">
+				<label for="rgb-input">RGB</label>
+				<div class="input-with-copy">
+					<input type="text" id="rgb-input" value="rgb(52, 152, 219)" placeholder="rgb(0, 0, 0)">
+					<button class="copy-btn" data-target="rgb-input" aria-label="Copy RGB">📋</button>
+				</div>
+			</div>
+			<div class="format-input">
+				<label for="hsl-input">HSL</label>
+				<div class="input-with-copy">
+					<input type="text" id="hsl-input" value="hsl(204, 70%, 53%)" placeholder="hsl(0, 0%, 0%)">
+					<button class="copy-btn" data-target="hsl-input" aria-label="Copy HSL">📋</button>
+				</div>
+			</div>
+			<div class="format-input">
+				<label for="hsv-input">HSV</label>
+				<div class="input-with-copy">
+					<input type="text" id="hsv-input" value="hsv(204, 76%, 86%)" placeholder="hsv(0, 0%, 0%)">
+					<button class="copy-btn" data-target="hsv-input" aria-label="Copy HSV">📋</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Contrast Checker Section -->
+	<div class="tool-section">
+		<h2>Contrast Checker</h2>
+		<p class="section-description">Check WCAG contrast ratios for accessibility compliance.</p>
+		
+		<div class="contrast-inputs">
+			<div class="contrast-input">
+				<label for="fg-color">Foreground</label>
+				<div class="color-input-group">
+					<div class="color-trigger-container-small">
+						<button type="button" class="color-trigger-small" id="fg-trigger" aria-label="Pick foreground color">
+							<span class="color-trigger-fill" id="fg-trigger-fill"></span>
 						</button>
-						<input type="color" id="color-input" value="#3498db" class="color-input-hidden">
+						<input type="color" id="fg-color" value="#000000" class="color-input-hidden">
 					</div>
+					<input type="text" id="fg-text" value="#000000" placeholder="#000000">
 				</div>
 			</div>
-
-			<!-- Color Formats Section -->
-			<div class="tool-section">
-				<h2>Color Formats</h2>
-				<div class="color-formats-grid">
-					<div class="format-input">
-						<label for="hex-input">HEX</label>
-						<div class="input-with-copy">
-							<input type="text" id="hex-input" value="#3498db" placeholder="#000000">
-							<button class="copy-btn" data-target="hex-input" aria-label="Copy HEX">📋</button>
-						</div>
+			<div class="contrast-input">
+				<label for="bg-color">Background</label>
+				<div class="color-input-group">
+					<div class="color-trigger-container-small">
+						<button type="button" class="color-trigger-small" id="bg-trigger" aria-label="Pick background color">
+							<span class="color-trigger-fill" id="bg-trigger-fill"></span>
+						</button>
+						<input type="color" id="bg-color" value="#ffffff" class="color-input-hidden">
 					</div>
-					<div class="format-input">
-						<label for="rgb-input">RGB</label>
-						<div class="input-with-copy">
-							<input type="text" id="rgb-input" value="rgb(52, 152, 219)" placeholder="rgb(0, 0, 0)">
-							<button class="copy-btn" data-target="rgb-input" aria-label="Copy RGB">📋</button>
-						</div>
-					</div>
-					<div class="format-input">
-						<label for="hsl-input">HSL</label>
-						<div class="input-with-copy">
-							<input type="text" id="hsl-input" value="hsl(204, 70%, 53%)" placeholder="hsl(0, 0%, 0%)">
-							<button class="copy-btn" data-target="hsl-input" aria-label="Copy HSL">📋</button>
-						</div>
-					</div>
-					<div class="format-input">
-						<label for="hsv-input">HSV</label>
-						<div class="input-with-copy">
-							<input type="text" id="hsv-input" value="hsv(204, 76%, 86%)" placeholder="hsv(0, 0%, 0%)">
-							<button class="copy-btn" data-target="hsv-input" aria-label="Copy HSV">📋</button>
-						</div>
-					</div>
+					<input type="text" id="bg-text" value="#ffffff" placeholder="#ffffff">
 				</div>
 			</div>
+		</div>
 
-			<!-- Contrast Checker Section -->
-			<div class="tool-section">
-				<h2>Contrast Checker</h2>
-				<p class="section-description">Check WCAG contrast ratios for accessibility compliance.</p>
-				
-				<div class="contrast-inputs">
-					<div class="contrast-input">
-						<label for="fg-color">Foreground</label>
-						<div class="color-input-group">
-							<div class="color-trigger-container-small">
-								<button type="button" class="color-trigger-small" id="fg-trigger" aria-label="Pick foreground color">
-									<span class="color-trigger-fill" id="fg-trigger-fill"></span>
-								</button>
-								<input type="color" id="fg-color" value="#000000" class="color-input-hidden">
-							</div>
-							<input type="text" id="fg-text" value="#000000" placeholder="#000000">
-						</div>
-					</div>
-					<div class="contrast-input">
-						<label for="bg-color">Background</label>
-						<div class="color-input-group">
-							<div class="color-trigger-container-small">
-								<button type="button" class="color-trigger-small" id="bg-trigger" aria-label="Pick background color">
-									<span class="color-trigger-fill" id="bg-trigger-fill"></span>
-								</button>
-								<input type="color" id="bg-color" value="#ffffff" class="color-input-hidden">
-							</div>
-							<input type="text" id="bg-text" value="#ffffff" placeholder="#ffffff">
-						</div>
-					</div>
-				</div>
-
-				<div class="contrast-preview">
-					<div class="preview-box" id="preview-box">
-						<span class="preview-text" id="preview-text">Sample Text</span>
-					</div>
-				</div>
-
-				<div class="contrast-results">
-					<div class="result-card">
-						<div class="result-label">Normal Text</div>
-						<div class="result-ratio" id="ratio-normal">21.00:1</div>
-						<div class="result-status" id="status-normal">
-							<span class="badge pass-aaa">AAA Pass</span>
-						</div>
-						<div class="result-requirement">Requires 4.5:1 for AA</div>
-					</div>
-					<div class="result-card">
-						<div class="result-label">Large Text</div>
-						<div class="result-ratio" id="ratio-large">21.00:1</div>
-						<div class="result-status" id="status-large">
-							<span class="badge pass-aaa">AAA Pass</span>
-						</div>
-						<div class="result-requirement">Requires 3:1 for AA</div>
-					</div>
-					<div class="result-card">
-						<div class="result-label">UI Components</div>
-						<div class="result-ratio" id="ratio-ui">21.00:1</div>
-						<div class="result-status" id="status-ui">
-							<span class="badge pass-aaa">AAA Pass</span>
-						</div>
-						<div class="result-requirement">Requires 3:1 for AA</div>
-					</div>
-				</div>
+		<div class="contrast-preview">
+			<div class="preview-box" id="preview-box">
+				<span class="preview-text" id="preview-text">Sample Text</span>
 			</div>
+		</div>
 
-			<!-- Palette Generator Section -->
-			<div class="tool-section">
-				<h2>Color Palettes</h2>
-				<p class="section-description">Generate harmonious color palettes from your selected color.</p>
-				
-				<div class="palette-types">
-					<button class="palette-btn active" data-palette="analogous">Analogous</button>
-					<button class="palette-btn" data-palette="complementary">Complementary</button>
-					<button class="palette-btn" data-palette="triadic">Triadic</button>
-					<button class="palette-btn" data-palette="split">Split Complementary</button>
+		<div class="contrast-results">
+			<div class="result-card">
+				<div class="result-label">Normal Text</div>
+				<div class="result-ratio" id="ratio-normal">21.00:1</div>
+				<div class="result-status" id="status-normal">
+					<span class="badge pass-aaa">AAA Pass</span>
 				</div>
-				
-				<div id="palette-container" class="color-preview"></div>
+				<div class="result-requirement">Requires 4.5:1 for AA</div>
 			</div>
-		<!-- PAGE SCRIPTS GO HERE-->
-		<script src="/scripts/color.js"></script>
-		<!-- COMMON BODY HTML END-->
-		{% include endBodyHtml.html %}
-	</body>
-</html>
+			<div class="result-card">
+				<div class="result-label">Large Text</div>
+				<div class="result-ratio" id="ratio-large">21.00:1</div>
+				<div class="result-status" id="status-large">
+					<span class="badge pass-aaa">AAA Pass</span>
+				</div>
+				<div class="result-requirement">Requires 3:1 for AA</div>
+			</div>
+			<div class="result-card">
+				<div class="result-label">UI Components</div>
+				<div class="result-ratio" id="ratio-ui">21.00:1</div>
+				<div class="result-status" id="status-ui">
+					<span class="badge pass-aaa">AAA Pass</span>
+				</div>
+				<div class="result-requirement">Requires 3:1 for AA</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Palette Generator Section -->
+	<div class="tool-section">
+		<h2>Color Palettes</h2>
+		<p class="section-description">Generate harmonious color palettes from your selected color.</p>
+		
+		<div class="palette-types">
+			<button class="palette-btn active" data-palette="analogous">Analogous</button>
+			<button class="palette-btn" data-palette="complementary">Complementary</button>
+			<button class="palette-btn" data-palette="triadic">Triadic</button>
+			<button class="palette-btn" data-palette="split">Split Complementary</button>
+		</div>
+		
+		<div id="palette-container" class="color-preview"></div>
+	</div>
+<!-- PAGE SCRIPTS GO HERE-->
+<script src="/scripts/color.js"></script>
+<!-- COMMON BODY HTML END-->
+{% include endBodyHtml.html %}

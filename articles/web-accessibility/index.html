@@ -1,41 +1,35 @@
 ---
 ---
+<!-- COMMON HTML START-->
+{% include startHtml.html %}
+<!-- PAGE SPECIFIC METAS GO HERE -->
+<title>fernan.dev • Web Accessibility Basics</title>
+<meta name="description" content="Create inclusive experiences that work for everyone">
+<link rel="canonical" href="https://fernan.dev/articles/web-accessibility" />
+<!-- PAGE SPECIFIC CSS GO HERE -->
+<link rel="stylesheet" href="/styles/tools.css">
+<!-- COMMON BODY START-->
+{% include startBody.html %}
+<!-- PAGE CONTENT -->
+	<a href="/articles/" class="back-link">← Back to Articles</a>
+	<h1>Web Accessibility Basics</h1>
+	<p>Create inclusive experiences that work for everyone.</p>
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<!-- COMMON HTML START-->
-		{% include startHtml.html %}
-		<!-- PAGE SPECIFIC METAS GO HERE -->
-		<title>fernan.dev • Web Accessibility Basics</title>
-		<meta name="description" content="Create inclusive experiences that work for everyone">
-		<link rel="canonical" href="https://fernan.dev/articles/web-accessibility" />
-		<!-- PAGE SPECIFIC CSS GO HERE -->
-		<link rel="stylesheet" href="/styles/tools.css">
-		<!-- COMMON BODY START-->
-		{% include startBody.html %}
-		<!-- PAGE CONTENT -->
-			<a href="/articles/" class="back-link">← Back to Articles</a>
-			<h1>Web Accessibility Basics</h1>
-			<p>Create inclusive experiences that work for everyone.</p>
+	<h2>What is Web Accessibility?</h2>
+	<p>Web accessibility means designing and developing websites that people with disabilities can use. This includes visual, auditory, motor, and cognitive impairments.</p>
 
-			<h2>What is Web Accessibility?</h2>
-			<p>Web accessibility means designing and developing websites that people with disabilities can use. This includes visual, auditory, motor, and cognitive impairments.</p>
+	<h2>WCAG Guidelines</h2>
+	<p>The Web Content Accessibility Guidelines (WCAG) provide a framework for accessible web content. The four principles are: Perceivable, Operable, Understandable, and Robust (POUR).</p>
 
-			<h2>WCAG Guidelines</h2>
-			<p>The Web Content Accessibility Guidelines (WCAG) provide a framework for accessible web content. The four principles are: Perceivable, Operable, Understandable, and Robust (POUR).</p>
-
-			<h2>Key Practices</h2>
-			<ul>
-				<li>Use semantic HTML elements</li>
-				<li>Provide alt text for images</li>
-				<li>Ensure sufficient color contrast</li>
-				<li>Make all functionality keyboard accessible</li>
-				<li>Use ARIA labels when necessary</li>
-				<li>Test with screen readers</li>
-			</ul>
-		<!-- PAGE SCRIPTS GO HERE-->
-		<!-- COMMON BODY HTML END-->
-		{% include endBodyHtml.html %}
-	</body>
-</html>
+	<h2>Key Practices</h2>
+	<ul>
+		<li>Use semantic HTML elements</li>
+		<li>Provide alt text for images</li>
+		<li>Ensure sufficient color contrast</li>
+		<li>Make all functionality keyboard accessible</li>
+		<li>Use ARIA labels when necessary</li>
+		<li>Test with screen readers</li>
+	</ul>
+<!-- PAGE SCRIPTS GO HERE-->
+<!-- COMMON BODY HTML END-->
+{% include endBodyHtml.html %}

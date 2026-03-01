@@ -1,42 +1,36 @@
 ---
 ---
+<!-- COMMON HTML START-->
+{% include startHtml.html %}
+<!-- PAGE SPECIFIC METAS GO HERE -->
+<title>fernan.dev • ISO Language Codes</title>
+<meta name="description" content="Reference ISO 639-1 standard language codes">
+<link rel="canonical" href="https://fernan.dev/tools/iso-language-codes" />
+<!-- PAGE SPECIFIC CSS GO HERE -->
+<link rel="stylesheet" href="/styles/tools.css">
+<link rel="stylesheet" href="/styles/data-table.css">
+<!-- COMMON BODY START-->
+{% include startBody.html %}
+<!-- PAGE CONTENT -->
+	<a href="/tools/" class="back-link">← Back to Tools</a>
+	<h1>ISO Language Codes</h1>
+	<p>Reference ISO 639-1 standard language codes (e.g., en, es, fr).</p>
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<!-- COMMON HTML START-->
-		{% include startHtml.html %}
-		<!-- PAGE SPECIFIC METAS GO HERE -->
-		<title>fernan.dev • ISO Language Codes</title>
-		<meta name="description" content="Reference ISO 639-1 standard language codes">
-		<link rel="canonical" href="https://fernan.dev/tools/iso-language-codes" />
-		<!-- PAGE SPECIFIC CSS GO HERE -->
-		<link rel="stylesheet" href="/styles/tools.css">
-		<link rel="stylesheet" href="/styles/data-table.css">
-		<!-- COMMON BODY START-->
-		{% include startBody.html %}
-		<!-- PAGE CONTENT -->
-			<a href="/tools/" class="back-link">← Back to Tools</a>
-			<h1>ISO Language Codes</h1>
-			<p>Reference ISO 639-1 standard language codes (e.g., en, es, fr).</p>
+	<h2>Search Languages</h2>
+	<input type="text" id="lang-search" placeholder="Search by language name or code..." style="margin-top:1rem;">
 
-			<h2>Search Languages</h2>
-			<input type="text" id="lang-search" placeholder="Search by language name or code..." style="margin-top:1rem;">
-
-			<h2>Language Codes Table</h2>
-			<table class="data-table">
-				<thead>
-					<tr>
-						<th>Code</th>
-						<th>Language</th>
-						<th>Action</th>
-					</tr>
-				</thead>
-				<tbody id="lang-container"></tbody>
-			</table>
-		<!-- PAGE SCRIPTS GO HERE-->
-		<script src="/scripts/iso-language-codes.js"></script>
-		<!-- COMMON BODY HTML END-->
-		{% include endBodyHtml.html %}
-	</body>
-</html>
+	<h2>Language Codes Table</h2>
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>Code</th>
+				<th>Language</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody id="lang-container"></tbody>
+	</table>
+<!-- PAGE SCRIPTS GO HERE-->
+<script src="/scripts/iso-language-codes.js"></script>
+<!-- COMMON BODY HTML END-->
+{% include endBodyHtml.html %}

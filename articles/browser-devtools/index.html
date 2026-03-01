@@ -1,40 +1,34 @@
 ---
 ---
+<!-- COMMON HTML START-->
+{% include startHtml.html %}
+<!-- PAGE SPECIFIC METAS GO HERE -->
+<title>fernan.dev • Browser DevTools Guide</title>
+<meta name="description" content="Master the built-in tools for debugging and optimization">
+<link rel="canonical" href="https://fernan.dev/articles/browser-devtools" />
+<!-- PAGE SPECIFIC CSS GO HERE -->
+<link rel="stylesheet" href="/styles/tools.css">
+<!-- COMMON BODY START-->
+{% include startBody.html %}
+<!-- PAGE CONTENT -->
+	<a href="/articles/" class="back-link">← Back to Articles</a>
+	<h1>Browser DevTools Guide</h1>
+	<p>Master the built-in tools for debugging and optimization.</p>
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<!-- COMMON HTML START-->
-		{% include startHtml.html %}
-		<!-- PAGE SPECIFIC METAS GO HERE -->
-		<title>fernan.dev • Browser DevTools Guide</title>
-		<meta name="description" content="Master the built-in tools for debugging and optimization">
-		<link rel="canonical" href="https://fernan.dev/articles/browser-devtools" />
-		<!-- PAGE SPECIFIC CSS GO HERE -->
-		<link rel="stylesheet" href="/styles/tools.css">
-		<!-- COMMON BODY START-->
-		{% include startBody.html %}
-		<!-- PAGE CONTENT -->
-			<a href="/articles/" class="back-link">← Back to Articles</a>
-			<h1>Browser DevTools Guide</h1>
-			<p>Master the built-in tools for debugging and optimization.</p>
+	<h2>Elements Panel</h2>
+	<p>Inspect and modify HTML and CSS in real-time. Use it to debug layout issues, test style changes, and understand the DOM structure.</p>
 
-			<h2>Elements Panel</h2>
-			<p>Inspect and modify HTML and CSS in real-time. Use it to debug layout issues, test style changes, and understand the DOM structure.</p>
+	<h2>Console</h2>
+	<p>View log messages, errors, and warnings. Execute JavaScript commands and interact with the page programmatically.</p>
 
-			<h2>Console</h2>
-			<p>View log messages, errors, and warnings. Execute JavaScript commands and interact with the page programmatically.</p>
+	<h2>Network Panel</h2>
+	<p>Monitor all network requests, analyze load times, identify bottlenecks, and debug API calls.</p>
 
-			<h2>Network Panel</h2>
-			<p>Monitor all network requests, analyze load times, identify bottlenecks, and debug API calls.</p>
+	<h2>Sources Panel</h2>
+	<p>Set breakpoints, step through code, and debug JavaScript. View and edit source files directly in the browser.</p>
 
-			<h2>Sources Panel</h2>
-			<p>Set breakpoints, step through code, and debug JavaScript. View and edit source files directly in the browser.</p>
-
-			<h2>Performance Panel</h2>
-			<p>Record and analyze runtime performance, identify jank, and optimize rendering.</p>
-		<!-- PAGE SCRIPTS GO HERE-->
-		<!-- COMMON BODY HTML END-->
-		{% include endBodyHtml.html %}
-	</body>
-</html>
+	<h2>Performance Panel</h2>
+	<p>Record and analyze runtime performance, identify jank, and optimize rendering.</p>
+<!-- PAGE SCRIPTS GO HERE-->
+<!-- COMMON BODY HTML END-->
+{% include endBodyHtml.html %}

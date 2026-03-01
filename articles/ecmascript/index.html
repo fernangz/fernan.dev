@@ -1,34 +1,28 @@
 ---
 ---
+<!-- COMMON HTML START-->
+{% include startHtml.html %}
+<!-- PAGE SPECIFIC METAS GO HERE -->
+<title>fernan.dev • ECMAScript, JavaScript or JS</title>
+<meta name="description" content="Understand the relationship between the specification and the implementation">
+<link rel="canonical" href="https://fernan.dev/articles/ecmascript" />
+<!-- PAGE SPECIFIC CSS GO HERE -->
+<link rel="stylesheet" href="/styles/tools.css">
+<!-- COMMON BODY START-->
+{% include startBody.html %}
+<!-- PAGE CONTENT -->
+	<a href="/articles/" class="back-link">← Back to Articles</a>
+	<h1>ECMAScript, JavaScript or JS</h1>
+	<p>Understanding the relationship between ECMAScript specification and JavaScript implementations.</p>
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<!-- COMMON HTML START-->
-		{% include startHtml.html %}
-		<!-- PAGE SPECIFIC METAS GO HERE -->
-		<title>fernan.dev • ECMAScript, JavaScript or JS</title>
-		<meta name="description" content="Understand the relationship between the specification and the implementation">
-		<link rel="canonical" href="https://fernan.dev/articles/ecmascript" />
-		<!-- PAGE SPECIFIC CSS GO HERE -->
-		<link rel="stylesheet" href="/styles/tools.css">
-		<!-- COMMON BODY START-->
-		{% include startBody.html %}
-		<!-- PAGE CONTENT -->
-			<a href="/articles/" class="back-link">← Back to Articles</a>
-			<h1>ECMAScript, JavaScript or JS</h1>
-			<p>Understanding the relationship between ECMAScript specification and JavaScript implementations.</p>
+	<h2>What is ECMAScript?</h2>
+	<p>ECMAScript is the standardized specification that defines the core features and syntax of JavaScript. It's maintained by Ecma International under the ECMA-262 standard.</p>
 
-			<h2>What is ECMAScript?</h2>
-			<p>ECMAScript is the standardized specification that defines the core features and syntax of JavaScript. It's maintained by Ecma International under the ECMA-262 standard.</p>
+	<h2>JavaScript vs ECMAScript</h2>
+	<p>JavaScript is an implementation of the ECMAScript specification. Other implementations include JScript (Microsoft) and ActionScript (Adobe). JavaScript adds browser-specific APIs like the DOM and BOM on top of ECMAScript.</p>
 
-			<h2>JavaScript vs ECMAScript</h2>
-			<p>JavaScript is an implementation of the ECMAScript specification. Other implementations include JScript (Microsoft) and ActionScript (Adobe). JavaScript adds browser-specific APIs like the DOM and BOM on top of ECMAScript.</p>
-
-			<h2>ECMAScript Versions</h2>
-			<p>Modern ECMAScript versions are released annually: ES6 (2015) introduced classes and modules, ES2016 added array methods, ES2017 brought async/await, and subsequent versions continue to add features.</p>
-		<!-- PAGE SCRIPTS GO HERE-->
-		<!-- COMMON BODY HTML END-->
-		{% include endBodyHtml.html %}
-	</body>
-</html>
+	<h2>ECMAScript Versions</h2>
+	<p>Modern ECMAScript versions are released annually: ES6 (2015) introduced classes and modules, ES2016 added array methods, ES2017 brought async/await, and subsequent versions continue to add features.</p>
+<!-- PAGE SCRIPTS GO HERE-->
+<!-- COMMON BODY HTML END-->
+{% include endBodyHtml.html %}

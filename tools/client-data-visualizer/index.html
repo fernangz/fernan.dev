@@ -1,55 +1,49 @@
 ---
 ---
+<!-- COMMON HTML START-->
+{% include startHtml.html %}
+<!-- PAGE SPECIFIC METAS GO HERE -->
+<title>fernan.dev • Client Data</title>
+<meta name="description" content="View and inspect client-side data">
+<link rel="canonical" href="https://fernan.dev/tools/client-data" />
+<!-- PAGE SPECIFIC CSS GO HERE -->
+<link rel="stylesheet" href="/styles/tools.css">
+<link rel="stylesheet" href="/styles/client-data.css">
+<!-- COMMON BODY START-->
+{% include startBody.html %}
+<!-- PAGE CONTENT -->
+	<a href="/tools/" class="back-link">← Back to Tools</a>
+	<h1>Client Data Visualizer</h1>
+	<p>View and inspect cookies, localStorage, and sessionStorage.</p>
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<!-- COMMON HTML START-->
-		{% include startHtml.html %}
-		<!-- PAGE SPECIFIC METAS GO HERE -->
-		<title>fernan.dev • Client Data</title>
-		<meta name="description" content="View and inspect client-side data">
-		<link rel="canonical" href="https://fernan.dev/tools/client-data" />
-		<!-- PAGE SPECIFIC CSS GO HERE -->
-		<link rel="stylesheet" href="/styles/tools.css">
-		<link rel="stylesheet" href="/styles/client-data.css">
-		<!-- COMMON BODY START-->
-		{% include startBody.html %}
-		<!-- PAGE CONTENT -->
-			<a href="/tools/" class="back-link">← Back to Tools</a>
-			<h1>Client Data Visualizer</h1>
-			<p>View and inspect cookies, localStorage, and sessionStorage.</p>
+	<div class="data-controls">
+		<button class="btn" id="refresh-btn">🔄 Refresh</button>
+		<button class="btn" id="clear-cookies-btn">🗑️ Clear Cookies</button>
+		<button class="btn" id="clear-local-btn">🗑️ Clear LocalStorage</button>
+		<button class="btn" id="clear-session-btn">🗑️ Clear SessionStorage</button>
+	</div>
 
-			<div class="data-controls">
-				<button class="btn" id="refresh-btn">🔄 Refresh</button>
-				<button class="btn" id="clear-cookies-btn">🗑️ Clear Cookies</button>
-				<button class="btn" id="clear-local-btn">🗑️ Clear LocalStorage</button>
-				<button class="btn" id="clear-session-btn">🗑️ Clear SessionStorage</button>
-			</div>
+	<div class="data-section">
+		<h2>Cookies</h2>
+		<div id="cookies-container" class="data-container">
+			<div class="loading">Loading...</div>
+		</div>
+	</div>
 
-			<div class="data-section">
-				<h2>Cookies</h2>
-				<div id="cookies-container" class="data-container">
-					<div class="loading">Loading...</div>
-				</div>
-			</div>
+	<div class="data-section">
+		<h2>LocalStorage</h2>
+		<div id="local-storage-container" class="data-container">
+			<div class="loading">Loading...</div>
+		</div>
+	</div>
 
-			<div class="data-section">
-				<h2>LocalStorage</h2>
-				<div id="local-storage-container" class="data-container">
-					<div class="loading">Loading...</div>
-				</div>
-			</div>
-
-			<div class="data-section">
-				<h2>SessionStorage</h2>
-				<div id="session-storage-container" class="data-container">
-					<div class="loading">Loading...</div>
-				</div>
-			</div>
-		<!-- PAGE SCRIPTS GO HERE-->
-		<script src="/scripts/client-data.js"></script>
-		<!-- COMMON BODY HTML END-->
-		{% include endBodyHtml.html %}
-	</body>
-</html>
+	<div class="data-section">
+		<h2>SessionStorage</h2>
+		<div id="session-storage-container" class="data-container">
+			<div class="loading">Loading...</div>
+		</div>
+	</div>
+<!-- PAGE SCRIPTS GO HERE-->
+<script src="/scripts/client-data.js"></script>
+<!-- COMMON BODY HTML END-->
+{% include endBodyHtml.html %}

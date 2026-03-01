@@ -1,43 +1,37 @@
 ---
 ---
+<!-- COMMON HTML START-->
+{% include startHtml.html %}
+<!-- PAGE SPECIFIC METAS GO HERE -->
+<title>fernan.dev • JSON Formatter</title>
+<meta name="description" content="Format, validate and beautify JSON">
+<link rel="canonical" href="https://fernan.dev/tools/json-formatter" />
+<!-- PAGE SPECIFIC CSS GO HERE -->
+<link rel="stylesheet" href="/styles/tools.css">
+<link rel="stylesheet" href="/styles/json-formatter.css">
+<!-- COMMON BODY START-->
+{% include startBody.html %}
+<!-- PAGE CONTENT -->
+	<a href="/tools/" class="back-link">← Back to Tools</a>
+	<h1>JSON Formatter</h1>
+	<p>Format, validate, and minify JSON data.</p>
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<!-- COMMON HTML START-->
-		{% include startHtml.html %}
-		<!-- PAGE SPECIFIC METAS GO HERE -->
-		<title>fernan.dev • JSON Formatter</title>
-		<meta name="description" content="Format, validate and beautify JSON">
-		<link rel="canonical" href="https://fernan.dev/tools/json-formatter" />
-		<!-- PAGE SPECIFIC CSS GO HERE -->
-		<link rel="stylesheet" href="/styles/tools.css">
-		<link rel="stylesheet" href="/styles/json-formatter.css">
-		<!-- COMMON BODY START-->
-		{% include startBody.html %}
-		<!-- PAGE CONTENT -->
-			<a href="/tools/" class="back-link">← Back to Tools</a>
-			<h1>JSON Formatter</h1>
-			<p>Format, validate, and minify JSON data.</p>
+	<div class="json-tool">
+		<div class="toolbar">
+			<button class="tool-btn" id="format-btn">✨ Format</button>
+			<button class="tool-btn" id="minify-btn">🗜️ Minify</button>
+			<button class="tool-btn" id="copy-btn">📋 Copy</button>
+			<button class="tool-btn" id="clear-btn">🗑️ Clear</button>
+		</div>
 
-			<div class="json-tool">
-				<div class="toolbar">
-					<button class="tool-btn" id="format-btn">✨ Format</button>
-					<button class="tool-btn" id="minify-btn">🗜️ Minify</button>
-					<button class="tool-btn" id="copy-btn">📋 Copy</button>
-					<button class="tool-btn" id="clear-btn">🗑️ Clear</button>
-				</div>
+		<div class="editor-container">
+			<textarea id="json-input" placeholder="Paste your JSON here..."></textarea>
+			<pre id="json-output" class="hidden"></pre>
+		</div>
 
-				<div class="editor-container">
-					<textarea id="json-input" placeholder="Paste your JSON here..."></textarea>
-					<pre id="json-output" class="hidden"></pre>
-				</div>
-
-				<div id="status-message" class="status-message hidden"></div>
-			</div>
-		<!-- PAGE SCRIPTS GO HERE-->
-		<script src="/scripts/json-formatter.js"></script>
-		<!-- COMMON BODY HTML END-->
-		{% include endBodyHtml.html %}
-	</body>
-</html>
+		<div id="status-message" class="status-message hidden"></div>
+	</div>
+<!-- PAGE SCRIPTS GO HERE-->
+<script src="/scripts/json-formatter.js"></script>
+<!-- COMMON BODY HTML END-->
+{% include endBodyHtml.html %}

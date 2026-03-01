@@ -1,34 +1,28 @@
 ---
 ---
+<!-- COMMON HTML START-->
+{% include startHtml.html %}
+<!-- PAGE SPECIFIC METAS GO HERE -->
+<title>fernan.dev • CSS Flexbox &amp; Grid</title>
+<meta name="description" content="Master modern CSS layout systems for flexible, responsive designs">
+<link rel="canonical" href="https://fernan.dev/articles/flexbox-grid" />
+<!-- PAGE SPECIFIC CSS GO HERE -->
+<link rel="stylesheet" href="/styles/tools.css">
+<!-- COMMON BODY START-->
+{% include startBody.html %}
+<!-- PAGE CONTENT -->
+	<a href="/articles/" class="back-link">← Back to Articles</a>
+	<h1>CSS Flexbox &amp; Grid</h1>
+	<p>Master modern CSS layout systems for flexible, responsive designs.</p>
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<!-- COMMON HTML START-->
-		{% include startHtml.html %}
-		<!-- PAGE SPECIFIC METAS GO HERE -->
-		<title>fernan.dev • CSS Flexbox &amp; Grid</title>
-		<meta name="description" content="Master modern CSS layout systems for flexible, responsive designs">
-		<link rel="canonical" href="https://fernan.dev/articles/flexbox-grid" />
-		<!-- PAGE SPECIFIC CSS GO HERE -->
-		<link rel="stylesheet" href="/styles/tools.css">
-		<!-- COMMON BODY START-->
-		{% include startBody.html %}
-		<!-- PAGE CONTENT -->
-			<a href="/articles/" class="back-link">← Back to Articles</a>
-			<h1>CSS Flexbox &amp; Grid</h1>
-			<p>Master modern CSS layout systems for flexible, responsive designs.</p>
+	<h2>Flexbox</h2>
+	<p>Flexbox is a one-dimensional layout system designed for distributing space between items and aligning them. It excels at creating navigation bars, centering content, and creating equal-height columns.</p>
 
-			<h2>Flexbox</h2>
-			<p>Flexbox is a one-dimensional layout system designed for distributing space between items and aligning them. It excels at creating navigation bars, centering content, and creating equal-height columns.</p>
+	<h2>CSS Grid</h2>
+	<p>CSS Grid is a two-dimensional layout system that handles both rows and columns simultaneously. It's ideal for complex layouts, magazine-style designs, and overall page structure.</p>
 
-			<h2>CSS Grid</h2>
-			<p>CSS Grid is a two-dimensional layout system that handles both rows and columns simultaneously. It's ideal for complex layouts, magazine-style designs, and overall page structure.</p>
-
-			<h2>When to Use Each</h2>
-			<p>Use Flexbox for one-dimensional layouts (row OR column). Use Grid for two-dimensional layouts (row AND column). They work well together—Grid for the overall layout, Flexbox for component internals.</p>
-		<!-- PAGE SCRIPTS GO HERE-->
-		<!-- COMMON BODY HTML END-->
-		{% include endBodyHtml.html %}
-	</body>
-</html>
+	<h2>When to Use Each</h2>
+	<p>Use Flexbox for one-dimensional layouts (row OR column). Use Grid for two-dimensional layouts (row AND column). They work well together—Grid for the overall layout, Flexbox for component internals.</p>
+<!-- PAGE SCRIPTS GO HERE-->
+<!-- COMMON BODY HTML END-->
+{% include endBodyHtml.html %}

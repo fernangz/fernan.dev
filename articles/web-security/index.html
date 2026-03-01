@@ -1,37 +1,31 @@
 ---
 ---
+<!-- COMMON HTML START-->
+{% include startHtml.html %}
+<!-- PAGE SPECIFIC METAS GO HERE -->
+<title>fernan.dev • Web Security Essentials</title>
+<meta name="description" content="Protect your users and applications from common threats">
+<link rel="canonical" href="https://fernan.dev/articles/web-security" />
+<!-- PAGE SPECIFIC CSS GO HERE -->
+<link rel="stylesheet" href="/styles/tools.css">
+<!-- COMMON BODY START-->
+{% include startBody.html %}
+<!-- PAGE CONTENT -->
+	<a href="/articles/" class="back-link">← Back to Articles</a>
+	<h1>Web Security Essentials</h1>
+	<p>Protect your users and applications from common threats.</p>
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<!-- COMMON HTML START-->
-		{% include startHtml.html %}
-		<!-- PAGE SPECIFIC METAS GO HERE -->
-		<title>fernan.dev • Web Security Essentials</title>
-		<meta name="description" content="Protect your users and applications from common threats">
-		<link rel="canonical" href="https://fernan.dev/articles/web-security" />
-		<!-- PAGE SPECIFIC CSS GO HERE -->
-		<link rel="stylesheet" href="/styles/tools.css">
-		<!-- COMMON BODY START-->
-		{% include startBody.html %}
-		<!-- PAGE CONTENT -->
-			<a href="/articles/" class="back-link">← Back to Articles</a>
-			<h1>Web Security Essentials</h1>
-			<p>Protect your users and applications from common threats.</p>
+	<h2>HTTPS Everywhere</h2>
+	<p>Always use HTTPS to encrypt data in transit. This protects user credentials, session tokens, and sensitive data from interception.</p>
 
-			<h2>HTTPS Everywhere</h2>
-			<p>Always use HTTPS to encrypt data in transit. This protects user credentials, session tokens, and sensitive data from interception.</p>
+	<h2>Cross-Site Scripting (XSS)</h2>
+	<p>Prevent XSS by sanitizing user input, escaping output, and using Content Security Policy (CSP) headers. Never trust user-provided data.</p>
 
-			<h2>Cross-Site Scripting (XSS)</h2>
-			<p>Prevent XSS by sanitizing user input, escaping output, and using Content Security Policy (CSP) headers. Never trust user-provided data.</p>
+	<h2>Cross-Site Request Forgery (CSRF)</h2>
+	<p>Protect against CSRF attacks by using anti-CSRF tokens, checking referrer headers, and requiring re-authentication for sensitive actions.</p>
 
-			<h2>Cross-Site Request Forgery (CSRF)</h2>
-			<p>Protect against CSRF attacks by using anti-CSRF tokens, checking referrer headers, and requiring re-authentication for sensitive actions.</p>
-
-			<h2>Security Headers</h2>
-			<p>Implement security headers like X-Content-Type-Options, X-Frame-Options, Strict-Transport-Security, and Content-Security-Policy to add layers of protection.</p>
-		<!-- PAGE SCRIPTS GO HERE-->
-		<!-- COMMON BODY HTML END-->
-		{% include endBodyHtml.html %}
-	</body>
-</html>
+	<h2>Security Headers</h2>
+	<p>Implement security headers like X-Content-Type-Options, X-Frame-Options, Strict-Transport-Security, and Content-Security-Policy to add layers of protection.</p>
+<!-- PAGE SCRIPTS GO HERE-->
+<!-- COMMON BODY HTML END-->
+{% include endBodyHtml.html %}

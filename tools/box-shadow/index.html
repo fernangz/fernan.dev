@@ -1,78 +1,72 @@
 ---
 ---
+<!-- COMMON HTML START-->
+{% include startHtml.html %}
+<!-- PAGE SPECIFIC METAS GO HERE -->
+<title>fernan.dev • Box Shadow Generator</title>
+<meta name="description" content="Generate CSS box-shadow values">
+<link rel="canonical" href="https://fernan.dev/tools/box-shadow" />
+<!-- PAGE SPECIFIC CSS GO HERE -->
+<link rel="stylesheet" href="/styles/tools.css">
+<link rel="stylesheet" href="/styles/shadow-generator.css">
+<!-- COMMON BODY START-->
+{% include startBody.html %}
+<!-- PAGE CONTENT -->
+	<a href="/tools/" class="back-link">← Back to Tools</a>
+	<h1>Box Shadow Generator</h1>
+	<p>Generate CSS box-shadow values with live preview.</p>
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<!-- COMMON HTML START-->
-		{% include startHtml.html %}
-		<!-- PAGE SPECIFIC METAS GO HERE -->
-		<title>fernan.dev • Box Shadow Generator</title>
-		<meta name="description" content="Generate CSS box-shadow values">
-		<link rel="canonical" href="https://fernan.dev/tools/box-shadow" />
-		<!-- PAGE SPECIFIC CSS GO HERE -->
-		<link rel="stylesheet" href="/styles/tools.css">
-		<link rel="stylesheet" href="/styles/shadow-generator.css">
-		<!-- COMMON BODY START-->
-		{% include startBody.html %}
-		<!-- PAGE CONTENT -->
-			<a href="/tools/" class="back-link">← Back to Tools</a>
-			<h1>Box Shadow Generator</h1>
-			<p>Generate CSS box-shadow values with live preview.</p>
+	<div class="shadow-generator">
+		<div class="preview-area">
+			<div class="preview-box" id="preview-box"></div>
+		</div>
 
-			<div class="shadow-generator">
-				<div class="preview-area">
-					<div class="preview-box" id="preview-box"></div>
-				</div>
-
-				<div class="controls">
-					<div class="control-group">
-						<label for="offset-x">Offset X</label>
-						<input type="range" id="offset-x" min="-50" max="50" value="0">
-						<span class="control-value" id="offset-x-value">0px</span>
-					</div>
-					<div class="control-group">
-						<label for="offset-y">Offset Y</label>
-						<input type="range" id="offset-y" min="-50" max="50" value="0">
-						<span class="control-value" id="offset-y-value">0px</span>
-					</div>
-					<div class="control-group">
-						<label for="blur">Blur Radius</label>
-						<input type="range" id="blur" min="0" max="100" value="0">
-						<span class="control-value" id="blur-value">0px</span>
-					</div>
-					<div class="control-group">
-						<label for="spread">Spread</label>
-						<input type="range" id="spread" min="-50" max="50" value="0">
-						<span class="control-value" id="spread-value">0px</span>
-					</div>
-					<div class="control-group">
-						<label for="shadow-color">Shadow Color</label>
-						<input type="color" id="shadow-color" value="#000000">
-					</div>
-					<div class="control-group">
-						<label for="opacity">Opacity</label>
-						<input type="range" id="opacity" min="0" max="100" value="30">
-						<span class="control-value" id="opacity-value">30%</span>
-					</div>
-					<div class="control-group checkbox-group">
-						<label>
-							<input type="checkbox" id="inset"> Inset Shadow
-						</label>
-					</div>
-				</div>
-
-				<div class="code-output">
-					<label>CSS Output</label>
-					<div class="code-box">
-						<code id="css-output">box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3);</code>
-						<button class="copy-btn" id="copy-btn">📋 Copy</button>
-					</div>
-				</div>
+		<div class="controls">
+			<div class="control-group">
+				<label for="offset-x">Offset X</label>
+				<input type="range" id="offset-x" min="-50" max="50" value="0">
+				<span class="control-value" id="offset-x-value">0px</span>
 			</div>
-		<!-- PAGE SCRIPTS GO HERE-->
-		<script src="/scripts/box-shadow.js"></script>
-		<!-- COMMON BODY HTML END-->
-		{% include endBodyHtml.html %}
-	</body>
-</html>
+			<div class="control-group">
+				<label for="offset-y">Offset Y</label>
+				<input type="range" id="offset-y" min="-50" max="50" value="0">
+				<span class="control-value" id="offset-y-value">0px</span>
+			</div>
+			<div class="control-group">
+				<label for="blur">Blur Radius</label>
+				<input type="range" id="blur" min="0" max="100" value="0">
+				<span class="control-value" id="blur-value">0px</span>
+			</div>
+			<div class="control-group">
+				<label for="spread">Spread</label>
+				<input type="range" id="spread" min="-50" max="50" value="0">
+				<span class="control-value" id="spread-value">0px</span>
+			</div>
+			<div class="control-group">
+				<label for="shadow-color">Shadow Color</label>
+				<input type="color" id="shadow-color" value="#000000">
+			</div>
+			<div class="control-group">
+				<label for="opacity">Opacity</label>
+				<input type="range" id="opacity" min="0" max="100" value="30">
+				<span class="control-value" id="opacity-value">30%</span>
+			</div>
+			<div class="control-group checkbox-group">
+				<label>
+					<input type="checkbox" id="inset"> Inset Shadow
+				</label>
+			</div>
+		</div>
+
+		<div class="code-output">
+			<label>CSS Output</label>
+			<div class="code-box">
+				<code id="css-output">box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3);</code>
+				<button class="copy-btn" id="copy-btn">📋 Copy</button>
+			</div>
+		</div>
+	</div>
+<!-- PAGE SCRIPTS GO HERE-->
+<script src="/scripts/box-shadow.js"></script>
+<!-- COMMON BODY HTML END-->
+{% include endBodyHtml.html %}
