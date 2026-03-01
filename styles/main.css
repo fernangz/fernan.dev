@@ -193,7 +193,7 @@ nav {
     font-size: var(--font-md);
     line-height: var(--lh-md);
     padding: 0 var(--space-8);
-	width: 100dvw;
+	width: 100%;
 }
 
 nav a,
@@ -232,6 +232,7 @@ body > nav > a > svg {
 
 nav > hr {
 	flex-grow: 1;
+	display: block;
 	outline: none;
 	border: 0;
 	background-color: transparent;
