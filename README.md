@@ -76,11 +76,16 @@ fernan.dev/
 - SVG caching in localStorage
 - Reduced motion optimizations
 
-### 🔍 SEO (10 enhancements)
-- Schema.org JSON-LD structured data
+### 🔍 SEO (Latest: 2026-03-01)
+- Schema.org JSON-LD structured data on ALL pages
+- WebApplication schema on 10 tool pages
+- Article schema on 13 article pages
+- BreadcrumbList schema site-wide
 - Open Graph tags for social sharing
+- CollectionPage schema on resources
+- Person schema (author E-E-A-T)
+- Semantic HTML with ARIA landmarks
 - Fixed sitemap (removed 404 entries)
-- Semantic HTML throughout
 
 ---
 
@@ -138,11 +143,12 @@ All pages use includes from `_includes/` for consistent structure:
 3. Page-specific content between comment markers
 
 **Available Includes:**
-- `startHtml.html` - DOCTYPE, security headers, structured data
-- `startBody.html` - Skip link, navigation with aria-expanded
+- `startHtml.html` - DOCTYPE, security headers, universal structured data
+- `startBody.html` - Skip link, navigation with ARIA landmarks & roles
 - `endBodyHtml.html` - Main script, service worker registration
-- `structured-data-tools.html` - WebApplication schema
-- `structured-data-articles.html` - Collection schema
+- `structured-data.html` - Universal schema (WebSite, Person, Organization, Breadcrumb)
+- `structured-data-tool.html` - WebApplication schema template
+- `structured-data-articles.html` - Article schema template
 
 ---
 
@@ -178,8 +184,9 @@ Chrome 90+, Firefox 88+, Safari 14+, Edge 90+
 2. Test on mobile
 3. Test with keyboard only (Tab, Enter, Escape)
 4. Run Lighthouse audit (target: 95+ all categories)
-5. Run `./publish.sh "Description"`
-6. Verify at https://fernan.dev/
+5. Verify structured data (Google Rich Results Test)
+6. Run `./publish.sh "Description"`
+7. Verify at https://fernan.dev/
 
 ---
 
@@ -187,4 +194,4 @@ Chrome 90+, Firefox 88+, Safari 14+, Edge 90+
 
 © Fernán García de Zúñiga. All rights reserved.
 
-**Last Updated:** 2026-03-01
+**Last Updated:** 2026-03-01 (SEO improvements deployed)
