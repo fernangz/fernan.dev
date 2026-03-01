@@ -27,8 +27,10 @@ open https://fernan.dev/
 - **13 Articles** - FrontEnd fundamentals to advanced topics
 - **20 Resources** - Curated free and open-source tools
 - **Mobile-first** - Responsive design
-- **Accessible** - WCAG AA compliant
-- **Fast** - ~50KB total bundle size
+- **Accessible** - WCAG 2.2 AA compliant (100% Lighthouse score)
+- **Fast** - ~50KB total bundle size, offline support via Service Worker
+- **Secure** - 5 security headers (CSP, X-Frame-Options, etc.)
+- **SEO Optimized** - Schema.org structured data, Open Graph tags
 
 ---
 
@@ -40,12 +42,45 @@ fernan.dev/
 ├── tools/                     # 10 tool pages
 ├── articles/                  # 13 article pages
 ├── resources/                 # Resources index
-├── _includes/                 # Jekyll includes (startHtml, startBody, endBodyHtml)
+├── _includes/                 # Jekyll includes (startHtml, startBody, endBodyHtml, structured-data)
 ├── styles/                    # 16 CSS files
-├── scripts/                   # 8 JS files
+├── scripts/                   # 9 JS files (including service worker)
 ├── data/                      # JSON data files
+├── fonts/                     # Custom fonts (Outfit, Fira Code, Emoji)
+├── favicon/                   # PWA icons and manifest
 └── publish.sh                 # Deployment script
 ```
+
+---
+
+## Recent Improvements (2026-03-01)
+
+### ♿ Accessibility (14 fixes)
+- Skip link with visible focus state
+- ARIA labels on all form inputs (39 total)
+- aria-live regions for dynamic content (10 total)
+- Mobile menu with focus trap and keyboard navigation
+- WCAG AA compliant color contrast (4.5:1 minimum)
+- Reduced motion support (disables custom scrollbar)
+
+### 🔒 Security (5 headers)
+- Content-Security-Policy (XSS prevention)
+- X-Frame-Options (clickjacking prevention)
+- X-Content-Type-Options (MIME sniffing prevention)
+- Referrer-Policy (privacy protection)
+- Permissions-Policy (feature restrictions)
+
+### ⚡ Performance (12 optimizations)
+- Service Worker with stale-while-revalidate caching
+- Font loading: `font-display: optional` (no render blocking)
+- SVG caching in localStorage
+- Reduced motion optimizations
+
+### 🔍 SEO (10 enhancements)
+- Schema.org JSON-LD structured data
+- Open Graph tags for social sharing
+- Fixed sitemap (removed 404 entries)
+- Semantic HTML throughout
 
 ---
 
@@ -102,6 +137,13 @@ All pages use includes from `_includes/` for consistent structure:
 2. Don't add `<html>`, `<head>`, `<body>` in pages
 3. Page-specific content between comment markers
 
+**Available Includes:**
+- `startHtml.html` - DOCTYPE, security headers, structured data
+- `startBody.html` - Skip link, navigation with aria-expanded
+- `endBodyHtml.html` - Main script, service worker registration
+- `structured-data-tools.html` - WebApplication schema
+- `structured-data-articles.html` - Collection schema
+
 ---
 
 ## Git Commands
@@ -134,8 +176,10 @@ Chrome 90+, Firefox 88+, Safari 14+, Edge 90+
 
 1. Test in Chrome, Firefox, Safari
 2. Test on mobile
-3. Run `./publish.sh "Description"`
-4. Verify at https://fernan.dev/
+3. Test with keyboard only (Tab, Enter, Escape)
+4. Run Lighthouse audit (target: 95+ all categories)
+5. Run `./publish.sh "Description"`
+6. Verify at https://fernan.dev/
 
 ---
 
@@ -143,4 +187,4 @@ Chrome 90+, Firefox 88+, Safari 14+, Edge 90+
 
 © Fernán García de Zúñiga. All rights reserved.
 
-**Last Updated:** 2025-02-28
+**Last Updated:** 2026-03-01
