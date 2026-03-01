@@ -350,7 +350,6 @@ main > section > article h2 {
 	font-size: var(--font-lg);
 	line-height: var(--lh-lg);
 	color: var(--light);
-	margin-top: var(--space-12);
 	margin-bottom: var(--space-4);
 }
 
@@ -358,7 +357,6 @@ main > section > article h3 {
 	font-size: var(--font-md);
 	line-height: var(--lh-md);
 	color: var(--light);
-	margin-top: var(--space-10);
 	margin-bottom: var(--space-4);
 }
 
@@ -366,7 +364,6 @@ main > section > article h4 {
 	font-size: var(--font-sm);
 	line-height: var(--lh-sm);
 	color: var(--light);
-	margin-top: var(--space-8);
 	margin-bottom: var(--space-4);
 }
 

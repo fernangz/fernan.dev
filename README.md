@@ -204,6 +204,16 @@ Curated free and open-source tools:
 ./publish.sh "Your commit message describing the changes"
 ```
 
+**If you modified HTML files, also update the sitemap:**
+
+```bash
+# 1. Update sitemap.xml with current date
+# Edit sitemap.xml and update <lastmod> dates for changed pages
+
+# 2. Commit sitemap with your changes
+./publish.sh "Updated pages, refreshed sitemap"
+```
+
 **Why this is mandatory:**
 1. The script stages all changed files automatically
 2. Commits with the provided message using the configured git user
@@ -244,6 +254,66 @@ git add -A
 git commit -m "$1"
 git push origin main
 ```
+
+---
+
+## Git & Version Control
+
+### Project History
+
+**For commit history and project evolution, always use git:**
+
+```bash
+# View commit history
+git log --oneline
+
+# View detailed commit history
+git log
+
+# View last N commits
+git log -n 10
+
+# View changes in a specific commit
+git show <commit-hash>
+
+# View file change history
+git log --follow path/to/file.css
+
+# View who changed what and when
+git log --pretty=format:"%h - %an, %ar : %s"
+
+# View changes between commits
+git diff <commit-1> <commit-2>
+```
+
+### Useful Git Commands
+
+```bash
+# Check current status
+git status
+
+# View recent changes
+git diff HEAD
+
+# View commit history for specific file
+git log --oneline styles/main.css
+
+# Find when something changed
+git log -S "search term" --oneline
+
+# View blame (who last modified each line)
+git blame path/to/file.css
+```
+
+### Git is Source of Truth
+
+- ✅ **Commit history:** `git log`
+- ✅ **File changes:** `git diff`
+- ✅ **Author information:** `git log --format="%an"`
+- ✅ **Change dates:** `git log --format="%ad"`
+- ✅ **Project status:** `git status`
+
+**Do not rely on stored memory for project history—git tracks all changes accurately.**
 
 ---
 
