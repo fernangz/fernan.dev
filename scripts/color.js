@@ -11,7 +11,6 @@ const ColorTools = {
 	init() {
 		this.cacheElements();
 		this.bindEvents();
-		this.updateColorPreview();
 		this.updateColorTrigger('color-trigger-fill', this.currentColor);
 		this.updateContrast();
 	},
@@ -22,7 +21,6 @@ const ColorTools = {
 			colorInput: document.getElementById('color-input'),
 			colorTrigger: document.getElementById('color-trigger'),
 			colorTriggerFill: document.getElementById('color-trigger-fill'),
-			colorPreview: document.getElementById('color-preview'),
 			
 			// Color formats
 			hexInput: document.getElementById('hex-input'),
@@ -184,18 +182,11 @@ const ColorTools = {
 
 	updateColorFormats(hex) {
 		this.currentColor = hex;
-		this.updateColorPreview();
-		
+
 		if (this.elements.hexInput) this.elements.hexInput.value = hex;
 		if (this.elements.rgbInput) this.elements.rgbInput.value = this.hexToRgb(hex);
 		if (this.elements.hslInput) this.elements.hslInput.value = this.hexToHsl(hex);
 		if (this.elements.hsvInput) this.elements.hsvInput.value = this.hexToHsv(hex);
-	},
-
-	updateColorPreview() {
-		if (this.elements.colorPreview) {
-			this.elements.colorPreview.style.backgroundColor = this.currentColor;
-		}
 	},
 
 	updateContrast() {

@@ -95,13 +95,6 @@
 	outline-offset: 0.125rem;
 }
 
-.color-preview-large {
-	width: 100%;
-	max-width: 12rem;
-	height: 4rem;
-	border: var(--border-sm) solid var(--gray);
-}
-
 /* Color Formats */
 .color-formats-grid {
 	display: grid;
