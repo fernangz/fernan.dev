@@ -67,7 +67,7 @@ fernan.dev/
 ## Development Workflow
 
 ```
-1. TASK → 2. Read README + ./history.sh → 3. Plan → 4. BUILD → 5. Update sitemap.xml → 6. Update README.md → 7. ./publish.sh → 8. If error: ./rebase.sh → 9. Verify
+1. TASK → 2. Read README + ./history.sh → 3. PLAN → 4. BUILD → 5. Update sitemap.xml → 6. Update README.md → 7. ./publish.sh → 8. If error: ./rebase.sh → 9. VERIFY
 ```
 
 **Quick Reference:**
