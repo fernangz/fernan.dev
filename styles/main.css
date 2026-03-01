@@ -313,7 +313,7 @@ main > section {
 }
 
 main > section > article {
-	padding: var(--space-8);
+	padding: var(--space-8) var(--space-4) var(--space-8) var(--space-8);
 }
 
 main > section > article > *:not(:last-child) {
