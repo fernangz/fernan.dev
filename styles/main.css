@@ -207,6 +207,7 @@ nav button {
 	outline: none;
 	text-decoration: none;
 	cursor: pointer;
+	flex-grow: 0;
 }
 
 nav a:focus,
@@ -303,12 +304,15 @@ main > section {
 	height: 100%;
 	overflow-y: auto;
 	overflow-x: hidden;
-	margin-right: calc(-1 * var(--space-8));
-	padding-right: var(--space-8);
+	scrollbar-width: none;
+
+}
+main > section::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Opera */
 }
 
 main > section > article {
-	padding: var(--space-8) var(--space-4) var(--space-8) var(--space-8);
+	padding: var(--space-8);
 }
 
 main > section > article > *:not(:last-child) {
