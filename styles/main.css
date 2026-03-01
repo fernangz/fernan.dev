@@ -358,6 +358,7 @@ main > section > article p {
 	line-height: var(--lh-md);
 	color: var(--light);
 	margin-top: 0;
+	font-weight: 300;
 }
 
 
