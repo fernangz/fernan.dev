@@ -29,6 +29,5 @@ ssh_askpass.sh
 # Publish script (local deployment tool)
 publish.sh
 
-# Documentation (auto-generated, reference git for history)
-README.md
+# AI conversation memory (reference git for project history)
 QWEN.md

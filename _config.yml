@@ -1,0 +1,10 @@
+title: "fernan.dev"
+project: "fernan.dev"
+description: "Personal website"
+author: Fernán García de Zúñiga
+email: me@fernan.dev
+github_username:  fernangz
+
+domain: test.fernan.dev       # if you want to force HTTPS, specify the domain without the http at the start, e.g. example.com
+url: https://test.fernan.dev # the base hostname and protocol for your site, e.g. http://example.com
+baseurl: /fernan.dev/      # place folder name if the site is served in a subfolder
