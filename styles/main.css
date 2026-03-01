@@ -209,6 +209,12 @@ nav button {
 	cursor: pointer;
 }
 
+nav a.logo {
+	height: var(--font-md);
+	line-height: var(--font-md);
+	margin: auto 0;
+}
+
 nav a:focus,
 nav button:focus {
 	outline: 0.125rem solid var(--light);
