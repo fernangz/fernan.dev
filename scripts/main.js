@@ -306,7 +306,9 @@ ui.setActiveNav = function() {
 	
 	navLinks.forEach(link => {
 		const href = link.getAttribute('href');
-		if (href && currentPath.startsWith(href)) {
+		if(href === '/' && currentPath === '/') {
+			link.classList.add('active');
+		} else if (href !== '/' && currentPath.startsWith(href)) {
 			link.classList.add('active');
 		}
 	});
