@@ -1,9 +1,11 @@
 /* ============================================
    fernan.dev - Service Worker
    Caches static assets for offline support and faster loading
+   Cache version: 20260301
    ============================================ */
 
-const CACHE_NAME = 'fernan-dev-v1';
+const CACHE_VERSION = 'v20260301';
+const CACHE_NAME = 'fernan-dev-' + CACHE_VERSION;
 const STATIC_ASSETS = [
 	'/',
 	'/index.html',

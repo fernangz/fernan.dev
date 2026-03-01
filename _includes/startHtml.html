@@ -28,15 +28,23 @@
 <meta id="androidTheme" name="theme-color" content="hsl(0, 0%, 8%)">
 <meta id="appleTheme" name="apple-mobile-web-app-status-bar-style" content="hsl(0, 0%, 8%)">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="preload" href="/fonts/outfit.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-<link rel="preload" href="/fonts/emoji.ttf" as="font" type="font/ttf" crossorigin="anonymous">
-<link rel="stylesheet" href="/styles/main.css">
+
+<!-- Preload critical assets with cache busting -->
+<link rel="preload" href="/fonts/outfit.ttf?v=20260301" as="font" type="font/ttf" crossorigin="anonymous">
+<link rel="preload" href="/fonts/emoji.ttf?v=20260301" as="font" type="font/ttf" crossorigin="anonymous">
+<link rel="preload" href="/fonts/FiraCode.ttf?v=20260301" as="font" type="font/ttf" crossorigin="anonymous">
+
+<!-- Stylesheets -->
+<link rel="stylesheet" href="/styles/main.css?v=20260301">
+
+<!-- Preload main JS -->
+<link rel="preload" href="/scripts/main.js?v=20260301" as="script">
+
+<!-- SEO & Social Meta -->
 <meta name="robots" content="index, follow" />
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="en_US" />
 <meta property="og:site_name" content="fernan.dev" />
-
-<!-- Structured Data (Schema.org) -->
 <script type="application/ld+json">
 {
 	"@context": "https://schema.org",
