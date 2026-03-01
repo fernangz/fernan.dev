@@ -255,6 +255,14 @@ git commit -m "$1"
 git push origin main
 ```
 
+### Related Scripts
+
+| Script | Purpose | Usage |
+|--------|---------|-------|
+| **publish.sh** | Commit and push changes | `./publish.sh "Commit message"` |
+| **rebase.sh** | Pull with rebase then push | `./rebase.sh` |
+| **restore.sh** | Reset to origin/main (destructive) | `./restore.sh` |
+
 ---
 
 ## Git & Version Control
@@ -314,6 +322,130 @@ git blame path/to/file.css
 - ✅ **Project status:** `git status`
 
 **Do not rely on stored memory for project history—git tracks all changes accurately.**
+
+---
+
+## Jekyll Includes System
+
+This site uses **Jekyll includes** to maintain consistent HTML structure across all pages while avoiding code duplication.
+
+### Include Files Location
+
+All includes are stored in the `_includes/` directory:
+
+```
+_includes/
+├── startHtml.html      # HTML head with common metas
+├── startBody.html      # Body start with navigation
+└── endBodyHtml.html    # Closing tags and main script
+```
+
+### What Each Include Contains
+
+#### `startHtml.html`
+Contains the HTML document declaration and common `<head>` elements:
+- `<!DOCTYPE html>` declaration
+- `<html lang="en">` opening tag
+- `<head>` opening tag
+- Common meta tags (charset, viewport, theme colors)
+- Favicon links
+- Font preloads
+- Main stylesheet link (`/styles/main.css`)
+- `</head>` closing tag is in `startBody.html`
+
+**Do NOT include:** Page-specific metas (title, description, canonical, OG tags)
+
+#### `startBody.html`
+Contains the body start and common layout elements:
+- `</head>` closing tag
+- `<body>` opening tag
+- Skip link for accessibility
+- Main navigation (`<nav>`)
+- `<main id="main-content">` opening
+- `<section>` and `<article>` opening tags
+
+#### `endBodyHtml.html`
+Contains the closing structure:
+- `</article>` closing tag
+- `</section>` closing tag
+- `</main>` closing tag
+- Main JavaScript (`/scripts/main.js`)
+- `</body>` and `</html>` closing tags
+
+### How to Use Includes in Pages
+
+Every HTML page follows this structure:
+
+```liquid
+---
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- COMMON HTML START-->
+		{% include startHtml.html %}
+		
+		<!-- PAGE SPECIFIC METAS GO HERE -->
+		<title>fernan.dev • Page Title</title>
+		<meta name="description" content="Page description" />
+		<link rel="canonical" href="https://fernan.dev/page-url/" />
+		<meta name="robots" content="index, follow" />
+		
+		<!-- Open Graph / Social Media (optional) -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="Page Title" />
+		
+		<!-- PAGE SPECIFIC CSS GO HERE -->
+		<link rel="stylesheet" href="/styles/page-specific.css">
+		
+		<!-- COMMON BODY START-->
+		{% include startBody.html %}
+		
+		<!-- PAGE CONTENT -->
+		<a href="/tools/" class="back-link">← Back to Tools</a>
+		<h1>Page Title</h1>
+		<p>Page content goes here...</p>
+		
+		<!-- PAGE SCRIPTS GO HERE-->
+		<script src="/scripts/page-specific.js"></script>
+		
+		<!-- COMMON BODY HTML END-->
+		{% include endBodyHtml.html %}
+	</body>
+</html>
+```
+
+### Key Rules
+
+1. **Empty front matter required:** Every page must start with `---` `---` for Jekyll to process includes
+2. **Don't duplicate structure:** Never add `<html>`, `<head>`, `<body>`, `<nav>`, or `<main>` tags in page files
+3. **Page-specific content goes between comments:** 
+   - `<!-- PAGE SPECIFIC METAS GO HERE -->` for metas
+   - `<!-- PAGE CONTENT -->` for main content
+   - `<!-- PAGE SCRIPTS GO HERE-->` for scripts
+4. **Keep includes minimal:** Only common elements in includes, page-specific in page files
+
+### Benefits
+
+| Benefit | Description |
+|---------|-------------|
+| **DRY** | Common HTML defined once, used in 30+ pages |
+| **Maintainable** | Update navigation once, changes everywhere |
+| **Consistent** | All pages use identical structure |
+| **Accessible** | Skip link, ARIA labels, semantic HTML built-in |
+| **SEO-friendly** | Proper heading hierarchy, meta tags structure |
+
+### Troubleshooting
+
+**Issue:** Double `<!DOCTYPE>` or `<html>` tags in output
+- **Fix:** Remove any `<!DOCTYPE>`, `<html>`, `<head>`, `<body>` from page files
+
+**Issue:** Navigation not appearing
+- **Fix:** Ensure `{% include startBody.html %}` is present
+
+**Issue:** Page not rendering
+- **Fix:** Verify empty front matter `---` `---` exists at top of file
 
 ---
 
