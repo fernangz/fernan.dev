@@ -1,5 +1,4 @@
 ---
-layout: default
 ---
 
 <!DOCTYPE html>
@@ -28,17 +27,10 @@ layout: default
 	</head>
 	<body>
 
-		<!-- include relative menu.html -->
-		{% include_relative menu.html %}
 		<!-- include menu.html -->
-		{% include  /html/menu.html %}
+		{% include nav.html %}
 		<!-- include trick menu.html -->
-		{% capture navigation %}{% include /html/menu.html %}{% endcapture %} {{ navigation | markdownify }}
-		
-		<!-- include menu.html -->
-		{% include  navigation.html %}
-		<!-- include trick menu.html -->
-		{% capture navigation %}{% include /html/navigation.html %}{% endcapture %} {{ navigation | markdownify }}
+		{% capture nav %}{% include nav.html %}{% endcapture %} {{ nav | markdownify }}
 		
 		<!-- Main Content Area -->
 		<main id="main-content">
