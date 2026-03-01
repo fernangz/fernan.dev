@@ -196,6 +196,7 @@ nav {
     line-height: var(--lh-md);
     padding: 0 var(--space-8);
 	width: 100%;
+	justify-content: space-between;
 }
 
 nav > a.logo {
@@ -235,7 +236,7 @@ body > nav > a.logo {
 	width: 3rem;
 	height: 3rem;
 	fill: var(--white);
-	margin: 0 auto;
+	padding: .75rem 0;
 }
 body > nav > a.logo > svg {
 	fill: var(--white);
