@@ -9,7 +9,7 @@ Allow: /data/
 Disallow: /private/
 
 # Sitemap location
-Sitemap: https://test.fernan.dev/sitemap.xml
+Sitemap: https://fernan.dev/sitemap.xml
 
 # Crawl delay (optional, be nice to server)
 Crawl-delay: 1

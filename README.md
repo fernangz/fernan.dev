@@ -2,7 +2,7 @@
 
 FrontEnd development tools, articles, and resources. A collection of practical utilities and educational content for web developers.
 
-**Live Site:** https://test.fernan.dev/
+**Live Site:** https://fernan.dev/
 
 ---
 
@@ -242,7 +242,7 @@ open index.html
 ./publish.sh "Fixed mobile navigation spacing"
 
 # 4. Verify deployment
-# Visit https://test.fernan.dev/
+# Visit https://fernan.dev/
 ```
 
 ### Script Contents
@@ -359,7 +359,7 @@ git blame path/to/file.css
 2. Test in multiple browsers (Chrome, Firefox, Safari)
 3. Test on mobile devices
 4. Run `./publish.sh "Description of changes"`
-5. Verify deployment at https://test.fernan.dev/
+5. Verify deployment at https://fernan.dev/
 
 ---
 

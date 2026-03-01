@@ -3,7 +3,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <!-- Homepage -->
     <url>
-        <loc>https://test.fernan.dev/</loc>
+        <loc>https://fernan.dev/</loc>
         <lastmod>2025-02-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
@@ -11,7 +11,7 @@
 
     <!-- About Page -->
     <url>
-        <loc>https://test.fernan.dev/about/</loc>
+        <loc>https://fernan.dev/about/</loc>
         <lastmod>2025-02-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -19,7 +19,7 @@
 
     <!-- Tools Section -->
     <url>
-        <loc>https://test.fernan.dev/tools/</loc>
+        <loc>https://fernan.dev/tools/</loc>
         <lastmod>2025-02-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
@@ -27,61 +27,61 @@
 
     <!-- Individual Tools -->
     <url>
-        <loc>https://test.fernan.dev/tools/color/</loc>
+        <loc>https://fernan.dev/tools/color/</loc>
         <lastmod>2025-02-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://test.fernan.dev/tools/box-shadow/</loc>
+        <loc>https://fernan.dev/tools/box-shadow/</loc>
         <lastmod>2025-02-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://test.fernan.dev/tools/html-entities/</loc>
+        <loc>https://fernan.dev/tools/html-entities/</loc>
         <lastmod>2025-02-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://test.fernan.dev/tools/json-formatter/</loc>
+        <loc>https://fernan.dev/tools/json-formatter/</loc>
         <lastmod>2025-02-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://test.fernan.dev/tools/base64/</loc>
+        <loc>https://fernan.dev/tools/base64/</loc>
         <lastmod>2025-02-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://test.fernan.dev/tools/unit-converter/</loc>
+        <loc>https://fernan.dev/tools/unit-converter/</loc>
         <lastmod>2025-02-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://test.fernan.dev/tools/mime-types/</loc>
+        <loc>https://fernan.dev/tools/mime-types/</loc>
         <lastmod>2025-02-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://test.fernan.dev/tools/iso-language-codes/</loc>
+        <loc>https://fernan.dev/tools/iso-language-codes/</loc>
         <lastmod>2025-02-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://test.fernan.dev/tools/symbols-emojis/</loc>
+        <loc>https://fernan.dev/tools/symbols-emojis/</loc>
         <lastmod>2025-02-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://test.fernan.dev/tools/client-data-visualizer/</loc>
+        <loc>https://fernan.dev/tools/client-data-visualizer/</loc>
         <lastmod>2025-02-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
@@ -89,7 +89,7 @@
 
     <!-- Articles Section -->
     <url>
-        <loc>https://test.fernan.dev/articles/</loc>
+        <loc>https://fernan.dev/articles/</loc>
         <lastmod>2025-02-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
@@ -97,79 +97,79 @@
 
     <!-- Individual Articles -->
     <url>
-        <loc>https://test.fernan.dev/articles/the-dom/</loc>
+        <loc>https://fernan.dev/articles/the-dom/</loc>
         <lastmod>2025-02-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://test.fernan.dev/articles/cascade-of-styles/</loc>
+        <loc>https://fernan.dev/articles/cascade-of-styles/</loc>
         <lastmod>2025-02-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://test.fernan.dev/articles/ecmascript/</loc>
+        <loc>https://fernan.dev/articles/ecmascript/</loc>
         <lastmod>2025-02-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://test.fernan.dev/articles/javascript-events/</loc>
+        <loc>https://fernan.dev/articles/javascript-events/</loc>
         <lastmod>2025-02-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://test.fernan.dev/articles/number-8/</loc>
+        <loc>https://fernan.dev/articles/number-8/</loc>
         <lastmod>2025-02-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://test.fernan.dev/articles/flexbox-grid/</loc>
+        <loc>https://fernan.dev/articles/flexbox-grid/</loc>
         <lastmod>2025-02-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://test.fernan.dev/articles/responsive-design/</loc>
+        <loc>https://fernan.dev/articles/responsive-design/</loc>
         <lastmod>2025-02-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://test.fernan.dev/articles/css-custom-properties/</loc>
+        <loc>https://fernan.dev/articles/css-custom-properties/</loc>
         <lastmod>2025-02-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://test.fernan.dev/articles/web-accessibility/</loc>
+        <loc>https://fernan.dev/articles/web-accessibility/</loc>
         <lastmod>2025-02-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://test.fernan.dev/articles/web-security/</loc>
+        <loc>https://fernan.dev/articles/web-security/</loc>
         <lastmod>2025-02-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://test.fernan.dev/articles/browser-devtools/</loc>
+        <loc>https://fernan.dev/articles/browser-devtools/</loc>
         <lastmod>2025-02-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://test.fernan.dev/articles/performance-optimization/</loc>
+        <loc>https://fernan.dev/articles/performance-optimization/</loc>
         <lastmod>2025-02-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://test.fernan.dev/articles/seo-llmo/</loc>
+        <loc>https://fernan.dev/articles/seo-llmo/</loc>
         <lastmod>2025-02-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
@@ -177,7 +177,7 @@
 
     <!-- Resources Section -->
     <url>
-        <loc>https://test.fernan.dev/resources/</loc>
+        <loc>https://fernan.dev/resources/</loc>
         <lastmod>2025-02-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
@@ -185,7 +185,7 @@
 
     <!-- 404 Page -->
     <url>
-        <loc>https://test.fernan.dev/404.html</loc>
+        <loc>https://fernan.dev/404.html</loc>
         <lastmod>2025-02-28</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.1</priority>
