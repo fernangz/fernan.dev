@@ -35,10 +35,15 @@
 .tool-card .emoji {
 	font-family: 'emoji', sans-serif;
 	font-weight: 560;
-	color: var(--color);
+	color: var(--white);
 	font-size: 2rem;
 	line-height: 1;
 	margin-bottom: var(--space-2);
+}
+
+.tool-card:hover .emoji,
+.tool-card:focus .emoji{
+	color: var(--color);
 }
 
 .tool-card strong {
