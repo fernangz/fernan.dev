@@ -200,8 +200,6 @@ nav {
 
 nav > a.logo {
 	flex-shrink: 0;
-	width: 3rem;
-	height: 3rem;
 }
 
 nav > button.toggle {
@@ -209,8 +207,7 @@ nav > button.toggle {
 	margin-left: auto;
 }
 
-nav a,
-nav button {
+nav a {
 	display: inline-block;
 	height: var(--font-md);
 	line-height: var(--font-md);
@@ -234,15 +231,15 @@ nav a.active {
 	text-decoration-thickness: 0.125rem;
 }
 
-body > nav > a > svg {
-	width: 100%;
-	height: 100%;
-	fill: var(--white);
-	pointer-events: none;
+body > nav > a.logo {
+	width: 3rem;
+	height: 3rem;
 }
 
 body > nav > button {
 	background-color: transparent;
+	width: 1.5rem;
+	height: 1.5rem;
 }
 
 nav > button > svg {
