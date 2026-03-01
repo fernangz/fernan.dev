@@ -2,17 +2,9 @@
 # Cache Header Configuration for fernan.dev
 # ============================================
 # Last Updated: 2026-03-01
-# Cache Version: v20260301
 # ============================================
 
 ## Current Status
-
-### ✅ Implemented: Cache Busting Query Strings
-All static assets now include version query strings for cache invalidation:
-- Fonts: `/fonts/outfit.ttf?v=20260301`
-- Styles: `/styles/main.css?v=20260301`
-- Scripts: `/scripts/main.js?v=20260301`
-- Service Worker: `/scripts/sw.js?v=20260301`
 
 ### ⚠️ Recommended: Cloudflare Cache Rules
 GitHub Pages uses Cloudflare CDN with default 10-minute cache TTL.
