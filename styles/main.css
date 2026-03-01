@@ -187,6 +187,7 @@ body {
 nav {
 	display: flex;
 	flex-direction: row;
+	align-items: center;
     background-color: var(--black);
     z-index: 100;
     height: var(--space-16);
@@ -195,22 +196,29 @@ nav {
     line-height: var(--lh-md);
     padding: 0 var(--space-8);
 	width: 100%;
-	justify-content: space-between;
+}
+
+nav > a.logo {
+	flex-shrink: 0;
+	width: 3rem;
+	height: 3rem;
+}
+
+nav > button.toggle {
+	flex-shrink: 0;
+	margin-left: auto;
 }
 
 nav a,
 nav button {
-	width: fit-content;
 	display: inline-block;
 	height: var(--font-md);
 	line-height: var(--font-md);
-	margin: auto 0;
 	padding: 0;
 	border: 0;
 	outline: none;
 	text-decoration: none;
 	cursor: pointer;
-	flex-grow: 0;
 }
 
 nav a:focus,
@@ -269,12 +277,16 @@ nav.menu > button > svg {
 }
 
 nav.menu > ul {
-	display: table-cell;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	gap: var(--space-4);
 	position: fixed;
 	inset-inline: 0;
 	height: calc(100dvh - var(--space-16));
 	top: var(--space-16);
-	padding: var(--space-3) var(--space-8);
+	padding: var(--space-6) var(--space-8);
+	align-items: flex-end;
 }
 
 nav.menu > ul::before {
