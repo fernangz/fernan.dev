@@ -193,7 +193,9 @@ nav {
     font-size: var(--font-md);
     line-height: var(--lh-md);
     padding: 0 var(--space-8);
-	width: 100%;
+	min-width: 100dvw;
+	width: 100dvw;
+	max-width: 100%;
 }
 
 nav a,
