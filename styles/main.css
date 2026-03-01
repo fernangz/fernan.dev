@@ -452,6 +452,7 @@ main > section > article pre code {
 	position: absolute;
 	inset-inline: 0;
 	height: 100%;
+	background-color: var(--dark);
 }
 
 .scroll.grabbing > .track {
