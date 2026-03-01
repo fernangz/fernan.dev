@@ -358,6 +358,20 @@ main > section > article p {
 	color: var(--light);
 }
 
+
+main > section > article > p:first-child {
+	margin-top: var(--space-10);
+}
+
+main > section > article strong,
+main > section > article p h1{
+	color: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	margin: 0;
+	font-weight: 600;
+}
+
 main > section > article ul {
 	list-style: none;
 }
