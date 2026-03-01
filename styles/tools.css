@@ -274,15 +274,16 @@ textarea {
 
 .tools-list li a > *,
 .articles-list li a > * {
-	display: inline;
+	display: contents;
 	vertical-align: baseline;
 }
 
 .tools-list .emoji,
 .articles-list .emoji {
 	font-family: 'emoji', sans-serif;
-	font-size: 1.5rem;
-	line-height: 2rem;
+	font-weight: 640;
+	font-size: var(--font-md);
+	line-height: var(--lh-md);
 	display: inline-block;
 	vertical-align: middle;
 	margin-right: var(--space-2);

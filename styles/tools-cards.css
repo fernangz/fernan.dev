@@ -13,7 +13,6 @@
 	display: flex;
 	flex-direction: column;
 	padding: var(--space-4);
-	background-color: var(--dark);
 	border: var(--border-sm) solid var(--gray);
 	border-radius: var(--radius-md);
 	text-decoration: none;
@@ -54,17 +53,4 @@
 	color: var(--gray);
 	font-size: var(--font-sm);
 	line-height: var(--lh-sm);
-}
-
-/* Hide old list on desktop, show on mobile */
-@media screen and (min-width: 48rem) {
-	.tools-list {
-		display: none;
-	}
-}
-
-@media screen and (max-width: 47.9375rem) {
-	.tools-grid {
-		display: none;
-	}
 }
