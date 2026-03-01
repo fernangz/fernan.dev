@@ -282,7 +282,7 @@ window.addEventListener('load', () => {
 	ui.files();
 	ui.menu();
 	ui.scroll();
-	ui.color();
+	// ui.color(); Comment to be able to inspect and modify temporarly
 	
 	// Set active navigation state
 	ui.setActiveNav();
