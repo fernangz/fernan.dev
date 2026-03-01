@@ -26,11 +26,11 @@ open https://fernan.dev/
 - **10 Tools** - Color tools, code formatters, reference guides
 - **13 Articles** - FrontEnd fundamentals to advanced topics
 - **20 Resources** - Curated free and open-source tools
-- **Mobile-first** - Responsive design
-- **Accessible** - WCAG 2.2 AA compliant (100% Lighthouse score)
-- **Fast** - ~50KB total bundle size, offline support via Service Worker
-- **Secure** - 5 security headers (CSP, X-Frame-Options, etc.)
-- **SEO Optimized** - Schema.org structured data, Open Graph tags
+- **Mobile-first** - Responsive design with fluid typography
+- **Accessible** - WCAG 2.2 AA compliant, ARIA landmarks, focus traps, keyboard navigation
+- **Fast** - ~50KB bundle, Service Worker caching, font-display: optional
+- **Secure** - CSP, X-Content-Type-Options, Referrer-Policy, Permissions-Policy
+- **SEO Optimized** - Schema.org JSON-LD on all pages (WebSite, Article, WebApplication, BreadcrumbList, Person)
 
 ---
 
@@ -50,42 +50,6 @@ fernan.dev/
 ├── favicon/                   # PWA icons and manifest
 └── publish.sh                 # Deployment script
 ```
-
----
-
-## Recent Improvements (2026-03-01)
-
-### ♿ Accessibility (14 fixes)
-- Skip link with visible focus state
-- ARIA labels on all form inputs (39 total)
-- aria-live regions for dynamic content (10 total)
-- Mobile menu with focus trap and keyboard navigation
-- WCAG AA compliant color contrast (4.5:1 minimum)
-- Reduced motion support (disables custom scrollbar)
-
-### 🔒 Security (5 headers)
-- Content-Security-Policy (XSS prevention)
-- X-Frame-Options (clickjacking prevention)
-- X-Content-Type-Options (MIME sniffing prevention)
-- Referrer-Policy (privacy protection)
-- Permissions-Policy (feature restrictions)
-
-### ⚡ Performance (12 optimizations)
-- Service Worker with stale-while-revalidate caching
-- Font loading: `font-display: optional` (no render blocking)
-- SVG caching in localStorage
-- Reduced motion optimizations
-
-### 🔍 SEO (Latest: 2026-03-01)
-- Schema.org JSON-LD structured data on ALL pages
-- WebApplication schema on 10 tool pages
-- Article schema on 13 article pages
-- BreadcrumbList schema site-wide
-- Open Graph tags for social sharing
-- CollectionPage schema on resources
-- Person schema (author E-E-A-T)
-- Semantic HTML with ARIA landmarks
-- Fixed sitemap (removed 404 entries)
 
 ---
 
