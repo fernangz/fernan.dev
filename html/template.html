@@ -24,8 +24,12 @@
 	</head>
 	<body>
 
-		<!-- Import menu.html -->
-		{% include /html/menu.html %}
+		<!-- include relative menu.html -->
+		{% include_relative menu.html %}
+		<!-- include menu.html -->
+		{% include  /html/menu.html %}
+		<!-- include trick menu.html -->
+		{% capture navigation %}{% include /html/menu.html %}{% endcapture %} {{ navigation | markdownify }}
 		
 		<!-- Main Content Area -->
 		<main id="main-content">
