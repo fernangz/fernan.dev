@@ -193,9 +193,8 @@ nav {
     font-size: var(--font-md);
     line-height: var(--lh-md);
     padding: 0 var(--space-8);
-	min-width: 100dvw;
 	width: 100dvw;
-	max-width: 100%;
+	justify-content: space-between;
 }
 
 nav a,
@@ -230,14 +229,6 @@ body > nav > a > svg {
 	height: 100%;
 	fill: var(--white);
 	pointer-events: none;
-}
-
-nav > hr {
-	flex-grow: 1;
-	display: block;
-	outline: none;
-	border: 0;
-	background-color: transparent;
 }
 
 body > nav > button {
