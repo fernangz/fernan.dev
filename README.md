@@ -1,58 +1,34 @@
 # fernan.dev
 
-FrontEnd development tools, articles, and resources. A collection of practical utilities and educational content for web developers.
+FrontEnd development tools, articles, and resources.
 
 **Live Site:** https://fernan.dev/
 
 ---
 
-## Project Status
+## Quick Start
 
-**Status:** ✅ Production Ready
+```bash
+# Make changes
+nano styles/main.css
 
-The website is fully functional with all core features implemented:
-- 10 interactive tools (color tools, code formatters, reference guides)
-- 13 articles covering FrontEnd fundamentals to advanced topics
-- 20 curated external resources
-- Mobile-first responsive design
-- WCAG AA accessibility compliance
-- Dark theme with high contrast
+# Deploy
+./publish.sh "Your commit message"
+
+# Verify
+open https://fernan.dev/
+```
 
 ---
 
-## Architecture
+## Features
 
-### Technology Stack
-- **HTML5** - Semantic markup
-- **CSS3** - Custom properties, flexbox, grid, no frameworks
-- **Vanilla JavaScript** - No dependencies, modular architecture
-- **Git + GitHub** - Version control and deployment
-
-### Design Principles
-1. **Mobile-first** - All styles start with mobile, enhance for desktop
-2. **Accessibility** - WCAG AA contrast ratios, keyboard navigation, ARIA labels
-3. **Performance** - No external dependencies, minimal CSS/JS
-4. **Maintainability** - Consistent naming, modular structure, documented code
-
-### Color System
-```css
---black: hsl(0, 0%, 8%)    /* Background */
---dark: hsl(0, 0%, 24%)    /* Cards, sections */
---gray: hsl(0, 0%, 40%)    /* Borders, secondary */
---light: hsl(0, 0%, 80%)   /* Text, buttons */
---white: hsl(0, 0%, 96%)   /* Highlights */
-```
-
-### Typography Scale
-```css
---font-xs: clamp(1rem, 0.95rem + 0.25dvw, 1.125rem)
---font-sm: clamp(1.125rem, 1.05rem + 0.35dvw, 1.25rem)
---font-md: clamp(1.25rem, 1.15rem + 0.5dvw, 1.5rem)    /* Base */
---font-lg: clamp(1.5rem, 1.35rem + 0.75dvw, 1.75rem)
---font-xl: clamp(1.75rem, 1.55rem + 1dvw, 2rem)
---font-2xl: clamp(2rem, 1.75rem + 1.25dvw, 2.25rem)
---font-3xl: clamp(2.25rem, 2rem + 1.5dvw, 2.75rem)
-```
+- **10 Tools** - Color tools, code formatters, reference guides
+- **13 Articles** - FrontEnd fundamentals to advanced topics
+- **20 Resources** - Curated free and open-source tools
+- **Mobile-first** - Responsive design
+- **Accessible** - WCAG AA compliant
+- **Fast** - ~50KB total bundle size
 
 ---
 
@@ -60,445 +36,111 @@ The website is fully functional with all core features implemented:
 
 ```
 fernan.dev/
-├── index.html                 # Homepage (Brief)
-├── about/
-│   └── index.html            # About page
-├── tools/
-│   ├── index.html            # Tools index
-│   ├── color/
-│   │   └── index.html        # Color tools (merged)
-│   ├── box-shadow/
-│   │   └── index.html        # Box shadow generator
-│   ├── html-entities/
-│   │   └── index.html        # HTML entities converter
-│   ├── json-formatter/
-│   │   └── index.html        # JSON formatter
-│   ├── base64/
-│   │   └── index.html        # Base64 encoder/decoder
-│   ├── unit-converter/
-│   │   └── index.html        # CSS unit converter
-│   ├── mime-types/
-│   │   └── index.html        # MIME types reference
-│   ├── iso-language-codes/
-│   │   └── index.html        # ISO language codes
-│   ├── symbols-emojis/
-│   │   └── index.html        # Symbols & emojis
-│   └── client-data-visualizer/
-│       └── index.html        # Client data viewer
-├── articles/
-│   ├── index.html            # Articles index
-│   ├── the-dom/
-│   ├── cascade-of-styles/
-│   ├── ecmascript/
-│   ├── javascript-events/
-│   ├── number-8/
-│   ├── flexbox-grid/
-│   ├── responsive-design/
-│   ├── css-custom-properties/
-│   ├── web-accessibility/
-│   ├── web-security/
-│   ├── browser-devtools/
-│   ├── performance-optimization/
-│   └── seo-llmo/
-├── resources/
-│   └── index.html            # Resources index
-├── styles/
-│   ├── main.css              # Core styles (nav, layout, typography)
-│   ├── tools.css             # Shared tool styles (buttons, cards)
-│   ├── tools-cards.css       # Tool card grid layout
-│   ├── color.css             # Color tools specific styles
-│   ├── 8bit-icon.css         # 8-bit icon tool styles
-│   ├── base64.css            # Base64 tool styles
-│   ├── client-data.css       # Client data tool styles
-│   ├── shadow-generator.css  # Box shadow tool styles
-│   ├── json-formatter.css    # JSON formatter styles
-│   ├── unit-converter.css    # Unit converter styles
-│   ├── html-entities.css     # HTML entities styles
-│   ├── symbols-emojis.css    # Symbols tool styles
-│   ├── symbols.css           # HTML entities tool styles
-│   ├── contrast-checker.css  # Contrast checker styles
-│   ├── speech.css            # Speech to text styles
-│   ├── data-table.css        # Data table component
-│   └── 404.css               # 404 page styles
-├── scripts/
-│   ├── main.js               # Core JS (nav, scroll, SVG loader)
-│   ├── color.js              # Color tools logic
-│   ├── 8bit-icon.js          # 8-bit icon tool logic
-│   ├── base64.js             # Base64 tool logic
-│   ├── client-data.js        # Client data tool logic
-│   ├── box-shadow.js         # Box shadow tool logic
-│   ├── json-formatter.js     # JSON formatter logic
-│   ├── unit-converter.js     # Unit converter logic
-│   └── [tool-name].js        # Individual tool scripts
-├── data/
-│   ├── emoji.json            # Emoji data
-│   └── symbols.json          # Symbol data
-├── svgs/
-│   ├── logo.svg              # Site logo
-│   └── plus.svg              # Menu icon
-├── fonts/
-│   ├── outfit.ttf            # Main font
-│   ├── emoji.ttf             # Emoji font
-│   └── FiraCode.ttf          # Code font
-├── favicon/
-│   ├── favicon.ico
-│   ├── favicon.svg
-│   ├── favicon-96x96.png
-│   ├── apple-touch-icon.png
-│   └── site.webmanifest
-├── 404.html                  # Custom 404 page
-├── robots.txt                # Search engine directives
-├── sitemap.xml               # XML sitemap
-├── publish.sh                # Deployment script ⚠️
-├── README.md                 # This file
-└── CNAME                     # GitHub Pages domain
+├── index.html                 # Homepage
+├── tools/                     # 10 tool pages
+├── articles/                  # 13 article pages
+├── resources/                 # Resources index
+├── _includes/                 # Jekyll includes (startHtml, startBody, endBodyHtml)
+├── styles/                    # 16 CSS files
+├── scripts/                   # 8 JS files
+├── data/                      # JSON data files
+└── publish.sh                 # Deployment script
 ```
 
 ---
 
-## Main Features
+## Deployment Scripts
 
-### Tools (10)
+| Script | Purpose | Usage | Warning |
+|--------|---------|-------|---------|
+| **publish.sh** | Commit and push | `./publish.sh "Message"` | Stages all changes |
+| **rebase.sh** | Pull + rebase + push | `./rebase.sh` | May have conflicts |
+| **restore.sh** | Reset to origin/main | `./restore.sh` | ⚠️ Discards local changes |
 
-| Tool | Description |
-|------|-------------|
-| **Color Tools** | Color picker, format converter (HEX/RGB/HSL/HSV), palette generator, WCAG contrast checker |
-| **Box Shadow** | CSS box-shadow generator with live preview |
-| **HTML Entities** | Convert special characters to HTML entity codes |
-| **JSON Formatter** | Format, validate, and minify JSON data |
-| **Base64** | Encode and decode Base64 strings |
-| **Unit Converter** | Convert between px, rem, em, vh, vw, % |
-| **MIME Types** | Look up MIME type definitions |
-| **ISO Language Codes** | Reference ISO 639-1 language codes |
-| **Symbols & Emojis** | Browse and copy symbols and emojis |
-| **Client Data** | View cookies, localStorage, sessionStorage |
+### publish.sh
+- Stages all changed files
+- Commits with provided message
+- Pushes to GitHub main branch
+- Uses local SSH key (`github.key`)
 
-### Articles (13)
+### rebase.sh
+- Pulls latest from remote with rebase
+- Pushes rebased changes
+- Use when remote has new commits
 
-| Category | Articles |
-|----------|----------|
-| **Fundamentals** | The DOM, CSS Cascade, ECMAScript, Event Handling |
-| **Layout** | Flexbox & Grid, Responsive Design, 8-Point Grid |
-| **Quality** | Accessibility, Security, Performance |
-| **Optimization** | DevTools, CSS Variables, SEO & LLMO |
-
-### Resources (20)
-
-Curated free and open-source tools:
-- Code editors (VSCodium)
-- Design tools (Penpot, Inkscape, Krita, Blender)
-- Media tools (Kdenlive, Audacity, OBS)
-- Fonts (Outfit, Fira Code, Rasa, Noto Emoji)
-- Icons (Material Symbols, Heroicons, Feather)
-- Documentation (MDN, web.dev, Can I Use)
+### restore.sh
+- ⚠️ **Destructive:** Discards all local changes
+- Resets to origin/main state
+- Auto-stashes changes (recoverable with `git stash pop`)
+- Requires typing `YES` to confirm
 
 ---
 
-## Deployment
+## Jekyll Includes
 
-### ⚠️ MANDATORY: Using publish.sh
-
-**After making ANY changes to the codebase, you MUST run the publish script:**
-
-```bash
-./publish.sh "Your commit message describing the changes"
-```
-
-**If you modified HTML files, also update the sitemap:**
-
-```bash
-# 1. Update sitemap.xml with current date
-# Edit sitemap.xml and update <lastmod> dates for changed pages
-
-# 2. Commit sitemap with your changes
-./publish.sh "Updated pages, refreshed sitemap"
-```
-
-**Why this is mandatory:**
-1. The script stages all changed files automatically
-2. Commits with the provided message using the configured git user
-3. Pushes to the `main` branch on GitHub
-4. Triggers GitHub Pages deployment
-5. Ensures consistent commit history
-
-**Do NOT use these commands directly:**
-- ❌ `git add .`
-- ❌ `git commit -m "..."`
-- ❌ `git push`
-
-**Always use:**
-- ✅ `./publish.sh "Your message"`
-
-### Making Changes
-
-```bash
-# 1. Edit your files
-nano styles/main.css
-
-# 2. Test locally (open in browser)
-open index.html
-
-# 3. Deploy changes
-./publish.sh "Fixed mobile navigation spacing"
-
-# 4. Verify deployment
-# Visit https://fernan.dev/
-```
-
-### Script Contents
-
-The `publish.sh` script:
-```bash
-#!/bin/bash
-git add -A
-git commit -m "$1"
-git push origin main
-```
-
-### Related Scripts
-
-| Script | Purpose | Usage |
-|--------|---------|-------|
-| **publish.sh** | Commit and push changes | `./publish.sh "Commit message"` |
-| **rebase.sh** | Pull with rebase then push | `./rebase.sh` |
-| **restore.sh** | Reset to origin/main (destructive) | `./restore.sh` |
-
----
-
-## Git & Version Control
-
-### Project History
-
-**For commit history and project evolution, always use git:**
-
-```bash
-# View commit history
-git log --oneline
-
-# View detailed commit history
-git log
-
-# View last N commits
-git log -n 10
-
-# View changes in a specific commit
-git show <commit-hash>
-
-# View file change history
-git log --follow path/to/file.css
-
-# View who changed what and when
-git log --pretty=format:"%h - %an, %ar : %s"
-
-# View changes between commits
-git diff <commit-1> <commit-2>
-```
-
-### Useful Git Commands
-
-```bash
-# Check current status
-git status
-
-# View recent changes
-git diff HEAD
-
-# View commit history for specific file
-git log --oneline styles/main.css
-
-# Find when something changed
-git log -S "search term" --oneline
-
-# View blame (who last modified each line)
-git blame path/to/file.css
-```
-
-### Git is Source of Truth
-
-- ✅ **Commit history:** `git log`
-- ✅ **File changes:** `git diff`
-- ✅ **Author information:** `git log --format="%an"`
-- ✅ **Change dates:** `git log --format="%ad"`
-- ✅ **Project status:** `git status`
-
-**Do not rely on stored memory for project history—git tracks all changes accurately.**
-
----
-
-## Jekyll Includes System
-
-This site uses **Jekyll includes** to maintain consistent HTML structure across all pages while avoiding code duplication.
-
-### Include Files Location
-
-All includes are stored in the `_includes/` directory:
-
-```
-_includes/
-├── startHtml.html      # HTML head with common metas
-├── startBody.html      # Body start with navigation
-└── endBodyHtml.html    # Closing tags and main script
-```
-
-### What Each Include Contains
-
-#### `startHtml.html`
-Contains the HTML document declaration and common `<head>` elements:
-- `<!DOCTYPE html>` declaration
-- `<html lang="en">` opening tag
-- `<head>` opening tag
-- Common meta tags (charset, viewport, theme colors)
-- Favicon links
-- Font preloads
-- Main stylesheet link (`/styles/main.css`)
-- `</head>` closing tag is in `startBody.html`
-
-**Do NOT include:** Page-specific metas (title, description, canonical, OG tags)
-
-#### `startBody.html`
-Contains the body start and common layout elements:
-- `</head>` closing tag
-- `<body>` opening tag
-- Skip link for accessibility
-- Main navigation (`<nav>`)
-- `<main id="main-content">` opening
-- `<section>` and `<article>` opening tags
-
-#### `endBodyHtml.html`
-Contains the closing structure:
-- `</article>` closing tag
-- `</section>` closing tag
-- `</main>` closing tag
-- Main JavaScript (`/scripts/main.js`)
-- `</body>` and `</html>` closing tags
-
-### How to Use Includes in Pages
-
-Every HTML page follows this structure:
+All pages use includes from `_includes/` for consistent structure:
 
 ```liquid
 ---
 ---
-
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<!-- COMMON HTML START-->
-		{% include startHtml.html %}
-		
-		<!-- PAGE SPECIFIC METAS GO HERE -->
-		<title>fernan.dev • Page Title</title>
-		<meta name="description" content="Page description" />
-		<link rel="canonical" href="https://fernan.dev/page-url/" />
-		<meta name="robots" content="index, follow" />
-		
-		<!-- Open Graph / Social Media (optional) -->
-		<meta property="og:type" content="website" />
-		<meta property="og:title" content="Page Title" />
-		
-		<!-- PAGE SPECIFIC CSS GO HERE -->
-		<link rel="stylesheet" href="/styles/page-specific.css">
-		
-		<!-- COMMON BODY START-->
-		{% include startBody.html %}
-		
-		<!-- PAGE CONTENT -->
-		<a href="/tools/" class="back-link">← Back to Tools</a>
-		<h1>Page Title</h1>
-		<p>Page content goes here...</p>
-		
-		<!-- PAGE SCRIPTS GO HERE-->
-		<script src="/scripts/page-specific.js"></script>
-		
-		<!-- COMMON BODY HTML END-->
-		{% include endBodyHtml.html %}
-	</body>
-</html>
+{% include startHtml.html %}
+<!-- PAGE METAS -->
+<title>...</title>
+<meta name="description" content="...">
+<link rel="canonical" href="...">
+<link rel="stylesheet" href="/styles/page.css">
+{% include startBody.html %}
+<!-- PAGE CONTENT -->
+<h1>Title</h1>
+<p>Content...</p>
+<script src="/scripts/page.js"></script>
+{% include endBodyHtml.html %}
 ```
 
-### Key Rules
+**Rules:**
+1. Start with `---` `---` (empty front matter)
+2. Don't add `<html>`, `<head>`, `<body>` in pages
+3. Page-specific content between comment markers
 
-1. **Empty front matter required:** Every page must start with `---` `---` for Jekyll to process includes
-2. **Don't duplicate structure:** Never add `<html>`, `<head>`, `<body>`, `<nav>`, or `<main>` tags in page files
-3. **Page-specific content goes between comments:** 
-   - `<!-- PAGE SPECIFIC METAS GO HERE -->` for metas
-   - `<!-- PAGE CONTENT -->` for main content
-   - `<!-- PAGE SCRIPTS GO HERE-->` for scripts
-4. **Keep includes minimal:** Only common elements in includes, page-specific in page files
+---
 
-### Benefits
+## Git Commands
 
-| Benefit | Description |
-|---------|-------------|
-| **DRY** | Common HTML defined once, used in 30+ pages |
-| **Maintainable** | Update navigation once, changes everywhere |
-| **Consistent** | All pages use identical structure |
-| **Accessible** | Skip link, ARIA labels, semantic HTML built-in |
-| **SEO-friendly** | Proper heading hierarchy, meta tags structure |
+```bash
+# View history
+git log --oneline
 
-### Troubleshooting
+# Check status
+git status
 
-**Issue:** Double `<!DOCTYPE>` or `<html>` tags in output
-- **Fix:** Remove any `<!DOCTYPE>`, `<html>`, `<head>`, `<body>` from page files
+# View file changes
+git diff HEAD
 
-**Issue:** Navigation not appearing
-- **Fix:** Ensure `{% include startBody.html %}` is present
+# Recover stashed changes
+git stash pop
+```
 
-**Issue:** Page not rendering
-- **Fix:** Verify empty front matter `---` `---` exists at top of file
+**Note:** Git is the source of truth for project history.
 
 ---
 
 ## Browser Support
 
-| Browser | Version | Support |
-|---------|---------|---------|
-| Chrome | 90+ | ✅ Full |
-| Firefox | 88+ | ✅ Full |
-| Safari | 14+ | ✅ Full |
-| Edge | 90+ | ✅ Full |
-| Mobile Safari | 14+ | ✅ Full |
-| Chrome Mobile | 90+ | ✅ Full |
-
----
-
-## Performance
-
-| Metric | Target | Actual |
-|--------|--------|--------|
-| Lighthouse Score | 90+ | 95+ |
-| First Contentful Paint | < 1s | ~0.5s |
-| Time to Interactive | < 2s | ~1s |
-| Total Bundle Size | < 100KB | ~50KB |
-
----
-
-## Accessibility
-
-- ✅ WCAG 2.1 AA compliant
-- ✅ Keyboard navigation support
-- ✅ Screen reader compatible
-- ✅ Focus indicators on all interactive elements
-- ✅ ARIA labels on buttons and inputs
-- ✅ Skip link for keyboard users
-- ✅ Reduced motion support (`prefers-reduced-motion`)
+Chrome 90+, Firefox 88+, Safari 14+, Edge 90+
 
 ---
 
 ## Contributing
 
-1. Make your changes
-2. Test in multiple browsers (Chrome, Firefox, Safari)
-3. Test on mobile devices
-4. Run `./publish.sh "Description of changes"`
-5. Verify deployment at https://fernan.dev/
+1. Test in Chrome, Firefox, Safari
+2. Test on mobile
+3. Run `./publish.sh "Description"`
+4. Verify at https://fernan.dev/
 
 ---
 
 ## License
 
-All content and code © Fernán García de Zúñiga. All rights reserved.
-
----
+© Fernán García de Zúñiga. All rights reserved.
 
 **Last Updated:** 2025-02-28
