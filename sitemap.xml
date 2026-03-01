@@ -9,14 +9,6 @@
         <priority>1.0</priority>
     </url>
 
-    <!-- About Page -->
-    <url>
-        <loc>https://fernan.dev/about/</loc>
-        <lastmod>2025-02-28</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
     <!-- Tools Section -->
     <url>
         <loc>https://fernan.dev/tools/</loc>

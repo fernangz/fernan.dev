@@ -104,16 +104,93 @@ const ui = {
 	},
 
 	/**
-	 * Setup mobile menu toggle
+	 * Setup mobile menu toggle with aria-expanded and focus trap
 	 */
 	menu: function() {
 		const toggle = document.querySelector('.toggle');
 		const nav = document.querySelector('nav');
+		const navMenu = document.querySelector('#nav-menu');
 		if (!toggle || !nav) return;
 
+		let focusTrapElements = null;
+
+		const getFocusableElements = () => {
+			return navMenu.querySelectorAll(
+				'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+			);
+		};
+
+		const trapFocus = (e) => {
+			if (!nav.classList.contains('menu')) return;
+			
+			const focusableElements = getFocusableElements();
+			const firstElement = focusableElements[0];
+			const lastElement = focusableElements[focusableElements.length - 1];
+
+			if (e.key === 'Tab') {
+				if (e.shiftKey) {
+					if (document.activeElement === firstElement) {
+						e.preventDefault();
+						lastElement.focus();
+					}
+				} else {
+					if (document.activeElement === lastElement) {
+						e.preventDefault();
+						firstElement.focus();
+					}
+				}
+			}
+		};
+
+		const openMenu = () => {
+			nav.classList.add('menu');
+			toggle.setAttribute('aria-expanded', 'true');
+			toggle.setAttribute('aria-label', 'Close menu');
+			
+			// Focus first menu item
+			const focusableElements = getFocusableElements();
+			if (focusableElements.length > 0) {
+				focusableElements[0].focus();
+			}
+
+			// Add focus trap
+			document.addEventListener('keydown', trapFocus);
+		};
+
+		const closeMenu = () => {
+			nav.classList.remove('menu');
+			toggle.setAttribute('aria-expanded', 'false');
+			toggle.setAttribute('aria-label', 'Menu');
+			
+			// Remove focus trap
+			document.removeEventListener('keydown', trapFocus);
+			
+			// Return focus to toggle button
+			toggle.focus();
+		};
+
 		toggle.addEventListener('click', () => {
-			nav.classList.toggle('menu');
+			const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+			if (isExpanded) {
+				closeMenu();
+			} else {
+				openMenu();
+			}
 		}, { passive: true });
+
+		// Close menu on Escape key
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape' && nav.classList.contains('menu')) {
+				closeMenu();
+			}
+		});
+
+		// Close menu when clicking outside
+		document.addEventListener('click', (e) => {
+			if (nav.classList.contains('menu') && !nav.contains(e.target)) {
+				closeMenu();
+			}
+		});
 	},
 
 	/**

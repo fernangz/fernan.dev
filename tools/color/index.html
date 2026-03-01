@@ -22,10 +22,10 @@
 		<h2>Color Picker</h2>
 		<div class="color-picker-wrapper">
 			<div class="color-trigger-container">
-				<button type="button" class="color-trigger" id="color-trigger" aria-label="Pick color">
-					<span class="color-trigger-fill" id="color-trigger-fill"></span>
+				<button type="button" class="color-trigger" id="color-trigger" aria-label="Pick a color from color wheel">
+					<span class="color-trigger-fill" id="color-trigger-fill" aria-hidden="true"></span>
 				</button>
-				<input type="color" id="color-input" value="#3498db" class="color-input-hidden">
+				<input type="color" id="color-input" value="#3498db" class="color-input-hidden" aria-label="Color picker input">
 			</div>
 		</div>
 	</div>
@@ -37,29 +37,33 @@
 			<div class="format-input">
 				<label for="hex-input">HEX</label>
 				<div class="input-with-copy">
-					<input type="text" id="hex-input" value="#3498db" placeholder="#000000">
-					<button class="copy-btn" data-target="hex-input" aria-label="Copy HEX">📋</button>
+					<input type="text" id="hex-input" value="#3498db" placeholder="#000000" aria-describedby="hex-description">
+					<span id="hex-description" class="visually-hidden">Hexadecimal color code format</span>
+					<button class="copy-btn" data-target="hex-input" aria-label="Copy HEX color code to clipboard">📋</button>
 				</div>
 			</div>
 			<div class="format-input">
 				<label for="rgb-input">RGB</label>
 				<div class="input-with-copy">
-					<input type="text" id="rgb-input" value="rgb(52, 152, 219)" placeholder="rgb(0, 0, 0)">
-					<button class="copy-btn" data-target="rgb-input" aria-label="Copy RGB">📋</button>
+					<input type="text" id="rgb-input" value="rgb(52, 152, 219)" placeholder="rgb(0, 0, 0)" aria-describedby="rgb-description">
+					<span id="rgb-description" class="visually-hidden">Red Green Blue color format</span>
+					<button class="copy-btn" data-target="rgb-input" aria-label="Copy RGB color code to clipboard">📋</button>
 				</div>
 			</div>
 			<div class="format-input">
 				<label for="hsl-input">HSL</label>
 				<div class="input-with-copy">
-					<input type="text" id="hsl-input" value="hsl(204, 70%, 53%)" placeholder="hsl(0, 0%, 0%)">
-					<button class="copy-btn" data-target="hsl-input" aria-label="Copy HSL">📋</button>
+					<input type="text" id="hsl-input" value="hsl(204, 70%, 53%)" placeholder="hsl(0, 0%, 0%)" aria-describedby="hsl-description">
+					<span id="hsl-description" class="visually-hidden">Hue Saturation Lightness color format</span>
+					<button class="copy-btn" data-target="hsl-input" aria-label="Copy HSL color code to clipboard">📋</button>
 				</div>
 			</div>
 			<div class="format-input">
 				<label for="hsv-input">HSV</label>
 				<div class="input-with-copy">
-					<input type="text" id="hsv-input" value="hsv(204, 76%, 86%)" placeholder="hsv(0, 0%, 0%)">
-					<button class="copy-btn" data-target="hsv-input" aria-label="Copy HSV">📋</button>
+					<input type="text" id="hsv-input" value="hsv(204, 76%, 86%)" placeholder="hsv(0, 0%, 0%)" aria-describedby="hsv-description">
+					<span id="hsv-description" class="visually-hidden">Hue Saturation Value color format</span>
+					<button class="copy-btn" data-target="hsv-input" aria-label="Copy HSV color code to clipboard">📋</button>
 				</div>
 			</div>
 		</div>
@@ -69,44 +73,44 @@
 	<div class="tool-section">
 		<h2>Contrast Checker</h2>
 		<p class="section-description">Check WCAG contrast ratios for accessibility compliance.</p>
-		
+
 		<div class="contrast-inputs">
 			<div class="contrast-input">
-				<label for="fg-color">Foreground</label>
+				<label for="fg-color">Foreground Color</label>
 				<div class="color-input-group">
 					<div class="color-trigger-container-small">
-						<button type="button" class="color-trigger-small" id="fg-trigger" aria-label="Pick foreground color">
-							<span class="color-trigger-fill" id="fg-trigger-fill"></span>
+						<button type="button" class="color-trigger-small" id="fg-trigger" aria-label="Pick foreground color from color wheel">
+							<span class="color-trigger-fill" id="fg-trigger-fill" aria-hidden="true"></span>
 						</button>
-						<input type="color" id="fg-color" value="#000000" class="color-input-hidden">
+						<input type="color" id="fg-color" value="#000000" class="color-input-hidden" aria-label="Foreground color picker">
 					</div>
-					<input type="text" id="fg-text" value="#000000" placeholder="#000000">
+					<input type="text" id="fg-text" value="#000000" placeholder="#000000" aria-label="Foreground color hex value">
 				</div>
 			</div>
 			<div class="contrast-input">
-				<label for="bg-color">Background</label>
+				<label for="bg-color">Background Color</label>
 				<div class="color-input-group">
 					<div class="color-trigger-container-small">
-						<button type="button" class="color-trigger-small" id="bg-trigger" aria-label="Pick background color">
-							<span class="color-trigger-fill" id="bg-trigger-fill"></span>
+						<button type="button" class="color-trigger-small" id="bg-trigger" aria-label="Pick background color from color wheel">
+							<span class="color-trigger-fill" id="bg-trigger-fill" aria-hidden="true"></span>
 						</button>
-						<input type="color" id="bg-color" value="#ffffff" class="color-input-hidden">
+						<input type="color" id="bg-color" value="#ffffff" class="color-input-hidden" aria-label="Background color picker">
 					</div>
-					<input type="text" id="bg-text" value="#ffffff" placeholder="#ffffff">
+					<input type="text" id="bg-text" value="#ffffff" placeholder="#ffffff" aria-label="Background color hex value">
 				</div>
 			</div>
 		</div>
 
-		<div class="contrast-preview">
+		<div class="contrast-preview" role="region" aria-label="Contrast preview example">
 			<div class="preview-box" id="preview-box">
 				<span class="preview-text" id="preview-text">Sample Text</span>
 			</div>
 		</div>
 
-		<div class="contrast-results">
+		<div class="contrast-results" role="region" aria-label="Contrast ratio results">
 			<div class="result-card">
 				<div class="result-label">Normal Text</div>
-				<div class="result-ratio" id="ratio-normal">21.00:1</div>
+				<div class="result-ratio" id="ratio-normal" aria-live="polite">21.00:1</div>
 				<div class="result-status" id="status-normal">
 					<span class="badge pass-aaa">AAA Pass</span>
 				</div>
@@ -114,7 +118,7 @@
 			</div>
 			<div class="result-card">
 				<div class="result-label">Large Text</div>
-				<div class="result-ratio" id="ratio-large">21.00:1</div>
+				<div class="result-ratio" id="ratio-large" aria-live="polite">21.00:1</div>
 				<div class="result-status" id="status-large">
 					<span class="badge pass-aaa">AAA Pass</span>
 				</div>
@@ -122,7 +126,7 @@
 			</div>
 			<div class="result-card">
 				<div class="result-label">UI Components</div>
-				<div class="result-ratio" id="ratio-ui">21.00:1</div>
+				<div class="result-ratio" id="ratio-ui" aria-live="polite">21.00:1</div>
 				<div class="result-status" id="status-ui">
 					<span class="badge pass-aaa">AAA Pass</span>
 				</div>
@@ -135,15 +139,15 @@
 	<div class="tool-section">
 		<h2>Color Palettes</h2>
 		<p class="section-description">Generate harmonious color palettes from your selected color.</p>
-		
-		<div class="palette-types">
-			<button class="palette-btn active" data-palette="analogous">Analogous</button>
-			<button class="palette-btn" data-palette="complementary">Complementary</button>
-			<button class="palette-btn" data-palette="triadic">Triadic</button>
-			<button class="palette-btn" data-palette="split">Split Complementary</button>
+
+		<div class="palette-types" role="group" aria-label="Palette type selection">
+			<button class="palette-btn active" data-palette="analogous" aria-pressed="true">Analogous</button>
+			<button class="palette-btn" data-palette="complementary" aria-pressed="false">Complementary</button>
+			<button class="palette-btn" data-palette="triadic" aria-pressed="false">Triadic</button>
+			<button class="palette-btn" data-palette="split" aria-pressed="false">Split Complementary</button>
 		</div>
-		
-		<div id="palette-container" class="color-preview"></div>
+
+		<div id="palette-container" class="color-preview" aria-live="polite" aria-label="Generated color palette"></div>
 	</div>
 <!-- PAGE SCRIPTS GO HERE-->
 <script src="/scripts/color.js"></script>

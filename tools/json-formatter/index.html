@@ -17,19 +17,20 @@
 	<p>Format, validate, and minify JSON data.</p>
 
 	<div class="json-tool">
-		<div class="toolbar">
-			<button class="tool-btn" id="format-btn">✨ Format</button>
-			<button class="tool-btn" id="minify-btn">🗜️ Minify</button>
-			<button class="tool-btn" id="copy-btn">📋 Copy</button>
-			<button class="tool-btn" id="clear-btn">🗑️ Clear</button>
+		<div class="toolbar" role="toolbar" aria-label="JSON formatting tools">
+			<button class="tool-btn" id="format-btn" aria-label="Format JSON">✨ Format</button>
+			<button class="tool-btn" id="minify-btn" aria-label="Minify JSON">🗜️ Minify</button>
+			<button class="tool-btn" id="copy-btn" aria-label="Copy JSON to clipboard">📋 Copy</button>
+			<button class="tool-btn" id="clear-btn" aria-label="Clear JSON editor">🗑️ Clear</button>
 		</div>
 
 		<div class="editor-container">
-			<textarea id="json-input" placeholder="Paste your JSON here..."></textarea>
-			<pre id="json-output" class="hidden"></pre>
+			<label for="json-input" class="visually-hidden">JSON Input</label>
+			<textarea id="json-input" placeholder="Paste your JSON here..." aria-label="JSON input editor" aria-describedby="json-status"></textarea>
+			<pre id="json-output" class="hidden" role="region" aria-label="Formatted JSON output"></pre>
 		</div>
 
-		<div id="status-message" class="status-message hidden"></div>
+		<div id="status-message" class="status-message hidden" aria-live="polite" aria-atomic="true"></div>
 	</div>
 <!-- PAGE SCRIPTS GO HERE-->
 <script src="/scripts/json-formatter.js"></script>

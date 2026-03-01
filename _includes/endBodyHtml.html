@@ -2,5 +2,19 @@
 	</section>
 </main>
 <script src="/scripts/main.js"></script>
+<script>
+	// Register Service Worker for offline support
+	if ('serviceWorker' in navigator) {
+		window.addEventListener('load', () => {
+			navigator.serviceWorker.register('/scripts/sw.js')
+				.then((registration) => {
+					console.log('[Service Worker] Registered:', registration.scope);
+				})
+				.catch((error) => {
+					console.error('[Service Worker] Registration failed:', error);
+				});
+		});
+	}
+</script>
 	</body>
 </html>

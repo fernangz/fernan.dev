@@ -17,26 +17,26 @@
 	<p>Encode text to Base64 or decode Base64 strings.</p>
 
 	<div class="base64-tool">
-		<div class="toolbar">
-			<button class="tool-btn" id="encode-btn">🔐 Encode</button>
-			<button class="tool-btn" id="decode-btn">🔓 Decode</button>
-			<button class="tool-btn" id="copy-btn">📋 Copy</button>
-			<button class="tool-btn" id="clear-btn">🗑️ Clear</button>
-			<button class="tool-btn" id="swap-btn">🔄 Swap</button>
+		<div class="toolbar" role="toolbar" aria-label="Base64 encoding tools">
+			<button class="tool-btn" id="encode-btn" aria-label="Encode text to Base64">🔐 Encode</button>
+			<button class="tool-btn" id="decode-btn" aria-label="Decode Base64 string">🔓 Decode</button>
+			<button class="tool-btn" id="copy-btn" aria-label="Copy output to clipboard">📋 Copy</button>
+			<button class="tool-btn" id="clear-btn" aria-label="Clear input and output">🗑️ Clear</button>
+			<button class="tool-btn" id="swap-btn" aria-label="Swap input and output">🔄 Swap</button>
 		</div>
 
 		<div class="editors">
 			<div class="editor">
 				<label for="input">Input</label>
-				<textarea id="input" placeholder="Enter text to encode/decode..."></textarea>
+				<textarea id="input" placeholder="Enter text to encode/decode..." aria-label="Base64 input text"></textarea>
 			</div>
 			<div class="editor">
 				<label for="output">Output</label>
-				<textarea id="output" readonly placeholder="Result will appear here..."></textarea>
+				<textarea id="output" readonly placeholder="Result will appear here..." aria-label="Base64 output result" aria-live="polite"></textarea>
 			</div>
 		</div>
 
-		<div id="status-message" class="status-message hidden"></div>
+		<div id="status-message" class="status-message hidden" aria-live="polite" aria-atomic="true"></div>
 	</div>
 <!-- PAGE SCRIPTS GO HERE-->
 <script src="/scripts/base64.js"></script>

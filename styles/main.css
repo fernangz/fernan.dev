@@ -4,10 +4,10 @@
    ============================================ */
 
 :root {
-	/* Colors */
+	/* Colors - WCAG AA Compliant */
 	--black: hsl(0, 0%, 8%);
-	--dark: hsl(0, 0%, 24%);
-	--gray: hsl(0, 0%, 40%);
+	--dark: hsl(0, 0%, 28%);
+	--gray: hsl(0, 0%, 55%);
 	--light: hsl(0, 0%, 80%);
 	--white: hsl(0, 0%, 96%);
 	
@@ -68,21 +68,21 @@
 	font-family: 'outfit';
 	src: url('/fonts/outfit.ttf') format('truetype-variations');
 	font-weight: 1 999;
-	font-display: block;
+	font-display: optional;
 }
 
 @font-face {
 	font-family: 'emoji';
 	src: url('/fonts/emoji.ttf') format('truetype-variations');
 	font-weight: 1 999;
-	font-display: block;
+	font-display: optional;
 }
 
 @font-face {
 	font-family: 'code';
 	src: url('/fonts/FiraCode.ttf') format('truetype-variations');
 	font-weight: 1 999;
-	font-display: block;
+	font-display: optional;
 }
 
 * {
@@ -129,10 +129,27 @@ body {
 	z-index: 1000;
 	text-decoration: none;
 	font-size: var(--font-md);
+	border-radius: 0.25rem;
+	box-shadow: var(--shadow-md);
 }
 
 .skip-link:focus {
 	top: var(--space-4);
+	outline: 0.1875rem solid var(--white);
+	outline-offset: 0.125rem;
+}
+
+/* Visually Hidden (for screen readers only) */
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
 }
 
 /* Global Link Styles */
@@ -155,6 +172,14 @@ a:hover {
 a:focus {
 	outline: 0.125rem solid var(--light);
 	outline-offset: 0.125rem;
+}
+
+/* Focus styles for buttons (copy buttons, tool buttons) */
+button:focus,
+button:focus-visible {
+	outline: 0.125rem solid var(--light);
+	outline-offset: 0.125rem;
+	background-color: var(--dark);
 }
 
 /* Article Links (homepage and lists) */
@@ -539,19 +564,12 @@ main > aside#notifications > div::before {
 		transition-duration: 0.01ms !important;
 		scroll-behavior: auto !important;
 	}
-}
 
-/* Reduced Motion */
-@media (prefers-reduced-motion: reduce) {
-	*,
-	*::before,
-	*::after {
-		animation-duration: 0.01ms !important;
-		animation-iteration-count: 1 !important;
-		transition-duration: 0.01ms !important;
-		scroll-behavior: auto !important;
+	/* Disable custom scrollbar for reduced motion */
+	.scroll {
+		display: none !important;
 	}
-	
+
 	/* Disable color animation */
 	#colorGeneratedVariable {
 		display: none;

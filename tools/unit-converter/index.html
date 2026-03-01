@@ -17,33 +17,38 @@
 	<p>Convert between px, rem, em, vh, vw, and %.</p>
 
 	<div class="converter-tool">
-		<div class="settings">
+		<div class="settings" role="group" aria-label="Converter settings">
 			<div class="setting-group">
 				<label for="base-size">Base Font Size (px)</label>
-				<input type="number" id="base-size" value="16" min="1">
+				<input type="number" id="base-size" value="16" min="1" aria-describedby="base-size-help">
+				<span id="base-size-help" class="visually-hidden">Root font size in pixels for rem calculations</span>
 			</div>
 			<div class="setting-group">
 				<label for="parent-size">Parent Font Size (px)</label>
-				<input type="number" id="parent-size" value="16" min="1">
+				<input type="number" id="parent-size" value="16" min="1" aria-describedby="parent-size-help">
+				<span id="parent-size-help" class="visually-hidden">Parent element font size in pixels for em calculations</span>
 			</div>
 			<div class="setting-group">
 				<label for="viewport-width">Viewport Width (px)</label>
-				<input type="number" id="viewport-width" value="1920" min="1">
+				<input type="number" id="viewport-width" value="1920" min="1" aria-describedby="viewport-width-help">
+				<span id="viewport-width-help" class="visually-hidden">Viewport width in pixels for vw calculations</span>
 			</div>
 			<div class="setting-group">
 				<label for="viewport-height">Viewport Height (px)</label>
-				<input type="number" id="viewport-height" value="1080" min="1">
+				<input type="number" id="viewport-height" value="1080" min="1" aria-describedby="viewport-height-help">
+				<span id="viewport-height-help" class="visually-hidden">Viewport height in pixels for vh calculations</span>
 			</div>
 		</div>
 
-		<div class="converter-inputs">
+		<div class="converter-inputs" role="group" aria-label="Value to convert">
 			<div class="input-group">
 				<label for="input-value">Value</label>
-				<input type="number" id="input-value" value="16" step="0.5">
+				<input type="number" id="input-value" value="16" step="0.5" aria-describedby="input-value-help">
+				<span id="input-value-help" class="visually-hidden">Numeric value to convert between CSS units</span>
 			</div>
 			<div class="input-group">
 				<label for="input-unit">From Unit</label>
-				<select id="input-unit">
+				<select id="input-unit" aria-describedby="input-unit-help">
 					<option value="px">px</option>
 					<option value="rem">rem</option>
 					<option value="em">em</option>
@@ -51,10 +56,11 @@
 					<option value="vw">vw</option>
 					<option value="%">%</option>
 				</select>
+				<span id="input-unit-help" class="visually-hidden">Source unit type for conversion</span>
 			</div>
 		</div>
 
-		<div class="results">
+		<div class="results" role="region" aria-label="Conversion results" aria-live="polite">
 			<div class="result-item">
 				<span class="result-label">Pixels</span>
 				<span class="result-value" id="result-px">16px</span>

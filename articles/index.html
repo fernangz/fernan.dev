@@ -9,15 +9,17 @@
 <link rel="canonical" href="https://fernan.dev/articles/" />
 
 <!-- Open Graph / Social Media -->
-
 <meta property="og:title" content="fernan.dev • Articles" />
 <meta property="og:description" content="FrontEnd development articles and tutorials" />
 <meta property="og:url" content="https://fernan.dev/articles/" />
-
+<meta property="og:image" content="https://fernan.dev/favicon/og-image.png" />
+<meta property="og:image:alt" content="fernan.dev - FrontEnd Development Articles" />
 
 <!-- PAGE SPECIFIC CSS GO HERE -->
 <link rel="stylesheet" href="/styles/tools.css">
 <link rel="stylesheet" href="/styles/tools-cards.css">
+<!-- Structured Data for Articles -->
+{% include structured-data-articles.html %}
 <!-- COMMON BODY START-->
 {% include startBody.html %}
 <!-- PAGE CONTENT -->
