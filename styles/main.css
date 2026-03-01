@@ -351,11 +351,13 @@ main > section > article h4 {
 	margin-top: var(--space-8);
 	margin-bottom: var(--space-4);
 }
-
+,
+main > section > article > h1.mainTitle,
 main > section > article p {
 	font-size: var(--font-md);
 	line-height: var(--lh-md);
 	color: var(--light);
+	margin-top: 0;
 }
 
 
@@ -363,8 +365,7 @@ main > section > article > p:first-child {
 	margin-top: var(--space-10);
 }
 
-main > section > article strong,
-main > section > article p h1{
+main > section > article strong{
 	color: inherit;
 	font-size: inherit;
 	line-height: inherit;
