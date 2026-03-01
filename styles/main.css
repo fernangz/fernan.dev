@@ -351,7 +351,7 @@ main > section > article h4 {
 	margin-top: var(--space-8);
 	margin-bottom: var(--space-4);
 }
-,
+
 main > section > article > h1.mainTitle,
 main > section > article p {
 	font-size: var(--font-md);
