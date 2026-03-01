@@ -438,7 +438,7 @@ main > section > article pre code {
 	position: fixed;
 	width: 0.375rem;
 	top: calc(50% + 2rem);
-	right: var(--space-4);
+	right: var(--space-3);
 	height: 6rem;
 	max-height: calc(100dvh - 5rem);
 	transform: translate(0, -50%);
