@@ -3,10 +3,22 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>fernan.dev • Articles</title>
-		<meta name="description" content="Articles about FrontEnd development">
-		<link rel="canonical" href="https://fernan.dev/articles" />
+		<meta name="description" content="Articles about FrontEnd development: DOM, CSS, JavaScript, accessibility, security, performance, and SEO" />
+		<meta name="keywords" content="FrontEnd articles, web development tutorials, CSS, JavaScript, DOM, accessibility, performance" />
+		<link rel="canonical" href="https://test.fernan.dev/articles/" />
 		<meta name="author" content="Fernán García de Zúñiga" />
+		<meta name="robots" content="index, follow" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<!-- Open Graph / Social Media -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="fernan.dev • Articles" />
+		<meta property="og:description" content="FrontEnd development articles and tutorials" />
+		<meta property="og:url" content="https://test.fernan.dev/articles/" />
+		<meta property="og:site_name" content="fernan.dev" />
+		<meta name="twitter:card" content="summary" />
+
+		<!-- Favicon -->
 		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
 		<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
 		<link rel="shortcut icon" href="/favicon/favicon.ico" />
@@ -20,8 +32,7 @@
 		<link rel="preload" href="/fonts/emoji.ttf" as="font" type="font/ttf" crossorigin="anonymous">
 		<link rel="stylesheet" href="/styles/main.css">
 		<link rel="stylesheet" href="/styles/tools.css">
-		<link rel="stylesheet" href="/styles/articles-index.css">
-		<link rel="stylesheet" href="/styles/reading-time.css">
+		<link rel="stylesheet" href="/styles/tools-cards.css">
 	</head>
 	<body>
 		<a href="#main-content" class="skip-link">Skip to main content</a>
@@ -36,76 +47,82 @@
 				<li><a href="/resources/">Resources</a></li>
 			</ul>
 		</nav>
-		<main id="main-content">
+		<main id="main-content" tabindex="-1">
 			<section>
 				<article>
 					<h1>Articles</h1>
-					<p>A curated collection of FrontEnd development articles, from fundamental concepts to advanced techniques. Start with the basics and work your way up.</p>
-					
-					<div class="articles-search">
-						<input type="text" id="articles-search" placeholder="Search articles...">
-						<div class="articles-search-info" id="articles-count"></div>
-					</div>
-					
-					<div class="articles-section">
-						<h2><span class="emoji">🌱</span> Fundamentals</h2>
-						<p class="section-intro">Essential concepts every FrontEnd developer must understand</p>
-						<ul class="articles-list">
-							<li><a href="/articles/the-dom/"><span class="emoji">🌳</span> <strong>The DOM Tree</strong></a></li>
-							<li><a href="/articles/cascade-of-styles/"><span class="emoji">🎨</span> <strong>Cascade of Styles</strong></a></li>
-							<li><a href="/articles/ecmascript/"><span class="emoji">📜</span> <strong>ECMAScript, JavaScript or JS</strong></a></li>
-							<li><a href="/articles/javascript-events/"><span class="emoji">⚡</span> <strong>JavaScript Event Handling</strong></a></li>
-						</ul>
-					</div>
-					
-					<div class="articles-section">
-						<h2><span class="emoji">📐</span> Layout & Design</h2>
-						<p class="section-intro">Create responsive, beautiful layouts with modern CSS</p>
-						<ul class="articles-list">
-							<li><a href="/articles/number-8/"><span class="emoji">🔢</span> <strong>Multiples of 8 in Design</strong></a></li>
-							<li><a href="/articles/flexbox-grid/"><span class="emoji">📏</span> <strong>CSS Flexbox & Grid</strong></a></li>
-							<li><a href="/articles/responsive-design/"><span class="emoji">📱</span> <strong>Responsive Design</strong></a></li>
-							<li><a href="/articles/css-custom-properties/"><span class="emoji">🎯</span> <strong>CSS Custom Properties</strong></a></li>
-						</ul>
-					</div>
-					
-					<div class="articles-section">
-						<h2><span class="emoji">♿</span> Accessibility</h2>
-						<p class="section-intro">Build inclusive experiences that work for everyone</p>
-						<ul class="articles-list">
-							<li><a href="/articles/web-accessibility/"><span class="emoji">♿</span> <strong>Web Accessibility Basics</strong></a></li>
-						</ul>
-					</div>
-					
-					<div class="articles-section">
-						<h2><span class="emoji">🔒</span> Security</h2>
-						<p class="section-intro">Protect your users and applications from common threats</p>
-						<ul class="articles-list">
-							<li><a href="/articles/web-security/"><span class="emoji">✋</span> <strong>Web Security Essentials</strong></a></li>
-						</ul>
-					</div>
-					
-					<div class="articles-section">
-						<h2><span class="emoji">⚡</span> Performance & Quality</h2>
-						<p class="section-intro">Build fast, high-quality web experiences</p>
-						<ul class="articles-list">
-							<li><a href="/articles/browser-devtools/"><span class="emoji">🛠️</span> <strong>Browser DevTools Guide</strong></a></li>
-							<li><a href="/articles/performance-optimization/"><span class="emoji">🚀</span> <strong>Performance Optimization</strong></a></li>
-						</ul>
-					</div>
-					
-					<div class="articles-section">
-						<h2><span class="emoji">🔍</span> SEO & LLMO</h2>
-						<p class="section-intro">Optimize for search engines and AI assistants</p>
-						<ul class="articles-list">
-							<li><a href="/articles/seo-llmo/"><span class="emoji">🤖</span> <strong>SEO & LLMO Basics</strong></a></li>
-						</ul>
+					<p>A curated collection of FrontEnd development articles, from fundamental concepts to advanced techniques.</p>
+
+					<div class="tools-grid">
+						<a href="/articles/the-dom/" class="tool-card">
+							<span class="emoji">🌳</span>
+							<strong>The DOM Tree</strong>
+							<span>Understanding the Document Object Model - the foundation of interactive web pages</span>
+						</a>
+						<a href="/articles/cascade-of-styles/" class="tool-card">
+							<span class="emoji">🎨</span>
+							<strong>Cascade of Styles</strong>
+							<span>Master CSS cascade, specificity, and inheritance for predictable styling</span>
+						</a>
+						<a href="/articles/ecmascript/" class="tool-card">
+							<span class="emoji">📜</span>
+							<strong>ECMAScript, JavaScript or JS</strong>
+							<span>Understand the relationship between the specification and the implementation</span>
+						</a>
+						<a href="/articles/javascript-events/" class="tool-card">
+							<span class="emoji">⚡</span>
+							<strong>JavaScript Event Handling</strong>
+							<span>Master events, delegation, and the event lifecycle</span>
+						</a>
+						<a href="/articles/number-8/" class="tool-card">
+							<span class="emoji">8️⃣</span>
+							<strong>Multiples of 8 in Design</strong>
+							<span>Why the 8-point grid system creates consistent, scalable designs</span>
+						</a>
+						<a href="/articles/flexbox-grid/" class="tool-card">
+							<span class="emoji">📏</span>
+							<strong>CSS Flexbox & Grid</strong>
+							<span>Master modern CSS layout systems for flexible, responsive designs</span>
+						</a>
+						<a href="/articles/responsive-design/" class="tool-card">
+							<span class="emoji">📱</span>
+							<strong>Responsive Design</strong>
+							<span>Build websites that work perfectly on any screen size</span>
+						</a>
+						<a href="/articles/css-custom-properties/" class="tool-card">
+							<span class="emoji">🎯</span>
+							<strong>CSS Custom Properties</strong>
+							<span>Use CSS variables for maintainable, dynamic stylesheets</span>
+						</a>
+						<a href="/articles/web-accessibility/" class="tool-card">
+							<span class="emoji">♿</span>
+							<strong>Web Accessibility Basics</strong>
+							<span>Create inclusive experiences that work for everyone</span>
+						</a>
+						<a href="/articles/web-security/" class="tool-card">
+							<span class="emoji">🛡️</span>
+							<strong>Web Security Essentials</strong>
+							<span>Protect your users and applications from common threats</span>
+						</a>
+						<a href="/articles/browser-devtools/" class="tool-card">
+							<span class="emoji">🛠️</span>
+							<strong>Browser DevTools Guide</strong>
+							<span>Master the built-in tools for debugging and optimization</span>
+						</a>
+						<a href="/articles/performance-optimization/" class="tool-card">
+							<span class="emoji">🚀</span>
+							<strong>Performance Optimization</strong>
+							<span>Make your websites faster and improve Core Web Vitals</span>
+						</a>
+						<a href="/articles/seo-llmo/" class="tool-card">
+							<span class="emoji">🤖</span>
+							<strong>SEO & LLMO Basics</strong>
+							<span>Optimize for search engines and AI assistants</span>
+						</a>
 					</div>
 				</article>
 			</section>
 		</main>
 		<script src="/scripts/main.js"></script>
-		<script src="/scripts/articles-search.js"></script>
-		<script src="/scripts/reading-time.js"></script>
 	</body>
 </html>
