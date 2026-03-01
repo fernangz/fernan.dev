@@ -1,0 +1,55 @@
+<!-- ============================================
+     Structured Data for Tools Pages
+     Include on individual tool pages
+     ============================================ -->
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "WebApplication",
+	"name": "{{TOOL_NAME}}",
+	"url": "https://fernan.dev/tools/{{TOOL_SLUG}}/",
+	"description": "{{TOOL_DESCRIPTION}}",
+	"applicationCategory": "DeveloperApplication",
+	"operatingSystem": "Web Browser",
+	"offers": {
+		"@type": "Offer",
+		"price": "0",
+		"priceCurrency": "USD"
+	},
+	"featureList": "{{TOOL_FEATURES}}",
+	"inLanguage": "en-US",
+	"isPartOf": {
+		"@type": "Collection",
+		"name": "fernan.dev Tools",
+		"url": "https://fernan.dev/tools/"
+	},
+	"author": {
+		"@type": "Person",
+		"name": "Fernán García de Zúñiga",
+		"url": "https://fernan.dev/"
+	},
+	"breadcrumb": {
+		"@type": "BreadcrumbList",
+		"itemListElement": [
+			{
+				"@type": "ListItem",
+				"position": 1,
+				"name": "Home",
+				"item": "https://fernan.dev/"
+			},
+			{
+				"@type": "ListItem",
+				"position": 2,
+				"name": "Tools",
+				"item": "https://fernan.dev/tools/"
+			},
+			{
+				"@type": "ListItem",
+				"position": 3,
+				"name": "{{TOOL_NAME}}",
+				"item": "https://fernan.dev/tools/{{TOOL_SLUG}}/"
+			}
+		]
+	}
+}
+</script>
