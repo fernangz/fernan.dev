@@ -199,20 +199,14 @@ nav {
 nav a,
 nav button {
 	display: inline-block;
-	height: var(--lh-md);
-	line-height: var(--lh-md);
-	margin: var(--space-4) 0;
+	height: var(--font-md);
+	line-height: var(--font-md);
+	margin: auto 0;
 	padding: 0;
 	border: 0;
 	outline: none;
 	text-decoration: none;
 	cursor: pointer;
-}
-
-nav a.logo {
-	height: var(--font-md);
-	line-height: var(--font-md);
-	margin: auto 0;
 }
 
 nav a:focus,
@@ -557,6 +551,8 @@ main > aside#notifications > div::before {
 		flex-direction: row;
 		gap: var(--space-4);
 		height: var(--space-16);
+		align-content: center;
+		align-items: center
 	}
 	
 	nav > ul > li {
