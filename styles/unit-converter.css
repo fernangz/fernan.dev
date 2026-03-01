@@ -4,7 +4,6 @@
 
 .converter-tool {
 	background-color: var(--dark);
-	border-radius: var(--radius-lg);
 	padding: var(--space-6);
 	margin-top: var(--space-6);
 	border: var(--border-sm) solid var(--gray);
@@ -37,7 +36,6 @@
 	padding: var(--space-2) var(--space-3);
 	background-color: var(--black);
 	border: var(--border-sm) solid var(--gray);
-	border-radius: var(--radius-md);
 	color: var(--light);
 	font-size: var(--font-md);
 	font-family: inherit;
@@ -59,7 +57,6 @@
 .result-item {
 	background-color: var(--black);
 	padding: var(--space-3);
-	border-radius: var(--radius-md);
 	border: var(--border-sm) solid var(--gray);
 	display: flex;
 	flex-direction: column;

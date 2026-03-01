@@ -9,7 +9,6 @@
 	padding: var(--space-3) var(--space-4);
 	background-color: var(--black);
 	border: var(--border-sm) solid var(--gray);
-	border-radius: var(--radius-md);
 	color: var(--light);
 	font-size: var(--font-md);
 	font-family: inherit;
@@ -27,7 +26,6 @@
 	flex-direction: column;
 	padding: var(--space-4);
 	background-color: var(--dark);
-	border-radius: var(--radius-md);
 	cursor: pointer;
 	transition: all var(--transition-fast);
 	border: var(--border-sm) solid transparent;
@@ -64,7 +62,6 @@
 .symbol-item pre {
 	background-color: var(--black);
 	padding: var(--space-2) var(--space-3);
-	border-radius: var(--radius-sm);
 	color: var(--light);
 	font-family: 'code', monospace;
 	font-size: var(--font-sm);

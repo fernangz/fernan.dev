@@ -20,7 +20,6 @@
 
 .tool-section {
 	background-color: var(--dark);
-	border-radius: var(--radius-md);
 	padding: var(--space-4);
 	border: var(--border-sm) solid var(--gray);
 }
@@ -46,7 +45,6 @@
 	background-color: var(--black);
 	color: var(--light);
 	border: var(--border-sm) solid var(--gray);
-	border-radius: var(--radius-sm);
 	font-size: var(--font-md);
 	cursor: pointer;
 	transition: all var(--transition-fast);
@@ -79,7 +77,6 @@
 	width: 3rem;
 	height: 1.75rem;
 	border: none;
-	border-radius: var(--radius-sm);
 	cursor: pointer;
 	background: none;
 }
@@ -105,7 +102,6 @@
 .palette-color {
 	width: 100%;
 	aspect-ratio: 1;
-	border-radius: var(--radius-sm);
 	cursor: pointer;
 	border: 0.125rem solid transparent;
 	transition: all var(--transition-fast);
@@ -140,7 +136,6 @@
 	background-color: var(--black);
 	color: var(--light);
 	border: var(--border-sm) solid var(--gray);
-	border-radius: var(--radius-sm);
 	font-size: var(--font-md);
 	cursor: pointer;
 	transition: all var(--transition-fast);
@@ -190,7 +185,6 @@
 
 .canvas-container {
 	background-color: var(--dark);
-	border-radius: var(--radius-md);
 	padding: var(--space-8);
 	border: var(--border-sm) solid var(--gray);
 	display: flex;
@@ -204,7 +198,6 @@
 	gap: 0.0625rem;
 	background-color: var(--gray);
 	border: var(--border-lg) solid var(--black);
-	border-radius: var(--radius-sm);
 	padding: 0.0625rem;
 }
 
@@ -237,7 +230,6 @@
 /* Preview Section */
 .preview-section {
 	background-color: var(--dark);
-	border-radius: var(--radius-md);
 	padding: var(--space-4);
 	border: var(--border-sm) solid var(--gray);
 }
@@ -259,7 +251,6 @@
 
 .preview-bg {
 	padding: var(--space-4);
-	border-radius: var(--radius-md);
 	background-color: var(--black);
 }
 
@@ -300,7 +291,6 @@
 
 .preview-box {
 	background-color: var(--black);
-	border-radius: var(--radius-sm);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -326,7 +316,6 @@
 	margin-top: var(--space-8);
 	padding: var(--space-4);
 	background-color: var(--dark);
-	border-radius: var(--radius-md);
 	border-left: var(--border-md) solid var(--gray);
 }
 

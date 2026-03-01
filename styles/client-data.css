@@ -25,7 +25,6 @@
 
 .data-section {
 	background-color: var(--dark);
-	border-radius: var(--radius-md);
 	padding: var(--space-4);
 	border: var(--border-sm) solid var(--gray);
 }
@@ -50,7 +49,6 @@
 	gap: var(--space-1);
 	padding: var(--space-3);
 	background-color: var(--black);
-	border-radius: var(--radius-sm);
 	min-height: 4rem;
 }
 
@@ -79,7 +77,6 @@
 .storage-list {
 	grid-column: 1 / -1;
 	background-color: var(--black);
-	border-radius: var(--radius-sm);
 	padding: var(--space-3);
 	max-height: 12rem;
 	overflow-y: auto;
@@ -131,7 +128,6 @@
 	gap: var(--space-2);
 	padding: var(--space-2);
 	background-color: var(--black);
-	border-radius: var(--radius-sm);
 	font-size: var(--font-md);
 	color: var(--light);
 }
@@ -155,7 +151,6 @@
 	margin-top: var(--space-8);
 	padding: var(--space-4);
 	background-color: var(--dark);
-	border-radius: var(--radius-md);
 	border-left: var(--border-md) solid var(--gray);
 }
 
