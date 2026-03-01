@@ -44,8 +44,8 @@
 
 .tab-btn {
 	padding: var(--space-2) var(--space-4);
-	background-color: var(--black);
-	color: var(--light);
+	background-color: var(--light);
+	color: var(--black);
 	border: var(--border-sm) solid var(--gray);
 	cursor: pointer;
 	font-size: var(--font-sm);
@@ -54,6 +54,7 @@
 }
 
 .tab-btn:hover {
+	background-color: var(--white);
 	border-color: var(--light);
 }
 
@@ -63,8 +64,8 @@
 }
 
 .tab-btn.active {
-	background-color: var(--light);
-	color: var(--black);
+	background-color: var(--dark);
+	color: var(--light);
 	border-color: var(--light);
 }
 

@@ -118,7 +118,8 @@
 
 .copy-btn {
 	padding: var(--space-2) var(--space-4);
-	color: var(--light);
+	background-color: var(--light);
+	color: var(--black);
 	border: var(--border-sm) solid var(--gray);
 	cursor: pointer;
 	font-size: var(--font-sm);
@@ -126,7 +127,7 @@
 }
 
 .copy-btn:hover {
-	background-color: var(--gray);
+	background-color: var(--white);
 }
 
 /* Responsive */

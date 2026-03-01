@@ -82,10 +82,11 @@
 }
 
 .btn-primary:hover {
-	background-color: var(--gray);
+	background-color: var(--white);
 }
 
 .btn-secondary {
+	background-color: var(--dark);
 	color: var(--light);
 	border: var(--border-sm) solid var(--gray);
 }
@@ -93,6 +94,7 @@
 .btn-secondary:hover {
 	background-color: var(--gray);
 	border-color: var(--light);
+	color: var(--white);
 }
 
 .btn .emoji {

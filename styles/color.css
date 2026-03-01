@@ -85,15 +85,15 @@
 
 .copy-btn {
 	padding: var(--space-3);
-	background-color: var(--dark);
+	background-color: var(--light);
 	border: var(--border-sm) solid var(--gray);
-	color: var(--light);
+	color: var(--black);
 	cursor: pointer;
 	font-size: var(--font-md);
 }
 
 .copy-btn:hover {
-	background-color: var(--gray);
+	background-color: var(--white);
 }
 
 /* Contrast Checker */
@@ -217,20 +217,21 @@
 
 .palette-btn {
 	padding: var(--space-2) var(--space-4);
-	background-color: var(--dark);
+	background-color: var(--light);
+	color: var(--black);
 	border: var(--border-sm) solid var(--gray);
-	color: var(--light);
 	cursor: pointer;
 	font-size: var(--font-sm);
 }
 
 .palette-btn:hover {
-	background-color: var(--gray);
+	background-color: var(--white);
 }
 
 .palette-btn.active {
-	background-color: var(--light);
-	color: var(--black);
+	background-color: var(--dark);
+	color: var(--light);
+	border-color: var(--light);
 }
 
 .color-preview {
