@@ -86,7 +86,6 @@
 }
 
 .btn-secondary {
-	background-color: var(--dark);
 	color: var(--light);
 	border: var(--border-sm) solid var(--gray);
 }
@@ -102,7 +101,6 @@
 
 /* Error Help Section */
 .error-help {
-	background-color: var(--dark);
 	padding: var(--space-6);
 	border: var(--border-sm) solid var(--gray);
 }

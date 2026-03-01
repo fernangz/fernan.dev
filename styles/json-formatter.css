@@ -3,7 +3,6 @@
    ============================================ */
 
 .json-tool {
-	background-color: var(--dark);
 	padding: var(--space-6);
 	margin-top: var(--space-6);
 	border: var(--border-sm) solid var(--gray);

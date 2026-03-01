@@ -24,7 +24,6 @@
 }
 
 .data-section {
-	background-color: var(--dark);
 	padding: var(--space-4);
 	border: var(--border-sm) solid var(--gray);
 }
@@ -150,7 +149,6 @@
 .data-info {
 	margin-top: var(--space-8);
 	padding: var(--space-4);
-	background-color: var(--dark);
 	border-left: var(--border-md) solid var(--gray);
 }
 

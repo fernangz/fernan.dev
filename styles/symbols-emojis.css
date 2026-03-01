@@ -54,7 +54,6 @@
 }
 
 .tab-btn:hover {
-	background-color: var(--dark);
 	border-color: var(--light);
 }
 
@@ -82,7 +81,6 @@
 	display: flex;
 	flex-direction: column;
 	padding: var(--space-4);
-	background-color: var(--dark);
 	border: var(--border-sm) solid var(--gray);
 	cursor: pointer;
 	transition: all var(--transition-fast);

@@ -19,7 +19,6 @@
 }
 
 .tool-section {
-	background-color: var(--dark);
 	padding: var(--space-4);
 	border: var(--border-sm) solid var(--gray);
 }
@@ -184,7 +183,6 @@
 }
 
 .canvas-container {
-	background-color: var(--dark);
 	padding: var(--space-8);
 	border: var(--border-sm) solid var(--gray);
 	display: flex;
@@ -229,7 +227,6 @@
 
 /* Preview Section */
 .preview-section {
-	background-color: var(--dark);
 	padding: var(--space-4);
 	border: var(--border-sm) solid var(--gray);
 }
@@ -315,7 +312,6 @@
 .tips-section {
 	margin-top: var(--space-8);
 	padding: var(--space-4);
-	background-color: var(--dark);
 	border-left: var(--border-md) solid var(--gray);
 }
 

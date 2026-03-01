@@ -14,7 +14,6 @@
 
 .speech-status {
 	padding: var(--space-2) var(--space-4);
-	background-color: var(--dark);
 	font-size: var(--font-md);
 	line-height: var(--lh-md);
 	color: var(--light);

@@ -3,7 +3,6 @@
    ============================================ */
 
 .shadow-generator {
-	background-color: var(--dark);
 	padding: var(--space-6);
 	margin-top: var(--space-6);
 	border: var(--border-sm) solid var(--gray);
@@ -119,7 +118,6 @@
 
 .copy-btn {
 	padding: var(--space-2) var(--space-4);
-	background-color: var(--dark);
 	color: var(--light);
 	border: var(--border-sm) solid var(--gray);
 	cursor: pointer;

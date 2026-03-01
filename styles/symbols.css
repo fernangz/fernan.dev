@@ -13,7 +13,6 @@
 
 .category-btn {
 	padding: var(--space-2) var(--space-4);
-	background-color: var(--dark);
 	color: var(--light);
 	border: none;
 	cursor: pointer;
@@ -46,7 +45,6 @@
 	flex-direction: column;
 	align-items: center;
 	padding: var(--space-4);
-	background-color: var(--dark);
 	cursor: pointer;
 	transition: all var(--transition-fast);
 }

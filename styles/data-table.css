@@ -21,13 +21,11 @@
 }
 
 .data-table th {
-	background-color: var(--dark);
 	font-weight: 600;
 	color: var(--light);
 }
 
 .data-table tr:hover {
-	background-color: var(--dark);
 }
 
 .data-table .copy-btn {
