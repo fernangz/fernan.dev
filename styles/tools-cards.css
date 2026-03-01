@@ -34,6 +34,8 @@
 
 .tool-card .emoji {
 	font-family: 'emoji', sans-serif;
+	font-weight: 560;
+	color: var(--color);
 	font-size: 2rem;
 	line-height: 1;
 	margin-bottom: var(--space-2);
