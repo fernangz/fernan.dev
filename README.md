@@ -116,6 +116,71 @@ All pages use includes from `_includes/` for consistent structure:
 
 ---
 
+## Development Workflow
+
+### Standard Task Process
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  1. TASK                                                       │
+│     ↓                                                          │
+│  2. Read README.md + Check ./history.sh                        │
+│     ↓                                                          │
+│  3. Plan Build (create todo list, identify files)              │
+│     ↓                                                          │
+│  4. BUILD (implement changes)                                  │
+│     ↓                                                          │
+│  5. Update sitemap.xml (if new/modified pages)                 │
+│     ↓                                                          │
+│  6. Update README.md (if features/structure changed)           │
+│     ↓                                                          │
+│  7. Run ./publish.sh "Description"                             │
+│     ↓                                                          │
+│  8. If error → ./rebase.sh and retry                           │
+│     ↓                                                          │
+│  9. Verify at https://fernan.dev/                              │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Step-by-Step Guide
+
+| Step | Action | Command/Tool |
+|------|--------|--------------|
+| **1** | Define task | User request or issue |
+| **2** | Review context | `cat README.md`, `./history.sh -n 10` |
+| **3** | Plan implementation | Create todo list, identify files to modify |
+| **4** | Implement changes | Edit files, test locally |
+| **5** | Update sitemap | Edit `sitemap.xml` if pages added/modified |
+| **6** | Update docs | Edit `README.md` if features changed |
+| **7** | Publish | `./publish.sh "Description"` |
+| **8** | Handle errors | `./rebase.sh` if push fails |
+| **9** | Verify | Open https://fernan.dev/ |
+
+### Quick Reference
+
+```bash
+# View recent commits before starting
+./history.sh -n 10
+
+# View commit history with file changes
+./history.sh -s -n 5
+
+# After making changes
+./publish.sh "feat: add new feature"
+# or
+./publish.sh "fix: resolve issue #123"
+# or
+./publish.sh "docs: update README"
+
+# If push fails (remote has changes)
+./rebase.sh
+
+# Emergency reset (WARNING: loses local changes)
+./restore.sh
+```
+
+---
+
 ## Git Commands
 
 ```bash
@@ -144,6 +209,8 @@ Chrome 90+, Firefox 88+, Safari 14+, Edge 90+
 
 ## Contributing
 
+Follow the **Development Workflow** above for all changes.
+
 1. Test in Chrome, Firefox, Safari
 2. Test on mobile
 3. Test with keyboard only (Tab, Enter, Escape)
@@ -158,4 +225,4 @@ Chrome 90+, Firefox 88+, Safari 14+, Edge 90+
 
 © Fernán García de Zúñiga. All rights reserved.
 
-**Last Updated:** 2026-03-01 (SEO improvements deployed)
+**Last Updated:** 2026-03-01
