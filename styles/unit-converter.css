@@ -70,7 +70,7 @@
 .result-value {
 	color: var(--light);
 	font-size: var(--font-md);
-	font-family: 'code', monospace;
+	font-family: 'hyperlegible-mono', monospace;
 	font-weight: 600;
 }
 

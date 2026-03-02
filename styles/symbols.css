@@ -67,7 +67,7 @@
 
 .symbol-item .code {
 	font-size: var(--font-md);
-	font-family: 'code', monospace;
+	font-family: 'hyperlegible-mono', monospace;
 	color: var(--light);
 }
 

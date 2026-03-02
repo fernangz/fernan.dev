@@ -61,7 +61,7 @@
 
 .data-value {
 	color: var(--light);
-	font-family: 'code', monospace;
+	font-family: 'hyperlegible-mono', monospace;
 	font-size: var(--font-sm);
 	word-break: break-word;
 	line-height: var(--lh-md);
@@ -95,7 +95,7 @@
 
 .storage-key {
 	color: var(--light);
-	font-family: 'code', monospace;
+	font-family: 'hyperlegible-mono', monospace;
 	max-width: 50%;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -104,7 +104,7 @@
 
 .storage-value {
 	color: var(--gray);
-	font-family: 'code', monospace;
+	font-family: 'hyperlegible-mono', monospace;
 	max-width: 50%;
 	overflow: hidden;
 	text-overflow: ellipsis;

@@ -53,7 +53,7 @@
 	background-color: var(--black);
 	border: var(--border-sm) solid var(--gray);
 	color: var(--light);
-	font-family: 'code', monospace;
+	font-family: 'hyperlegible-mono', monospace;
 	font-size: var(--font-md);
 	line-height: var(--lh-md);
 	resize: vertical;

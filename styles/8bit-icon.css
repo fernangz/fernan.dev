@@ -86,7 +86,7 @@
 }
 
 #color-hex {
-	font-family: 'code', monospace;
+	font-family: 'hyperlegible-mono', monospace;
 	color: var(--light);
 	font-size: var(--font-md);
 }

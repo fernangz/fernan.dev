@@ -109,7 +109,7 @@ textarea {
 	line-height: var(--lh-md);
 	background-color: var(--black);
 	color: var(--light);
-	font-family: 'outfit', sans-serif;
+	font-family: 'hyperlegible', sans-serif;
 	transition: all var(--transition-md);
 }
 
@@ -359,7 +359,7 @@ textarea {
 
 .symbol-item .code {
 	font-size: var(--font-md);
-	font-family: 'code', monospace;
+	font-family: 'hyperlegible-mono', monospace;
 	color: var(--light);
 }
 

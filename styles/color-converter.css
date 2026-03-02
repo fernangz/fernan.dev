@@ -129,7 +129,7 @@
 	background-color: rgba(0, 0, 0, 0.7);
 	padding: var(--space-1) var(--space-2);
 	font-size: var(--font-md);
-	font-family: 'code', monospace;
+	font-family: 'hyperlegible-mono', monospace;
 	color: var(--light);
 	margin-top: var(--space-1);
 }
@@ -180,7 +180,7 @@
 
 .contrast-value {
 	font-size: var(--font-md);
-	font-family: 'code', monospace;
+	font-family: 'hyperlegible-mono', monospace;
 	color: var(--light);
 }
 

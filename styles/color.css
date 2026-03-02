@@ -134,7 +134,7 @@
 	background-color: var(--black);
 	border: var(--border-sm) solid var(--gray);
 	color: var(--light);
-	font-family: 'code', monospace;
+	font-family: 'hyperlegible-mono', monospace;
 	font-size: var(--font-md);
 }
 
@@ -187,7 +187,7 @@
 	background-color: var(--black);
 	border: var(--border-sm) solid var(--gray);
 	color: var(--light);
-	font-family: 'code', monospace;
+	font-family: 'hyperlegible-mono', monospace;
 }
 
 .contrast-preview {
@@ -225,7 +225,7 @@
 .result-ratio {
 	color: var(--light);
 	font-size: var(--font-xl);
-	font-family: 'code', monospace;
+	font-family: 'hyperlegible-mono', monospace;
 	font-weight: 700;
 	margin-bottom: var(--space-2);
 }
@@ -313,7 +313,7 @@
 	background-color: rgba(0, 0, 0, 0.7);
 	padding: var(--space-1);
 	font-size: var(--font-xs);
-	font-family: 'code', monospace;
+	font-family: 'hyperlegible-mono', monospace;
 	color: var(--light);
 }
 

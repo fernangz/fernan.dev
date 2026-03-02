@@ -69,7 +69,7 @@
 .control-value {
 	color: var(--gray);
 	font-size: var(--font-xs);
-	font-family: 'code', monospace;
+	font-family: 'hyperlegible-mono', monospace;
 }
 
 .checkbox-group label {
@@ -110,7 +110,7 @@
 
 .code-box code {
 	color: var(--light);
-	font-family: 'code', monospace;
+	font-family: 'hyperlegible-mono', monospace;
 	font-size: var(--font-md);
 	flex: 1;
 	min-width: 0;
