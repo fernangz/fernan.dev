@@ -72,7 +72,7 @@
 /* Symbols Grid */
 .symbols-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
 	gap: var(--space-3);
 	margin-top: var(--space-4);
 }
@@ -86,8 +86,8 @@
 	cursor: pointer;
 	transition: all var(--transition-fast);
 	min-height: 6rem;
-	justify-content: center;
-	align-items: center;
+	justify-content: flex-start;
+	align-items: start;
 	gap: var(--space-2);
 }
 
@@ -107,7 +107,7 @@
     font-weight: 640;
 	font-size: 2.5rem;
 	line-height: 1;
-	margin-bottom: var(--space-1);
+	margin-bottom: 0 auto;
 }
 
 .symbol-card .name {
@@ -161,10 +161,6 @@
 
 /* Responsive */
 @media screen and (max-width: 48rem) {
-	.symbols-grid {
-		grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
-	}
-	
 	.category-tabs {
 		justify-content: center;
 	}
@@ -176,10 +172,6 @@
 }
 
 @media screen and (max-width: 30rem) {
-	.symbols-grid {
-		grid-template-columns: repeat(auto-fill, minmax(4rem, 1fr));
-	}
-	
 	.symbol-card .symbol {
 		font-size: 2rem;
 	}
