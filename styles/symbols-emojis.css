@@ -87,7 +87,7 @@
 	transition: all var(--transition-fast);
 	min-height: 6rem;
 	justify-content: flex-start;
-	align-items: center;
+	align-items: flex-start;
 	gap: var(--space-2);
 }
 
@@ -113,13 +113,14 @@
 .symbol-card .name {
 	color: var(--gray);
 	font-size: var(--font-xs);
-	text-align: center;
+	text-align: left;
+}
+.symbol-card:hover .name{
+	color: var(--black);
 }
 
 .symbol-card .group {
-	color: var(--gray);
-	font-size: var(--font-xs);
-	opacity: 0.7;
+	display: none;
 }
 
 /* Loading State */
