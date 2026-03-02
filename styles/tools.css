@@ -226,7 +226,7 @@ textarea {
 }
 
 .tools-section h2 .emoji {
-	font-family: 'emoji', sans-serif;
+	font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;
 	font-size: 1.5em;
 	line-height: 1;
 }
@@ -276,7 +276,7 @@ textarea {
 
 .tools-list .emoji,
 .articles-list .emoji {
-	font-family: 'emoji', sans-serif;
+	font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;
 	font-weight: 640;
 	font-size: var(--font-md);
 	line-height: var(--lh-md);
@@ -395,7 +395,7 @@ textarea {
 }
 
 .articles-section h2 .emoji {
-	font-family: 'emoji', sans-serif;
+	font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;
 	font-size: 1.5em;
 	line-height: 1;
 }

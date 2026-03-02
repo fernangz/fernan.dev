@@ -41,7 +41,7 @@
 }
 
 .tool-card .emoji {
-	font-family: 'emoji', sans-serif;
+	font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;
 	font-weight: 560;
 	color: var(--white);
 	font-size: 2rem;
