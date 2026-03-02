@@ -1,0 +1,186 @@
+---
+---
+{% include startHtml.html %}
+<title>JavaScript: Advanced | fernan.dev</title>
+<meta name="description" content="Advanced JavaScript: closures, scope chain, prototypes, classes, modules, and design patterns for scalable applications." />
+<meta name="keywords" content="JavaScript closures, prototypes, classes, modules, design patterns" />
+<link rel="canonical" href="https://fernan.dev/articles/javascript-advanced/" />
+<meta property="og:title" content="JavaScript: Advanced | fernan.dev" />
+<meta property="og:description" content="Advanced JavaScript concepts for scalable applications." />
+<meta property="og:url" content="https://fernan.dev/articles/javascript-advanced/" />
+<meta property="og:image" content="https://fernan.dev/favicon/og-image.png" />
+<meta property="og:type" content="article" />
+<link rel="stylesheet" href="/styles/tools.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"JavaScript: Advanced","description":"Closures, prototypes, classes, modules, and design patterns.","author":{"@type":"Person","name":"Fernán García de Zúñiga","url":"https://fernan.dev/"},"datePublished":"2026-03-01","dateModified":"2026-03-01","url":"https://fernan.dev/articles/javascript-advanced/","inLanguage":"en-US","articleBody":"Advanced JavaScript concepts.","wordCount":2500,"timeRequired":"PT25M","keywords":"JavaScript closures, prototypes, classes, modules","articleSection":"Intermediate","breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://fernan.dev/"},{"@type":"ListItem","position":2,"name":"Articles","item":"https://fernan.dev/articles/"},{"@type":"ListItem","position":3,"name":"JavaScript: Advanced","item":"https://fernan.dev/articles/javascript-advanced/"}]}}</script>
+{% include startBody.html %}
+	<a href="/articles/" class="back-link">← Back to Articles</a>
+	<header><h1>JavaScript: Advanced</h1><p class="article-meta"><span>⏱️ Reading time: 25 min</span><span>📋 Prerequisites: <a href="/articles/javascript-intermediate/">JavaScript: Intermediate</a></span></p></header>
+	<section><h2>Closures</h2><pre><code>// Closure: function + lexical scope
+function outer() {
+    let count = 0;
+    return function inner() {
+        count++;
+        return count;
+    };
+}
+const counter = outer();
+counter(); // 1
+counter(); // 2
+
+// Practical: Private variables
+function createCounter() {
+    let private = 0;
+    return {
+        increment: () => private++,
+        get: () => private
+    };
+}
+
+// Practical: Function factories
+function multiplyBy(factor) {
+    return (num) => num * factor;
+}
+const double = multiplyBy(2);
+double(5); // 10</code></pre></section>
+	<section><h2>Scope Chain</h2><pre><code>// Global scope
+const global = 'global';
+
+function outer() {
+    // Function scope
+    const outerVar = 'outer';
+    
+    function inner() {
+        // Inner scope
+        const innerVar = 'inner';
+        console.log(global); // ✓
+        console.log(outerVar); // ✓
+        console.log(innerVar); // ✓
+    }
+}
+
+// Block scope
+{
+    let blockVar = 'block';
+    const blockConst = 'const';
+}
+// console.log(blockVar); // ✗ ReferenceError</code></pre></section>
+	<section><h2>Prototypes</h2><pre><code>// Prototype chain
+const obj = { a: 1 };
+console.log(obj.toString()); // From Object.prototype
+
+// Constructor function
+function Person(name) {
+    this.name = name;
+}
+Person.prototype.greet = function() {
+    return `Hi, I'm ${this.name}`;
+};
+const john = new Person('John');
+john.greet();
+
+// Prototypal inheritance
+function Employee(name, role) {
+    Person.call(this, name);
+    this.role = role;
+}
+Employee.prototype = Object.create(Person.prototype);
+Employee.prototype.constructor = Employee;</code></pre></section>
+	<section><h2>Classes</h2><pre><code>// Class definition
+class Person {
+    constructor(name) {
+        this.name = name;
+    }
+    
+    greet() {
+        return `Hi, I'm ${this.name}`;
+    }
+    
+    // Static method
+    static create(name) {
+        return new Person(name);
+    }
+}
+
+// Inheritance
+class Employee extends Person {
+    constructor(name, role) {
+        super(name);
+        this.role = role;
+    }
+    
+    greet() {
+        return `${super.greet()}, I'm a ${this.role}`;
+    }
+}
+
+// Getters and setters
+class Circle {
+    constructor(radius) {
+        this._radius = radius;
+    }
+    
+    get area() {
+        return Math.PI * this._radius ** 2;
+    }
+    
+    set radius(value) {
+        if (value <= 0) throw new Error('Invalid');
+        this._radius = value;
+    }
+}</code></pre></section>
+	<section><h2>Modules</h2><pre><code>// Export (module.js)
+export const value = 42;
+export function fn() {}
+export class MyClass {}
+export default class DefaultClass {}
+
+// Named exports
+export { value, fn, MyClass };
+
+// Import
+import DefaultClass from './module.js';
+import { value, fn } from './module.js';
+import * as Module from './module.js';
+import Default, { named } from './module.js';
+
+// Re-export
+export { value } from './module.js';
+export * from './module.js';</code></pre></section>
+	<section><h2>Design Patterns</h2><pre><code>// Module Pattern
+const Module = (function() {
+    let private = 0;
+    return {
+        public: () => private++
+    };
+})();
+
+// Singleton
+class Singleton {
+    constructor() {
+        if (Singleton.instance) return Singleton.instance;
+        Singleton.instance = this;
+    }
+}
+
+// Observer Pattern
+class EventEmitter {
+    constructor() { this.events = {}; }
+    on(event, fn) {
+        (this.events[event] = this.events[event] || []).push(fn);
+    }
+    emit(event, ...args) {
+        (this.events[event] || []).forEach(fn => fn(...args));
+    }
+}
+
+// Factory Pattern
+function createAnimal(type) {
+    const animals = {
+        dog: { sound: 'woof' },
+        cat: { sound: 'meow' }
+    };
+    return { ...animals[type], type };
+}</code></pre></section>
+	<section><h2>Key Takeaways</h2><ul><li><strong>Closures</strong> enable private state and function factories</li><li><strong>Prototypes</strong> power JavaScript inheritance</li><li><strong>Classes</strong> provide cleaner syntax over prototypes</li><li><strong>Modules</strong> organize code into reusable units</li><li><strong>Design patterns</strong> solve common problems</li></ul></section>
+	<section><h2>Next Steps</h2><p><a href="/articles/javascript-professional/" class="next-article">→ JavaScript: Professional (Debugging, Testing, Performance)</a></p></section>
+{% include endBodyHtml.html %}

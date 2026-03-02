@@ -1,0 +1,370 @@
+---
+---
+{% include startHtml.html %}
+<title>JavaScript Basics | fernan.dev</title>
+<meta name="description" content="Introduction to JavaScript: variables, functions, DOM manipulation, events. Make your web pages interactive." />
+<meta name="keywords" content="JavaScript, JS, DOM, events, variables, functions, FrontEnd development" />
+<link rel="canonical" href="https://fernan.dev/articles/javascript-basics/" />
+<meta property="og:title" content="JavaScript Basics | fernan.dev" />
+<meta property="og:description" content="Introduction to JavaScript programming: variables, functions, DOM manipulation, and events." />
+<meta property="og:url" content="https://fernan.dev/articles/javascript-basics/" />
+<meta property="og:image" content="https://fernan.dev/favicon/og-image.png" />
+<meta property="og:type" content="article" />
+<link rel="stylesheet" href="/styles/tools.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"JavaScript Basics","description":"Introduction to JavaScript: variables, functions, DOM manipulation, events.","author":{"@type":"Person","name":"Fernán García de Zúñiga","url":"https://fernan.dev/"},"datePublished":"2026-03-01","dateModified":"2026-03-01","url":"https://fernan.dev/articles/javascript-basics/","inLanguage":"en-US","articleBody":"Introduction to programming with JavaScript: variables, functions, DOM manipulation, and events.","wordCount":3500,"timeRequired":"PT25M","keywords":"JavaScript, JS, DOM, events, variables, functions","articleSection":"Foundations","breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://fernan.dev/"},{"@type":"ListItem","position":2,"name":"Articles","item":"https://fernan.dev/articles/"},{"@type":"ListItem","position":3,"name":"JavaScript Basics","item":"https://fernan.dev/articles/javascript-basics/"}]}}</script>
+{% include startBody.html %}
+	<a href="/articles/" class="back-link">← Back to Articles</a>
+	<header><h1>JavaScript Basics</h1><p class="article-meta"><span>⏱️ Reading time: 25 min</span><span>📋 Prerequisites: <a href="/articles/html-fundamentals/">HTML Fundamentals</a>, <a href="/articles/css-essentials/">CSS Essentials</a></span></p></header>
+	<section><h2>Introduction</h2><p>JavaScript brings web pages to life with interactivity. This article covers variables, data types, functions, control flow, DOM manipulation, and event handling.</p><div class="key-takeaways"><h3>What You'll Learn</h3><ul><li>Variables (let, const, var)</li><li>Data types and operators</li><li>Functions and arrow functions</li><li>Conditionals and loops</li><li>Arrays and objects</li><li>DOM manipulation</li><li>Event listeners</li></ul></div></section>
+	<section><h2>Variables</h2><pre><code>// let - block scoped, can be reassigned
+let count = 0;
+count = 1; // ✓ OK
+
+// const - block scoped, cannot be reassigned
+const PI = 3.14159;
+// PI = 3; // ✗ Error!
+
+// var - function scoped (avoid, use let/const)
+var oldWay = 'deprecated';
+
+// Block scope example
+{
+    let blockVar = 'inside';
+    console.log(blockVar); // 'inside'
+}
+// console.log(blockVar); // ✗ ReferenceError
+
+// Temporal Dead Zone
+// console.log(x); // ✗ ReferenceError
+let x = 5;</code></pre></section>
+	<section><h2>Data Types</h2><pre><code>// Primitives
+const string = 'Hello';
+const number = 42;
+const float = 3.14;
+const boolean = true;
+const nullValue = null;
+const undefinedValue = undefined;
+const symbol = Symbol('id');
+
+// Reference types
+const array = [1, 2, 3];
+const object = { name: 'John', age: 30 };
+const date = new Date();
+const regex = /pattern/g;
+
+// Type checking
+typeof 'hello'      // 'string'
+typeof 42           // 'number'
+typeof true         // 'boolean'
+typeof {}           // 'object'
+typeof []           // 'object' (gotcha!)
+typeof null         // 'object' (historical bug)
+typeof undefined    // 'undefined'
+
+// Type coercion
+'5' + 3      // '53' (string concatenation)
+'5' - 3      // 2 (numeric subtraction)
+'5' * '2'    // 10 (string to number)
+!!'hello'    // true (to boolean)</code></pre></section>
+	<section><h2>Operators</h2><pre><code>// Arithmetic
+5 + 3    // 8
+5 - 3    // 2
+5 * 3    // 15
+5 / 3    // 1.666...
+5 % 3    // 2 (remainder)
+5 ** 2   // 25 (exponentiation)
+
+// Comparison
+5 === 5     // true (strict equality)
+5 == '5'    // true (loose, avoids)
+5 !== 3     // true (strict inequality)
+5 > 3       // true
+5 >= 5      // true
+
+// Logical
+true && false   // false (AND)
+true || false   // true (OR)
+!true           // false (NOT)
+
+// Nullish coalescing
+const name = userInput ?? 'Default';
+
+// Optional chaining
+const city = user?.address?.city;</code></pre></section>
+	<section><h2>Functions</h2><pre><code>// Function declaration (hoisted)
+function greet(name) {
+    return `Hello, ${name}!`;
+}
+
+// Function expression
+const greet = function(name) {
+    return `Hello, ${name}!`;
+};
+
+// Arrow function (ES6)
+const greet = (name) => `Hello, ${name}!`;
+
+// Multiple parameters
+const add = (a, b) => a + b;
+
+// Default parameters
+const greet = (name = 'Guest') => `Hello, ${name}!`;
+
+// Rest parameters
+const sum = (...numbers) => numbers.reduce((a, b) => a + b, 0);
+sum(1, 2, 3, 4); // 10
+
+// Returning objects
+const createUser = (name, age) => ({ name, age });
+
+// IIFE (Immediately Invoked)
+(() => {
+    console.log('Runs immediately');
+})();</code></pre></section>
+	<section><h2>Conditionals</h2><pre><code>// If/else
+const age = 18;
+if (age >= 18) {
+    console.log('Adult');
+} else if (age >= 13) {
+    console.log('Teen');
+} else {
+    console.log('Child');
+}
+
+// Ternary operator
+const status = age >= 18 ? 'adult' : 'minor';
+
+// Switch statement
+const day = 'Monday';
+switch (day) {
+    case 'Monday':
+        console.log('Start of week');
+        break;
+    case 'Friday':
+        console.log('End of week');
+        break;
+    default:
+        console.log('Midweek');
+}
+
+// Truthy/Falsy
+// Falsy: false, 0, '', null, undefined, NaN
+// Everything else is truthy
+
+if (userInput) { /* Runs if truthy */ }
+if (!userInput) { /* Runs if falsy */ }</code></pre></section>
+	<section><h2>Loops</h2><pre><code>// For loop
+for (let i = 0; i < 5; i++) {
+    console.log(i);
+}
+
+// For...of (arrays, strings)
+const colors = ['red', 'green', 'blue'];
+for (const color of colors) {
+    console.log(color);
+}
+
+// For...in (object keys)
+const person = { name: 'John', age: 30 };
+for (const key in person) {
+    console.log(key, person[key]);
+}
+
+// While loop
+let i = 0;
+while (i < 5) {
+    console.log(i);
+    i++;
+}
+
+// Do...while
+do {
+    console.log(i);
+    i++;
+} while (i < 5);
+
+// Break and continue
+for (let i = 0; i < 10; i++) {
+    if (i === 3) continue; // Skip 3
+    if (i === 7) break;    // Stop at 7
+    console.log(i);
+}</code></pre></section>
+	<section><h2>Arrays</h2><pre><code>const arr = [1, 2, 3, 4, 5];
+
+// Access
+arr[0]        // 1
+arr.at(-1)    // 5 (last element)
+
+// Modify
+arr.push(6);      // Add to end
+arr.pop();        // Remove from end
+arr.unshift(0);   // Add to start
+arr.shift();      // Remove from start
+
+// Transform
+arr.map(x => x * 2);        // [2, 4, 6, 8, 10]
+arr.filter(x => x > 2);     // [3, 4, 5]
+arr.reduce((a, b) => a + b, 0); // 15
+
+// Find
+arr.find(x => x > 3);       // 4
+arr.findIndex(x => x > 3);  // 3
+arr.includes(3);            // true
+
+// Other
+arr.slice(1, 3);    // [2, 3] (doesn't modify)
+arr.splice(1, 2);   // Removes 2 elements at index 1
+arr.join(' - ');    // "1 - 2 - 3 - 4 - 5"
+arr.reverse();      // Reverses array
+arr.sort((a, b) => a - b); // Sort numbers</code></pre></section>
+	<section><h2>Objects</h2><pre><code>const person = {
+    name: 'John',
+    age: 30,
+    greet() {
+        return `Hi, I'm ${this.name}`;
+    }
+};
+
+// Access
+person.name;        // 'John'
+person['age'];      // 30
+person.greet();     // 'Hi, I'm John'
+
+// Destructuring
+const { name, age } = person;
+const { name: fullName } = person; // Rename
+
+// Spread operator
+const updated = { ...person, age: 31 };
+
+// Optional chaining
+const city = person?.address?.city;
+
+// Object methods
+Object.keys(person);    // ['name', 'age']
+Object.values(person);  // ['John', 30]
+Object.entries(person); // [['name', 'John'], ['age', 30]]
+
+// Check property
+'name' in person;           // true
+person.hasOwnProperty('name'); // true</code></pre></section>
+	<section><h2>DOM Manipulation</h2><pre><code>// Select elements
+const el = document.getElementById('main');
+const els = document.querySelectorAll('.item');
+const first = document.querySelector('.item');
+
+// Create element
+const div = document.createElement('div');
+div.textContent = 'Hello';
+div.className = 'greeting';
+div.id = 'greeting-1';
+
+// Add to DOM
+parent.appendChild(div);
+parent.insertBefore(div, firstChild);
+
+// Remove
+div.remove();
+parent.removeChild(div);
+
+// Modify content
+el.textContent = 'Text only';
+el.innerHTML = '<strong>HTML</strong>';
+
+// Modify attributes
+el.setAttribute('data-id', '123');
+el.getAttribute('data-id');
+el.removeAttribute('data-id');
+
+// Modify classes
+el.classList.add('active');
+el.classList.remove('active');
+el.classList.toggle('active');
+el.classList.contains('active');
+
+// Modify styles
+el.style.color = 'red';
+el.style.cssText = 'color: red; font-size: 16px;';</code></pre></section>
+	<section><h2>Event Handling</h2><pre><code>// Add event listener
+const btn = document.querySelector('#myBtn');
+btn.addEventListener('click', (event) => {
+    console.log('Clicked!', event.target);
+});
+
+// Remove event listener
+function handler(e) { console.log(e); }
+btn.addEventListener('click', handler);
+btn.removeEventListener('click', handler);
+
+// Event object
+element.addEventListener('click', (e) => {
+    e.target;      // Element clicked
+    e.currentTarget; // Element with listener
+    e.preventDefault(); // Prevent default action
+    e.stopPropagation(); // Stop bubbling
+});
+
+// Common events
+element.addEventListener('submit', handleSubmit);
+element.addEventListener('change', handleChange);
+element.addEventListener('input', handleInput);
+element.addEventListener('keydown', handleKey);
+window.addEventListener('scroll', handleScroll);
+window.addEventListener('load', handleLoad);
+
+// Event delegation
+document.querySelector('#list').addEventListener('click', (e) => {
+    if (e.target.matches('.item')) {
+        console.log('Item clicked:', e.target);
+    }
+});</code></pre></section>
+	<section><h2>Practical Example</h2><pre><code>&lt;!-- HTML --&gt;
+&lt;form id="todo-form"&gt;
+    &lt;input type="text" id="todo-input" placeholder="Add todo..."&gt;
+    &lt;button type="submit"&gt;Add&lt;/button&gt;
+&lt;/form&gt;
+&lt;ul id="todo-list"&gt;&lt;/ul&gt;
+
+&lt;script&gt;
+const form = document.getElementById('todo-form');
+const input = document.getElementById('todo-input');
+const list = document.getElementById('todo-list');
+
+// Load from localStorage
+let todos = JSON.parse(localStorage.getItem('todos')) || [];
+
+function render() {
+    list.innerHTML = todos.map((todo, i) => `
+        &lt;li&gt;
+            ${todo}
+            &lt;button onclick="removeTodo(${i})"&gt;×&lt;/button&gt;
+        &lt;/li&gt;
+    `).join('');
+}
+
+function addTodo(text) {
+    todos.push(text);
+    localStorage.setItem('todos', JSON.stringify(todos));
+    render();
+}
+
+function removeTodo(index) {
+    todos.splice(index, 1);
+    localStorage.setItem('todos', JSON.stringify(todos));
+    render();
+}
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const text = input.value.trim();
+    if (text) {
+        addTodo(text);
+        input.value = '';
+    }
+});
+
+render();
+&lt;/script&gt;</code></pre></section>
+	<section><h2>Key Takeaways</h2><ul><li>Use <strong>const</strong> by default, <strong>let</strong> when reassigning</li><li>Prefer <strong>arrow functions</strong> for callbacks</li><li>Use <strong>array methods</strong> (map, filter, reduce) over loops</li><li>Use <strong>querySelector</strong> for DOM selection</li><li>Use <strong>addEventListener</strong> for events</li><li>Practice <strong>event delegation</strong> for dynamic content</li></ul></section>
+	<section><h2>Next Steps</h2><p>Continue your JavaScript journey with ES6+ features:</p><p><a href="/articles/javascript-beginner/" class="next-article">→ JavaScript: Beginner (ES6+ Features)</a></p></section>
+{% include endBodyHtml.html %}

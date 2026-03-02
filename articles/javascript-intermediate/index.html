@@ -1,0 +1,229 @@
+---
+---
+{% include startHtml.html %}
+<title>JavaScript: Intermediate | fernan.dev</title>
+<meta name="description" content="Master async JavaScript: callbacks, promises, async/await, Fetch API, and error handling for working with APIs." />
+<meta name="keywords" content="JavaScript async, promises, async await, Fetch API, callbacks" />
+<link rel="canonical" href="https://fernan.dev/articles/javascript-intermediate/" />
+<meta property="og:title" content="JavaScript: Intermediate | fernan.dev" />
+<meta property="og:description" content="Async programming with promises, async/await, and Fetch API." />
+<meta property="og:url" content="https://fernan.dev/articles/javascript-intermediate/" />
+<meta property="og:image" content="https://fernan.dev/favicon/og-image.png" />
+<meta property="og:type" content="article" />
+<link rel="stylesheet" href="/styles/tools.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"JavaScript: Intermediate","description":"Async programming: callbacks, promises, async/await, Fetch API.","author":{"@type":"Person","name":"Fernán García de Zúñiga","url":"https://fernan.dev/"},"datePublished":"2026-03-01","dateModified":"2026-03-01","url":"https://fernan.dev/articles/javascript-intermediate/","inLanguage":"en-US","articleBody":"Master asynchronous programming in JavaScript.","wordCount":2400,"timeRequired":"PT20M","keywords":"JavaScript async, promises, async await, Fetch API","articleSection":"Intermediate","breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://fernan.dev/"},{"@type":"ListItem","position":2,"name":"Articles","item":"https://fernan.dev/articles/"},{"@type":"ListItem","position":3,"name":"JavaScript: Intermediate","item":"https://fernan.dev/articles/javascript-intermediate/"}]}}</script>
+{% include startBody.html %}
+	<a href="/articles/" class="back-link">← Back to Articles</a>
+	<header><h1>JavaScript: Intermediate</h1><p class="article-meta"><span>⏱️ Reading time: 20 min</span><span>📋 Prerequisites: <a href="/articles/javascript-beginner/">JavaScript: Beginner</a></span></p></header>
+	<section><h2>Introduction</h2><p>Asynchronous programming is essential for JavaScript. This article covers callbacks, promises, async/await, the Fetch API, and error handling patterns.</p></section>
+	<section><h2>Synchronous vs Asynchronous</h2><pre><code>// Synchronous (blocks execution)
+console.log('1');
+console.log('2');
+console.log('3');
+// Output: 1, 2, 3
+
+// Asynchronous (non-blocking)
+console.log('1');
+setTimeout(() => console.log('2'), 1000);
+console.log('3');
+// Output: 1, 3, 2 (after 1 second)</code></pre></section>
+	<section><h2>Callbacks</h2><pre><code>// Callback function
+function fetchData(callback) {
+    setTimeout(() => {
+        callback('Data loaded');
+    }, 1000);
+}
+
+fetchData((data) => console.log(data));
+
+// Callback hell (nested callbacks)
+getUser(userId, (user) => {
+    getPosts(user.id, (posts) => {
+        getComments(posts[0].id, (comments) => {
+            console.log(comments);
+        });
+    });
+});</code></pre></section>
+	<section><h2>Promises</h2><pre><code>// Creating a promise
+const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        const success = true;
+        if (success) resolve('Success!');
+        else reject('Error!');
+    }, 1000);
+});
+
+// Consuming a promise
+promise
+    .then(result => console.log(result))
+    .catch(error => console.error(error))
+    .finally(() => console.log('Done'));
+
+// Chaining promises
+fetchUser(1)
+    .then(user => fetchPosts(user.id))
+    .then(posts => fetchComments(posts[0].id))
+    .then(comments => console.log(comments))
+    .catch(error => console.error(error));
+
+// Promise.all (wait for all)
+Promise.all([promise1, promise2, promise3])
+    .then(results => console.log(results));
+
+// Promise.race (first to complete)
+Promise.race([fastPromise, slowPromise])
+    .then(result => console.log(result));</code></pre></section>
+	<section><h2>Async/Await</h2><pre><code>// Async function
+async function fetchData() {
+    return 'Data';
+}
+
+// Equivalent to
+function fetchData() {
+    return Promise.resolve('Data');
+}
+
+// Await (must be inside async)
+async function getUserData() {
+    const user = await fetchUser(1);
+    const posts = await fetchPosts(user.id);
+    return { user, posts };
+}
+
+// Error handling with try/catch
+async function getData() {
+    try {
+        const response = await fetch('/api/data');
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Fetch failed:', error);
+        throw error;
+    }
+}
+
+// Parallel execution
+async function getAllData() {
+    const [users, posts, comments] = await Promise.all([
+        fetchUsers(),
+        fetchPosts(),
+        fetchComments()
+    ]);
+    return { users, posts, comments };
+}</code></pre></section>
+	<section><h2>Fetch API</h2><pre><code>// Basic GET request
+async function fetchData() {
+    const response = await fetch('/api/data');
+    if (!response.ok) throw new Error('HTTP error');
+    const data = await response.json();
+    return data;
+}
+
+// POST request
+async function createUser(user) {
+    const response = await fetch('/api/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(user)
+    });
+    return response.json();
+}
+
+// With authentication
+async function fetchProtectedData(token) {
+    const response = await fetch('/api/protected', {
+        headers: { 'Authorization': `Bearer ${token}` }
+    });
+    return response.json();
+}
+
+// Handle different response types
+const text = await fetch('/file.txt').then(r => r.text());
+const json = await fetch('/api/data').then(r => r.json());
+const blob = await fetch('/image.png').then(r => r.blob());</code></pre></section>
+	<section><h2>Error Handling</h2><pre><code>// Try/catch/finally
+async function loadData() {
+    try {
+        const data = await fetchData();
+        return data;
+    } catch (error) {
+        console.error('Error:', error.message);
+        return null;
+    } finally {
+        console.log('Loading complete');
+    }
+}
+
+// Multiple error handling
+async function robustFetch() {
+    try {
+        const response = await fetch('/api/data');
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+        return await response.json();
+    } catch (error) {
+        if (error.name === 'TypeError') {
+            console.log('Network error');
+        } else if (error.name === 'SyntaxError') {
+            console.log('Invalid JSON');
+        } else {
+            console.log('Unknown error');
+        }
+        throw error;
+    }
+}</code></pre></section>
+	<section><h2>Practical Example: API Client</h2><pre><code>class ApiClient {
+    constructor(baseURL) {
+        this.baseURL = baseURL;
+    }
+
+    async request(endpoint, options = {}) {
+        const url = `${this.baseURL}${endpoint}`;
+        const config = {
+            headers: { 'Content-Type': 'application/json' },
+            ...options
+        };
+
+        try {
+            const response = await fetch(url, config);
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
+            return await response.json();
+        } catch (error) {
+            console.error('API Error:', error);
+            throw error;
+        }
+    }
+
+    get(endpoint) {
+        return this.request(endpoint);
+    }
+
+    post(endpoint, data) {
+        return this.request(endpoint, {
+            method: 'POST',
+            body: JSON.stringify(data)
+        });
+    }
+
+    async put(endpoint, data) {
+        return this.request(endpoint, {
+            method: 'PUT',
+            body: JSON.stringify(data)
+        });
+    }
+
+    delete(endpoint) {
+        return this.request(endpoint, { method: 'DELETE' });
+    }
+}
+
+// Usage
+const api = new ApiClient('https://api.example.com');
+const users = await api.get('/users');
+const newUser = await api.post('/users', { name: 'John' });</code></pre></section>
+	<section><h2>Key Takeaways</h2><ul><li>Use <strong>async/await</strong> for cleaner async code</li><li>Always <strong>handle errors</strong> with try/catch</li><li>Use <strong>Promise.all</strong> for parallel execution</li><li>Check <strong>response.ok</strong> when using Fetch</li><li>Use <strong>JSON.stringify</strong> for POST bodies</li></ul></section>
+	<section><h2>Next Steps</h2><p><a href="/articles/javascript-advanced/" class="next-article">→ JavaScript: Advanced (Closures, Prototypes, Classes)</a></p></section>
+{% include endBodyHtml.html %}

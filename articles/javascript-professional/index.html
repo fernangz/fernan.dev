@@ -1,0 +1,183 @@
+---
+---
+{% include startHtml.html %}
+<title>JavaScript: Professional | fernan.dev</title>
+<meta name="description" content="Professional JavaScript: debugging, testing, performance optimization, memory management, debouncing, and throttling." />
+<meta name="keywords" content="JavaScript debugging, testing, performance, memory management, debounce, throttle" />
+<link rel="canonical" href="https://fernan.dev/articles/javascript-professional/" />
+<meta property="og:title" content="JavaScript: Professional | fernan.dev" />
+<meta property="og:description" content="Professional-grade JavaScript development practices." />
+<meta property="og:url" content="https://fernan.dev/articles/javascript-professional/" />
+<meta property="og:image" content="https://fernan.dev/favicon/og-image.png" />
+<meta property="og:type" content="article" />
+<link rel="stylesheet" href="/styles/tools.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"JavaScript: Professional","description":"Debugging, testing, performance optimization, memory management.","author":{"@type":"Person","name":"Fernán García de Zúñiga","url":"https://fernan.dev/"},"datePublished":"2026-03-01","dateModified":"2026-03-01","url":"https://fernan.dev/articles/javascript-professional/","inLanguage":"en-US","articleBody":"Professional JavaScript development.","wordCount":2400,"timeRequired":"PT20M","keywords":"JavaScript debugging, testing, performance","articleSection":"Intermediate","breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://fernan.dev/"},{"@type":"ListItem","position":2,"name":"Articles","item":"https://fernan.dev/articles/"},{"@type":"ListItem","position":3,"name":"JavaScript: Professional","item":"https://fernan.dev/articles/javascript-professional/"}]}}</script>
+{% include startBody.html %}
+	<a href="/articles/" class="back-link">← Back to Articles</a>
+	<header><h1>JavaScript: Professional</h1><p class="article-meta"><span>⏱️ Reading time: 20 min</span><span>📋 Prerequisites: <a href="/articles/javascript-advanced/">JavaScript: Advanced</a></span></p></header>
+	<section><h2>Debugging</h2><pre><code>// Console methods
+console.log('Info');
+console.warn('Warning');
+console.error('Error');
+console.table([{ a: 1 }, { a: 2 }]);
+console.time('timer');
+console.timeEnd('timer');
+console.trace('Stack trace');
+
+// Debugger statement
+function problematic() {
+    debugger; // Breaks here in DevTools
+    // ... code
+}
+
+// Try/catch for debugging
+try {
+    riskyOperation();
+} catch (e) {
+    console.error('Operation failed', {
+        message: e.message,
+        stack: e.stack,
+        name: e.name
+    });
+}</code></pre></section>
+	<section><h2>Debouncing</h2><pre><code>// Debounce: Execute after delay
+function debounce(fn, delay) {
+    let timeoutId;
+    return function(...args) {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => fn.apply(this, args), delay);
+    };
+}
+
+// Usage: Search input
+const searchInput = document.getElementById('search');
+const handleSearch = debounce((e) => {
+    fetch(`/api/search?q=${e.target.value}`);
+}, 300);
+searchInput.addEventListener('input', handleSearch);</code></pre></section>
+	<section><h2>Throttling</h2><pre><code>// Throttle: Execute at most once per interval
+function throttle(fn, limit) {
+    let inThrottle;
+    return function(...args) {
+        if (!inThrottle) {
+            fn.apply(this, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    };
+}
+
+// Usage: Scroll handler
+const handleScroll = throttle(() => {
+    console.log('Scrolling...', window.scrollY);
+}, 100);
+window.addEventListener('scroll', handleScroll);</code></pre></section>
+	<section><h2>Memory Management</h2><pre><code>// Memory leaks to avoid
+
+// 1. Forgotten event listeners
+element.addEventListener('click', handler);
+// Fix: Remove when done
+element.removeEventListener('click', handler);
+
+// 2. Closures holding references
+function setup() {
+    const largeData = new Array(1000000);
+    element.onclick = () => console.log('clicked');
+    // largeData is kept in memory
+}
+
+// 3. Detached DOM elements
+const list = document.getElementById('list');
+list.remove();
+// If you still reference 'list', it won't be garbage collected
+list = null;
+
+// 4. Timers not cleared
+const interval = setInterval(() => {}, 1000);
+// Fix: clearInterval(interval);
+
+// Check memory in DevTools
+// Performance tab → Record → Perform actions → Stop</code></pre></section>
+	<section><h2>Testing Basics</h2><pre><code>// Simple test function
+function test(name, fn) {
+    try {
+        fn();
+        console.log(`✓ ${name}`);
+    } catch (e) {
+        console.error(`✗ ${name}: ${e.message}`);
+    }
+}
+
+function assertEqual(actual, expected) {
+    if (actual !== expected) {
+        throw new Error(`Expected ${expected}, got ${actual}`);
+    }
+}
+
+// Example tests
+test('adds numbers', () => {
+    assertEqual(add(2, 3), 5);
+});
+
+test('returns string', () => {
+    assertEqual(typeof greet('John'), 'string');
+});
+
+// Use testing frameworks: Jest, Vitest, Mocha</code></pre></section>
+	<section><h2>Code Organization</h2><pre><code>// Module pattern
+const UserService = {
+    async getUser(id) { /* ... */ },
+    async createUser(data) { /* ... */ },
+    validateEmail(email) { /* ... */ }
+};
+
+// Class-based organization
+class ApiService {
+    constructor(baseURL) {
+        this.baseURL = baseURL;
+    }
+    async get(endpoint) { /* ... */ }
+    async post(endpoint, data) { /* ... */ }
+}
+
+// File structure
+// /src
+//   /services/
+//     api.js
+//     auth.js
+//   /utils/
+//     helpers.js
+//     validators.js
+//   /components/
+//     Button.js
+//     Modal.js</code></pre></section>
+	<section><h2>Performance Tips</h2><pre><code>// 1. Use event delegation
+// Bad: Add listener to each item
+items.forEach(item => item.addEventListener('click', handler));
+// Good: Single listener on parent
+list.addEventListener('click', (e) => {
+    if (e.target.matches('.item')) handler(e);
+});
+
+// 2. Minimize DOM access
+// Bad: Multiple reflows
+for (let i = 0; i < 100; i++) {
+    element.style.width = i + 'px';
+}
+// Good: Batch changes
+element.style.cssText = 'width: 100px; height: 50px;';
+
+// 3. Use DocumentFragment
+const fragment = document.createDocumentFragment();
+for (let i = 0; i < 100; i++) {
+    fragment.appendChild(createItem(i));
+}
+list.appendChild(fragment);
+
+// 4. Lazy load images
+const img = document.createElement('img');
+img.loading = 'lazy';
+img.src = 'image.jpg';</code></pre></section>
+	<section><h2>Key Takeaways</h2><ul><li>Use <strong>console methods</strong> for effective debugging</li><li><strong>Debounce</strong> user input, <strong>throttle</strong> scroll/resize</li><li>Clean up <strong>event listeners</strong> and <strong>timers</strong></li><li>Write <strong>tests</strong> for critical functions</li><li>Organize code into <strong>modules</strong> and <strong>services</strong></li></ul></section>
+	<section><h2>Next Steps</h2><p>Continue with CSS deep dives or move to professional skills:</p><p><a href="/articles/advanced-css-typography/" class="next-article">→ Advanced CSS: Typography & Fonts</a></p></section>
+{% include endBodyHtml.html %}

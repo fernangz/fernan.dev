@@ -1,59 +1,173 @@
 ---
 ---
-<!-- COMMON HTML START-->
 {% include startHtml.html %}
-<!-- PAGE SPECIFIC METAS GO HERE -->
-<title>fernan.dev • Web Accessibility Basics</title>
-<meta name="description" content="Create inclusive experiences that work for everyone">
-<link rel="canonical" href="https://fernan.dev/articles/web-accessibility" />
-<!-- PAGE SPECIFIC CSS GO HERE -->
+<title>Web Accessibility (WCAG) | fernan.dev</title>
+<meta name="description" content="Web accessibility: WCAG guidelines, semantic HTML, ARIA, keyboard navigation, screen readers, and testing." />
+<meta name="keywords" content="accessibility, WCAG, ARIA, screen readers, keyboard navigation" />
+<link rel="canonical" href="https://fernan.dev/articles/web-accessibility/" />
+<meta property="og:title" content="Web Accessibility (WCAG) | fernan.dev" />
+<meta property="og:description" content="Create inclusive experiences with WCAG guidelines." />
+<meta property="og:url" content="https://fernan.dev/articles/web-accessibility/" />
+<meta property="og:image" content="https://fernan.dev/favicon/og-image.png" />
+<meta property="og:type" content="article" />
 <link rel="stylesheet" href="/styles/tools.css">
-
-<!-- Article Structured Data -->
-<script type="application/ld+json">
-{
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"headline": "Web Accessibility Basics",
-	"description": "Create inclusive experiences that work for everyone",
-	"author": {"@type": "Person", "name": "Fernán García de Zúñiga", "url": "https://fernan.dev/"},
-	"datePublished": "2025-02-28",
-	"dateModified": "2025-02-28",
-	"url": "https://fernan.dev/articles/web-accessibility/",
-	"inLanguage": "en-US",
-	"articleBody": "Web accessibility means designing and developing websites that people with disabilities can use...",
-	"breadcrumb": {
-		"@type": "BreadcrumbList",
-		"itemListElement": [
-			{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://fernan.dev/"},
-			{"@type": "ListItem", "position": 2, "name": "Articles", "item": "https://fernan.dev/articles/"},
-			{"@type": "ListItem", "position": 3, "name": "Web Accessibility", "item": "https://fernan.dev/articles/web-accessibility/"}
-		]
-	}
-}
-</script>
-<!-- COMMON BODY START-->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Web Accessibility (WCAG)","description":"WCAG guidelines, ARIA, keyboard navigation, screen readers.","author":{"@type":"Person","name":"Fernán García de Zúñiga","url":"https://fernan.dev/"},"datePublished":"2026-03-01","dateModified":"2026-03-01","url":"https://fernan.dev/articles/web-accessibility/","inLanguage":"en-US","articleBody":"Web accessibility best practices.","wordCount":2400,"timeRequired":"PT20M","keywords":"accessibility, WCAG, ARIA","articleSection":"Professional","breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://fernan.dev/"},{"@type":"ListItem","position":2,"name":"Articles","item":"https://fernan.dev/articles/"},{"@type":"ListItem","position":3,"name":"Web Accessibility","item":"https://fernan.dev/articles/web-accessibility/"}]}}</script>
 {% include startBody.html %}
-<!-- PAGE CONTENT -->
 	<a href="/articles/" class="back-link">← Back to Articles</a>
-	<h1>Web Accessibility Basics</h1>
-	<p>Create inclusive experiences that work for everyone.</p>
+	<header><h1>Web Accessibility (WCAG)</h1><p class="article-meta"><span>⏱️ Reading time: 20 min</span><span>📋 Prerequisites: <a href="/articles/html-fundamentals/">HTML Fundamentals</a></span></p></header>
+	<section><h2>WCAG Principles (POUR)</h2><pre><code>/* POUR - Four Principles */
 
-	<h2>What is Web Accessibility?</h2>
-	<p>Web accessibility means designing and developing websites that people with disabilities can use. This includes visual, auditory, motor, and cognitive impairments.</p>
+1. Perceivable
+   - Text alternatives for images
+   - Captions for videos
+   - Sufficient color contrast (4.5:1)
+   - Resizable text (up to 200%)
 
-	<h2>WCAG Guidelines</h2>
-	<p>The Web Content Accessibility Guidelines (WCAG) provide a framework for accessible web content. The four principles are: Perceivable, Operable, Understandable, and Robust (POUR).</p>
+2. Operable
+   - Keyboard accessible
+   - Enough time to read
+   - No seizure-inducing content
+   - Clear navigation
 
-	<h2>Key Practices</h2>
-	<ul>
-		<li>Use semantic HTML elements</li>
-		<li>Provide alt text for images</li>
-		<li>Ensure sufficient color contrast</li>
-		<li>Make all functionality keyboard accessible</li>
-		<li>Use ARIA labels when necessary</li>
-		<li>Test with screen readers</li>
-	</ul>
-<!-- PAGE SCRIPTS GO HERE-->
-<!-- COMMON BODY HTML END-->
+3. Understandable
+   - Readable text
+   - Predictable behavior
+   - Input assistance
+   - Error messages
+
+4. Robust
+   - Valid HTML
+   - Compatible with assistive tech
+   - Proper ARIA usage</code></pre></section>
+	<section><h2>Semantic HTML</h2><pre><code>&lt;!-- Good: Semantic --&gt;
+&lt;header&gt;
+    &lt;nav aria-label="Main"&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+&lt;/header&gt;
+&lt;main&gt;
+    &lt;article&gt;
+        &lt;h1&gt;Article Title&lt;/h1&gt;
+        &lt;p&gt;Content...&lt;/p&gt;
+    &lt;/article&gt;
+&lt;/main&gt;
+&lt;footer&gt;...&lt;/footer&gt;
+
+<!-- Bad: Div soup --&gt;
+&lt;div class="header"&gt;
+    &lt;div class="nav"&gt;
+        &lt;div class="link"&gt;Home&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre></section>
+	<section><h2>ARIA Basics</h2><pre><code>&lt;!-- Roles --&gt;
+&lt;div role="banner"&gt;...&lt;/div&gt;
+&lt;div role="navigation"&gt;...&lt;/div&gt;
+&lt;div role="main"&gt;...&lt;/div&gt;
+&lt;div role="alert"&gt;Error message&lt;/div&gt;
+
+<!-- States --&gt;
+&lt;button aria-expanded="false"&gt;Menu&lt;/button&gt;
+&lt;input aria-invalid="true"&gt;
+&lt;button aria-disabled="true"&gt;Submit&lt;/button&gt;
+
+<!-- Properties --&gt;
+&lt;button aria-label="Close dialog"&gt;×&lt;/button&gt;
+&lt;div aria-describedby="help-text"&gt;...&lt;/div&gt;
+&lt;nav aria-label="Breadcrumb"&gt;...&lt;/nav&gt;
+
+<!-- Live regions --&gt;
+&lt;div aria-live="polite" aria-atomic="true"&gt;
+    Status updates appear here
+&lt;/div&gt;</code></pre></section>
+	<section><h2>Keyboard Navigation</h2><pre><code>&lt;!-- Skip link --&gt;
+&lt;a href="#main" class="skip-link"&gt;
+    Skip to main content
+&lt;/a&gt;
+
+<!-- Focusable elements --&gt;
+&lt;a href="..."&gt;Link&lt;/a&gt;      /* Tab */
+&lt;button&gt;Button&lt;/button&gt;      /* Tab */
+&lt;input type="text"&gt;          /* Tab */
+&lt;select&gt;...&lt;/select&gt;         /* Tab */
+&lt;textarea&gt;...&lt;/textarea&gt;     /* Tab */
+
+<!-- Custom focus styles --&gt;
+&lt;style&gt;
+:focus {
+    outline: 2px solid #005fcc;
+    outline-offset: 2px;
+}
+:focus:not(:focus-visible) {
+    outline: none;
+}
+&lt;/style&gt;
+
+<!-- Focus trap for modals --&gt;
+/* Keep focus inside modal */</code></pre></section>
+	<section><h2>Color Contrast</h2><pre><code>/* WCAG AA Requirements */
+- Normal text: 4.5:1 contrast ratio
+- Large text (18px+): 3:1 contrast ratio
+- UI components: 3:1 contrast ratio
+
+/* Check contrast */
+:root {
+    --text-primary: #1a1a1a;    /* On white: 16:1 ✓ */
+    --text-secondary: #666666;  /* On white: 5.7:1 ✓ */
+    --text-muted: #999999;      /* On white: 2.8:1 ✗ */
+}
+
+/* Don't rely on color alone */
+.error {
+    color: red;              /* ✗ Color only */
+    font-weight: bold;       /* ✓ Additional indicator */
+}
+.error::before {
+    content: "⚠ ";           /* ✓ Icon */
+}</code></pre></section>
+	<section><h2>Forms Accessibility</h2><pre><code>&lt;!-- Always use labels --&gt;
+&lt;label for="email"&gt;Email:&lt;/label&gt;
+&lt;input type="email" id="email" name="email"&gt;
+
+<!-- Error messages --&gt;
+&lt;label for="email"&gt;Email&lt;/label&gt;
+&lt;input type="email" id="email" 
+       aria-invalid="true"
+       aria-describedby="email-error"&gt;
+&lt;span id="email-error" class="error"&gt;
+    Please enter a valid email
+&lt;/span&gt;
+
+<!-- Required fields --&gt;
+&lt;input required aria-required="true"&gt;
+
+<!-- Fieldsets for groups --&gt;
+&lt;fieldset&gt;
+    &lt;legend&gt;Shipping Address&lt;/legend&gt;
+    &lt;!-- form fields --&gt;
+&lt;/fieldset&gt;</code></pre></section>
+	<section><h2>Testing Accessibility</h2><pre><code>/* Automated Tools */
+1. axe DevTools (browser extension)
+2. WAVE (web accessibility evaluation)
+3. Lighthouse Accessibility audit
+4. pa11y (command line)
+
+/* Manual Testing */
+1. Keyboard-only navigation
+2. Screen reader testing:
+   - NVDA (Windows, free)
+   - VoiceOver (Mac, built-in)
+   - JAWS (Windows, paid)
+
+/* Checklist */
+- [ ] All images have alt text
+- [ ] All forms have labels
+- [ ] Color contrast passes
+- [ ] Keyboard accessible
+- [ ] Focus visible
+- [ ] Headings in order
+- [ ] Links have descriptive text</code></pre></section>
+	<section><h2>Key Takeaways</h2><ul><li>Use <strong>semantic HTML</strong> first</li><li>Add <strong>ARIA</strong> when needed</li><li>Ensure <strong>keyboard navigation</strong></li><li>Check <strong>color contrast</strong></li><li>Test with <strong>screen readers</strong></li><li>Follow <strong>WCAG 2.2 AA</strong></li></ul></section>
+	<section><h2>Next Steps</h2><p><a href="/articles/performance-optimization/" class="next-article">→ Performance Optimization</a></p></section>
 {% include endBodyHtml.html %}

@@ -1,0 +1,668 @@
+---
+---
+<!-- COMMON HTML START-->
+{% include startHtml.html %}
+<!-- PAGE SPECIFIC METAS GO HERE -->
+<title>HTML Fundamentals | fernan.dev</title>
+<meta name="description" content="Master semantic HTML5: document structure, elements, attributes, forms, and accessibility. Build well-structured, meaningful web content." />
+<meta name="keywords" content="HTML, HTML5, semantic HTML, web development, FrontEnd, forms, accessibility, ARIA" />
+<link rel="canonical" href="https://fernan.dev/articles/html-fundamentals/" />
+
+<!-- Open Graph / Social Media -->
+<meta property="og:title" content="HTML Fundamentals | fernan.dev" />
+<meta property="og:description" content="Master semantic HTML5: document structure, elements, attributes, forms, and accessibility." />
+<meta property="og:url" content="https://fernan.dev/articles/html-fundamentals/" />
+<meta property="og:image" content="https://fernan.dev/favicon/og-image.png" />
+<meta property="og:image:alt" content="HTML Fundamentals - Semantic HTML structure diagram" />
+<meta property="og:type" content="article" />
+
+<!-- PAGE SPECIFIC CSS GO HERE -->
+<link rel="stylesheet" href="/styles/tools.css">
+
+<!-- Article Structured Data -->
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"headline": "HTML Fundamentals",
+	"description": "Master semantic HTML5: document structure, elements, attributes, forms, and accessibility.",
+	"author": {
+		"@type": "Person",
+		"name": "Fernán García de Zúñiga",
+		"url": "https://fernan.dev/"
+	},
+	"datePublished": "2026-03-01",
+	"dateModified": "2026-03-01",
+	"url": "https://fernan.dev/articles/html-fundamentals/",
+	"inLanguage": "en-US",
+	"articleBody": "Master semantic HTML5: document structure, elements, attributes, forms, and accessibility. Build well-structured, meaningful content.",
+	"wordCount": 3000,
+	"timeRequired": "PT20M",
+	"keywords": "HTML, HTML5, semantic HTML, web development, FrontEnd, forms, accessibility",
+	"articleSection": "Foundations",
+	"breadcrumb": {
+		"@type": "BreadcrumbList",
+		"itemListElement": [
+			{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://fernan.dev/"},
+			{"@type": "ListItem", "position": 2, "name": "Articles", "item": "https://fernan.dev/articles/"},
+			{"@type": "ListItem", "position": 3, "name": "HTML Fundamentals", "item": "https://fernan.dev/articles/html-fundamentals/"}
+		]
+	}
+}
+</script>
+<!-- COMMON BODY START-->
+{% include startBody.html %}
+<!-- PAGE CONTENT -->
+	<a href="/articles/" class="back-link">← Back to Articles</a>
+	
+	<header>
+		<h1>HTML Fundamentals</h1>
+		<p class="article-meta">
+			<span class="reading-time">⏱️ Reading time: 20 min</span>
+			<span class="prerequisites">📋 Prerequisites: <a href="/articles/how-web-works/">How the Web Works</a></span>
+		</p>
+	</header>
+
+	<section>
+		<h2>Introduction</h2>
+		<p>HTML (HyperText Markup Language) is the backbone of every web page. It provides the structure and meaning to your content. This article covers everything you need to know to write semantic, accessible HTML5.</p>
+		
+		<div class="key-takeaways">
+			<h3>What You'll Learn</h3>
+			<ul>
+				<li>HTML document structure</li>
+				<li>Semantic elements and when to use them</li>
+				<li>Text content and headings</li>
+				<li>Links, images, and media</li>
+				<li>Forms and input validation</li>
+				<li>Accessibility best practices</li>
+			</ul>
+		</div>
+	</section>
+
+	<section>
+		<h2>HTML Document Structure</h2>
+		<p>Every HTML document follows a standard structure:</p>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Page Title&lt;/title&gt;
+    &lt;meta name="description" content="Page description"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Page content goes here --&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+		<h3>Element Breakdown</h3>
+		<table>
+			<thead>
+				<tr>
+					<th>Element</th>
+					<th>Purpose</th>
+					<th>Required?</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><code>&lt;!DOCTYPE html&gt;</code></td>
+					<td>Tells browser to use HTML5 mode</td>
+					<td>Yes</td>
+				</tr>
+				<tr>
+					<td><code>&lt;html&gt;</code></td>
+					<td>Root element of the document</td>
+					<td>Yes</td>
+				</tr>
+				<tr>
+					<td><code>lang="en"</code></td>
+					<td>Specifies document language</td>
+					<td>Recommended</td>
+				</tr>
+				<tr>
+					<td><code>&lt;head&gt;</code></td>
+					<td>Contains metadata (not visible)</td>
+					<td>Yes</td>
+				</tr>
+				<tr>
+					<td><code>&lt;meta charset&gt;</code></td>
+					<td>Character encoding (UTF-8)</td>
+					<td>Yes</td>
+				</tr>
+				<tr>
+					<td><code>&lt;title&gt;</code></td>
+					<td>Page title (shown in tabs)</td>
+					<td>Yes</td>
+				</tr>
+				<tr>
+					<td><code>&lt;body&gt;</code></td>
+					<td>Contains visible page content</td>
+					<td>Yes</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section>
+		<h2>Semantic Elements</h2>
+		<p>Semantic HTML describes the meaning of content, not just its appearance. This helps search engines, screen readers, and developers understand your page structure.</p>
+
+<pre><code>┌─────────────────────────────────────────────┐
+│                 &lt;header&gt;                    │
+│   ┌─────────┐         ┌─────────────────┐  │
+│   │  Logo   │         │    &lt;nav&gt;        │  │
+│   └─────────┘         └─────────────────┘  │
+└─────────────────────────────────────────────┘
+┌─────────────────────────────────────────────┐
+│                 &lt;main&gt;                      │
+│  ┌───────────────────────────────────────┐  │
+│  │  &lt;article&gt;                            │  │
+│  │    &lt;h1&gt;Article Title&lt;/h1&gt;             │  │
+│  │    &lt;p&gt;Content...&lt;/p&gt;                  │  │
+│  │  &lt;/article&gt;                           │  │
+│  └───────────────────────────────────────┘  │
+│  ┌───────────────────────────────────────┐  │
+│  │  &lt;aside&gt;                              │  │
+│  │    Related content / Sidebar          │  │
+│  │  &lt;/aside&gt;                             │  │
+│  └───────────────────────────────────────┘  │
+└─────────────────────────────────────────────┘
+┌─────────────────────────────────────────────┐
+│                 &lt;footer&gt;                    │
+│   Copyright | Links | Contact Info          │
+└─────────────────────────────────────────────┘
+</code></pre>
+
+		<h3>Common Semantic Elements</h3>
+		<table>
+			<thead>
+				<tr>
+					<th>Element</th>
+					<th>Purpose</th>
+					<th>Example Use</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><code>&lt;header&gt;</code></td>
+					<td>Introductory content</td>
+					<td>Site header, article header</td>
+				</tr>
+				<tr>
+					<td><code>&lt;nav&gt;</code></td>
+					<td>Navigation links</td>
+					<td>Main menu, breadcrumbs</td>
+				</tr>
+				<tr>
+					<td><code>&lt;main&gt;</code></td>
+					<td>Primary content</td>
+					<td>Page's main content (one per page)</td>
+				</tr>
+				<tr>
+					<td><code>&lt;article&gt;</code></td>
+					<td>Self-contained content</td>
+					<td>Blog post, news story, comment</td>
+				</tr>
+				<tr>
+					<td><code>&lt;section&gt;</code></td>
+					<td>Thematic grouping</td>
+					<td>Chapter, tab content</td>
+				</tr>
+				<tr>
+					<td><code>&lt;aside&gt;</code></td>
+					<td>Related but separate</td>
+					<td>Sidebar, callout box</td>
+				</tr>
+				<tr>
+					<td><code>&lt;footer&gt;</code></td>
+					<td>Closing content</td>
+					<td>Site footer, article footer</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<h3>Complete Semantic Page Example</h3>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;My Blog - Home&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;My Blog&lt;/h1&gt;
+        &lt;nav aria-label="Main navigation"&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="/about/"&gt;About&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="/contact/"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;main&gt;
+        &lt;article&gt;
+            &lt;header&gt;
+                &lt;h2&gt;My First Post&lt;/h2&gt;
+                &lt;time datetime="2026-03-01"&gt;March 1, 2026&lt;/time&gt;
+            &lt;/header&gt;
+            &lt;p&gt;Welcome to my blog!&lt;/p&gt;
+        &lt;/article&gt;
+    &lt;/main&gt;
+
+    &lt;footer&gt;
+        &lt;p&gt;&amp;copy; 2026 My Blog&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+	</section>
+
+	<section>
+		<h2>Text Content & Headings</h2>
+		<p>HTML provides various elements for structuring text content:</p>
+
+<pre><code>&lt;h1&gt;Main Page Title (one per page)&lt;/h1&gt;
+&lt;h2&gt;Section Heading&lt;/h2&gt;
+&lt;h3&gt;Subsection Heading&lt;/h3&gt;
+&lt;h4&gt;Sub-subsection Heading&lt;/h4&gt;
+&lt;h5&gt;Minor Heading&lt;/h5&gt;
+&lt;h6&gt;Smallest Heading&lt;/h6&gt;
+
+&lt;p&gt;This is a paragraph of text.&lt;/p&gt;
+
+&lt;p&gt;This paragraph has &lt;strong&gt;strong importance&lt;/strong&gt; 
+   and &lt;em&gt;emphasized text&lt;/em&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;Unordered list item&lt;/li&gt;
+    &lt;li&gt;Another item&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+    &lt;li&gt;First ordered item&lt;/li&gt;
+    &lt;li&gt;Second ordered item&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+    &lt;p&gt;This is a block quotation.&lt;/p&gt;
+    &lt;cite&gt;— Author Name&lt;/cite&gt;
+&lt;/blockquote&gt;
+
+&lt;code&gt;inline code&lt;/code&gt;
+
+&lt;pre&gt;
+&lt;code&gt;
+def hello():
+    print("Hello, World!")
+&lt;/code&gt;
+&lt;/pre&gt;
+</code></pre>
+
+		<div class="key-takeaways">
+			<h3>Heading Best Practices</h3>
+			<ul>
+				<li>Use <strong>one <code>&lt;h1&gt;</code></strong> per page (main title)</li>
+				<li>Don't skip heading levels (h1 → h2 → h3, not h1 → h4)</li>
+				<li>Headings should describe content structure</li>
+				<li>Don't use headings just for styling (use CSS instead)</li>
+			</ul>
+		</div>
+	</section>
+
+	<section>
+		<h2>Links & Navigation</h2>
+		<p>The <code>&lt;a&gt;</code> (anchor) element creates hyperlinks:</p>
+
+<pre><code>&lt;!-- Internal link --&gt;
+&lt;a href="/about/"&gt;About Us&lt;/a&gt;
+
+&lt;!-- External link --&gt;
+&lt;a href="https://example.com" target="_blank" rel="noopener noreferrer"&gt;
+    External Site
+&lt;/a&gt;
+
+&lt;!-- Email link --&gt;
+&lt;a href="mailto:hello@example.com"&gt;Email Us&lt;/a&gt;
+
+&lt;!-- Phone link --&gt;
+&lt;a href="tel:+1234567890"&gt;Call Us&lt;/a&gt;
+
+&lt;!-- Download link --&gt;
+&lt;a href="/file.pdf" download&gt;Download PDF&lt;/a&gt;
+
+&lt;!-- Link with title (tooltip) --&gt;
+&lt;a href="/docs/" title="Read our documentation"&gt;
+    Documentation
+&lt;/a&gt;
+</code></pre>
+
+		<h3>Link Attributes</h3>
+		<table>
+			<thead>
+				<tr>
+					<th>Attribute</th>
+					<th>Purpose</th>
+					<th>Example</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><code>href</code></td>
+					<td>Destination URL</td>
+					<td><code>href="/page/"</code></td>
+				</tr>
+				<tr>
+					<td><code>target</code></td>
+					<td>Where to open link</td>
+					<td><code>target="_blank"</code></td>
+				</tr>
+				<tr>
+					<td><code>rel</code></td>
+					<td>Relationship to linked page</td>
+					<td><code>rel="noopener noreferrer"</code></td>
+				</tr>
+				<tr>
+					<td><code>download</code></td>
+					<td>Download instead of navigate</td>
+					<td><code>download="file.pdf"</code></td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section>
+		<h2>Images & Media</h2>
+		<p>Embed images, audio, and video in your pages:</p>
+
+<pre><code>&lt;!-- Basic image --&gt;
+&lt;img src="photo.jpg" alt="Description of image"&gt;
+
+&lt;!-- Responsive image --&gt;
+&lt;img 
+    src="photo-small.jpg" 
+    srcset="photo-small.jpg 480w, photo-medium.jpg 768w, photo-large.jpg 1200w"
+    sizes="(max-width: 600px) 480px, (max-width: 900px) 768px, 1200px"
+    alt="Description"
+&gt;
+
+&lt;!-- Figure with caption --&gt;
+&lt;figure&gt;
+    &lt;img src="chart.png" alt="Sales chart showing growth"&gt;
+    &lt;figcaption&gt;Q1 2026 Sales Results&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;!-- Video with controls --&gt;
+&lt;video controls poster="thumbnail.jpg"&gt;
+    &lt;source src="video.mp4" type="video/mp4"&gt;
+    &lt;source src="video.webm" type="video/webm"&gt;
+    &lt;track src="subtitles.vtt" kind="subtitles" srclang="en"&gt;
+    Your browser doesn't support video.
+&lt;/video&gt;
+
+&lt;!-- Audio player --&gt;
+&lt;audio controls&gt;
+    &lt;source src="audio.mp3" type="audio/mpeg"&gt;
+    Your browser doesn't support audio.
+&lt;/audio&gt;
+</code></pre>
+
+		<div class="key-takeaways">
+			<h3>Image Best Practices</h3>
+			<ul>
+				<li><strong>Always include <code>alt</code></strong> - Required for accessibility</li>
+				<li><strong>Use descriptive alt text</strong> - Describe the image's purpose</li>
+				<li><strong>Decorative images</strong> - Use <code>alt=""</code> (empty)</li>
+				<li><strong>Responsive images</strong> - Use <code>srcset</code> for different screen sizes</li>
+				<li><strong>Lazy loading</strong> - Add <code>loading="lazy"</code> for below-fold images</li>
+			</ul>
+		</div>
+	</section>
+
+	<section>
+		<h2>Forms & Input Validation</h2>
+		<p>Forms collect user input. HTML5 provides built-in validation:</p>
+
+<pre><code>&lt;form action="/submit" method="POST"&gt;
+    &lt;!-- Text input --&gt;
+    &lt;label for="name"&gt;Name:&lt;/label&gt;
+    &lt;input 
+        type="text" 
+        id="name" 
+        name="name" 
+        required
+        minlength="2"
+        maxlength="50"
+        placeholder="Enter your name"
+    &gt;
+
+    &lt;!-- Email input --&gt;
+    &lt;label for="email"&gt;Email:&lt;/label&gt;
+    &lt;input 
+        type="email" 
+        id="email" 
+        name="email" 
+        required
+        placeholder="you@example.com"
+    &gt;
+
+    &lt;!-- Password --&gt;
+    &lt;label for="password"&gt;Password:&lt;/label&gt;
+    &lt;input 
+        type="password" 
+        id="password" 
+        name="password" 
+        required
+        minlength="8"
+        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+        title="Must contain number, lowercase, uppercase, 8+ chars"
+    &gt;
+
+    &lt;!-- Number input --&gt;
+    &lt;label for="age"&gt;Age:&lt;/label&gt;
+    &lt;input 
+        type="number" 
+        id="age" 
+        name="age" 
+        min="18" 
+        max="120"
+    &gt;
+
+    &lt;!-- Select dropdown --&gt;
+    &lt;label for="country"&gt;Country:&lt;/label&gt;
+    &lt;select id="country" name="country" required&gt;
+        &lt;option value=""&gt;Select...&lt;/option&gt;
+        &lt;option value="us"&gt;United States&lt;/option&gt;
+        &lt;option value="uk"&gt;United Kingdom&lt;/option&gt;
+        &lt;option value="ca"&gt;Canada&lt;/option&gt;
+    &lt;/select&gt;
+
+    &lt;!-- Radio buttons --&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Gender:&lt;/legend&gt;
+        &lt;label&gt;
+            &lt;input type="radio" name="gender" value="male"&gt;
+            Male
+        &lt;/label&gt;
+        &lt;label&gt;
+            &lt;input type="radio" name="gender" value="female"&gt;
+            Female
+        &lt;/label&gt;
+    &lt;/fieldset&gt;
+
+    &lt;!-- Checkbox --&gt;
+    &lt;label&gt;
+        &lt;input type="checkbox" name="terms" required&gt;
+        I agree to the terms
+    &lt;/label&gt;
+
+    &lt;!-- Textarea --&gt;
+    &lt;label for="message"&gt;Message:&lt;/label&gt;
+    &lt;textarea 
+        id="message" 
+        name="message" 
+        rows="5"
+        required
+    &gt;&lt;/textarea&gt;
+
+    &lt;!-- Submit button --&gt;
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+
+		<h3>Input Types</h3>
+		<table>
+			<thead>
+				<tr>
+					<th>Type</th>
+					<th>Purpose</th>
+					<th>Validation</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><code>text</code></td>
+					<td>Single-line text</td>
+					<td><code>minlength</code>, <code>maxlength</code>, <code>pattern</code></td>
+				</tr>
+				<tr>
+					<td><code>email</code></td>
+					<td>Email address</td>
+					<td>Email format validation</td>
+				</tr>
+				<tr>
+					<td><code>password</code></td>
+					<td>Password (hidden)</td>
+					<td><code>minlength</code>, <code>pattern</code></td>
+				</tr>
+				<tr>
+					<td><code>number</code></td>
+					<td>Numeric input</td>
+					<td><code>min</code>, <code>max</code>, <code>step</code></td>
+				</tr>
+				<tr>
+					<td><code>tel</code></td>
+					<td>Phone number</td>
+					<td><code>pattern</code></td>
+				</tr>
+				<tr>
+					<td><code>url</code></td>
+					<td>URL</td>
+					<td>URL format validation</td>
+				</tr>
+				<tr>
+					<td><code>date</code></td>
+					<td>Date picker</td>
+					<td><code>min</code>, <code>max</code></td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section>
+		<h2>Accessibility Fundamentals</h2>
+		<p>Make your HTML accessible to all users, including those using screen readers:</p>
+
+<pre><code>&lt;!-- Skip link for keyboard users --&gt;
+&lt;a href="#main" class="skip-link"&gt;Skip to main content&lt;/a&gt;
+
+&lt;!-- Landmark regions --&gt;
+&lt;header role="banner"&gt;...&lt;/header&gt;
+&lt;nav role="navigation" aria-label="Main"&gt;...&lt;/nav&gt;
+&lt;main id="main" role="main"&gt;...&lt;/main&gt;
+&lt;footer role="contentinfo"&gt;...&lt;/footer&gt;
+
+&lt;!-- Form labels (required) --&gt;
+&lt;label for="email"&gt;Email:&lt;/label&gt;
+&lt;input type="email" id="email" name="email"&gt;
+
+&lt;!-- ARIA for dynamic content --&gt;
+&lt;div aria-live="polite" aria-atomic="true"&gt;
+    Status messages appear here
+&lt;/div&gt;
+
+&lt;!-- Button with icon --&gt;
+&lt;button aria-label="Close dialog"&gt;
+    &lt;span aria-hidden="true"&gt;&times;&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- Image alternatives --&gt;
+&lt;img src="logo.png" alt="Company Name Logo"&gt;
+&lt;img src="decoration.png" alt=""&gt; &lt;!-- Decorative --&gt;
+</code></pre>
+
+		<h3>WCAG Quick Reference</h3>
+		<table>
+			<thead>
+				<tr>
+					<th>Principle</th>
+					<th>Requirement</th>
+					<th>HTML Solution</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><strong>Perceivable</strong></td>
+					<td>Alt text for images</td>
+					<td><code>alt="description"</code></td>
+				</tr>
+				<tr>
+					<td><strong>Operable</strong></td>
+					<td>Keyboard accessible</td>
+					<td>Use <code>&lt;button&gt;</code>, <code>&lt;a&gt;</code></td>
+				</tr>
+				<tr>
+					<td><strong>Understandable</strong></td>
+					<td>Clear labels</td>
+					<td><code>&lt;label for="id"&gt;</code></td>
+				</tr>
+				<tr>
+					<td><strong>Robust</strong></td>
+					<td>Valid HTML</td>
+					<td>Use W3C validator</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section>
+		<h2>Key Takeaways</h2>
+		<ul>
+			<li>Use <strong>semantic elements</strong> to describe content meaning</li>
+			<li>Include <strong>one <code>&lt;h1&gt;</code></strong> per page</li>
+			<li>Always provide <strong><code>alt</code> text</strong> for images</li>
+			<li>Use <strong><code>&lt;label&gt;</code></strong> for all form inputs</li>
+			<li>Implement <strong>accessibility</strong> from the start</li>
+			<li>Validate your HTML with the <a href="https://validator.w3.org/" target="_blank" rel="noopener noreferrer">W3C Validator</a></li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>FAQ</h2>
+		
+		<h3>What's the difference between <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code>?</h3>
+		<p><code>&lt;div&gt;</code> is a block-level element (starts on new line). <code>&lt;span&gt;</code> is inline (flows with text). Neither has semantic meaning—use semantic elements when possible.</p>
+
+		<h3>When should I use <code>&lt;section&gt;</code> vs <code>&lt;article&gt;</code>?</h3>
+		<p>Use <code>&lt;article&gt;</code> for self-contained content (blog post, comment). Use <code>&lt;section&gt;</code> for thematic groupings within a page.</p>
+
+		<h3>Do I need to close all HTML tags?</h3>
+		<p>Most tags should be closed, but some are self-closing: <code>&lt;img&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;br&gt;</code>, <code>&lt;hr&gt;</code>, <code>&lt;meta&gt;</code>, <code>&lt;link&gt;</code>.</p>
+
+		<h3>What's the purpose of the <code>lang</code> attribute?</h3>
+		<p>It tells browsers and screen readers what language the content is in, enabling proper pronunciation and hyphenation.</p>
+	</section>
+
+	<section>
+		<h2>Next Steps</h2>
+		<p>Now that you understand HTML structure, learn how to style it with CSS:</p>
+		<p><a href="/articles/css-essentials/" class="next-article">→ CSS Essentials</a></p>
+	</section>
+<!-- PAGE SCRIPTS GO HERE-->
+<!-- COMMON BODY HTML END-->
+{% include endBodyHtml.html %}

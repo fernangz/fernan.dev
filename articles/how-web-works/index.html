@@ -1,0 +1,435 @@
+---
+---
+<!-- COMMON HTML START-->
+{% include startHtml.html %}
+<!-- PAGE SPECIFIC METAS GO HERE -->
+<title>How the Web Works | fernan.dev</title>
+<meta name="description" content="Learn how the web works: clients, servers, domains, DNS, HTTP/HTTPS, and the request/response cycle. Essential foundation for FrontEnd developers." />
+<meta name="keywords" content="how the web works, client server, DNS, HTTP, HTTPS, domains, web fundamentals, FrontEnd development" />
+<link rel="canonical" href="https://fernan.dev/articles/how-web-works/" />
+
+<!-- Open Graph / Social Media -->
+<meta property="og:title" content="How the Web Works | fernan.dev" />
+<meta property="og:description" content="Learn how the web works: clients, servers, domains, DNS, HTTP/HTTPS, and the request/response cycle." />
+<meta property="og:url" content="https://fernan.dev/articles/how-web-works/" />
+<meta property="og:image" content="https://fernan.dev/favicon/og-image.png" />
+<meta property="og:image:alt" content="How the Web Works - Diagram of client-server architecture" />
+<meta property="og:type" content="article" />
+
+<!-- PAGE SPECIFIC CSS GO HERE -->
+<link rel="stylesheet" href="/styles/tools.css">
+
+<!-- Article Structured Data -->
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"headline": "How the Web Works",
+	"description": "Learn how the web works: clients, servers, domains, DNS, HTTP/HTTPS, and the request/response cycle. Essential foundation for FrontEnd developers.",
+	"author": {
+		"@type": "Person",
+		"name": "Fernán García de Zúñiga",
+		"url": "https://fernan.dev/"
+	},
+	"datePublished": "2026-03-01",
+	"dateModified": "2026-03-01",
+	"url": "https://fernan.dev/articles/how-web-works/",
+	"inLanguage": "en-US",
+	"articleBody": "Understanding the foundation: clients, servers, domains, DNS, HTTP/HTTPS, and the request/response cycle.",
+	"wordCount": 2500,
+	"timeRequired": "PT15M",
+	"keywords": "how the web works, client server, DNS, HTTP, HTTPS, domains, web fundamentals",
+	"articleSection": "Foundations",
+	"breadcrumb": {
+		"@type": "BreadcrumbList",
+		"itemListElement": [
+			{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://fernan.dev/"},
+			{"@type": "ListItem", "position": 2, "name": "Articles", "item": "https://fernan.dev/articles/"},
+			{"@type": "ListItem", "position": 3, "name": "How the Web Works", "item": "https://fernan.dev/articles/how-web-works/"}
+		]
+	}
+}
+</script>
+<!-- COMMON BODY START-->
+{% include startBody.html %}
+<!-- PAGE CONTENT -->
+	<a href="/articles/" class="back-link">← Back to Articles</a>
+	
+	<header>
+		<h1>How the Web Works</h1>
+		<p class="article-meta">
+			<span class="reading-time">⏱️ Reading time: 15 min</span>
+			<span class="prerequisites">📋 Prerequisites: None - This is the first article</span>
+		</p>
+	</header>
+
+	<section>
+		<h2>Introduction</h2>
+		<p>Before diving into HTML, CSS, and JavaScript, it's essential to understand the foundation: how does the web actually work? This article covers the client-server model, domains, DNS, HTTP/HTTPS, and the complete request/response cycle.</p>
+		
+		<div class="key-takeaways">
+			<h3>What You'll Learn</h3>
+			<ul>
+				<li>The difference between the Internet and the Web</li>
+				<li>Client-Server architecture</li>
+				<li>How domain names and DNS work</li>
+				<li>HTTP methods and status codes</li>
+				<li>HTTPS and TLS encryption</li>
+				<li>How browsers render web pages</li>
+			</ul>
+		</div>
+	</section>
+
+	<section>
+		<h2>Internet vs Web</h2>
+		<p>People often use "Internet" and "Web" interchangeably, but they're different:</p>
+		
+		<div class="definition-box">
+			<strong>Internet:</strong> The physical network of connected computers and cables worldwide.
+		</div>
+		
+		<div class="definition-box">
+			<strong>Web:</strong> A service that runs on the Internet, consisting of interconnected documents and resources accessed via browsers.
+		</div>
+
+		<p><strong>Analogy:</strong> The Internet is like the road system, while the Web is like the shops and buildings you can visit using those roads.</p>
+	</section>
+
+	<section>
+		<h2>Client-Server Model</h2>
+		<p>The web operates on a client-server architecture:</p>
+
+<pre><code>┌─────────────┐                              ┌─────────────┐
+│   CLIENT    │                              │   SERVER    │
+│  (Browser)  │────── HTTP Request ─────────▶│  (Website)  │
+│             │                              │             │
+│             │◀───── HTTP Response ─────────│             │
+└─────────────┘                              └─────────────┘
+</code></pre>
+
+		<h3>How It Works</h3>
+		<ol>
+			<li><strong>Client</strong> (your browser) sends an HTTP request</li>
+			<li><strong>Server</strong> receives and processes the request</li>
+			<li><strong>Server</strong> sends back an HTTP response</li>
+			<li><strong>Client</strong> renders the response for the user</li>
+		</ol>
+
+		<h3>Example: Loading fernan.dev</h3>
+<pre><code>Your Browser (Client)          GitHub Pages (Server)
+       │                                │
+       │── GET / HTTP/1.1 ────────────▶│
+       │   Host: fernan.dev             │
+       │                                │
+       │◀── HTTP/1.1 200 OK ───────────│
+       │   Content-Type: text/html      │
+       │   &lt;!DOCTYPE html&gt;...           │
+       │                                │
+   Renders page                         │
+</code></pre>
+	</section>
+
+	<section>
+		<h2>Domain Names & DNS</h2>
+		<p>Every server has an IP address (like <code>185.199.108.153</code>), but humans prefer memorable names like <code>fernan.dev</code>. DNS (Domain Name System) translates domain names to IP addresses.</p>
+
+		<h3>DNS Resolution Process</h3>
+<pre><code>┌──────────┐    ┌──────────┐    ┌──────────┐    ┌──────────┐
+│  Browser │    │   DNS    │    │    TLD   │    │ Authority│
+│          │    │ Resolver │    │  Server  │    │  Server  │
+└────┬─────┘    └────┬─────┘    └────┬─────┘    └────┬─────┘
+     │               │               │               │
+     │ Type: fernan.dev              │               │
+     │──────────────▶│               │               │
+     │               │ Type: .dev    │               │
+     │               │──────────────▶│               │
+     │               │               │ Type: fernan  │
+     │               │               │──────────────▶│
+     │               │               │               │
+     │               │◀──────────────│ 185.199.108.x │
+     │◀──────────────│ 185.199.108.x │               │
+     │ 185.199.108.x │               │               │
+</code></pre>
+
+		<h3>DNS Record Types</h3>
+		<table>
+			<thead>
+				<tr>
+					<th>Record Type</th>
+					<th>Purpose</th>
+					<th>Example</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><code>A</code></td>
+					<td>Maps domain to IPv4 address</td>
+					<td><code>fernan.dev → 185.199.108.153</code></td>
+				</tr>
+				<tr>
+					<td><code>AAAA</code></td>
+					<td>Maps domain to IPv6 address</td>
+					<td><code>fernan.dev → 2606:50c0:8000::153</code></td>
+				</tr>
+				<tr>
+					<td><code>CNAME</code></td>
+					<td>Alias for another domain</td>
+					<td><code>www.fernan.dev → fernan.dev</code></td>
+				</tr>
+				<tr>
+					<td><code>MX</code></td>
+					<td>Mail server records</td>
+					<td><code>fernan.dev → mail.fernan.dev</code></td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section>
+		<h2>HTTP: Hypertext Transfer Protocol</h2>
+		<p>HTTP is the protocol clients and servers use to communicate. It defines how requests and responses are structured.</p>
+
+		<h3>HTTP Request Structure</h3>
+<pre><code>GET /articles/how-web-works/ HTTP/1.1
+Host: fernan.dev
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X...)
+Accept: text/html,application/xhtml+xml
+Accept-Language: en-US,en;q=0.9
+Connection: keep-alive
+</code></pre>
+
+		<h3>HTTP Response Structure</h3>
+<pre><code>HTTP/1.1 200 OK
+Date: Sun, 01 Mar 2026 12:00:00 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 15234
+Cache-Control: public, max-age=3600
+Server: GitHub.com
+
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+...
+</code></pre>
+
+		<h3>Common HTTP Methods</h3>
+		<table>
+			<thead>
+				<tr>
+					<th>Method</th>
+					<th>Purpose</th>
+					<th>Example</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><code>GET</code></td>
+					<td>Retrieve a resource</td>
+					<td>Load a web page</td>
+				</tr>
+				<tr>
+					<td><code>POST</code></td>
+					<td>Submit data to server</td>
+					<td>Submit a form</td>
+				</tr>
+				<tr>
+					<td><code>PUT</code></td>
+					<td>Update a resource</td>
+					<td>Update user profile</td>
+				</tr>
+				<tr>
+					<td><code>DELETE</code></td>
+					<td>Delete a resource</td>
+					<td>Delete a post</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<h3>HTTP Status Codes</h3>
+		<table>
+			<thead>
+				<tr>
+					<th>Code</th>
+					<th>Meaning</th>
+					<th>When You See It</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><code>200 OK</code></td>
+					<td>Success</td>
+					<td>Page loads normally</td>
+				</tr>
+				<tr>
+					<td><code>301 Moved</code></td>
+					<td>Permanent redirect</td>
+					<td>HTTP → HTTPS redirect</td>
+				</tr>
+				<tr>
+					<td><code>404 Not Found</code></td>
+					<td>Resource not found</td>
+					<td>Broken link or typo in URL</td>
+				</tr>
+				<tr>
+					<td><code>500 Server Error</code></td>
+					<td>Server-side error</td>
+					<td>Server crashed or bug</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section>
+		<h2>HTTPS & TLS Encryption</h2>
+		<p>HTTPS is HTTP over TLS (Transport Layer Security). It encrypts data between client and server, preventing eavesdropping and tampering.</p>
+
+		<h3>HTTP vs HTTPS</h3>
+<pre><code>HTTP (Insecure):
+Client ──▶ "password=secret123" ──▶ Server
+         ▲ Anyone can read this ▲
+
+HTTPS (Secure):
+Client ──▶ 🔒 ENCRYPTED DATA 🔒 ──▶ Server
+         ▲ Only server can decrypt ▲
+</code></pre>
+
+		<h3>TLS Handshake (Simplified)</h3>
+<pre><code>Client                          Server
+  │                              │
+  │── ClientHello ──────────────▶│
+  │   (supported ciphers)        │
+  │                              │
+  │◀──── ServerHello ────────────│
+  │   (chosen cipher + cert)     │
+  │                              │
+  │── Verify Certificate ───────▶│
+  │                              │
+  │◀──── Encrypted Session ──────│
+  │   (secure communication)     │
+</code></pre>
+
+		<div class="key-takeaways">
+			<h3>Why HTTPS Matters</h3>
+			<ul>
+				<li><strong>Encryption:</strong> Data can't be read by intermediaries</li>
+				<li><strong>Integrity:</strong> Data can't be modified in transit</li>
+				<li><strong>Authentication:</strong> You're talking to the real server</li>
+				<li><strong>SEO:</strong> Google ranks HTTPS sites higher</li>
+				<li><strong>Trust:</strong> Browsers show padlock icon</li>
+			</ul>
+		</div>
+	</section>
+
+	<section>
+		<h2>Browser Rendering Pipeline</h2>
+		<p>When a browser receives an HTML response, it goes through several steps to render the page:</p>
+
+<pre><code>┌─────────────┐
+│    HTML     │
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│  DOM Tree   │ (Document Object Model)
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│    CSSOM    │ (CSS Object Model)
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│ Render Tree │ (DOM + CSSOM combined)
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│   Layout    │ (Calculate positions)
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│   Paint     │ (Fill pixels)
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│  Composite  │ (Combine layers)
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│   DISPLAY   │
+└─────────────┘
+</code></pre>
+
+		<h3>Step-by-Step</h3>
+		<ol>
+			<li><strong>Parse HTML</strong> → Build DOM tree</li>
+			<li><strong>Parse CSS</strong> → Build CSSOM tree</li>
+			<li><strong>Combine</strong> → Create Render tree</li>
+			<li><strong>Layout</strong> → Calculate positions and sizes</li>
+			<li><strong>Paint</strong> → Fill in pixels</li>
+			<li><strong>Composite</strong> → Combine layers for display</li>
+		</ol>
+	</section>
+
+	<section>
+		<h2>Testing HTTP Requests</h2>
+		<p>You can test HTTP requests using <code>curl</code> from your terminal:</p>
+
+<pre><code># Basic GET request
+curl -I https://fernan.dev/
+
+# Response:
+HTTP/2 200 
+content-type: text/html; charset=utf-8
+content-length: 15234
+server: GitHub.com
+
+# Get full response with headers
+curl -v https://fernan.dev/
+
+# POST request with JSON
+curl -X POST https://api.example.com/data \
+  -H "Content-Type: application/json" \
+  -d '{"name":"test"}'
+</code></pre>
+	</section>
+
+	<section>
+		<h2>Key Takeaways</h2>
+		<ul>
+			<li>The <strong>Internet</strong> is the network; the <strong>Web</strong> is a service on it</li>
+			<li><strong>Clients</strong> (browsers) request resources from <strong>servers</strong></li>
+			<li><strong>DNS</strong> translates domain names to IP addresses</li>
+			<li><strong>HTTP</strong> defines how clients and servers communicate</li>
+			<li><strong>HTTPS</strong> encrypts data using TLS for security</li>
+			<li>Browsers render pages through: DOM → CSSOM → Render → Layout → Paint → Composite</li>
+		</ul>
+	</section>
+
+	<section>
+		<h2>FAQ</h2>
+		
+		<h3>What's the difference between HTTP and HTTPS?</h3>
+		<p>HTTPS is HTTP over TLS encryption. HTTPS encrypts all data between client and server, while HTTP sends data in plain text that can be intercepted.</p>
+
+		<h3>How long does DNS resolution take?</h3>
+		<p>Typically 20-120ms for the first request. Subsequent requests are cached, making them nearly instant.</p>
+
+		<h3>What port does HTTP use?</h3>
+		<p>HTTP uses port 80 by default. HTTPS uses port 443.</p>
+
+		<h3>Why do I need to understand this as a FrontEnd developer?</h3>
+		<p>Understanding the web foundation helps you debug issues, optimize performance, implement security best practices, and communicate effectively with backend developers.</p>
+	</section>
+
+	<section>
+		<h2>Next Steps</h2>
+		<p>Now that you understand how the web works, you're ready to learn how to create web content. Continue with:</p>
+		<p><a href="/articles/html-fundamentals/" class="next-article">→ HTML Fundamentals</a></p>
+	</section>
+<!-- PAGE SCRIPTS GO HERE-->
+<!-- COMMON BODY HTML END-->
+{% include endBodyHtml.html %}

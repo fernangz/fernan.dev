@@ -1,98 +1,101 @@
 ---
 ---
-<!-- COMMON HTML START-->
 {% include startHtml.html %}
-<!-- PAGE SPECIFIC METAS GO HERE -->
-<title>fernan.dev • Articles</title>
-<meta name="description" content="Articles about FrontEnd development: DOM, CSS, JavaScript, accessibility, security, performance, and SEO" />
-<meta name="keywords" content="FrontEnd articles, web development tutorials, CSS, JavaScript, DOM, accessibility, performance" />
+<title>Articles | fernan.dev</title>
+<meta name="description" content="FrontEnd development articles: from fundamentals to advanced topics. Learn HTML, CSS, JavaScript, and professional skills." />
+<meta name="keywords" content="FrontEnd articles, web development tutorials, HTML, CSS, JavaScript" />
 <link rel="canonical" href="https://fernan.dev/articles/" />
-
-<!-- Open Graph / Social Media -->
-<meta property="og:title" content="fernan.dev • Articles" />
-<meta property="og:description" content="FrontEnd development articles and tutorials" />
+<meta property="og:title" content="Articles | fernan.dev" />
+<meta property="og:description" content="FrontEnd development articles from fundamentals to advanced." />
 <meta property="og:url" content="https://fernan.dev/articles/" />
 <meta property="og:image" content="https://fernan.dev/favicon/og-image.png" />
-<meta property="og:image:alt" content="fernan.dev - FrontEnd Development Articles" />
-
-<!-- PAGE SPECIFIC CSS GO HERE -->
+<meta property="og:type" content="article" />
 <link rel="stylesheet" href="/styles/tools.css">
 <link rel="stylesheet" href="/styles/tools-cards.css">
-<!-- Structured Data for Articles -->
-{% include structured-data-articles.html %}
-<!-- COMMON BODY START-->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Articles","description":"FrontEnd development articles from fundamentals to advanced topics.","url":"https://fernan.dev/articles/","author":{"@type":"Person","name":"Fernán García de Zúñiga","url":"https://fernan.dev/"},"datePublished":"2026-03-01","dateModified":"2026-03-01","inLanguage":"en-US"}</script>
 {% include startBody.html %}
-<!-- PAGE CONTENT -->
 	<h1>Articles</h1>
-	<p>A curated collection of FrontEnd development articles, from fundamental concepts to advanced techniques.</p>
+	<p>A structured learning path for FrontEnd development, from fundamentals to professional skills.</p>
 
+	<h2>Phase 1: Foundations</h2>
 	<div class="tools-grid">
-		<a href="/articles/the-dom/" class="tool-card">
-			<span class="emoji">🌳</span>
-			<strong>The DOM Tree</strong>
-			<span>Understanding the Document Object Model - the foundation of interactive web pages</span>
+		<a href="/articles/how-web-works/" class="tool-card">
+			<span class="emoji">🌐</span>
+			<strong>How the Web Works</strong>
+			<span>Clients, servers, domains, DNS, HTTP/HTTPS, and the request/response cycle</span>
 		</a>
-		<a href="/articles/cascade-of-styles/" class="tool-card">
+		<a href="/articles/html-fundamentals/" class="tool-card">
+			<span class="emoji">📝</span>
+			<strong>HTML Fundamentals</strong>
+			<span>Semantic HTML5, document structure, elements, forms, and accessibility</span>
+		</a>
+		<a href="/articles/css-essentials/" class="tool-card">
 			<span class="emoji">🎨</span>
-			<strong>Cascade of Styles</strong>
-			<span>Master CSS cascade, specificity, and inheritance for predictable styling</span>
+			<strong>CSS Essentials</strong>
+			<span>Selectors, cascade, box model, Flexbox, Grid, and responsive design</span>
 		</a>
-		<a href="/articles/ecmascript/" class="tool-card">
-			<span class="emoji">📜</span>
-			<strong>ECMAScript, JavaScript or JS</strong>
-			<span>Understand the relationship between the specification and the implementation</span>
-		</a>
-		<a href="/articles/javascript-events/" class="tool-card">
+		<a href="/articles/javascript-basics/" class="tool-card">
 			<span class="emoji">⚡</span>
-			<strong>JavaScript Event Handling</strong>
-			<span>Master events, delegation, and the event lifecycle</span>
+			<strong>JavaScript Basics</strong>
+			<span>Variables, functions, DOM manipulation, and event handling</span>
 		</a>
-		<a href="/articles/number-8/" class="tool-card">
-			<span class="emoji">8️⃣</span>
-			<strong>Multiples of 8 in Design</strong>
-			<span>Why the 8-point grid system creates consistent, scalable designs</span>
+	</div>
+
+	<h2>Phase 2: Intermediate Skills</h2>
+	<div class="tools-grid">
+		<a href="/articles/javascript-beginner/" class="tool-card">
+			<span class="emoji">📚</span>
+			<strong>JavaScript: Beginner</strong>
+			<span>ES6+ features, arrow functions, destructuring, and array methods</span>
 		</a>
-		<a href="/articles/flexbox-grid/" class="tool-card">
-			<span class="emoji">📏</span>
-			<strong>CSS Flexbox & Grid</strong>
-			<span>Master modern CSS layout systems for flexible, responsive designs</span>
+		<a href="/articles/javascript-intermediate/" class="tool-card">
+			<span class="emoji">🔄</span>
+			<strong>JavaScript: Intermediate</strong>
+			<span>Async programming, promises, async/await, and Fetch API</span>
 		</a>
-		<a href="/articles/responsive-design/" class="tool-card">
-			<span class="emoji">📱</span>
-			<strong>Responsive Design</strong>
-			<span>Build websites that work perfectly on any screen size</span>
+		<a href="/articles/javascript-advanced/" class="tool-card">
+			<span class="emoji">🔧</span>
+			<strong>JavaScript: Advanced</strong>
+			<span>Closures, prototypes, classes, modules, and design patterns</span>
 		</a>
-		<a href="/articles/css-custom-properties/" class="tool-card">
-			<span class="emoji">🎯</span>
-			<strong>CSS Custom Properties</strong>
-			<span>Use CSS variables for maintainable, dynamic stylesheets</span>
+		<a href="/articles/javascript-professional/" class="tool-card">
+			<span class="emoji">💼</span>
+			<strong>JavaScript: Professional</strong>
+			<span>Debugging, testing, performance, and memory management</span>
 		</a>
-		<a href="/articles/web-accessibility/" class="tool-card">
-			<span class="emoji">♿</span>
-			<strong>Web Accessibility Basics</strong>
-			<span>Create inclusive experiences that work for everyone</span>
+		<a href="/articles/advanced-css-typography/" class="tool-card">
+			<span class="emoji">🔤</span>
+			<strong>Advanced CSS: Typography</strong>
+			<span>Web fonts, variable fonts, font loading, and typography scale</span>
+		</a>
+		<a href="/articles/advanced-css-units/" class="tool-card">
+			<span class="emoji">📐</span>
+			<strong>Advanced CSS: Units</strong>
+			<span>CSS units, fluid typography, container queries, and modern layouts</span>
+		</a>
+	</div>
+
+	<h2>Phase 3: Professional Skills</h2>
+	<div class="tools-grid">
+		<a href="/articles/seo-llmo/" class="tool-card">
+			<span class="emoji">🔍</span>
+			<strong>SEO & LLMO</strong>
+			<span>Search optimization, structured data, and AI assistant optimization</span>
 		</a>
 		<a href="/articles/web-security/" class="tool-card">
 			<span class="emoji">🛡️</span>
-			<strong>Web Security Essentials</strong>
-			<span>Protect your users and applications from common threats</span>
+			<strong>Web Security</strong>
+			<span>HTTPS, XSS, CSRF, security headers, and secure coding</span>
 		</a>
-		<a href="/articles/browser-devtools/" class="tool-card">
-			<span class="emoji">🛠️</span>
-			<strong>Browser DevTools Guide</strong>
-			<span>Master the built-in tools for debugging and optimization</span>
+		<a href="/articles/web-accessibility/" class="tool-card">
+			<span class="emoji">♿</span>
+			<strong>Web Accessibility</strong>
+			<span>WCAG guidelines, ARIA, keyboard navigation, and testing</span>
 		</a>
 		<a href="/articles/performance-optimization/" class="tool-card">
 			<span class="emoji">🚀</span>
 			<strong>Performance Optimization</strong>
-			<span>Make your websites faster and improve Core Web Vitals</span>
-		</a>
-		<a href="/articles/seo-llmo/" class="tool-card">
-			<span class="emoji">🤖</span>
-			<strong>SEO & LLMO Basics</strong>
-			<span>Optimize for search engines and AI assistants</span>
+			<span>Core Web Vitals, caching, lazy loading, and Service Workers</span>
 		</a>
 	</div>
-<!-- PAGE SCRIPTS GO HERE-->
-<!-- COMMON BODY HTML END-->
 {% include endBodyHtml.html %}

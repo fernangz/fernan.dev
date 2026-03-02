@@ -1,0 +1,193 @@
+---
+---
+{% include startHtml.html %}
+<title>JavaScript: Beginner | fernan.dev</title>
+<meta name="description" content="Deepen JavaScript knowledge with ES6+ features: arrow functions, template literals, destructuring, spread operators, and array methods." />
+<meta name="keywords" content="JavaScript ES6, arrow functions, destructuring, spread operator, array methods" />
+<link rel="canonical" href="https://fernan.dev/articles/javascript-beginner/" />
+<meta property="og:title" content="JavaScript: Beginner | fernan.dev" />
+<meta property="og:description" content="ES6+ features for modern JavaScript development." />
+<meta property="og:url" content="https://fernan.dev/articles/javascript-beginner/" />
+<meta property="og:image" content="https://fernan.dev/favicon/og-image.png" />
+<meta property="og:type" content="article" />
+<link rel="stylesheet" href="/styles/tools.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"JavaScript: Beginner","description":"ES6+ features: arrow functions, template literals, destructuring, spread operators.","author":{"@type":"Person","name":"Fernán García de Zúñiga","url":"https://fernan.dev/"},"datePublished":"2026-03-01","dateModified":"2026-03-01","url":"https://fernan.dev/articles/javascript-beginner/","inLanguage":"en-US","articleBody":"Deepen JavaScript knowledge with ES6+ features.","wordCount":2400,"timeRequired":"PT20M","keywords":"JavaScript ES6, arrow functions, destructuring","articleSection":"Intermediate","breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://fernan.dev/"},{"@type":"ListItem","position":2,"name":"Articles","item":"https://fernan.dev/articles/"},{"@type":"ListItem","position":3,"name":"JavaScript: Beginner","item":"https://fernan.dev/articles/javascript-beginner/"}]}}</script>
+{% include startBody.html %}
+	<a href="/articles/" class="back-link">← Back to Articles</a>
+	<header><h1>JavaScript: Beginner</h1><p class="article-meta"><span>⏱️ Reading time: 20 min</span><span>📋 Prerequisites: <a href="/articles/javascript-basics/">JavaScript Basics</a></span></p></header>
+	<section><h2>Introduction</h2><p>ES6 (ECMAScript 2015) revolutionized JavaScript with modern syntax. This article covers arrow functions, template literals, destructuring, spread/rest operators, and array methods.</p></section>
+	<section><h2>Arrow Functions</h2><pre><code>// Traditional function
+function add(a, b) { return a + b; }
+
+// Arrow function
+const add = (a, b) => a + b;
+
+// Single parameter (no parentheses needed)
+const double = n => n * 2;
+
+// No parameters
+const greet = () => 'Hello!';
+
+// Multiple statements
+const calculate = (a, b) => {
+    const sum = a + b;
+    return sum * 2;
+};
+
+// Returning objects (wrap in parentheses)
+const createUser = (name) => ({ name, id: Date.now() });
+
+// Arrow functions and 'this'
+// Arrow functions don't have their own 'this'
+// They inherit 'this' from the enclosing scope
+class Counter {
+    constructor() { this.count = 0; }
+    increment() {
+        setInterval(() => {
+            this.count++; // 'this' refers to Counter instance
+        }, 1000);
+    }
+}</code></pre></section>
+	<section><h2>Template Literals</h2><pre><code>// String interpolation
+const name = 'John';
+const greeting = `Hello, ${name}!`;
+
+// Multi-line strings
+const html = `
+    <div class="card">
+        <h2>${title}</h2>
+        <p>${description}</p>
+    </div>
+`;
+
+// Expressions in templates
+const price = 99;
+const message = `Price: $${price} (${price * 1.21} with tax)`;
+
+// Tagged templates
+function highlight(strings, ...values) {
+    return strings.reduce((acc, str, i) => 
+        acc + str + (values[i] ? `<mark>${values[i]}</mark>` : ''), '');
+}
+const result = highlight`Hello ${name}, you are ${age} years old`;</code></pre></section>
+	<section><h2>Destructuring</h2><pre><code>// Array destructuring
+const [first, second] = [1, 2, 3];
+const [a, , c] = [1, 2, 3]; // Skip elements
+const [x, ...rest] = [1, 2, 3, 4]; // rest = [2, 3, 4]
+
+// Object destructuring
+const { name, age } = { name: 'John', age: 30 };
+const { name: fullName } = { name: 'John' }; // Rename
+const { city = 'Unknown' } = {}; // Default value
+
+// Nested destructuring
+const user = { profile: { name: 'John', address: { city: 'NYC' } } };
+const { profile: { address: { city } } } = user;
+
+// Function parameters
+function greet({ name, age = 18 }) {
+    return `Hi ${name}, you're ${age}`;
+}
+
+// Swap variables
+let a = 1, b = 2;
+[a, b] = [b, a];</code></pre></section>
+	<section><h2>Spread & Rest</h2><pre><code>// Spread operator (expand)
+const arr1 = [1, 2, 3];
+const arr2 = [...arr1, 4, 5]; // [1, 2, 3, 4, 5]
+
+const obj1 = { a: 1 };
+const obj2 = { ...obj1, b: 2 }; // { a: 1, b: 2 }
+
+// Clone array/object
+const clone = [...original];
+const cloneObj = { ...original };
+
+// Merge arrays/objects
+const merged = [...arr1, ...arr2];
+const mergedObj = { ...obj1, ...obj2 };
+
+// Rest operator (collect)
+function sum(...numbers) {
+    return numbers.reduce((a, b) => a + b, 0);
+}
+sum(1, 2, 3, 4); // 10
+
+// Rest in destructuring
+const [first, ...rest] = [1, 2, 3, 4]; // rest = [2, 3, 4]
+const { a, ...others } = { a: 1, b: 2, c: 3 }; // others = { b: 2, c: 3 }</code></pre></section>
+	<section><h2>Array Methods</h2><pre><code>const numbers = [1, 2, 3, 4, 5];
+
+// map - transform each element
+const doubled = numbers.map(n => n * 2); // [2, 4, 6, 8, 10]
+
+// filter - keep elements that pass test
+const evens = numbers.filter(n => n % 2 === 0); // [2, 4]
+
+// reduce - accumulate to single value
+const sum = numbers.reduce((acc, n) => acc + n, 0); // 15
+
+// find - first matching element
+const found = numbers.find(n => n > 3); // 4
+
+// findIndex - index of first match
+const index = numbers.findIndex(n => n > 3); // 3
+
+// some - at least one matches
+const hasEven = numbers.some(n => n % 2 === 0); // true
+
+// every - all match
+const allPositive = numbers.every(n => n > 0); // true
+
+// sort - sort array
+const sorted = [...numbers].sort((a, b) => a - b);
+
+// Chaining methods
+const result = numbers
+    .filter(n => n > 2)
+    .map(n => n * 10)
+    .reduce((a, b) => a + b, 0); // 90</code></pre></section>
+	<section><h2>Enhanced Object Literals</h2><pre><code>const name = 'John';
+const age = 30;
+
+// Property shorthand
+const user = { name, age }; // { name: 'John', age: 30 }
+
+// Method shorthand
+const obj = {
+    greet() { return 'Hello'; }
+};
+
+// Computed property names
+const key = 'email';
+const user = { [key]: 'john@example.com' };
+
+// Combine all
+function createUser(name, email) {
+    return {
+        name,
+        email,
+        greet() { return `Hi, I'm ${this.name}`; },
+        ['id_' + Date.now()]: true
+    };
+}</code></pre></section>
+	<section><h2>Optional Chaining & Nullish Coalescing</h2><pre><code>// Optional chaining (?.)
+const city = user?.address?.city;
+const name = users?.[0]?.name;
+const result = obj?.method?.();
+
+// Instead of:
+// const city = user && user.address && user.address.city;
+
+// Nullish coalescing (??)
+const name = userInput ?? 'Default';
+const count = options.count ?? 10;
+
+// Instead of:
+// const name = userInput !== null && userInput !== undefined ? userInput : 'Default';
+
+// Combine both
+const city = user?.address?.city ?? 'Unknown';</code></pre></section>
+	<section><h2>Key Takeaways</h2><ul><li>Use <strong>arrow functions</strong> for shorter syntax and lexical 'this'</li><li>Use <strong>template literals</strong> for string interpolation</li><li>Use <strong>destructuring</strong> for cleaner variable extraction</li><li>Use <strong>spread/rest</strong> for array/object manipulation</li><li>Chain <strong>array methods</strong> for data transformation</li></ul></section>
+	<section><h2>Next Steps</h2><p><a href="/articles/javascript-intermediate/" class="next-article">→ JavaScript: Intermediate (Async Programming)</a></p></section>
+{% include endBodyHtml.html %}

@@ -1,0 +1,174 @@
+---
+---
+{% include startHtml.html %}
+<title>Advanced CSS: Units & Layout | fernan.dev</title>
+<meta name="description" content="CSS units deep dive: rem, em, vh, vw, fluid typography, container queries, and modern responsive patterns." />
+<meta name="keywords" content="CSS units, rem, em, viewport units, container queries, fluid typography, clamp" />
+<link rel="canonical" href="https://fernan.dev/articles/advanced-css-units/" />
+<meta property="og:title" content="Advanced CSS: Units & Layout | fernan.dev" />
+<meta property="og:description" content="CSS units, fluid layouts, and container queries." />
+<meta property="og:url" content="https://fernan.dev/articles/advanced-css-units/" />
+<meta property="og:image" content="https://fernan.dev/favicon/og-image.png" />
+<meta property="og:type" content="article" />
+<link rel="stylesheet" href="/styles/tools.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Advanced CSS: Units & Layout","description":"CSS units, fluid typography, container queries, modern layouts.","author":{"@type":"Person","name":"Fernán García de Zúñiga","url":"https://fernan.dev/"},"datePublished":"2026-03-01","dateModified":"2026-03-01","url":"https://fernan.dev/articles/advanced-css-units/","inLanguage":"en-US","articleBody":"CSS units and modern layout techniques.","wordCount":2000,"timeRequired":"PT20M","keywords":"CSS units, container queries, fluid typography","articleSection":"Intermediate","breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://fernan.dev/"},{"@type":"ListItem","position":2,"name":"Articles","item":"https://fernan.dev/articles/"},{"@type":"ListItem","position":3,"name":"Advanced CSS: Units","item":"https://fernan.dev/articles/advanced-css-units/"}]}}</script>
+{% include startBody.html %}
+	<a href="/articles/" class="back-link">← Back to Articles</a>
+	<header><h1>Advanced CSS: Units & Layout</h1><p class="article-meta"><span>⏱️ Reading time: 20 min</span><span>📋 Prerequisites: <a href="/articles/css-essentials/">CSS Essentials</a></span></p></header>
+	<section><h2>CSS Units Comparison</h2><pre><code>/* Absolute units */
+px   /* 1 pixel */
+pt   /* 1 point = 1/72 inch */
+
+/* Relative to parent */
+em   /* 1em = parent's font-size */
+%    /* Percentage of parent */
+
+/* Relative to root */
+rem  /* 1rem = root (html) font-size */
+
+/* Viewport relative */
+vw   /* 1vw = 1% of viewport width */
+vh   /* 1vh = 1% of viewport height */
+vmin /* 1vmin = 1% of smaller dimension */
+vmax /* 1vmax = 1% of larger dimension */
+
+/* Examples */
+.element {
+    font-size: 1rem;      /* 16px if root is 16px */
+    padding: 1em;         /* Equals current font-size */
+    width: 50%;           /* 50% of parent */
+    height: 100vh;        /* Full viewport height */
+}</code></pre></section>
+	<section><h2>rem vs em</h2><pre><code>/* rem - consistent, predictable */
+html { font-size: 16px; }
+.button {
+    font-size: 1rem;    /* Always 16px */
+    padding: 0.5rem 1rem; /* Always 8px 16px */
+}
+
+/* em - contextual, component-relative */
+.card {
+    font-size: 1rem;
+    padding: 1em;       /* 16px (equals font-size) */
+}
+.card .button {
+    font-size: 0.875em; /* 14px (87.5% of 16px) */
+    margin: 0.5em;      /* 7px (0.5 * 14px) */
+}
+
+/* Best practice: rem for layout, em for components */
+body { font-size: 1rem; }
+.component { padding: 1em; } /* Scales with component */</code></pre></section>
+	<section><h2>Fluid Typography with clamp()</h2><pre><code>/* clamp(min, preferred, max) */
+h1 {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    /* Min: 24px, Preferred: 4vw, Max: 48px */
+}
+
+/* Fluid spacing */
+.container {
+    padding: clamp(1rem, 3vw, 2rem);
+    max-width: min(100% - 2rem, 1200px);
+}
+
+/* Complete fluid type scale */
+:root {
+    --fluid-min: 1rem;
+    --fluid-max: 2.5rem;
+    --fluid-ratio: 1.25;
+}
+
+h1 { font-size: clamp(var(--fluid-min), 5vw, var(--fluid-max)); }
+h2 { font-size: clamp(var(--fluid-min), 4vw, 2rem); }
+p { font-size: clamp(0.875rem, 2vw, 1.125rem); }</code></pre></section>
+	<section><h2>CSS Math Functions</h2><pre><code>/* calc() - calculations */
+.element {
+    width: calc(100% - 2rem);
+    margin-left: calc(50% - 300px);
+}
+
+/* min() - smallest value */
+.container {
+    width: min(100%, 1200px);
+    padding: min(5vw, 2rem);
+}
+
+/* max() - largest value */
+.sidebar {
+    width: max(200px, 20%);
+}
+
+/* Combine functions */
+.card {
+    width: calc(min(100%, 400px) - 2rem);
+    font-size: clamp(1rem, 2vw, max(1.125rem, 2vw));
+}</code></pre></section>
+	<section><h2>Container Queries</h2><pre><code>/* Define container */
+.card-container {
+    container-type: inline-size;
+    container-name: card;
+}
+
+/* Query container size (not viewport) */
+@container card (min-width: 400px) {
+    .card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@container card (min-width: 600px) {
+    .card {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+/* Container query units */
+@container card (min-width: 30cqw) {
+    /* cqw = container query width */
+}</code></pre></section>
+	<section><h2>Modern Responsive Patterns</h2><pre><code>/* Responsive grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+/* Responsive flex */
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.flex > * {
+    flex: 1 1 300px; /* Grow, shrink, basis */
+}
+
+/* Aspect ratio */
+.video {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+}
+
+/* Responsive images */
+img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}</code></pre></section>
+	<section><h2>Subgrid</h2><pre><code>/* Parent grid */
+.parent {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+/* Child uses parent's grid */
+.child {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: span 2;
+}</code></pre></section>
+	<section><h2>Key Takeaways</h2><ul><li>Use <strong>rem</strong> for consistent sizing</li><li>Use <strong>em</strong> for component-relative sizing</li><li>Use <strong>clamp()</strong> for fluid typography</li><li>Use <strong>container queries</strong> for component responsiveness</li><li>Use <strong>min()/max()</strong> for constraints</li></ul></section>
+	<section><h2>Next Steps</h2><p>Continue to professional skills:</p><p><a href="/articles/seo-llmo/" class="next-article">→ SEO & LLMO Optimization</a></p></section>
+{% include endBodyHtml.html %}

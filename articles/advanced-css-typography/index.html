@@ -1,0 +1,155 @@
+---
+---
+{% include startHtml.html %}
+<title>Advanced CSS: Typography & Fonts | fernan.dev</title>
+<meta name="description" content="Master web typography: font families, web fonts, variable fonts, font loading strategies, and creating readable text." />
+<meta name="keywords" content="CSS typography, web fonts, variable fonts, font loading, font-display" />
+<link rel="canonical" href="https://fernan.dev/articles/advanced-css-typography/" />
+<meta property="og:title" content="Advanced CSS: Typography | fernan.dev" />
+<meta property="og:description" content="Web typography and font loading strategies." />
+<meta property="og:url" content="https://fernan.dev/articles/advanced-css-typography/" />
+<meta property="og:image" content="https://fernan.dev/favicon/og-image.png" />
+<meta property="og:type" content="article" />
+<link rel="stylesheet" href="/styles/tools.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Advanced CSS: Typography & Fonts","description":"Web fonts, variable fonts, font loading strategies.","author":{"@type":"Person","name":"Fernán García de Zúñiga","url":"https://fernan.dev/"},"datePublished":"2026-03-01","dateModified":"2026-03-01","url":"https://fernan.dev/articles/advanced-css-typography/","inLanguage":"en-US","articleBody":"Master web typography and fonts.","wordCount":1800,"timeRequired":"PT15M","keywords":"CSS typography, web fonts, variable fonts","articleSection":"Intermediate","breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://fernan.dev/"},{"@type":"ListItem","position":2,"name":"Articles","item":"https://fernan.dev/articles/"},{"@type":"ListItem","position":3,"name":"Advanced CSS: Typography","item":"https://fernan.dev/articles/advanced-css-typography/"}]}}</script>
+{% include startBody.html %}
+	<a href="/articles/" class="back-link">← Back to Articles</a>
+	<header><h1>Advanced CSS: Typography & Fonts</h1><p class="article-meta"><span>⏱️ Reading time: 15 min</span><span>📋 Prerequisites: <a href="/articles/css-essentials/">CSS Essentials</a></span></p></header>
+	<section><h2>Font Families</h2><pre><code>/* Font stack with fallbacks */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
+                 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Monospace stack */
+code {
+    font-family: 'Fira Code', 'Consolas', 'Monaco', monospace;
+}
+
+/* Serif stack */
+h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+}</code></pre></section>
+	<section><h2>@font-face</h2><pre><code>/* Self-hosted font */
+@font-face {
+    font-family: 'CustomFont';
+    src: url('/fonts/custom.woff2') format('woff2'),
+         url('/fonts/custom.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Multiple weights */
+@font-face {
+    font-family: 'CustomFont';
+    src: url('/fonts/custom-bold.woff2') format('woff2');
+    font-weight: 700;
+    font-display: swap;
+}</code></pre></section>
+	<section><h2>font-display</h2><pre><code>/* auto - Browser default */
+/* block - Hide text briefly, then swap */
+/* swap - Show fallback, then swap */
+/* fallback - Hide briefly, then fallback if slow */
+/* optional - Use fallback if font not ready */
+
+@font-face {
+    font-family: 'MyFont';
+    src: url('font.woff2') format('woff2');
+    font-display: swap; /* Best for performance */
+}
+
+/* optional for icon fonts */
+@font-face {
+    font-family: 'Icons';
+    src: url('icons.woff2') format('woff2');
+    font-display: optional;
+}</code></pre></section>
+	<section><h2>Variable Fonts</h2><pre><code>/* Single file, multiple weights */
+@font-face {
+    font-family: 'VariableFont';
+    src: url('font-variable.woff2') format('woff2-variations');
+    font-weight: 100 900;
+    font-stretch: 75% 125%;
+}
+
+/* Use variable axes */
+.text {
+    font-variation-settings:
+        'wght' 450,
+        'wdth' 100,
+        'slnt' -5;
+}
+
+/* Animate weight */
+.button:hover {
+    font-variation-settings: 'wght' 700;
+    transition: font-variation-settings 0.3s;
+}</code></pre></section>
+	<section><h2>Typography Scale</h2><pre><code>:root {
+    --scale-ratio: 1.25; /* Major third */
+    --font-base: 1rem;
+    
+    --font-xs: calc(var(--font-base) / var(--scale-ratio));
+    --font-sm: var(--font-base);
+    --font-md: calc(var(--font-base) * var(--scale-ratio));
+    --font-lg: calc(var(--font-md) * var(--scale-ratio));
+    --font-xl: calc(var(--font-lg) * var(--scale-ratio));
+    --font-2xl: calc(var(--font-xl) * var(--scale-ratio));
+}
+
+h1 { font-size: var(--font-2xl); }
+h2 { font-size: var(--font-xl); }
+h3 { font-size: var(--font-lg); }
+p { font-size: var(--font-sm); }</code></pre></section>
+	<section><h2>Line Height & Rhythm</h2><pre><code>:root {
+    --line-height-tight: 1.25;
+    --line-height-base: 1.5;
+    --line-height-relaxed: 1.75;
+}
+
+h1, h2 { line-height: var(--line-height-tight); }
+p { line-height: var(--line-height-base); }
+.prose { line-height: var(--line-height-relaxed); }
+
+/* Vertical rhythm */
+* { margin-top: 0; margin-bottom: 1.5rem; }
+h1, h2, h3 { margin-top: 2rem; }</code></pre></section>
+	<section><h2>Responsive Typography</h2><pre><code>/* Fluid typography with clamp */
+h1 {
+    font-size: clamp(1.5rem, 5vw, 3rem);
+}
+
+/* Media query approach */
+body { font-size: 16px; }
+@media (min-width: 768px) { body { font-size: 18px; } }
+@media (min-width: 1024px) { body { font-size: 20px; } }
+
+/* Responsive line-height */
+p {
+    line-height: clamp(1.5, 2vw, 1.8);
+}</code></pre></section>
+	<section><h2>Icon Fonts vs SVG</h2><pre><code>/* Icon font */
+@font-face {
+    font-family: 'Icons';
+    src: url('icons.woff2') format('woff2');
+}
+.icon::before {
+    font-family: 'Icons';
+    content: '\e001';
+}
+
+/* SVG icon (recommended) */
+<svg class="icon" width="24" height="24">
+    <use href="/icons.svg#icon-name"></use>
+</svg>
+
+/* SVG advantages:
+   - Crisper rendering
+   - Individual color control
+   - Better accessibility
+   - No FOIT issues
+*/</code></pre></section>
+	<section><h2>Key Takeaways</h2><ul><li>Use <strong>font stacks</strong> with fallbacks</li><li>Prefer <strong>font-display: swap</strong> for performance</li><li>Consider <strong>variable fonts</strong> for flexibility</li><li>Establish a <strong>typography scale</strong></li><li>Use <strong>clamp()</strong> for responsive type</li></ul></section>
+	<section><h2>Next Steps</h2><p><a href="/articles/advanced-css-units/" class="next-article">→ Advanced CSS: Units & Layout</a></p></section>
+{% include endBodyHtml.html %}

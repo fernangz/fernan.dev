@@ -1,55 +1,138 @@
 ---
 ---
-<!-- COMMON HTML START-->
 {% include startHtml.html %}
-<!-- PAGE SPECIFIC METAS GO HERE -->
-<title>fernan.dev • Web Security Essentials</title>
-<meta name="description" content="Protect your users and applications from common threats">
-<link rel="canonical" href="https://fernan.dev/articles/web-security" />
-<!-- PAGE SPECIFIC CSS GO HERE -->
+<title>Web Security Essentials | fernan.dev</title>
+<meta name="description" content="Web security: HTTPS, XSS prevention, CSRF protection, security headers, and secure coding practices." />
+<meta name="keywords" content="web security, HTTPS, XSS, CSRF, CSP, security headers" />
+<link rel="canonical" href="https://fernan.dev/articles/web-security/" />
+<meta property="og:title" content="Web Security Essentials | fernan.dev" />
+<meta property="og:description" content="Protect users with security best practices." />
+<meta property="og:url" content="https://fernan.dev/articles/web-security/" />
+<meta property="og:image" content="https://fernan.dev/favicon/og-image.png" />
+<meta property="og:type" content="article" />
 <link rel="stylesheet" href="/styles/tools.css">
-
-<!-- Article Structured Data -->
-<script type="application/ld+json">
-{
-	"@context": "https://schema.org",
-	"@type": "Article",
-	"headline": "Web Security Essentials",
-	"description": "Protect your users and applications from common threats",
-	"author": {"@type": "Person", "name": "Fernán García de Zúñiga", "url": "https://fernan.dev/"},
-	"datePublished": "2025-02-28",
-	"dateModified": "2025-02-28",
-	"url": "https://fernan.dev/articles/web-security/",
-	"inLanguage": "en-US",
-	"articleBody": "Web security essentials including HTTPS, XSS prevention, CSRF protection, and security headers...",
-	"breadcrumb": {
-		"@type": "BreadcrumbList",
-		"itemListElement": [
-			{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://fernan.dev/"},
-			{"@type": "ListItem", "position": 2, "name": "Articles", "item": "https://fernan.dev/articles/"},
-			{"@type": "ListItem", "position": 3, "name": "Web Security", "item": "https://fernan.dev/articles/web-security/"}
-		]
-	}
-}
-</script>
-<!-- COMMON BODY START-->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Web Security Essentials","description":"HTTPS, XSS, CSRF, security headers.","author":{"@type":"Person","name":"Fernán García de Zúñiga","url":"https://fernan.dev/"},"datePublished":"2026-03-01","dateModified":"2026-03-01","url":"https://fernan.dev/articles/web-security/","inLanguage":"en-US","articleBody":"Web security best practices.","wordCount":2400,"timeRequired":"PT20M","keywords":"web security, XSS, CSRF, CSP","articleSection":"Professional","breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://fernan.dev/"},{"@type":"ListItem","position":2,"name":"Articles","item":"https://fernan.dev/articles/"},{"@type":"ListItem","position":3,"name":"Web Security","item":"https://fernan.dev/articles/web-security/"}]}}</script>
 {% include startBody.html %}
-<!-- PAGE CONTENT -->
 	<a href="/articles/" class="back-link">← Back to Articles</a>
-	<h1>Web Security Essentials</h1>
-	<p>Protect your users and applications from common threats.</p>
+	<header><h1>Web Security Essentials</h1><p class="article-meta"><span>⏱️ Reading time: 20 min</span><span>📋 Prerequisites: <a href="/articles/how-web-works/">How the Web Works</a></span></p></header>
+	<section><h2>HTTPS Everywhere</h2><pre><code>&lt;!-- Force HTTPS with meta (limited) --&gt;
+&lt;meta http-equiv="Content-Security-Policy" 
+      content="upgrade-insecure-requests"&gt;
 
-	<h2>HTTPS Everywhere</h2>
-	<p>Always use HTTPS to encrypt data in transit. This protects user credentials, session tokens, and sensitive data from interception.</p>
+<!-- HSTS header (server-side) --&gt;
+Strict-Transport-Security: max-age=31536000; includeSubDomains
 
-	<h2>Cross-Site Scripting (XSS)</h2>
-	<p>Prevent XSS by sanitizing user input, escaping output, and using Content Security Policy (CSP) headers. Never trust user-provided data.</p>
+<!-- Check HTTPS --&gt;
+if (window.location.protocol !== 'https:') {
+    window.location.href = 'https:' + window.location.href;
+}
 
-	<h2>Cross-Site Request Forgery (CSRF)</h2>
-	<p>Protect against CSRF attacks by using anti-CSRF tokens, checking referrer headers, and requiring re-authentication for sensitive actions.</p>
+/* Always use HTTPS for:
+   - Login forms
+   - Payment pages
+   - Any user data
+   - API requests
+*/</code></pre></section>
+	<section><h2>XSS Prevention</h2><pre><code>&lt;!-- NEVER do this --&gt;
+element.innerHTML = userInput; // ✗ XSS vulnerability
 
-	<h2>Security Headers</h2>
-	<p>Implement security headers like X-Content-Type-Options, X-Frame-Options, Strict-Transport-Security, and Content-Security-Policy to add layers of protection.</p>
-<!-- PAGE SCRIPTS GO HERE-->
-<!-- COMMON BODY HTML END-->
+<!-- DO this instead --&gt;
+element.textContent = userInput; // ✓ Safe
+
+<!-- Sanitize HTML --&gt;
+function sanitize(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+}
+
+<!-- CSP Header --&gt;
+Content-Security-Policy: 
+    default-src 'self';
+    script-src 'self';
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' data: https:;
+
+<!-- CSP Meta (fallback) --&gt;
+&lt;meta http-equiv="Content-Security-Policy"
+      content="default-src 'self'"&gt;</code></pre></section>
+	<section><h2>CSRF Protection</h2><pre><code>&lt;!-- Include CSRF token in forms --&gt;
+&lt;form method="POST"&gt;
+    &lt;input type="hidden" name="csrf_token" 
+           value="{{ csrf_token }}"&gt;
+    &lt;!-- form fields --&gt;
+&lt;/form&gt;
+
+<!-- Verify token server-side --&gt;
+if (request.csrf_token !== session.csrf_token) {
+    throw new Error('Invalid CSRF token');
+}
+
+<!-- SameSite cookies --&gt;
+Set-Cookie: session=abc123; SameSite=Strict; Secure; HttpOnly
+
+/* Fetch with credentials */
+fetch('/api/data', {
+    credentials: 'same-origin' // or 'include'
+});</code></pre></section>
+	<section><h2>Security Headers</h2><pre><code>&lt;!-- Security headers (via meta or server) --&gt;
+
+<!-- X-Content-Type-Options --&gt;
+&lt;meta http-equiv="X-Content-Type-Options" content="nosniff"&gt;
+
+<!-- X-Frame-Options --&gt;
+&lt;meta http-equiv="X-Frame-Options" content="DENY"&gt;
+
+<!-- Referrer-Policy --&gt;
+&lt;meta http-equiv="Referrer-Policy" 
+      content="strict-origin-when-cross-origin"&gt;
+
+<!-- Permissions-Policy --&gt;
+&lt;meta http-equiv="Permissions-Policy" 
+      content="geolocation=(), microphone=(), camera=()"&gt;
+
+<!-- Best: Set via server configuration --&gt;
+# Nginx example
+add_header X-Frame-Options "DENY" always;
+add_header X-Content-Type-Options "nosniff" always;</code></pre></section>
+	<section><h2>Input Validation</h2><pre><code>&lt;!-- HTML5 validation --&gt;
+&lt;input type="email" required&gt;
+&lt;input type="url" pattern="https://.*"&gt;
+&lt;input minlength="8" maxlength="100"&gt;
+
+<!-- JavaScript validation --&gt;
+function validateEmail(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+}
+
+function sanitizeInput(input) {
+    return input
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+}
+
+<!-- Always validate server-side too! --&gt;</code></pre></section>
+	<section><h2>Secure Authentication</h2><pre><code>&lt;!-- Password requirements --&gt;
+&lt;input type="password" 
+       minlength="8"
+       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])"
+       required&gt;
+
+<!-- Store passwords hashed (server-side) --&gt;
+/* Use bcrypt, argon2, or similar */
+
+<!-- Session security --&gt;
+Set-Cookie: session=abc; Secure; HttpOnly; SameSite=Strict
+
+<!-- Rate limiting --&gt;
+/* Prevent brute force */
+const attempts = getAttempts(ip);
+if (attempts > 5) {
+    throw new Error('Too many attempts');
+}</code></pre></section>
+	<section><h2>Key Takeaways</h2><ul><li>Always use <strong>HTTPS</strong></li><li>Never trust <strong>user input</strong></li><li>Use <strong>CSP headers</strong></li><li>Implement <strong>CSRF tokens</strong></li><li>Set <strong>security headers</strong></li><li>Hash <strong>passwords</strong> server-side</li></ul></section>
+	<section><h2>Next Steps</h2><p><a href="/articles/web-accessibility/" class="next-article">→ Web Accessibility (WCAG)</a></p></section>
 {% include endBodyHtml.html %}

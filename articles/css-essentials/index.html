@@ -1,0 +1,236 @@
+---
+---
+<!-- COMMON HTML START-->
+{% include startHtml.html %}
+<!-- PAGE SPECIFIC METAS GO HERE -->
+<title>CSS Essentials | fernan.dev</title>
+<meta name="description" content="Learn CSS fundamentals: selectors, cascade, box model, Flexbox, Grid, responsive design, and custom properties for maintainable stylesheets." />
+<meta name="keywords" content="CSS, CSS3, selectors, Flexbox, Grid, responsive design, CSS variables, FrontEnd" />
+<link rel="canonical" href="https://fernan.dev/articles/css-essentials/" />
+<meta property="og:title" content="CSS Essentials | fernan.dev" />
+<meta property="og:description" content="Learn CSS fundamentals: selectors, cascade, box model, Flexbox, Grid, responsive design." />
+<meta property="og:url" content="https://fernan.dev/articles/css-essentials/" />
+<meta property="og:image" content="https://fernan.dev/favicon/og-image.png" />
+<meta property="og:type" content="article" />
+<!-- PAGE SPECIFIC CSS GO HERE -->
+<link rel="stylesheet" href="/styles/tools.css">
+<!-- Article Structured Data -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"CSS Essentials","description":"Learn CSS fundamentals: selectors, cascade, box model, Flexbox, Grid, responsive design, and custom properties.","author":{"@type":"Person","name":"Fernán García de Zúñiga","url":"https://fernan.dev/"},"datePublished":"2026-03-01","dateModified":"2026-03-01","url":"https://fernan.dev/articles/css-essentials/","inLanguage":"en-US","articleBody":"Learn styling fundamentals: selectors, cascade, box model, Flexbox, Grid, responsive design, and CSS custom properties.","wordCount":3500,"timeRequired":"PT25M","keywords":"CSS, CSS3, selectors, Flexbox, Grid, responsive design, CSS variables","articleSection":"Foundations","breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://fernan.dev/"},{"@type":"ListItem","position":2,"name":"Articles","item":"https://fernan.dev/articles/"},{"@type":"ListItem","position":3,"name":"CSS Essentials","item":"https://fernan.dev/articles/css-essentials/"}]}}</script>
+<!-- COMMON BODY START-->
+{% include startBody.html %}
+<!-- PAGE CONTENT -->
+	<a href="/articles/" class="back-link">← Back to Articles</a>
+	<header><h1>CSS Essentials</h1><p class="article-meta"><span>⏱️ Reading time: 25 min</span><span>📋 Prerequisites: <a href="/articles/html-fundamentals/">HTML Fundamentals</a></span></p></header>
+	<section><h2>Introduction</h2><p>CSS (Cascading Style Sheets) controls the visual presentation of HTML. This article covers selectors, cascade, box model, Flexbox, Grid, responsive design, and CSS custom properties.</p><div class="key-takeaways"><h3>What You'll Learn</h3><ul><li>Selectors and specificity</li><li>Cascade and inheritance</li><li>Box model fundamentals</li><li>Flexbox layout</li><li>CSS Grid layout</li><li>Responsive design techniques</li><li>CSS Custom Properties (variables)</li></ul></div></section>
+	<section><h2>CSS Syntax</h2><pre><code>/* Selector { property: value; } */
+h1 {
+    color: #333;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Multiple selectors */
+h1, h2, h3 {
+    font-family: 'Helvetica', sans-serif;
+}
+
+/* Multiple properties */
+.button {
+    background-color: #007bff;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}</code></pre></section>
+	<section><h2>Selectors</h2><pre><code>/* Element selector */
+p { color: #333; }
+
+/* Class selector */
+.highlight { background: yellow; }
+
+/* ID selector */
+#main { max-width: 1200px; }
+
+/* Descendant selector */
+article p { line-height: 1.6; }
+
+/* Child selector */
+ul > li { margin: 0.5rem 0; }
+
+/* Adjacent sibling */
+h2 + p { margin-top: 0; }
+
+/* Attribute selector */
+a[href^="https"] { color: green; }
+input[type="email"] { border: 1px solid #ccc; }
+
+/* Pseudo-class */
+a:hover { text-decoration: underline; }
+li:first-child { font-weight: bold; }
+li:nth-child(odd) { background: #f5f5f5; }
+
+/* Pseudo-element */
+p::first-line { font-weight: bold; }
+.quote::before { content: """; }</code></pre></section>
+	<section><h2>Specificity</h2><p>Specificity determines which rule applies when multiple rules target the same element.</p><pre><code>/* Specificity hierarchy (low to high): */
+*                    /* 0,0,0,0 - Universal */
+element              /* 0,0,0,1 - Element */
+.class               /* 0,0,1,0 - Class */
+#id                  /* 0,1,0,0 - ID */
+inline style         /* 1,0,0,0 - Inline */
+!important           /* Overrides all */
+
+/* Example: */
+p { color: blue; }           /* 0,0,0,1 */
+.text { color: red; }        /* 0,0,1,0 - WINS */
+#main p { color: green; }    /* 0,1,0,1 - WINS over .text */</code></pre></section>
+	<section><h2>Box Model</h2><pre><code>┌─────────────────────────────────────┐
+│              margin                 │
+│  ┌───────────────────────────────┐  │
+│  │           border              │  │
+│  │  ┌─────────────────────────┐  │  │
+│  │  │        padding          │  │  │
+│  │  │  ┌───────────────────┐  │  │  │
+│  │  │  │      content      │  │  │  │
+│  │  │  │   width × height  │  │  │  │
+│  │  │  └───────────────────┘  │  │  │
+│  │  └─────────────────────────┘  │  │
+│  └───────────────────────────────┘  │
+└─────────────────────────────────────┘
+
+/* Box sizing */
+* { box-sizing: border-box; } /* Includes padding+border in width */
+
+/* Example */
+.box {
+    width: 300px;
+    padding: 20px;
+    border: 5px solid #333;
+    margin: 10px;
+    /* Total width: 300px (with border-box) */
+    /* Total width: 350px (with content-box) */
+}</code></pre></section>
+	<section><h2>Flexbox</h2><pre><code>/* Container */
+.container {
+    display: flex;
+    flex-direction: row; /* row | column */
+    justify-content: center; /* flex-start | center | flex-end | space-between */
+    align-items: center; /* flex-start | center | flex-end | stretch */
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Items */
+.item {
+    flex: 1; /* flex-grow | flex-shrink | flex-basis */
+    align-self: flex-start; /* Override align-items */
+    order: 1; /* Change visual order */
+}
+
+/* Example: Navigation */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-links {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+}</code></pre></section>
+	<section><h2>CSS Grid</h2><pre><code>/* Container */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    grid-template-rows: auto 200px auto;
+    gap: 1rem;
+}
+
+/* Named areas */
+.layout {
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "nav main sidebar"
+        "footer footer footer";
+    grid-template-columns: 200px 1fr 200px;
+}
+
+.header { grid-area: header; }
+.nav { grid-area: nav; }
+.main { grid-area: main; }
+
+/* Items */
+.item {
+    grid-column: 1 / 3; /* Span columns 1-3 */
+    grid-row: 1 / 2;
+}</code></pre></section>
+	<section><h2>Responsive Design</h2><pre><code>/* Mobile-first approach */
+.container {
+    width: 100%;
+    padding: 1rem;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+        margin: 0 auto;
+    }
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 960px;
+    }
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Fluid typography */
+h1 {
+    font-size: clamp(1.5rem, 5vw, 3rem);
+}
+
+/* Responsive images */
+img {
+    max-width: 100%;
+    height: auto;
+}</code></pre></section>
+	<section><h2>CSS Custom Properties</h2><pre><code>/* Define variables in :root */
+:root {
+    --color-primary: #007bff;
+    --color-secondary: #6c757d;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+    --font-base: 16px;
+    --line-height: 1.5;
+}
+
+/* Use variables */
+.button {
+    background-color: var(--color-primary);
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-base);
+    line-height: var(--line-height);
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-primary: #3b82f6;
+        --background: #1a1a1a;
+        --text: #ffffff;
+    }
+}</code></pre></section>
+	<section><h2>Units</h2><table><thead><tr><th>Unit</th><th>Type</th><th>Example</th><th>Use Case</th></tr></thead><tbody><tr><td><code>px</code></td><td>Absolute</td><td><code>16px</code></td><td>Precise control</td></tr><tr><td><code>rem</code></td><td>Relative</td><td><code>1rem</code></td><td>Font sizes, spacing</td></tr><tr><td><code>em</code></td><td>Relative</td><td><code>1.5em</code></td><td>Component-relative sizing</td></tr><tr><td><code>%</code></td><td>Relative</td><td><code>50%</code></td><td>Widths, responsive</td></tr><tr><td><code>vh</code></td><td>Viewport</td><td><code>100vh</code></td><td>Full height layouts</td></tr><tr><td><code>vw</code></td><td>Viewport</td><td><code>50vw</code></td><td>Full width layouts</td></tr></tbody></table></section>
+	<section><h2>Key Takeaways</h2><ul><li>Use <strong>semantic selectors</strong> for maintainable CSS</li><li>Understand <strong>specificity</strong> to debug conflicts</li><li>Master <strong>Flexbox</strong> for 1D layouts</li><li>Use <strong>CSS Grid</strong> for 2D layouts</li><li>Design <strong>mobile-first</strong> with media queries</li><li>Use <strong>CSS variables</strong> for theming</li></ul></section>
+	<section><h2>Next Steps</h2><p>Now that you understand CSS, learn JavaScript to add interactivity:</p><p><a href="/articles/javascript-basics/" class="next-article">→ JavaScript Basics</a></p></section>
+<!-- PAGE SCRIPTS GO HERE--><!-- COMMON BODY HTML END-->{% include endBodyHtml.html %}
