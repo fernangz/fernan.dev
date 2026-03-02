@@ -78,10 +78,120 @@
 	font-display: optional;
 }
 
-* {
+*,
+*::before,
+*::after {
 	box-sizing: border-box;
+}
+:where(*:not(dialog, [popover])) {
+	margin: 0;
+}
+:where(html) {
+	scrollbar-gutter: stable;
+	color-scheme: light dark;
+	-webkit-text-size-adjust: none;
+	text-size-adjust: none;
+	overflow-x: clip;
+}
+:where(body) {
+	max-inline-size: 100%;
+	min-block-size: 100dvh;
+	line-height: 1.5;
+}
+:where(h1, h2, h3, h4, h5, h6) {
+	text-wrap: balance;
+	overflow-wrap: break-word;
+}
+:where(p) {
+	text-wrap: pretty;
+	overflow-wrap: break-word;
+}
+:where(ol, ul) {
+	list-style: none;
 	margin: 0;
 	padding: 0;
+}
+:where(a) {
+	text-decoration-skip-ink: auto;
+	text-underline-offset: 0.2ex;
+}
+:where(sup, sub) {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+:where(sup) {
+	top: -0.5em;
+}
+:where(sub) {
+	bottom: -0.25em;
+}
+:where(hr) {
+	border: none;
+	border-block-start: 1px solid;
+	color: inherit;
+}
+:where(abbr[title]) {
+	text-decoration: underline dotted;
+	cursor: help;
+}
+:where(code, kbd, samp, pre) {
+	font-size: 0.875em;
+}
+:where(img, picture, video, canvas, svg) {
+	display: block;
+	max-inline-size: 100%;
+	block-size: auto;
+}
+:where(img) {
+	font-style: italic;
+}
+:where(input, button, textarea, select) {
+	font: inherit;
+	letter-spacing: inherit;
+	word-spacing: inherit;
+	color: currentColor;
+}
+:where(textarea, select, input) {
+	field-sizing: content;
+	max-inline-size: 100%;
+}
+:where(textarea) {
+	resize: vertical;
+}
+:where(button) {
+	padding: 0;
+	border: 0;
+	background: none;
+	cursor: pointer;
+}
+:where(button:disabled) {
+	cursor: not-allowed;
+}
+:where(table) {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+:where(dialog) {
+	color: inherit;
+}
+:where(:target) {
+	scroll-margin-top: 2rem;
+}
+:where(#root, #__next) {
+	isolation: isolate;
+}
+@media (prefers-reduced-motion: no-preference) {
+	:where(html) {
+		scroll-behavior: smooth;
+		interpolate-size: allow-keywords;
+	}
+}
+@media (hover: none) {
+	:where(html) {
+		-webkit-tap-highlight-color: transparent;
+	}
 }
 
 *[icon]::before {
