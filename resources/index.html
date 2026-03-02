@@ -4,28 +4,25 @@
 {% include startHtml.html %}
 <!-- PAGE SPECIFIC METAS GO HERE -->
 <title>fernan.dev • Resources</title>
-<meta name="description" content="Curated list of free and open-source resources for FrontEnd development: code editors, design tools, fonts, icons, and more" />
+<meta name="description" content="Curated list of free and open-source resources for FrontEnd development: documentation, development tools, code quality, design, fonts, icons, and AI" />
 <meta name="keywords" content="FrontEnd resources, open source tools, free software, web development" />
 <link rel="canonical" href="https://fernan.dev/resources/" />
-
 <!-- Open Graph / Social Media -->
 <meta property="og:title" content="fernan.dev • Resources" />
 <meta property="og:description" content="Curated list of free and open-source resources for FrontEnd developers" />
 <meta property="og:url" content="https://fernan.dev/resources/" />
 <meta property="og:image" content="https://fernan.dev/favicon/og-image.png" />
 <meta property="og:image:alt" content="fernan.dev - FrontEnd Development Resources" />
-
 <!-- PAGE SPECIFIC CSS GO HERE -->
 <link rel="stylesheet" href="/styles/tools.css">
 <link rel="stylesheet" href="/styles/tools-cards.css">
-
 <!-- Resources Structured Data -->
 <script type="application/ld+json">
 {
 	"@context": "https://schema.org",
 	"@type": "CollectionPage",
 	"name": "Resources",
-	"description": "Curated list of free and open-source resources for FrontEnd development: code editors, design tools, fonts, icons, documentation, and online tools",
+	"description": "Curated list of free and open-source resources for FrontEnd development",
 	"url": "https://fernan.dev/resources/",
 	"author": {"@type": "Person", "name": "Fernán García de Zúñiga", "url": "https://fernan.dev/"},
 	"datePublished": "2025-02-28",
@@ -46,7 +43,7 @@
 	<h1>Resources</h1>
 	<p>A curated collection of free and open-source tools for FrontEnd development. These are applications and resources that have proven genuinely useful in real projects.</p>
 
-	<h2>Documentation & References</h2>
+	<h2>Documentation</h2>
 	<div class="tools-grid">
 		<a href="https://devdocs.io/" target="_blank" rel="noopener noreferrer" class="tool-card">
 			<span class="emoji">📖</span>
@@ -80,12 +77,157 @@
 		</a>
 	</div>
 
+	<h2>Development Tools</h2>
+	<div class="tools-grid">
+		<a href="https://git-scm.com/" target="_blank" rel="noopener noreferrer" class="tool-card">
+			<span class="emoji">🔧</span>
+			<strong>Git</strong>
+			<span>Distributed version control system for tracking code changes</span>
+		</a>
+		<a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="tool-card">
+			<span class="emoji">🐙</span>
+			<strong>GitHub</strong>
+			<span>Code hosting platform with version control and collaboration</span>
+		</a>
+		<a href="https://nodejs.org/" target="_blank" rel="noopener noreferrer" class="tool-card">
+			<span class="emoji">📦</span>
+			<strong>Node.js</strong>
+			<span>JavaScript runtime for server-side and tooling development</span>
+		</a>
+		<a href="https://pnpm.io/" target="_blank" rel="noopener noreferrer" class="tool-card">
+			<span class="emoji">📋</span>
+			<strong>pnpm</strong>
+			<span>Fast, disk space efficient package manager for JavaScript</span>
+		</a>
+		<a href="https://vitejs.dev/" target="_blank" rel="noopener noreferrer" class="tool-card">
+			<span class="emoji">⚡</span>
+			<strong>Vite</strong>
+			<span>Next generation frontend build tool with instant HMR</span>
+		</a>
+		<a href="https://esbuild.github.io/" target="_blank" rel="noopener noreferrer" class="tool-card">
+			<span class="emoji">🏗️</span>
+			<strong>esbuild</strong>
+			<span>Extremely fast JavaScript bundler and minifier</span>
+		</a>
+		<a href="https://vscodium.com/" target="_blank" rel="noopener noreferrer" class="tool-card">
+			<span class="emoji">💻</span>
+			<strong>VSCodium</strong>
+			<span>Binary releases of VS Code without Microsoft telemetry</span>
+		</a>
+	</div>
+
+	<h2>Code Quality</h2>
+	<div class="tools-grid">
+		<a href="https://eslint.org/" target="_blank" rel="noopener noreferrer" class="tool-card">
+			<span class="emoji">🔍</span>
+			<strong>ESLint</strong>
+			<span>Pluggable JavaScript linting utility for finding problems</span>
+		</a>
+		<a href="https://prettier.io/" target="_blank" rel="noopener noreferrer" class="tool-card">
+			<span class="emoji">✨</span>
+			<strong>Prettier</strong>
+			<span>Opinionated code formatter for consistent style</span>
+		</a>
+		<a href="https://vitest.dev/" target="_blank" rel="noopener noreferrer" class="tool-card">
+			<span class="emoji">🧪</span>
+			<strong>Vitest</strong>
+			<span>Fast Vite-native unit test framework with ESM support</span>
+		</a>
+		<a href="https://playwright.dev/" target="_blank" rel="noopener noreferrer" class="tool-card">
+			<span class="emoji">🎭</span>
+			<strong>Playwright</strong>
+			<span>End-to-end testing framework for all modern browsers</span>
+		</a>
+		<a href="https://stylelint.io/" target="_blank" rel="noopener noreferrer" class="tool-card">
+			<span class="emoji">🎨</span>
+			<strong>Stylelint</strong>
+			<span>Modern CSS linter for avoiding errors and enforcing conventions</span>
+		</a>
+	</div>
+
+	<h2>Design Tools</h2>
+	<div class="tools-grid">
+		<a href="https://inkscape.org/" target="_blank" rel="noopener noreferrer" class="tool-card">
+			<span class="emoji">🖊️</span>
+			<strong>Inkscape</strong>
+			<span>Professional vector graphics editor for SVG creation</span>
+		</a>
+		<a href="https://krita.org/" target="_blank" rel="noopener noreferrer" class="tool-card">
+			<span class="emoji">🎨</span>
+			<strong>Krita</strong>
+			<span>Digital painting application for concept art</span>
+		</a>
+		<a href="https://penpot.app/" target="_blank" rel="noopener noreferrer" class="tool-card">
+			<span class="emoji">📐</span>
+			<strong>Penpot</strong>
+			<span>Open-source design and prototyping platform</span>
+		</a>
+		<a href="https://www.blender.org/" target="_blank" rel="noopener noreferrer" class="tool-card">
+			<span class="emoji">🧊</span>
+			<strong>Blender</strong>
+			<span>Complete 3D creation suite for modeling and animation</span>
+		</a>
+	</div>
+
+	<h2>Fonts</h2>
+	<div class="tools-grid">
+		<a href="https://github.com/pi-type/pi-mono" target="_blank" rel="noopener noreferrer" class="tool-card">
+			<span class="emoji">🔤</span>
+			<strong>Pi Mono</strong>
+			<span>Open-source monospace font with programming ligatures</span>
+		</a>
+		<a href="https://www.brailleinstitute.org/freefont/" target="_blank" rel="noopener noreferrer" class="tool-card">
+			<span class="emoji">🅰️</span>
+			<strong>Hyperlegible Fonts</strong>
+			<span>Free accessible fonts designed for low vision readers</span>
+		</a>
+	</div>
+
+	<h2>Icons</h2>
+	<div class="tools-grid">
+		<a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer" class="tool-card">
+			<span class="emoji">🪶</span>
+			<strong>Feather Icons</strong>
+			<span>Simple, clean open-source SVG icon set</span>
+		</a>
+		<a href="https://heroicons.com/" target="_blank" rel="noopener noreferrer" class="tool-card">
+			<span class="emoji">⚡</span>
+			<strong>Heroicons</strong>
+			<span>Hand-crafted SVG icons by the makers of Tailwind CSS</span>
+		</a>
+		<a href="https://fonts.google.com/icons" target="_blank" rel="noopener noreferrer" class="tool-card">
+			<span class="emoji">🔷</span>
+			<strong>Material Symbols</strong>
+			<span>Google's comprehensive icon library with variable font</span>
+		</a>
+		<a href="https://github.com/Templarian/MaterialDesign" target="_blank" rel="noopener noreferrer" class="tool-card">
+			<span class="emoji">🎯</span>
+			<strong>Material Design Icons</strong>
+			<span>Community-maintained icon collection with 7000+ icons</span>
+		</a>
+		<a href="https://phosphoricons.com/" target="_blank" rel="noopener noreferrer" class="tool-card">
+			<span class="emoji">🔶</span>
+			<strong>Phosphor Icons</strong>
+			<span>Flexible icon family for interfaces, diagrams, and more</span>
+		</a>
+	</div>
+
 	<h2>Online Tools</h2>
 	<div class="tools-grid">
 		<a href="https://caniuse.com/" target="_blank" rel="noopener noreferrer" class="tool-card">
 			<span class="emoji">🔍</span>
 			<strong>Can I Use</strong>
-			<span>Browser support tables for HTML, CSS, and JavaScript features</span>
+			<span>Browser support tables for HTML, CSS, and JavaScript</span>
+		</a>
+		<a href="https://www.colorhexa.com/" target="_blank" rel="noopener noreferrer" class="tool-card">
+			<span class="emoji">🎨</span>
+			<strong>ColorHexa</strong>
+			<span>Free color encyclopedia and palette generator</span>
+		</a>
+		<a href="https://huggingface.co/" target="_blank" rel="noopener noreferrer" class="tool-card">
+			<span class="emoji">🤗</span>
+			<strong>Hugging Face</strong>
+			<span>AI models, datasets, and demos for machine learning</span>
 		</a>
 		<a href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer" class="tool-card">
 			<span class="emoji">🔎</span>
@@ -114,76 +256,22 @@
 		</a>
 	</div>
 
-	<h2>Applications</h2>
+	<h2>Media</h2>
 	<div class="tools-grid">
 		<a href="https://www.audacityteam.org/" target="_blank" rel="noopener noreferrer" class="tool-card">
 			<span class="emoji">🎵</span>
 			<strong>Audacity</strong>
-			<span>Audio editing and recording application with powerful features</span>
-		</a>
-		<a href="https://www.blender.org/" target="_blank" rel="noopener noreferrer" class="tool-card">
-			<span class="emoji">🧊</span>
-			<strong>Blender</strong>
-			<span>Complete 3D creation suite for modeling, animation, and rendering</span>
-		</a>
-		<a href="https://inkscape.org/" target="_blank" rel="noopener noreferrer" class="tool-card">
-			<span class="emoji">🖊️</span>
-			<strong>Inkscape</strong>
-			<span>Professional vector graphics editor for SVG creation and illustration</span>
+			<span>Audio editing and recording application</span>
 		</a>
 		<a href="https://kdenlive.org/" target="_blank" rel="noopener noreferrer" class="tool-card">
 			<span class="emoji">🎞️</span>
 			<strong>Kdenlive</strong>
-			<span>Free video editor with multi-track editing and effects</span>
-		</a>
-		<a href="https://krita.org/" target="_blank" rel="noopener noreferrer" class="tool-card">
-			<span class="emoji">🎨</span>
-			<strong>Krita</strong>
-			<span>Digital painting application for concept art and illustrations</span>
+			<span>Free video editor with multi-track editing</span>
 		</a>
 		<a href="https://obsproject.com/" target="_blank" rel="noopener noreferrer" class="tool-card">
 			<span class="emoji">📹</span>
 			<strong>OBS Studio</strong>
-			<span>Free software for live streaming and screen recording</span>
-		</a>
-		<a href="https://penpot.app/" target="_blank" rel="noopener noreferrer" class="tool-card">
-			<span class="emoji">🎨</span>
-			<strong>Penpot</strong>
-			<span>Open-source design and prototyping platform with collaborative features</span>
-		</a>
-		<a href="https://vscodium.com/" target="_blank" rel="noopener noreferrer" class="tool-card">
-			<span class="emoji">🔒</span>
-			<strong>VSCodium</strong>
-			<span>Binary releases of VS Code without Microsoft telemetry and licensing</span>
-		</a>
-	</div>
-
-	<h2>Fonts & Icons</h2>
-	<div class="tools-grid">
-		<a href="https://feathericons.com/" target="_blank" rel="noopener noreferrer" class="tool-card">
-			<span class="emoji">🪶</span>
-			<strong>Feather Icons</strong>
-			<span>Simple, clean open-source SVG icon set</span>
-		</a>
-		<a href="https://fonts.google.com/icons" target="_blank" rel="noopener noreferrer" class="tool-card">
-			<span class="emoji">🔷</span>
-			<strong>Material Symbols</strong>
-			<span>Google's comprehensive icon library with variable font support</span>
-		</a>
-		<a href="https://github.com/Templarian/MaterialDesign" target="_blank" rel="noopener noreferrer" class="tool-card">
-			<span class="emoji">🎯</span>
-			<strong>Material Design Icons</strong>
-			<span>Community-maintained icon collection with 7000+ icons</span>
-		</a>
-		<a href="https://heroicons.com/" target="_blank" rel="noopener noreferrer" class="tool-card">
-			<span class="emoji">⚡</span>
-			<strong>Heroicons</strong>
-			<span>Beautiful hand-crafted SVG icons by the makers of Tailwind CSS</span>
-		</a>
-		<a href="https://www.brailleinstitute.org/freefont/" target="_blank" rel="noopener noreferrer" class="tool-card">
-			<span class="emoji">🅰️</span>
-			<strong>Hyperlegible Fonts</strong>
-			<span>Free accessible fonts designed for low vision readers by Braille Institute</span>
+			<span>Free software for live streaming and recording</span>
 		</a>
 	</div>
 <!-- PAGE SCRIPTS GO HERE-->
