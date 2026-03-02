@@ -65,8 +65,15 @@
 }
 
 @font-face {
-	font-family: 'outfit';
-	src: url('/fonts/outfit.ttf') format('truetype-variations');
+	font-family: 'hyperlegible';
+	src: url('/fonts/hyperlegible.ttf') format('truetype');
+	font-weight: 1 999;
+	font-display: optional;
+}
+
+@font-face {
+	font-family: 'hyperlegible-mono';
+	src: url('/fonts/hyperlegibleMono.ttf') format('truetype');
 	font-weight: 1 999;
 	font-display: optional;
 }
@@ -74,13 +81,6 @@
 @font-face {
 	font-family: 'emoji';
 	src: url('/fonts/emoji.ttf') format('truetype-variations');
-	font-weight: 1 999;
-	font-display: optional;
-}
-
-@font-face {
-	font-family: 'code';
-	src: url('/fonts/FiraCode.ttf') format('truetype-variations');
 	font-weight: 1 999;
 	font-display: optional;
 }
@@ -103,7 +103,7 @@
 
 html,
 body {
-	font-family: 'outfit', sans-serif;
+	font-family: 'hyperlegible', sans-serif;
 	font-size: 100%;
 	line-height: var(--lh-md);
 	margin-bottom: var(--lh-md);
@@ -452,7 +452,7 @@ main > section > article input[name="filter"] {
 	padding: var(--space-1) var(--space-2);
 	line-height: var(--lh-xs);
 	font-size: var(--font-xs);
-	font-family: 'code', monospace;
+	font-family: 'hyperlegible-mono', monospace;
 	height: var(--lh-xs);
 	margin: 0;
 	outline: none;
@@ -470,7 +470,7 @@ main > section > article input[name="filter"]:focus {
 
 main > section > article code {
 	padding: var(--space-1) var(--space-2);
-	font-family: 'code', monospace;
+	font-family: 'hyperlegible-mono', monospace;
 	font-size: var(--font-sm);
 	color: var(--light);
 }

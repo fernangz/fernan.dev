@@ -46,7 +46,7 @@ fernan.dev/
 ├── styles/                    # 16 CSS files
 ├── scripts/                   # 9 JS files
 ├── data/                      # JSON data files
-├── fonts/                     # Custom fonts
+├── fonts/                     # Hyperlegible fonts
 ├── favicon/                   # PWA icons
 └── *.sh                       # Deployment scripts
 ```
