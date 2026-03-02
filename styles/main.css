@@ -78,13 +78,6 @@
 	font-display: optional;
 }
 
-@font-face {
-	font-family: 'emoji';
-	src: url('/fonts/emoji.ttf') format('truetype-variations');
-	font-weight: 1 999;
-	font-display: optional;
-}
-
 * {
 	box-sizing: border-box;
 	margin: 0;
@@ -96,7 +89,7 @@
 	display: inline;
 	font-size: inherit;
 	line-height: inherit;
-	font-family: 'emoji';
+	font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', sans-serif;
 	color: inherit;
 	letter-spacing: 0.28rem;
 }
