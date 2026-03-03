@@ -76,6 +76,7 @@
 .color-trigger-container {
 	position: relative;
 	display: inline-block;
+	flex-shrink: 0;
 }
 
 .color-input-hidden {
@@ -98,7 +99,6 @@
 	background: none;
 	position: relative;
 	overflow: hidden;
-	flex-shrink: 0;
 }
 
 .color-trigger-fill {
