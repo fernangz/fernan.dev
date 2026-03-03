@@ -61,10 +61,40 @@
 
 	<div class="shadow-generator">
 		<div class="preview-area" role="region" aria-label="Box shadow preview">
-			<div class="preview-box" id="preview-box" aria-hidden="true"></div>
+			<div class="preview-box" id="preview-box" aria-hidden="true" style="box-shadow: rgb(76, 0, 255) 0px 0px 24px 0px;"></div>
 		</div>
 
 		<div class="controls" role="group" aria-label="Shadow controls">
+			<div class="control-group">
+				<label for="shadow-color">Shadow Color</label>
+				<div class="color-input-group">
+					<div class="color-trigger-container">
+						<button type="button" class="color-trigger" id="color-trigger" aria-label="Pick shadow color from color wheel">
+							<span class="color-trigger-fill" id="color-trigger-fill" aria-hidden="true" style="background-color: rgb(76, 0, 255);"></span>
+						</button>
+						<input type="color" id="shadow-color" value="#4c00ff" class="color-input-hidden" aria-label="Shadow color picker input">
+					</div>
+					<input type="text" id="color-text" value="#4c00ff" placeholder="#000000" aria-label="Shadow color hex value" class="color-text-input">
+					
+				</div>
+			</div>
+			
+			<div class="control-group">
+				<label for="opacity">Opacity</label>
+				<input type="range" id="opacity" min="0" max="100" value="100" aria-describedby="opacity-value">
+				<span class="control-value" id="opacity-value" aria-live="polite">100%</span>
+			</div>
+			<div class="control-group">
+				<label for="blur">Blur Radius</label>
+				<input type="range" id="blur" min="0" max="100" value="24" aria-describedby="blur-value">
+				<span class="control-value" id="blur-value" aria-live="polite">24px</span>
+			</div>
+			<div class="control-group">
+				<label for="spread">Spread</label>
+				<input type="range" id="spread" min="-50" max="50" value="0" aria-describedby="spread-value">
+				<span class="control-value" id="spread-value" aria-live="polite">0px</span>
+			</div>
+			
 			<div class="control-group">
 				<label for="offset-x">Offset X</label>
 				<input type="range" id="offset-x" min="-50" max="50" value="0" aria-describedby="offset-x-value">
@@ -74,34 +104,6 @@
 				<label for="offset-y">Offset Y</label>
 				<input type="range" id="offset-y" min="-50" max="50" value="0" aria-describedby="offset-y-value">
 				<span class="control-value" id="offset-y-value" aria-live="polite">0px</span>
-			</div>
-			<div class="control-group">
-				<label for="blur">Blur Radius</label>
-				<input type="range" id="blur" min="0" max="100" value="0" aria-describedby="blur-value">
-				<span class="control-value" id="blur-value" aria-live="polite">0px</span>
-			</div>
-			<div class="control-group">
-				<label for="spread">Spread</label>
-				<input type="range" id="spread" min="-50" max="50" value="0" aria-describedby="spread-value">
-				<span class="control-value" id="spread-value" aria-live="polite">0px</span>
-			</div>
-			<div class="control-group">
-				<label for="shadow-color">Shadow Color</label>
-				<div class="color-input-group">
-					<div class="color-trigger-container">
-						<button type="button" class="color-trigger" id="color-trigger" aria-label="Pick shadow color from color wheel">
-							<span class="color-trigger-fill" id="color-trigger-fill" aria-hidden="true"></span>
-						</button>
-						<input type="color" id="shadow-color" value="#000000" class="color-input-hidden" aria-label="Shadow color picker input">
-					</div>
-					<input type="text" id="color-text" value="#000000" placeholder="#000000" aria-label="Shadow color hex value" class="color-text-input">
-					<button class="copy-btn copy-color-btn" aria-label="Copy color hex value to clipboard">📋</button>
-				</div>
-			</div>
-			<div class="control-group">
-				<label for="opacity">Opacity</label>
-				<input type="range" id="opacity" min="0" max="100" value="30" aria-describedby="opacity-value">
-				<span class="control-value" id="opacity-value" aria-live="polite">30%</span>
 			</div>
 			<div class="control-group checkbox-group">
 				<label>
@@ -113,7 +115,7 @@
 		<div class="code-output">
 			<label for="css-output">CSS Output</label>
 			<div class="code-box">
-				<code id="css-output" role="textbox" aria-readonly="true" aria-label="Generated CSS box-shadow code">box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3);</code>
+				<code id="css-output" role="textbox" aria-readonly="true" aria-label="Generated CSS box-shadow code">box-shadow: 0px 0px 24px 0px rgba(76, 0, 255, 1);</code>
 				<button class="copy-btn" id="copy-btn" aria-label="Copy CSS to clipboard">📋 Copy</button>
 			</div>
 		</div>

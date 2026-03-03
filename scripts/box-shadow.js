@@ -6,10 +6,10 @@ const BoxShadowGenerator = {
 	values: {
 		offsetX: 0,
 		offsetY: 0,
-		blur: 0,
+		blur: 24,
 		spread: 0,
-		color: '#000000',
-		opacity: 30,
+		color: '#4c00ff',
+		opacity: 100,
 		inset: false
 	},
 
@@ -17,6 +17,13 @@ const BoxShadowGenerator = {
 		this.cacheElements();
 		this.bindEvents();
 		this.updateColorTrigger();
+		// Set initial display values
+		if (this.elements.values.offsetX) this.elements.values.offsetX.textContent = `${this.values.offsetX}px`;
+		if (this.elements.values.offsetY) this.elements.values.offsetY.textContent = `${this.values.offsetY}px`;
+		if (this.elements.values.blur) this.elements.values.blur.textContent = `${this.values.blur}px`;
+		if (this.elements.values.spread) this.elements.values.spread.textContent = `${this.values.spread}px`;
+		if (this.elements.values.opacity) this.elements.values.opacity.textContent = `${this.values.opacity}%`;
+		if (this.elements.colorText) this.elements.colorText.value = this.values.color;
 		this.update();
 	},
 
