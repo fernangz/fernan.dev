@@ -14,6 +14,13 @@ const BoxShadowGenerator = {
 	},
 
 	init() {
+		this.cacheElements();
+		this.bindEvents();
+		this.updateColorTrigger();
+		this.update();
+	},
+
+	cacheElements() {
 		this.elements = {
 			previewBox: document.getElementById('preview-box'),
 			offsetX: document.getElementById('offset-x'),
@@ -21,10 +28,14 @@ const BoxShadowGenerator = {
 			blur: document.getElementById('blur'),
 			spread: document.getElementById('spread'),
 			color: document.getElementById('shadow-color'),
+			colorTrigger: document.getElementById('color-trigger'),
+			colorTriggerFill: document.getElementById('color-trigger-fill'),
+			colorText: document.getElementById('color-text'),
 			opacity: document.getElementById('opacity'),
 			inset: document.getElementById('inset'),
 			output: document.getElementById('css-output'),
 			copyBtn: document.getElementById('copy-btn'),
+			copyColorBtn: document.getElementById('copy-color-btn'),
 			values: {
 				offsetX: document.getElementById('offset-x-value'),
 				offsetY: document.getElementById('offset-y-value'),
@@ -33,12 +44,40 @@ const BoxShadowGenerator = {
 				opacity: document.getElementById('opacity-value')
 			}
 		};
-
-		this.bindEvents();
-		this.update();
 	},
 
 	bindEvents() {
+		// Color trigger button
+		if (this.elements.colorTrigger && this.elements.color) {
+			this.elements.colorTrigger.addEventListener('click', () => {
+				this.elements.color.click();
+			});
+
+			this.elements.color.addEventListener('input', (e) => {
+				this.values.color = e.target.value;
+				this.updateColorTrigger();
+				if (this.elements.colorText) {
+					this.elements.colorText.value = this.values.color;
+				}
+				this.update();
+			});
+		}
+
+		// Color text input
+		if (this.elements.colorText) {
+			this.elements.colorText.addEventListener('input', (e) => {
+				const hex = this.normalizeHex(e.target.value);
+				if (this.isValidHex(hex)) {
+					this.values.color = hex;
+					this.updateColorTrigger();
+					if (this.elements.color) {
+						this.elements.color.value = hex;
+					}
+					this.update();
+				}
+			});
+		}
+
 		this.elements.offsetX.addEventListener('input', (e) => {
 			this.values.offsetX = parseInt(e.target.value);
 			this.elements.values.offsetX.textContent = `${this.values.offsetX}px`;
@@ -63,11 +102,6 @@ const BoxShadowGenerator = {
 			this.update();
 		});
 
-		this.elements.color.addEventListener('input', (e) => {
-			this.values.color = e.target.value;
-			this.update();
-		});
-
 		this.elements.opacity.addEventListener('input', (e) => {
 			this.values.opacity = parseInt(e.target.value);
 			this.elements.values.opacity.textContent = `${this.values.opacity}%`;
@@ -79,20 +113,37 @@ const BoxShadowGenerator = {
 			this.update();
 		});
 
+		// Copy CSS button
 		this.elements.copyBtn.addEventListener('click', () => {
 			navigator.clipboard.writeText(this.elements.output.textContent);
 			if (ui && ui.notify) {
 				ui.notify('<i>📋</i> CSS copied!');
 			}
 		});
+
+		// Copy color button
+		if (this.elements.copyColorBtn) {
+			this.elements.copyColorBtn.addEventListener('click', () => {
+				navigator.clipboard.writeText(this.values.color);
+				if (ui && ui.notify) {
+					ui.notify(`<i>📋</i> ${this.values.color} copied!`);
+				}
+			});
+		}
+	},
+
+	updateColorTrigger() {
+		if (this.elements.colorTriggerFill) {
+			this.elements.colorTriggerFill.style.backgroundColor = this.values.color;
+		}
 	},
 
 	update() {
 		const rgba = this.hexToRgba(this.values.color, this.values.opacity / 100);
 		const inset = this.values.inset ? 'inset ' : '';
-		
+
 		const shadow = `${inset}${this.values.offsetX}px ${this.values.offsetY}px ${this.values.blur}px ${this.values.spread}px ${rgba}`;
-		
+
 		this.elements.previewBox.style.boxShadow = shadow;
 		this.elements.output.textContent = `box-shadow: ${shadow};`;
 	},
@@ -102,6 +153,16 @@ const BoxShadowGenerator = {
 		const g = parseInt(hex.slice(3, 5), 16);
 		const b = parseInt(hex.slice(5, 7), 16);
 		return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+	},
+
+	normalizeHex(hex) {
+		hex = hex.trim();
+		if (!hex.startsWith('#')) hex = '#' + hex;
+		return hex;
+	},
+
+	isValidHex(hex) {
+		return /^#[0-9A-F]{6}$/i.test(hex);
 	}
 };
 

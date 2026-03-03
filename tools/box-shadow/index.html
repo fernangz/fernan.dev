@@ -87,7 +87,16 @@
 			</div>
 			<div class="control-group">
 				<label for="shadow-color">Shadow Color</label>
-				<input type="color" id="shadow-color" value="#000000" aria-label="Shadow color picker">
+				<div class="color-input-group">
+					<div class="color-trigger-container">
+						<button type="button" class="color-trigger" id="color-trigger" aria-label="Pick shadow color from color wheel">
+							<span class="color-trigger-fill" id="color-trigger-fill" aria-hidden="true"></span>
+						</button>
+						<input type="color" id="shadow-color" value="#000000" class="color-input-hidden" aria-label="Shadow color picker input">
+					</div>
+					<input type="text" id="color-text" value="#000000" placeholder="#000000" aria-label="Shadow color hex value" class="color-text-input">
+					<button class="copy-btn copy-color-btn" aria-label="Copy color hex value to clipboard">📋</button>
+				</div>
 			</div>
 			<div class="control-group">
 				<label for="opacity">Opacity</label>
