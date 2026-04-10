@@ -204,6 +204,14 @@
 	letter-spacing: 0.28rem;
 }
 
+html{
+	-webkit-text-size-adjust: none;
+	text-size-adjust: none;
+	hanging-punctuation: first last;
+	font-synthesis: none;
+	view-transition-name: main;
+}
+
 html,
 body {
 	font-family: 'hyperlegible', sans-serif;
