@@ -66,14 +66,16 @@
 
 @font-face {
 	font-family: 'hyperlegible';
-	src: url('/fonts/hyperlegible.ttf') format('truetype');
+	src:	url('/fonts/hyperlegible.woff2') format('woff2'),
+			url('/fonts/hyperlegible.ttf') format('truetype');
 	font-weight: 1 999;
 	font-display: optional;
 }
 
 @font-face {
 	font-family: 'hyperlegible-mono';
-	src: url('/fonts/hyperlegibleMono.ttf') format('truetype');
+	src:	url('/fonts/hyperlegibleMono.woff2') format('woff2'),
+			url('/fonts/hyperlegibleMono.ttf') format('truetype');
 	font-weight: 1 999;
 	font-display: optional;
 }
