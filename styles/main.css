@@ -182,18 +182,6 @@
 :where(#root, #__next) {
 	isolation: isolate;
 }
-@media (prefers-reduced-motion: no-preference) {
-	:where(html) {
-		scroll-behavior: smooth;
-		interpolate-size: allow-keywords;
-	}
-}
-@media (hover: none) {
-	:where(html) {
-		-webkit-tap-highlight-color: transparent;
-	}
-}
-
 *[icon]::before {
 	content: attr(icon);
 	display: inline;
@@ -205,12 +193,14 @@
 }
 
 html{
+	color-scheme: dark;
 	-webkit-text-size-adjust: none;
 	text-size-adjust: none;
 	hanging-punctuation: first last;
 	font-synthesis: none;
 	view-transition-name: main;
-	accent-color: var(--color); 
+	accent-color: var(--color);
+	scroll-padding-top: var(--space-16);
 }
 
 html,
@@ -318,6 +308,7 @@ button:focus-visible {
 body {
 	display: flex;
 	flex-direction: column;
+	accent-color: var(--color);
 }
 
 /* Navigation */
@@ -667,7 +658,18 @@ main > aside#notifications > div::before {
 }
 
 /* Reduced Motion */
+
+@media (prefers-reduced-motion: no-preference) {
+	:where(html) {
+		scroll-behavior: smooth;
+		interpolate-size: allow-keywords;
+	}
+}
 @media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto !important;
+	}
+  
 	*,
 	*::before,
 	*::after {
@@ -687,9 +689,16 @@ main > aside#notifications > div::before {
 		display: none;
 	}
 }
-
+@media (hover: none) {
+	:where(html) {
+		-webkit-tap-highlight-color: transparent;
+	}
+}
 /* Responsive - Desktop */
 @media screen and (min-width: 48rem) {
+	html{
+		scroll-padding-top: 0;
+	}
 	body {
 		flex-direction: column-reverse;
 	}
